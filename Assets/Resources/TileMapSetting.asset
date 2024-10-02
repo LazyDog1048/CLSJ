@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c22805884302142b5c20cf342cee35, type: 3}
+  m_Name: TileMapSetting
+  m_EditorClassIdentifier: 
+  waterTile: {fileID: 11400000, guid: a2f048ab9f6b2a746bca87fcd41bdfad, type: 2}
+  buildBaseTile: {fileID: 11400000, guid: 2c976dda5434dc94cabd45bd6cb031c9, type: 2}
+  CanSetHighlight: 1
+  darkColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  PlayerCantWalk: 384
+  tileMapLayerDic:
+    keys: 010000000200000004000000080000001000000020000000400000008000000000010000
+    values:
+    - _tileMapType: 1
+      index: 1
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 2
+      index: 2
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 4
+      index: 3
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 8
+      index: 4
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 16
+      index: 5
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 32
+      index: 6
+      hadCollider: 1
+      isTrigger: 1
+    - _tileMapType: 64
+      index: 7
+      hadCollider: 0
+      isTrigger: 0
+    - _tileMapType: 128
+      index: 8
+      hadCollider: 1
+      isTrigger: 0
+    - _tileMapType: 256
+      index: -1
+      hadCollider: 1
+      isTrigger: 0

@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: TileMap
+    uniqueID: 1849712673
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Shadow
+    uniqueID: 1050242019
     locked: 0
