@@ -11,9 +11,17 @@ namespace Player
     
     public class PlayerController : MonoBehaviour, IAnimController
     {
+        [SerializeField]
+        private float speed = 10;
+        
+        [SerializeField]
+        public FieldOfView fieldOfView;
         public static PlayerController Instance;
         private PlayerAnimController animator { get;set; }
         private PlayerMove rbMove { get; set; }
+        private Gun Gun { get; set; }
+        
+        public float angle => Gun.angle;
         public InputActionPhase phase{ get; set; }
         public PlayerState PlayerState
         {
@@ -21,19 +29,6 @@ namespace Player
             protected set =>animator.SetAnim(value);
         }
 
-        // public bool CantChangeState => isDance || isGrab;
-        public bool isGrab => PlayerState is PlayerState.Bala_1 or PlayerState.Bala_2 or PlayerState.Bala_3;
-        public bool isRun => PlayerState is PlayerState.PickRun or PlayerState.Run;
-        public bool isDance => PlayerState is PlayerState.Dance_1 or PlayerState.Dance_2 or PlayerState.Dance_3 or PlayerState.Dance_4 or PlayerState.Dance_5;
-        
-        protected List<PlayerState> danceStateList = new List<PlayerState>
-        {
-            PlayerState.Dance_1,
-            PlayerState.Dance_2,
-            PlayerState.Dance_3,
-            PlayerState.Dance_4,
-            PlayerState.Dance_5
-        };
 
         // private GamePlayInput gamePlayInput;
         #region UnityAction
@@ -44,7 +39,9 @@ namespace Player
                 Destroy(Instance);
             Instance = this;
             animator = new PlayerAnimController(this);
-            rbMove = new PlayerMove(5, this);
+            rbMove = new PlayerMove(speed, this);
+            Gun = new Gun(this);
+            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove, Gun.MouseMove,PressE,PressQ,PressF);
         }
 
         #endregion
@@ -54,11 +51,12 @@ namespace Player
         private void Update()
         {
             rbMove.Move(GamePlay_InputAction.moveDir);
+            Gun.UpdateFieldOfView();
         }
 
         private void OnMove(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed && (rbMove.CanMove || isDance || isGrab))
+            if (context.phase == InputActionPhase.Performed && rbMove.CanMove)
             {
                 PlayerState = PlayerState.Run;
             }
@@ -68,16 +66,6 @@ namespace Player
             }
         }
 
-        public void PressSpace(InputAction.CallbackContext context)
-        {
-            
-        }
-        
-        private void Throw(InputAction.CallbackContext context)
-        {
-            
-        }
-        
         private void PressE(InputAction.CallbackContext context)
         {   
             
@@ -116,7 +104,7 @@ namespace Player
         #region IAnimController
         public virtual void AnimatorStateEnter()
         {
-
+            Debug.Log(PlayerState);
         }
         public virtual void AnimatorStateComplete()
         {

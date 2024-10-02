@@ -122,7 +122,7 @@ namespace tool
         }
         public static FaceDir WatchToTarget(this Transform transform,Vector3 target)
         {
-            return transform.position.WatchToTarget(target);
+            return transform.position.WatchToTargetFourDir(target);
         }
 
         #region transMove

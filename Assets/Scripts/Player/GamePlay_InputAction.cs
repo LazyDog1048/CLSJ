@@ -12,8 +12,7 @@ namespace so
         private bool uiBlock;
         public override bool enable =>base.enable && !uiBlock;
         private ActionThing move;
-        private ActionThing pick_put;
-        private ActionThing throw_item;
+        private ActionThing cursorMove;
         private ActionThing pressE;
         private ActionThing pressQ;
         private ActionThing pressF;
@@ -35,26 +34,23 @@ namespace so
             actionMap = GetActionMap(InputMapType.GamePlay);
             Enable(true);
             move = AddAction("Move");
-            pick_put = AddAction("Pick_Put");
-            throw_item = AddAction("Throw");
-            pressE = AddAction("Upgrade");
-            pressQ = AddAction("Dance");
-            pressF = AddAction("Grab");
+            cursorMove = AddAction("CursorMove");
+            pressE = AddAction("PressE");
+            pressQ = AddAction("PressQ");
+            pressF = AddAction("PressF");
         }
 
         public void PlayerRegisterAction(UnityAction<InputAction.CallbackContext> moveEvent,
-                                         UnityAction<InputAction.CallbackContext> pickPutEvent,
-                                         UnityAction<InputAction.CallbackContext> throwEvent,
+                                         UnityAction<InputAction.CallbackContext> cursorMoveEvent,
                                          UnityAction<InputAction.CallbackContext> pressEEvent,
                                          UnityAction<InputAction.CallbackContext> pressQEvent,
-                                         UnityAction<InputAction.CallbackContext> grabEvent)
+                                         UnityAction<InputAction.CallbackContext> pressFEvent)
         {
             move?.AddListener(moveEvent);
-            pick_put?.AddListener(pickPutEvent);
-            throw_item?.AddListener(throwEvent);
+            cursorMove?.AddListener(cursorMoveEvent);
             pressE?.AddListener(pressEEvent);
             pressQ?.AddListener(pressQEvent);
-            pressF?.AddListener(grabEvent);
+            pressF?.AddListener(pressFEvent);
         }
 
 
@@ -62,8 +58,6 @@ namespace so
         {
             base.DisposeInputAction();
             move?.RemoveAllListeners();
-            pick_put?.RemoveAllListeners();
-            throw_item?.RemoveAllListeners();
             pressE?.RemoveAllListeners();
             pressQ?.RemoveAllListeners();
             pressF?.RemoveAllListeners();

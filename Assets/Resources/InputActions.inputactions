@@ -6,42 +6,6 @@
             "id": "8488e67f-0943-455e-b617-a7f0296585bd",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "d8b74497-cc8a-4ac7-8bdf-5bfdccb29b63",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Pick_Put",
-                    "type": "Button",
-                    "id": "d9a374b7-950a-4ea3-a6e6-f9b1a4cf2e51",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "2a5089dd-6a5e-46d2-8d14-b365be40147d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dance",
-                    "type": "Button",
-                    "id": "813c663c-ec69-49cb-a474-e6f3ae17ab5c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Confirm",
                     "type": "Button",
                     "id": "0e20f149-45b9-4eee-8b7c-2603e9019567",
@@ -60,7 +24,25 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Upgrade",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "d8b74497-cc8a-4ac7-8bdf-5bfdccb29b63",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CursorMove",
+                    "type": "PassThrough",
+                    "id": "e0aa3c6c-5298-4344-874b-77b9b43464c5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressE",
                     "type": "Button",
                     "id": "47a6edce-cfd4-4b65-bf65-9d7f785af197",
                     "expectedControlType": "Button",
@@ -69,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
+                    "name": "PressF",
                     "type": "Button",
                     "id": "e207d17e-3cb3-4426-8064-13f6a3030ccb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressQ",
+                    "type": "Button",
+                    "id": "631a9c54-6a41-462d-803e-e375aef2a35b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -79,6 +70,94 @@
                 }
             ],
             "bindings": [
+                {
+                    "name": "",
+                    "id": "41fee677-c6bc-4f69-84f7-b07340317354",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a19b255-c2bb-42d2-aef6-02f49750359c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e7b98bc-3c38-4438-8ae3-9213dd31fe48",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9fed3f2-a4b6-4835-bf67-3e0fca94126d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b91da8e4-491b-481b-998b-480a28a5425c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "826c9b5d-2ef1-4d15-818b-e1877f51ed6b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressQ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d4278b4-2691-41f6-8383-08fbb501bfb8",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CursorMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a86023c3-def5-45f3-bf60-81af93c7809c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressF",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "2D Vector",
                     "id": "83e8f1b0-87e6-4a8c-9381-3442f30b3d87",
@@ -142,127 +221,6 @@
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c4635b0a-4560-46a6-aecf-37642d52e86b",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Pick_Put",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ed210af3-d018-4716-bf2d-63b05e020ed1",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Pick_Put",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2cdab1e0-54f6-4c4b-abc5-2498d0b26b3c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "122dd618-951f-49ec-8ed6-d1af5b7a0ec8",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41fee677-c6bc-4f69-84f7-b07340317354",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8a19b255-c2bb-42d2-aef6-02f49750359c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2e7b98bc-3c38-4438-8ae3-9213dd31fe48",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c9fed3f2-a4b6-4835-bf67-3e0fca94126d",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b91da8e4-491b-481b-998b-480a28a5425c",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Upgrade",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8446b3d3-8c97-44b9-b8ad-33df04307b90",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dance",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a86023c3-def5-45f3-bf60-81af93c7809c",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

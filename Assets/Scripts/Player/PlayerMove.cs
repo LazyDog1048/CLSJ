@@ -5,7 +5,7 @@ namespace plug
 {
     public class PlayerMove : Moveable
     {
-        public override bool CanMove => base.CanMove && player.PlayerState is PlayerState.Idle or PlayerState.PickIdle or PlayerState.PickRun or PlayerState.Run;
+        public override bool CanMove => base.CanMove && player.PlayerState is PlayerState.Idle or PlayerState.Run;
         
         private readonly PlayerController player;
         protected readonly Rigidbody2D rb;

@@ -12,7 +12,10 @@ namespace game.Other
         protected virtual int curState{ get;}
         protected readonly Animator animator;
         protected readonly IAnimController AnimController;
+        
         private bool selfStateLock;
+        public bool stateLock => selfStateLock;
+        
         protected Dictionary<int,int> StateDic;
         protected BaseAnimController(IAnimController anim,MonoBehaviour mono):base(mono)
         {
@@ -65,9 +68,11 @@ namespace game.Other
         {
             if(curState == state)
                 return;
+
             //状态锁住 且无法强制改变状态
-            if(!ForceChangeState(state))
+            if(stateLock && !ForceChangeState(state))
                 return;
+            
             
             ChangeState(state);
         }

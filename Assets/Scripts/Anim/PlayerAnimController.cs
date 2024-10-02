@@ -9,10 +9,6 @@ namespace Player
     {
         Idle,
         Run,
-        PickUp,
-        PutDown,
-        PickIdle,
-        PickRun,
         AirBorne,
         Throw,
         Disappear,
@@ -56,10 +52,6 @@ namespace Player
             {
                 {PlayerState.Idle, AnimaHash.state_Idle},
                 {PlayerState.Run, AnimaHash.state_Run},
-                {PlayerState.PickIdle, AnimaHash.state_PickIdle},
-                {PlayerState.PickRun, AnimaHash.state_PickRun},
-                {PlayerState.PickUp, AnimaHash.state_PickUp},
-                {PlayerState.PutDown, AnimaHash.state_PutDown},
                 {PlayerState.Throw, AnimaHash.state_Throw},
                 {PlayerState.Disappear, AnimaHash.state_Disappear},
                 {PlayerState.Appear, AnimaHash.state_Appear},
@@ -87,22 +79,6 @@ namespace Player
             };
             
             CurState = PlayerState.Idle;
-            AddLockState((int)PlayerState.Skill);
-            AddLockState((int)PlayerState.Dig);
-            AddLockState((int)PlayerState.PickUp);
-            AddLockState((int)PlayerState.PutDown);
-            AddLockState((int)PlayerState.Throw);
-            AddLockState((int)PlayerState.Disappear);
-            AddLockState((int)PlayerState.AirBorne);
-            AddLockState((int)PlayerState.Charging);
-            AddLockState((int)PlayerState.ChargingRecover);
-            AddLockState((int)PlayerState.Dizzy);
-            AddLockState((int)PlayerState.Pull);
-            AddLockState((int)PlayerState.Throw_Stone);
-            AddLockState((int)PlayerState.Landing);
-            // AddLockState((int)PlayerState.CoinJump);
-            AddLockState((int)PlayerState.Surprise);
-            AddLockState((int)PlayerState.Excavate);
         }
 
         public void SetAnim(PlayerState state)

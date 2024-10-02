@@ -30,12 +30,23 @@ public class GetMousePos
 }
 public static class GetAngle                                       //仅获取2d xy的夹角
 {
-    public static float  Angle(Vector3 target, Vector3 start)
+    public static float Angle(Vector3 target, Vector3 start)
     {
         Vector3 aimDirection =(target - start).normalized;
         //向量与x轴之间的角度
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        if(angle < 0)
+        {
+            angle += 360;
+        }
         return angle;
+    }
+    
+    public static Vector3 GetAngleFormVectorFloat(float angle)
+    {
+        //angle = 0 - 360
+        float angleRad = angle * (Mathf.PI / 180);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 
     public static void RotaWithZ(Transform target, Vector3 start,GameObject obj)

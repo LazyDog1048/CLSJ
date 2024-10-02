@@ -361,7 +361,7 @@ public static class VectorThing
     // }
 
     
-    public static FaceDir WatchToTarget(this Vector3 self,Vector3 target)
+    public static FaceDir WatchToTargetFourDir(this Vector3 self,Vector3 target)
     {
         float angle = GetAngle.Angle(target, self);
 
@@ -386,6 +386,41 @@ public static class VectorThing
         return faceDir;
     }
     
+    public static FaceDir WatchToTargetFourDir(float angle)
+    {
+        FaceDir faceDir = FaceDir.Down;
+
+        //right
+        if(angle>-45 && angle<=45)
+        {
+            faceDir = FaceDir.Right;
+        }
+        //Up
+        else if (angle > 45 && angle <= 135)
+        {
+            faceDir = FaceDir.Up;
+        }
+        //left
+        else if((angle>135 && angle<=180) || (angle>-180 && angle<=-135))
+        {
+            faceDir = FaceDir.Left;
+        }
+        // Debug.Log(angle);
+        return faceDir;
+    }
+    
+    public static FaceDir WatchToTargetTwoDir(float angle)
+    {
+        FaceDir faceDir = FaceDir.Left;
+
+        //right
+        if(angle>-90 && angle<=90)
+        {
+            faceDir = FaceDir.Right;
+        }
+        return faceDir;
+    }
+    
     public static FaceDir BackDir(this FaceDir faceDir)
     {
         switch (faceDir)
@@ -407,14 +442,14 @@ public static class VectorThing
     }
     public static FaceDir BackDir(this Vector3 self,Vector3 target)
     {
-        FaceDir dir = self.WatchToTarget(target);
+        FaceDir dir = self.WatchToTargetFourDir(target);
         return dir.BackDir();
     }
     
     public static Vector3 GetFontPos(this Vector3 self,Vector3 target)
     {
         Vector3 position = self;
-        FaceDir fontDir = self.WatchToTarget(target);
+        FaceDir fontDir = self.WatchToTargetFourDir(target);
         switch (fontDir)
         {
             case FaceDir.Down:
@@ -435,7 +470,7 @@ public static class VectorThing
     public static Vector3 GetBackPos(this Vector3 self,Vector3 target)
     {
         Vector3 position = self;
-        FaceDir fontDir = self.WatchToTarget(target);
+        FaceDir fontDir = self.WatchToTargetFourDir(target);
         switch (fontDir)
         {
             case FaceDir.Down:

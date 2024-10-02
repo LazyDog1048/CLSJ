@@ -13,6 +13,7 @@ namespace game.Other
         public const float BtnAnimTime = 0.2f;
         public const int pixelsPerUnit = 40;
         public const float AnimInterval = 0.07f;
+        public const float TransparencyTime = 0.5f;
         
         private static bool isDevelop = Debug.isDebugBuild;
         private static bool isOnEditor = Application.isEditor;
