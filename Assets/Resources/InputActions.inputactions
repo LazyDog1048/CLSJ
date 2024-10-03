@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PressShift",
+                    "type": "Button",
+                    "id": "0442280c-298d-4764-8501-9f0004a72a4c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PressE",
                     "type": "Button",
                     "id": "47a6edce-cfd4-4b65-bf65-9d7f785af197",
@@ -221,6 +230,17 @@
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10856c3b-6f93-4a69-8657-a45077162d93",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressShift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

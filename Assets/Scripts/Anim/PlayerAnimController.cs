@@ -8,6 +8,7 @@ namespace Player
     public enum PlayerState
     {
         Idle,
+        Walk,
         Run,
         AirBorne,
         Throw,
@@ -51,6 +52,7 @@ namespace Player
             animStateHashDic = new Dictionary<PlayerState, int>
             {
                 {PlayerState.Idle, AnimaHash.state_Idle},
+                {PlayerState.Walk, AnimaHash.state_Walk},
                 {PlayerState.Run, AnimaHash.state_Run},
                 {PlayerState.Throw, AnimaHash.state_Throw},
                 {PlayerState.Disappear, AnimaHash.state_Disappear},

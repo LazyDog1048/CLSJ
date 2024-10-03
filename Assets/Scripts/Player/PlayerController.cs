@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using game;
 using game.Other;
 using plug;
 using so;
@@ -12,21 +13,35 @@ namespace Player
     public class PlayerController : MonoBehaviour, IAnimController
     {
         [SerializeField]
-        private float speed = 10;
-        
+        private PlayerData playerData;
+
+        public BulletData BulletData;
+        public PlayerParameter playerParameter { get; set; }
         [SerializeField]
         public FieldOfView fieldOfView;
         public static PlayerController Instance;
         private PlayerAnimController animator { get;set; }
-        private PlayerMove rbMove { get; set; }
+        public PlayerMove playerMove { get; set; }
+        private PlayerStamina playerStamina { get; set; }
         private Gun Gun { get; set; }
-        
         public float angle => Gun.angle;
+        
+        public bool isRun => PlayerState == PlayerState.Run;
         public InputActionPhase phase{ get; set; }
+        
+        private bool isPressShift;
+
+        // public PlayerState previousState;
         public PlayerState PlayerState
         {
             get => animator.CurState;
-            protected set =>animator.SetAnim(value);
+            protected set
+            {
+                PlayerState previousState = PlayerState;
+                animator.SetAnim(value);
+                if(value == PlayerState && previousState != PlayerState)
+                    StateChange(previousState,PlayerState);
+            }
         }
 
 
@@ -38,10 +53,14 @@ namespace Player
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
+            
+            playerParameter = new PlayerParameter(playerData);
             animator = new PlayerAnimController(this);
-            rbMove = new PlayerMove(speed, this);
+            playerMove = new PlayerMove(this);
+            playerStamina = new PlayerStamina(this);
             Gun = new Gun(this);
-            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove, Gun.MouseMove,PressE,PressQ,PressF);
+            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,PressShift,PressE,PressQ,PressF);
+            GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
 
         #endregion
@@ -50,15 +69,15 @@ namespace Player
 
         private void Update()
         {
-            rbMove.Move(GamePlay_InputAction.moveDir);
+            playerMove.Move(GamePlay_InputAction.moveDir);
             Gun.UpdateFieldOfView();
         }
 
         private void OnMove(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed && rbMove.CanMove)
+            if (context.phase == InputActionPhase.Performed && playerMove.CanMove)
             {
-                PlayerState = PlayerState.Run;
+                PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
@@ -66,14 +85,47 @@ namespace Player
             }
         }
 
+        private void CursorMoveEvent(InputAction.CallbackContext context)
+        {
+            Gun.MouseMove(context);
+        }
+        
+        private void LeftMouse(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+                Gun.Shot(context);
+        }
+        
+        private void PressShift(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                isPressShift = true;
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                isPressShift = false;
+            }
+        }
+
+        private void StateChange(PlayerState previousState,PlayerState curState)
+        {
+            if (curState == PlayerState.Run)
+            {
+                playerStamina.StartRunConsumeStamina();
+            }
+            else if(previousState == PlayerState.Run)
+            {
+                playerStamina.StopRunConsumeStamina();
+            }
+            
+        }
         private void PressE(InputAction.CallbackContext context)
         {   
             
            
         }
 
-        
-        
         private void PressQ(InputAction.CallbackContext context)
         {
             
@@ -92,7 +144,7 @@ namespace Player
         }
         public void PlayerWalkToTarget(Vector3 targetPos,UnityAction Complete)
         {
-            rbMove.AutoMove(targetPos,Complete);
+            playerMove.AutoMove(targetPos,Complete);
         }
 
         public void PlayerRelease()
@@ -104,7 +156,7 @@ namespace Player
         #region IAnimController
         public virtual void AnimatorStateEnter()
         {
-            Debug.Log(PlayerState);
+            
         }
         public virtual void AnimatorStateComplete()
         {

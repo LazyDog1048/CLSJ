@@ -18,9 +18,7 @@ namespace data
      public class ActionThing
      {
          public readonly InputAction action;
-         public bool keyDown => action.triggered;
          private readonly UnityEvent<InputAction.CallbackContext> KeySateChange;
-         private const float minLongPressTime = 0.2f;
 
          // public ActionThing(string actionName,InputMapType mapType)
          public ActionThing(InputAction action)

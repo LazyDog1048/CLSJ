@@ -15,12 +15,12 @@ namespace game
         private bool isTransparency;
         
         private float lightSpeed;
-        private float _light;
+        private float _isLight;
         private Color Color;
-        private float light
+        private float isLight
         {
-            get => _light;
-            set => _light = value;
+            get => _isLight;
+            set => _isLight = value;
         }
         private void Awake()
         {
@@ -44,21 +44,21 @@ namespace game
         {
             if (!lightColliderData.isTransparency)
                 return;
-            Color.a = light;
-            if (light is >= 0 and <= 1)
+            Color.a = isLight;
+            if (isLight is >= 0 and <= 1)
             {
                 foreach (var spriteRenderer in _spriteRenderers)
                 {
                     spriteRenderer.color = Color;
                 }
             }
-            light-= lightSpeed * Time.deltaTime;
+            isLight-= lightSpeed * Time.deltaTime;
         }
         public void LightEnter()
         {
             if (!lightColliderData.isTransparency)
                 return;
-            light = light + lightSpeed * Time.deltaTime; 
+            isLight = isLight + lightSpeed * Time.deltaTime; 
             foreach (var spriteRenderer in _spriteRenderers)
             {
                 spriteRenderer.DOFade(0, StaticValue.TransparencyTime);

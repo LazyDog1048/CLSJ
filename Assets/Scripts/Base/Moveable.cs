@@ -7,17 +7,13 @@ namespace plug
     public class Moveable : AbstractComponent
     {
         private bool lockMove;
-
-        public bool AbStateLock => lockMove;
         public virtual bool CanMove => !lockMove;
         public EventExtraFloat moveSpeed;
-        private float speed;
-        
+
 
         public Moveable(float Speed,MonoBehaviour mono) : base(mono)
         {
-            speed = Speed;
-            moveSpeed = new EventExtraFloat(speed);
+            moveSpeed = new EventExtraFloat(Speed);
             moveSpeed.valueChange.AddListener(SpeedChange);
         }
 

@@ -365,56 +365,34 @@ public static class VectorThing
     {
         float angle = GetAngle.Angle(target, self);
 
-        FaceDir faceDir = FaceDir.Down;
+        FaceDir faceDir = FaceDir.Right;
 
-        //right
-        if(angle>-45 && angle<=45)
-        {
-            faceDir = FaceDir.Right;
-        }
         //Up
-        else if (angle > 45 && angle <= 135)
+        if(angle is > 45 and <= 135)
         {
             faceDir = FaceDir.Up;
         }
         //left
-        else if((angle>135 && angle<=180) || (angle>-180 && angle<=-135))
+        else if(angle is > 135 and <= 225)
         {
             faceDir = FaceDir.Left;
+        }
+        //down
+        else if(angle is > 225 and <= 315)
+        {
+            faceDir = FaceDir.Down;
         }
         // Debug.Log(angle);
         return faceDir;
     }
-    
-    public static FaceDir WatchToTargetFourDir(float angle)
-    {
-        FaceDir faceDir = FaceDir.Down;
 
-        //right
-        if(angle>-45 && angle<=45)
-        {
-            faceDir = FaceDir.Right;
-        }
-        //Up
-        else if (angle > 45 && angle <= 135)
-        {
-            faceDir = FaceDir.Up;
-        }
-        //left
-        else if((angle>135 && angle<=180) || (angle>-180 && angle<=-135))
-        {
-            faceDir = FaceDir.Left;
-        }
-        // Debug.Log(angle);
-        return faceDir;
-    }
     
     public static FaceDir WatchToTargetTwoDir(float angle)
     {
         FaceDir faceDir = FaceDir.Left;
 
         //right
-        if(angle>-90 && angle<=90)
+        if(angle is > 270 and <= 360 or > 0 and <= 90)
         {
             faceDir = FaceDir.Right;
         }
