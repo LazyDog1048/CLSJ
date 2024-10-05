@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "Player/PlayerData")]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
     public class PlayerData :ScriptableObject 
     {
         public float speed = 10;

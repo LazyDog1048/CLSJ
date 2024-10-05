@@ -42,7 +42,7 @@ namespace game.manager
         
         public InputActionAsset GetActionAsset()
         {
-            return Loader.ResourceLoad<InputActionAsset>("InputActions");
+            return Loader.ResourceLoad<InputActionAsset>("So/InputActions");
         }
 
         #endregion

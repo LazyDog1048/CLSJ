@@ -42,6 +42,17 @@ public static class GetAngle                                       //仅获取2d
         return angle;
     }
     
+    public static float Angle(Vector3 dir)
+    {
+        //向量与x轴之间的角度
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if(angle < 0)
+        {
+            angle += 360;
+        }
+        return angle;
+    }
+    
     public static Vector3 GetAngleFormVectorFloat(float angle)
     {
         //angle = 0 - 360

@@ -23,8 +23,10 @@ namespace Player
         private PlayerAnimController animator { get;set; }
         public PlayerMove playerMove { get; set; }
         private PlayerStamina playerStamina { get; set; }
-        private Gun Gun { get; set; }
-        public float angle => Gun.angle;
+        private PlayerHand PlayerHand { get; set; }
+        
+        private Gun gun;
+        public float angle => PlayerHand.angle;
         
         public bool isRun => PlayerState == PlayerState.Run;
         public InputActionPhase phase{ get; set; }
@@ -58,7 +60,8 @@ namespace Player
             animator = new PlayerAnimController(this);
             playerMove = new PlayerMove(this);
             playerStamina = new PlayerStamina(this);
-            Gun = new Gun(this);
+            PlayerHand = new PlayerHand(this);
+            gun = GetComponentInChildren<Gun>();
             GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,PressShift,PressE,PressQ,PressF);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
@@ -70,7 +73,7 @@ namespace Player
         private void Update()
         {
             playerMove.Move(GamePlay_InputAction.moveDir);
-            Gun.UpdateFieldOfView();
+            PlayerHand.UpdateFieldOfView();
         }
 
         private void OnMove(InputAction.CallbackContext context)
@@ -87,13 +90,12 @@ namespace Player
 
         private void CursorMoveEvent(InputAction.CallbackContext context)
         {
-            Gun.MouseMove(context);
+            PlayerHand.MouseMove(context);
         }
         
         private void LeftMouse(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Started)
-                Gun.Shot(context);
+            gun.GunFire(context);
         }
         
         private void PressShift(InputAction.CallbackContext context)

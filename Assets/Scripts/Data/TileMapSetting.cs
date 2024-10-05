@@ -42,8 +42,7 @@ namespace other
     public class TileMapLayerDic : SerializableDic<TileMapType, TileMapData>
     {
         
-    }
-    [CreateAssetMenu(fileName = "TileMapData", menuName = "TileMapData")]
+    }    
     public class TileMapSetting :ScriptableObject
     {
         

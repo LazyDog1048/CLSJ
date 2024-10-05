@@ -35,6 +35,61 @@ namespace Editor.Tool
             // Debug.Log(sprites.Count);
             return sprites;
         }
+        
+         private static readonly int[] textureSize = {32,64,128,256,512,1024,2048,4096};
+        
+        [MenuItem("Assets/Check/TextureToSprite2D&Pixel_20")]
+        public static void ChangeDirTextureToSprite2D_20()
+        {
+            ChangeDirTextureToSprite2D(20);
+        }
+        
+        [MenuItem("Assets/Check/TextureToSprite2D&Pixel_40")]
+        public static void ChangeDirTextureToSprite2D_40()
+        {
+            ChangeDirTextureToSprite2D(40);
+        }
+
+        public static void ChangeDirTextureToSprite2D(int perUnit)
+        {
+            var select = Selection.activeObject;
+            var selectPath = AssetDatabase.GetAssetPath(select);
+            List<string> allPath = FindNoneRefrences.GetAllResourcePath(selectPath, "t:Texture");
+
+            foreach (var path in allPath)
+            {
+                TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+                
+                TextureImporterSettings importerSettings = new TextureImporterSettings();
+                importerSettings.spriteMeshType = SpriteMeshType.FullRect;
+                textureImporter.ReadTextureSettings(importerSettings);
+                
+                Texture texture = AssetDatabase.LoadAssetAtPath<Texture>(path);
+                textureImporter.textureType = TextureImporterType.Sprite;
+                textureImporter.spritePixelsPerUnit = perUnit;
+                textureImporter.filterMode = FilterMode.Point;
+                
+                textureImporter.textureCompression = TextureImporterCompression.Uncompressed; 
+                textureImporter.maxTextureSize = BestSize(texture);
+                textureImporter.wrapMode = TextureWrapMode.Repeat;
+                textureImporter.SaveAndReimport();
+            }
+        }
+
+        public static int BestSize(Texture texture)
+        {
+            int bestSize = 2048;
+            for (int i = 0; i < textureSize.Length; i++)
+            {
+                int biggestSize = textureSize[i];
+                if (texture.height < biggestSize && texture.width < biggestSize)
+                {
+                    bestSize = biggestSize;
+                    break;
+                }
+            }
+            return bestSize;
+        }
     } 
 
 }

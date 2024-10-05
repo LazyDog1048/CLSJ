@@ -12,13 +12,14 @@ namespace game
         [SerializeField]
         private BulletData data;
 
-        private BulletParameter parameter { get; set; }
+        private Gun gun;
+        // private BulletParameter parameter { get; set; }
         
 
 
         #region paramater
         
-        protected EventExtraFloat moveSpeed = new EventExtraFloat(0);
+        // protected EventExtraFloat moveSpeed = new EventExtraFloat(0);
 
 
         protected Vector2 currentDir;
@@ -30,18 +31,19 @@ namespace game
         {
             base.OnAwake();
             
-            parameter = new BulletParameter(data);
-            moveSpeed = new EventExtraFloat(parameter.speed);
+            // parameter = new BulletParameter(data);
+            // moveSpeed = new EventExtraFloat(parameter.speed);
             
         }
 
         #region BulletAction
         
-        public virtual void BulletPrepare(Vector3 shot,Vector3 target)
+        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,Gun gun)
         {
-            currentDir = (target - shot).normalized;
+            this.gun = gun;
             transform.position = shot;
-            float angle = GetAngle.Angle(shot,target);
+            currentDir = dir;
+            float angle = GetAngle.Angle(currentDir);
             transform.localRotation = Quaternion.Euler(0,0,angle);
             BulletShot();
         }
@@ -54,7 +56,7 @@ namespace game
 
         private void BulletDelay()
         {
-            this.DelayExecute(parameter.stayTime, ReleaseObj);
+            this.DelayExecute(gun.gunParameter.bulletStayTime, ReleaseObj);
         }
 
         private void Update()
@@ -64,7 +66,7 @@ namespace game
 
         protected virtual void UpdateBullet()
         {
-            transform.position += (Vector3)currentDir * moveSpeed.FinalValue * Time.deltaTime;
+            transform.position += (Vector3)currentDir * gun.bulletSpeed.FinalValue * Time.deltaTime;
         }
         
         protected virtual void FinishBullet()
@@ -102,10 +104,11 @@ namespace game
         {
         }
       
-        public override string poolId => parameter.name;
+        public override string poolId => data.name;
         
         public override void OnPushObj()
         {
+            gameObject.SetActive(false);
             transform.rotation = Quaternion.Euler(0, 0, 0);
             base.OnPushObj();
         }

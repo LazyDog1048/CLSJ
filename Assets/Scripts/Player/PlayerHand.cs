@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class Gun : AbstractComponent
+    public class PlayerHand : AbstractComponent
     {
         private PlayerController playerController;
         protected Transform hand;
@@ -16,19 +16,19 @@ namespace Player
         protected SpriteRenderer gunSprite;
         private BulletData bullet;
 
-        private Transform ShotPoint_1;
-        private Transform ShotPoint_2;
+        private Gun gun;
+        
         public float angle { get; set; }
-        
-        
-        public Gun(PlayerController mono) : base(mono)
+
+        public GunParameter GunParameter;
+        public PlayerHand(PlayerController mono) : base(mono)
         {
             playerController = mono;
             hand = mono.transform.Find("Hand");
             body = mono.transform.Find("Body");
             
-            ShotPoint_1 = hand.Find("Gun").Find("ShotPoint_1");
-            ShotPoint_2 = hand.Find("Gun").Find("ShotPoint_2");
+            gun= hand.GetComponentInChildren<Gun>();
+            
             
             gunSprite = hand.GetComponentInChildren<SpriteRenderer>();
         }
@@ -60,23 +60,7 @@ namespace Player
             }
         }
         
-        public void Shot(InputAction.CallbackContext context)
-        {
-            ShotBullet<Bullet>(playerController.BulletData,ShotPoint_1.position,ShotPoint_2.position);
-        }
-        
-        public T ShotBullet<T>(BulletData bulletData,Vector3 startPos,Vector3 targetPos) where T:Bullet 
-        {
-            T baseBullet = Load<T>(bulletData);
-            baseBullet.BulletPrepare(startPos,targetPos);
-            return baseBullet;
-        }
-        
-        public static T Load<T>(BulletData data) where T:Bullet
-        {
-            string path = $"Prefab/Bullet/{data.name}";
-            return PoolManager.Instance.PopObj<T>(data.name,path);
-        }
+       
     }
     
 }

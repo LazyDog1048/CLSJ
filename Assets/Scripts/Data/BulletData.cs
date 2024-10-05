@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace game
 {
-    [CreateAssetMenu(fileName = "BulletData", menuName = "Player/BulletData")]
+    [CreateAssetMenu(fileName = "BulletData", menuName = "Data/BulletData")]
     public class BulletData : ScriptableObject
     {
         public string name;
