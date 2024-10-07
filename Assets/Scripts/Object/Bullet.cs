@@ -12,6 +12,7 @@ namespace game
         [SerializeField]
         private BulletData data;
 
+        private int penetrateNum = 1;
         private Gun gun;
         // private BulletParameter parameter { get; set; }
         
@@ -45,6 +46,7 @@ namespace game
             currentDir = dir;
             float angle = GetAngle.Angle(currentDir);
             transform.localRotation = Quaternion.Euler(0,0,angle);
+            penetrateNum = gun.gunParameter.penetrateNum;
             BulletShot();
         }
 
@@ -82,7 +84,12 @@ namespace game
         private void OnTriggerEnter2D(Collider2D col)
         {
             Debug.Log($"hit {col.name}");
-            FinishBullet();
+            
+            if(penetrateNum <= 0)
+                FinishBullet();
+            else
+                penetrateNum--;
+            
         }
         
         private void OnTriggerExit2D(Collider2D col)

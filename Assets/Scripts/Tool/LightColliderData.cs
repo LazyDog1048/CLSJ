@@ -10,7 +10,6 @@ namespace game
     [Serializable]
     public class LightColliderData
     {
-        public bool isBlockLight;
         public bool isTransparency;
     }
     

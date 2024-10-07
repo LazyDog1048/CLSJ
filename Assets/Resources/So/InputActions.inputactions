@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RightMouse",
+                    "type": "Button",
+                    "id": "58369232-3dfb-46c9-b76f-254b1accf60c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Cancel",
                     "type": "Button",
                     "id": "a12be3f1-1aec-4d20-be6f-d15f0684cb62",
@@ -241,6 +250,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PressShift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c124c8c6-116e-4235-b2b8-eb6b85ce631c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "RightMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

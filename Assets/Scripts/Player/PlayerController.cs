@@ -17,13 +17,13 @@ namespace Player
 
         public BulletData BulletData;
         public PlayerParameter playerParameter { get; set; }
-        [SerializeField]
-        public FieldOfView fieldOfView;
+        // [SerializeField]
+        // public FieldOfView fieldOfView;
         public static PlayerController Instance;
         private PlayerAnimController animator { get;set; }
         public PlayerMove playerMove { get; set; }
         private PlayerStamina playerStamina { get; set; }
-        private PlayerHand PlayerHand { get; set; }
+        public PlayerHand PlayerHand { get; set; }
         
         private Gun gun;
         public float angle => PlayerHand.angle;
@@ -62,7 +62,7 @@ namespace Player
             playerStamina = new PlayerStamina(this);
             PlayerHand = new PlayerHand(this);
             gun = GetComponentInChildren<Gun>();
-            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,PressShift,PressE,PressQ,PressF);
+            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressE,PressQ,PressF);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
 
@@ -96,6 +96,11 @@ namespace Player
         private void LeftMouse(InputAction.CallbackContext context)
         {
             gun.GunFire(context);
+        }
+        
+        private void RightMouse(InputAction.CallbackContext context)
+        {
+            PlayerHand.RightMouse(context);
         }
         
         private void PressShift(InputAction.CallbackContext context)

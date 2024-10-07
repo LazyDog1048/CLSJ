@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - LightBlock
-  - Mask
-  - BehindMask
-  - Black
-  - PlayerBullet
+  - Light
+  - LightTouch
   - Player
+  - PlayerTouch
+  - PlayerBullet
+  - PlayerBulletTouch
   - 
   - 
   - 

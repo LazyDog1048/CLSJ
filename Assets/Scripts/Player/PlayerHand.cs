@@ -15,9 +15,9 @@ namespace Player
         protected Transform body;
         protected SpriteRenderer gunSprite;
         private BulletData bullet;
-
-        private Gun gun;
+        private PlayerFlashlight flashlight;
         
+        private bool isPressRightMouse;
         public float angle { get; set; }
 
         public GunParameter GunParameter;
@@ -26,11 +26,8 @@ namespace Player
             playerController = mono;
             hand = mono.transform.Find("Hand");
             body = mono.transform.Find("Body");
-            
-            gun= hand.GetComponentInChildren<Gun>();
-            
-            
             gunSprite = hand.GetComponentInChildren<SpriteRenderer>();
+            flashlight = hand.GetComponentInChildren<PlayerFlashlight>();
         }
         
         public void MouseMove(InputAction.CallbackContext context)
@@ -40,11 +37,29 @@ namespace Player
             FaceMouse();
         }
         
+        public void RightMouse(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                isPressRightMouse = true;
+                // playerController.fieldOfView.AimMode();
+                flashlight.AimMode();
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                isPressRightMouse = false;
+                // playerController.fieldOfView.NormalMode();
+                flashlight.NormalMode();
+            }
+        }
+        
         public void UpdateFieldOfView()
         {
-            playerController.fieldOfView.SetAimDirection(angle + 90);
-            playerController.fieldOfView.SetStartPos(hand.position);
+            // playerController.fieldOfView.SetAimDirection(angle);
+            // playerController.fieldOfView.SetStartPos(hand.position);
         }
+        
+        
         private void FaceMouse()
         {
             switch (VectorThing.WatchToTargetTwoDir(angle))
