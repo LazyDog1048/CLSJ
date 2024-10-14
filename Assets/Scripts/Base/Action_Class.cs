@@ -1,4 +1,3 @@
-using game.manager;
 
 namespace other
 {

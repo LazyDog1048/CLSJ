@@ -1,9 +1,4 @@
-using System.Collections.Generic;
-using data;
-using game;
-
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace other
 {

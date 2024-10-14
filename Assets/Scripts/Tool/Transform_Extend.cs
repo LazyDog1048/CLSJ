@@ -1,6 +1,4 @@
 using game;
-using other;
-using plug;
 using UnityEngine;
 using UnityEngine.Events;
 

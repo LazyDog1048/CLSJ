@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using data;
 using other;
-using so;
-using UnityEngine;
+using tool;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
@@ -11,7 +10,7 @@ using UnityEngine.InputSystem;
 //input类
 //事件中心
 //公共mono
-namespace game.manager
+namespace game
 {
     public class InputManager : Class_Singleton<InputManager>
     {

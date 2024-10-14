@@ -1,11 +1,9 @@
 using data;
-using game.manager;
 using other;
-using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace so
+namespace game
 {
     public enum InputMapType
     {
@@ -71,8 +69,7 @@ namespace so
         {
             confirm?.AddListener(action);
         }
-  
-        
+
         public virtual void CancelUiAction(UnityAction<InputAction.CallbackContext> action)
         {
             cancel?.AddListener(action);

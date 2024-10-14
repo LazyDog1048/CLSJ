@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using game;
-using game.Other;
-using UnityEngine;
 
 namespace Player
 {

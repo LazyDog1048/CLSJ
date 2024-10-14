@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using game.Other;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace game
 {

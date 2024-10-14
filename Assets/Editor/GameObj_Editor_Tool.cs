@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using data;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;

@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using game;
 using other;
-using Player;
 using UnityEngine;
 
 public class FieldOfView : Mono_Singleton<FieldOfView>

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using game;
-using game.manager;
+using tool;
 using UnityEngine;
 
 namespace other

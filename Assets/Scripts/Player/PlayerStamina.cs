@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
@@ -61,7 +59,7 @@ namespace Player
                 {
                     CurrentStamina -= (int)runStaminaConsume.x;
                 }
-                PlayerUi.Instance.UpdateStaminaBar(CurrentStamina,MaxStamina);
+                PlayerUiPanel.Instance.UpdateStaminaBar(CurrentStamina,MaxStamina);
             });
         }
 
@@ -83,7 +81,7 @@ namespace Player
         private void StaminaResume()
         {
             CurrentStamina += (int)staminaResume.x;
-            PlayerUi.Instance.UpdateStaminaBar(CurrentStamina,MaxStamina);
+            PlayerUiPanel.Instance.UpdateStaminaBar(CurrentStamina,MaxStamina);
         }
     }
     

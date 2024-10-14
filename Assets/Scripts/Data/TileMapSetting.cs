@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using data;
-using game.manager;
+using game;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Tilemaps;

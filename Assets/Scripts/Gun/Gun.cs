@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using buff;
 using other;
 using Player;
@@ -43,7 +40,7 @@ namespace game
             set
             {
                 _currentBullet = value;
-                PlayerUi.Instance.UpdateGunBar(_currentBullet,maxAmmo.FinalValue);
+                PlayerUiPanel.Instance.UpdateGunBar(_currentBullet,maxAmmo.FinalValue);
             }
         }
         private bool CanShot

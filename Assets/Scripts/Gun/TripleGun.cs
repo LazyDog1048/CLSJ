@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using other;
-using UnityEngine;
-
 namespace game
 {
     public class TripleGun : Gun

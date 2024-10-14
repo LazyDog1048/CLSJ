@@ -1,10 +1,9 @@
 using data;
-using game.manager;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace so
+namespace game
 {
     // [CreateAssetMenu(fileName = "InputAction", menuName = "ScriptableObjects/InputAction")]
     public class GamePlay_InputAction : BaseInputAction<GamePlay_InputAction>

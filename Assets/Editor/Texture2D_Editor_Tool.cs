@@ -38,10 +38,10 @@ namespace Editor.Tool
         
          private static readonly int[] textureSize = {32,64,128,256,512,1024,2048,4096};
         
-        [MenuItem("Assets/Check/TextureToSprite2D&Pixel_20")]
-        public static void ChangeDirTextureToSprite2D_20()
+        [MenuItem("Assets/Check/TextureToSprite2D&Pixel_8")]
+        public static void ChangeDirTextureToSprite2D_8()
         {
-            ChangeDirTextureToSprite2D(20);
+            ChangeDirTextureToSprite2D(8);
         }
         
         [MenuItem("Assets/Check/TextureToSprite2D&Pixel_40")]

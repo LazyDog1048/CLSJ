@@ -1,6 +1,4 @@
-﻿using data;
-using game.manager;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace other
 {

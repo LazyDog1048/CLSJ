@@ -1,4 +1,3 @@
-using game.manager;
 using UnityEngine;
 
 namespace game

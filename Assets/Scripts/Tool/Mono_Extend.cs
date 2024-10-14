@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using game;
-using game.manager;
-using game.Other;
 using UnityEngine;
 using UnityEngine.Events;
 

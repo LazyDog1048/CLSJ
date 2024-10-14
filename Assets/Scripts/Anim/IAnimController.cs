@@ -1,6 +1,4 @@
-using other;
-
-namespace game.Other
+namespace game
 {
     public interface IAnimController
     {

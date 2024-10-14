@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using data;
 using UnityEngine;
 
-namespace game.Other
+namespace game
 {
     public static class StaticValue
     {

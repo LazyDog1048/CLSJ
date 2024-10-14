@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using game;
-using game.manager;
 using UnityEngine;
 
 public static class VectorThing

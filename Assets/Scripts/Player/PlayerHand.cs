@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using game;
 using other;
-using tool;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

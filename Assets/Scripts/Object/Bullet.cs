@@ -1,8 +1,4 @@
-using System;
-using buff;
-using tool;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace game
 {
@@ -83,7 +79,7 @@ namespace game
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log($"hit {col.name}");
+            // Debug.Log($"hit {col.name}");
             
             if(penetrateNum <= 0)
                 FinishBullet();

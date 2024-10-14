@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace game.Other
+namespace game
 {
     public class BaseAnimController: AbstractComponent
     {

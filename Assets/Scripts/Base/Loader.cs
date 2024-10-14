@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace game.manager
+namespace tool
 {
     public static class Loader
     {

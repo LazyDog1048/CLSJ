@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using other;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace game.manager
+namespace game
 {
     public enum PointDir
     {
