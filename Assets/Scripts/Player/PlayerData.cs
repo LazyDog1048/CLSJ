@@ -1,3 +1,7 @@
+using buff;
+using data;
+using EquipmentSystem;
+using other;
 using UnityEngine;
 
 namespace Player
@@ -6,7 +10,7 @@ namespace Player
     public class PlayerData :ScriptableObject 
     {
         public float speed = 10;
-        public float runRate = 30;
+        public int runRate = 30;
 
         public int stamina = 50;
         public Vector2 staminaResume = new Vector2(1, 0.5f);
@@ -16,7 +20,7 @@ namespace Player
     public class PlayerParameter
     {
         public float speed;
-        public float runRate;
+        public int runRate;
         
         
         public int stamina;
@@ -32,7 +36,8 @@ namespace Player
             staminaResume = data.staminaResume;
             runStaminaConsume = data.runStaminaConsume;
         }
-        
-    } 
+    }
+    
+    
     
 }

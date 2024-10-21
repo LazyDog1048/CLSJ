@@ -1,11 +1,11 @@
+using data;
 using UnityEngine;
 
-namespace game
+namespace EquipmentSystem
 {
     [CreateAssetMenu(fileName = "BulletData", menuName = "Data/BulletData")]
-    public class BulletData : ScriptableObject
+    public class BulletData : PackageItemSoData
     {
-        public string name;
         public float speed;
         public float stayTime;
     }
@@ -18,7 +18,7 @@ namespace game
         
         public BulletParameter(BulletData data)
         {
-            name = data.name;
+            name = data.Name;
             speed = data.speed;
             stayTime = data.stayTime;
         }

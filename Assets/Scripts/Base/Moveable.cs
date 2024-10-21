@@ -8,25 +8,22 @@ namespace plug
     {
         private bool lockMove;
         public virtual bool CanMove => !lockMove;
-        public EventExtraFloat moveSpeed;
+        
+        public virtual float MoveSpeed=> moveSpeed;
+        public float moveSpeed;
 
 
         public Moveable(float Speed,MonoBehaviour mono) : base(mono)
         {
-            moveSpeed = new EventExtraFloat(Speed);
-            moveSpeed.valueChange.AddListener(SpeedChange);
+            moveSpeed = Speed;
         }
 
-        protected virtual void SpeedChange()
-        {
-            
-        }
 
 
         public void ForceMove(Vector3 target)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                target, moveSpeed.FinalValue* Time.deltaTime);
+                target, MoveSpeed* Time.deltaTime);
         }
 
         public void Move(Vector2 target)
@@ -51,13 +48,13 @@ namespace plug
         protected virtual void DoMove(Vector3 target)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                target, moveSpeed.FinalValue* Time.deltaTime);
+                target, MoveSpeed* Time.deltaTime);
         }
 
         private void AutoDoMove(Vector3 target)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                target, moveSpeed.FinalValue* Time.deltaTime);
+                target, MoveSpeed* Time.deltaTime);
         }
 
         protected void MoveEnable(bool enable)

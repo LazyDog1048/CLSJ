@@ -14,9 +14,18 @@ namespace game
         private ActionThing cursorMove;
         private ActionThing rightMouse;
         private ActionThing pressShift;
+        private ActionThing pressR;
         private ActionThing pressE;
         private ActionThing pressQ;
         private ActionThing pressF;
+        
+        private ActionThing press1;
+        private ActionThing press2;
+        private ActionThing press3;
+        private ActionThing press4;
+        private ActionThing press5;
+        private ActionThing press6;
+        private ActionThing press7;
         
         public bool isPressShift => pressShift.action.IsPressed();
         public void UiBlock(bool block)
@@ -39,15 +48,25 @@ namespace game
             cursorMove = AddAction("CursorMove");
             rightMouse = AddAction("RightMouse");
             pressShift = AddAction("PressShift");
+            pressR = AddAction("PressR");
             pressE = AddAction("PressE");
             pressQ = AddAction("PressQ");
             pressF = AddAction("PressF");
+            
+            press1 = AddAction("Press1");
+            press2 = AddAction("Press2");
+            press3 = AddAction("Press3");
+            press4 = AddAction("Press4");
+            press5 = AddAction("Press5");
+            press6 = AddAction("Press6");
+            press7 = AddAction("Press7");
         }
 
         public void PlayerRegisterAction(UnityAction<InputAction.CallbackContext> moveEvent,
                                          UnityAction<InputAction.CallbackContext> cursorMoveEvent,
                                          UnityAction<InputAction.CallbackContext> rightMouseEvent,
                                          UnityAction<InputAction.CallbackContext> pressShiftEvent,
+                                         UnityAction<InputAction.CallbackContext> pressREvent,
                                          UnityAction<InputAction.CallbackContext> pressEEvent,
                                          UnityAction<InputAction.CallbackContext> pressQEvent,
                                          UnityAction<InputAction.CallbackContext> pressFEvent)
@@ -56,11 +75,28 @@ namespace game
             cursorMove?.AddListener(cursorMoveEvent);
             rightMouse?.AddListener(rightMouseEvent);
             pressShift?.AddListener(pressShiftEvent);
+            pressR?.AddListener(pressREvent);
             pressE?.AddListener(pressEEvent);
             pressQ?.AddListener(pressQEvent);
             pressF?.AddListener(pressFEvent);
         }
 
+        public void PlayerRegisterNumAction(UnityAction<InputAction.CallbackContext> press1Event,
+                                         UnityAction<InputAction.CallbackContext> press2Event,
+                                         UnityAction<InputAction.CallbackContext> press3Event,
+                                         UnityAction<InputAction.CallbackContext> press4Event,
+                                         UnityAction<InputAction.CallbackContext> press5Event,
+                                         UnityAction<InputAction.CallbackContext> press6Event,
+                                         UnityAction<InputAction.CallbackContext> press7Event)
+        {
+            press1?.AddListener(press1Event);
+            press2?.AddListener(press2Event);
+            press3?.AddListener(press3Event);
+            press4?.AddListener(press4Event);
+            press5?.AddListener(press5Event);
+            press6?.AddListener(press6Event);
+            press7?.AddListener(press7Event);
+        }
 
         public override void DisposeInputAction()
         {
@@ -69,9 +105,18 @@ namespace game
             cursorMove?.RemoveAllListeners();
             rightMouse?.RemoveAllListeners();
             pressShift?.RemoveAllListeners();
+            pressR?.RemoveAllListeners();
             pressE?.RemoveAllListeners();
             pressQ?.RemoveAllListeners();
             pressF?.RemoveAllListeners();
+            
+            press1?.RemoveAllListeners();
+            press2?.RemoveAllListeners();
+            press3?.RemoveAllListeners();   
+            press4?.RemoveAllListeners();
+            press5?.RemoveAllListeners();
+            press6?.RemoveAllListeners();
+            press7?.RemoveAllListeners();
         }
 
     }

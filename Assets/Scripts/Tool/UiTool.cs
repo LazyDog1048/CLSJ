@@ -1,4 +1,3 @@
-using game;
 using ui;
 using Unity.Mathematics;
 using UnityEngine;

@@ -1,9 +1,7 @@
 ﻿using EquipmentSystem;
 using GridSystem;
 using other;
-using ui;
 using UnityEngine;
-using UnityEngine.Events;
 
 //mono管理
 //1.生命周期函数
@@ -49,14 +47,28 @@ namespace game
             // else if(Input.GetKeyDown(KeyCode.O))
             //     GameManager.Instance.LevelComplete(SettlementType.Victory);
         }
-
+//  public enum  PackageItemType
+        // {
+        //     Weapon,
+        //     MeleeWeapon,
+        //     Armor_Cap,
+        //     Armor_Coat,
+        //     Armor_LeftShoe,
+        //     Armor_RightShoe,
+        //     Spell,
+        //     Shield,
+        //     Accessory,
+        //     Consumable,
+        //     Package,
+        //     Other
+        // }
         private void EditorUi()
         {
            
 // #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.P))
             {
-                
+                SceneBox.Instance.TestBox();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
@@ -64,11 +76,11 @@ namespace game
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Package_Panel.Instance.AddItemToBox("Meat");
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
                 
+            }
+            else if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                Package_Panel.Instance.ShowOrHide();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {

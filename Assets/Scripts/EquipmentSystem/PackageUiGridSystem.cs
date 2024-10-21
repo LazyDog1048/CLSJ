@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using data;
 using EquipmentSystem;
+using game;
 using tool;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace GridSystem
 {
@@ -24,14 +24,17 @@ namespace GridSystem
         
         private UiGrid<UiGridObject> grid;
         public UiGrid<UiGridObject> Grid => grid;
-        private List<UiGridObject> uiGridObjects;
+        
+        public List<UiPackageItem> boxItemDataList { get; set; }
+        
+        public static Vector2 CellSize = new Vector2(11, 11);
         public void Init()
         {
             Vector3 offset = gridParent.position;
-            gridParent.sizeDelta = Package_Panel.CellSize * new Vector2(gridWidth, gridHeight) * cellSize;
-            grid = new UiGrid<UiGridObject>(gridWidth,gridHeight,cellSize,offset,NewBuildingObject);
+            gridParent.sizeDelta = new Vector2(gridWidth, gridHeight) * cellSize;
+            grid = new UiGrid<UiGridObject>(gridWidth,gridHeight,cellSize/13.333f,offset,NewBuildingObject);
             AddCell(oriGridCell,gridParent);
-            uiGridObjects = new List<UiGridObject>();
+            boxItemDataList = new List<UiPackageItem>();
         }
 
 
@@ -51,39 +54,34 @@ namespace GridSystem
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            PackageItemPreview.Instance.SwitchGrid(this);
+            PackageItemPreview.Instance.SwitchSlot(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            
+            GameManager.Instance.FrameEndExecute(() =>
+            {
+                if (!UiPackageItem.InDetailPanel)
+                {
+                    PackageItemPreview.Instance.RemoveSlot();
+                }
+            });
         }
 
-        // private void UpdateItemEnable()
-        // {
-        //     if(inRangeItem == null)
-        //         return;
-        //     foreach (var uiGridObject in uiGridObjects)
-        //     {
-        //         uiGridObject.ExitCell();
-        //     }
-        //     uiGridObjects.Clear();
-        //     foreach (var cell in inRangeItem.Cells)
-        //     {
-        //         UiGridObject uiGridObject = grid.GetGridObject(cell.transform.position);
-        //         if (uiGridObject != null && uiGridObject.CanBuild())
-        //         {
-        //             uiGridObject.EnterCell();
-        //             uiGridObjects.Add(uiGridObject);
-        //         }
-        //     }
-        // }
         public virtual void PutDownItem(UiPackageItem item)
         {
-            if(!item.CheckCanPut(grid))
+            if (item.CheckAddToItem(grid))
+            {
+                
+                PackageItemPreview.Instance.ClearItem();
                 return;
-            item.PutOnGrid(this);
-            PackageItemPreview.Instance.ClearItem();
+            }
+            if (item.CheckCanPutOnGrid(grid))
+            {
+                item.PutOnGrid(this);
+                boxItemDataList.Add(item);
+                PackageItemPreview.Instance.ClearItem();
+            }
         }
         
         public virtual void PickUpItem()
@@ -94,22 +92,31 @@ namespace GridSystem
             {
                 var item = uiGridObject.UiPackageItem;
                 item.PickOnGrid(grid);
+                boxItemDataList.Remove(item);
                 PackageItemPreview.Instance.SetPackageItem(item);
             }
         }
         
-        public void AddItem(string itemName)
+        public void ClearItem()
         {
-            var packageItemSoData = Loader.ResourceLoad<PackageItemSoData>($"So/PackageItemData/{itemName}");
-            var shapeData = packageItemSoData.shapeData;
-            Vector2Int enablePoint = FindEnablePoint(shapeData);
-            if (enablePoint.x == -1)
-                return;
-            
-            PackageItemData packageItemData = new PackageItemData(itemName,enablePoint,false,1);
+            foreach (var uiGridObject in grid.GridArray)
+            {
+                if (uiGridObject.HasItem)
+                {
+                    var item = uiGridObject.UiPackageItem;
+                    uiGridObject.UiPackageItem.PickOnGrid(grid);
+                    GameObject.DestroyImmediate(item.gameObject);
+                }
+            }
+            boxItemDataList.Clear();
+        }
 
-            UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
-            uiPackageItem.InitItem(this,packageItemData);
+
+        public void AddItem(PackageItemData packageItemData)
+        {
+            UiPackageItem uiPackageItem = Instantiate(uiItemOri);
+            uiPackageItem.InitItem(this,packageItemData);            
+            boxItemDataList.Add(uiPackageItem);
         }
 
         public Vector2Int FindEnablePoint(Shape_Data shapeData)
@@ -141,6 +148,8 @@ namespace GridSystem
             }
             return true;
         }
+        
+        
     }
     
 }

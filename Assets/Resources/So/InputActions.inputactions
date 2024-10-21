@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PressR",
+                    "type": "Button",
+                    "id": "e3aaa383-9de1-4a8c-8a69-2c5714b2a0de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PressE",
                     "type": "Button",
                     "id": "47a6edce-cfd4-4b65-bf65-9d7f785af197",
@@ -81,6 +90,69 @@
                     "name": "PressQ",
                     "type": "Button",
                     "id": "631a9c54-6a41-462d-803e-e375aef2a35b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press1",
+                    "type": "Button",
+                    "id": "b3ad16b9-8e22-4cad-bbdf-c7d418916a63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press2",
+                    "type": "Button",
+                    "id": "62dcbed6-55f6-4ca7-bd20-5e5d32bab748",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press3",
+                    "type": "Button",
+                    "id": "19af157d-12ac-4868-92c9-d23ab4d8a022",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press4",
+                    "type": "Button",
+                    "id": "5e58248e-61d0-4ec5-8552-1346af4300ea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press5",
+                    "type": "Button",
+                    "id": "b2259eeb-0fad-404a-952a-40dd1f556e1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press6",
+                    "type": "Button",
+                    "id": "cb154236-1db8-40ae-8f44-de758ada082a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press7",
+                    "type": "Button",
+                    "id": "9d9c5503-fe40-4460-8429-336b91e230c9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -261,6 +333,94 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "RightMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1136cb8-7995-4322-b5ab-b3762cbaa303",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27994da1-b64f-47f6-9a21-c512515c6f30",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5640e3d2-fb99-4a26-bde7-bb4fcc2a7abc",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "428a5a8b-d9aa-4bc4-8b21-9bc8e7cd954e",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23b87ce1-9854-4015-a1b7-fe764a5ad5a3",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b10c8a13-0f5a-4599-b469-00c0a4065e15",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f2989fc-f57f-4c94-8d50-d67f05335ce9",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cafc0a6d-3106-4384-b06e-7ea7398a98a6",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Press7",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -655,17 +815,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "80d00e45-3ee2-4c28-ad50-4c93a86c7b7f",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false

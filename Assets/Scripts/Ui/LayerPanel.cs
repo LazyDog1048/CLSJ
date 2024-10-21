@@ -221,17 +221,18 @@ namespace ui
             //font不为空
             if (!isFontNull)
             {
-               
+                GamePlay_InputAction.Instance.UiBlock(true);
             }
             if(PauseGame)
             {
-                GamePlay_InputAction.Instance.UiBlock(true); ;
+                GamePlay_InputAction.Instance.UiBlock(true);
             }
         }
         private void CheckPanelHide()
         {
             if (isFontNull)
             {
+                GamePlay_InputAction.Instance.UiBlock(false);
             }
             
             if (!PauseGame)

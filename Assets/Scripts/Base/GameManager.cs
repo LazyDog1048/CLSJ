@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using data;
 using GridSystem;
 using other;
 using Player;
 using ui;
-using UnityEngine;
 
 namespace game
 {
@@ -15,7 +11,11 @@ namespace game
         protected override void Awake()
         {
             base.Awake();
-            DataManager.Instance.SaveAllData();
+            DataManager.Instance.Create();
+            ResourcesDataManager.Instance.Create();
+            InputManager.Instance.Create();
+            GamePlay_InputAction.Instance.Create();
+            Ui_InputAction.Instance.Create();
             LayerPanel.Load();
             PlayerUiPanel.Load();
             Package_Panel.Load();

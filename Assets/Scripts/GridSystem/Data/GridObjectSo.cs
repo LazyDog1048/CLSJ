@@ -1,4 +1,5 @@
 using data;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GridSystem
@@ -7,7 +8,9 @@ namespace GridSystem
     {
         public string Name;
         public Sprite icon;
-        public GridGameObject prefab;
+        [AssetsOnly]
+        public GameObject prefab;
+        // public GridGameObject prefab;
         public Shape_Data shapeData;
         public Vector2Int size=>shapeData.size;
     }

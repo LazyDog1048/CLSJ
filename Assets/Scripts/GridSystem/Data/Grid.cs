@@ -77,16 +77,6 @@ namespace GridSystem
         {
             return new Vector3(x, y) * cellSize + originPos;
         }
-        
-        public virtual Vector3 GetCenterWorldPosition(int x, int y)
-        {
-            return GetWorldPosition(x,y) + new Vector3(cellSize,cellSize) / 2;
-        }
-        public Vector3 WorldPositionToGridPosition(Vector3 worldPosition)
-        {
-            GetXY(worldPosition, out var x, out var y);
-            return GetWorldPosition(x, y);
-        }
 
         public void SetGridObject(int x, int y, TGridObject value)
         {

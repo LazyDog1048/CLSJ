@@ -9,7 +9,8 @@ namespace game
         public static Vector2 InScreenSize = new Vector2(60, 32);
         public const float StartUiShowTime = 0.5f;
         public const float BtnAnimTime = 0.2f;
-        public const int pixelsPerUnit = 40;
+        public const float pixelsPerUnit = 11f;
+        // public const float pixelsPerUnit = 13.3333f;
         public const float AnimInterval = 0.07f;
         public const float TransparencyTime = 0.5f;
         
@@ -46,5 +47,10 @@ namespace game
         public static string LocalDataKey2 = "UserData2";
         public static string[] LocalDataKey = new string[3]{LocalDataKey0,LocalDataKey1,LocalDataKey2};
         public static string ResourcesPath = "Assets/Resources/";
+        
+        private static Color noneColor;
+        private static Color hadItemColor;
+        private static Color enterColor;
+        private static Color cantPutColor;
     }
 }

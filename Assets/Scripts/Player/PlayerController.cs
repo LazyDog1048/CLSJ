@@ -1,5 +1,8 @@
-﻿using game;
+﻿using data;
+using EquipmentSystem;
+using game;
 using plug;
+using tool;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -14,15 +17,19 @@ namespace Player
 
         public BulletData BulletData;
         public PlayerParameter playerParameter { get; set; }
-        // [SerializeField]
-        // public FieldOfView fieldOfView;
+        
         public static PlayerController Instance;
         private PlayerAnimController animator { get;set; }
         public PlayerMove playerMove { get; set; }
         private PlayerStamina playerStamina { get; set; }
         public PlayerHand PlayerHand { get; set; }
+        public PlayerEquipment playerEquipment { get; set; }
         
-        private Gun gun;
+        private BaseGun gun_1;
+        private BaseGun gun_2;
+
+        private Transform gun;
+        public Transform shotCenter { get; set; }
         public float angle => PlayerHand.angle;
         
         public bool isRun => PlayerState == PlayerState.Run;
@@ -52,14 +59,16 @@ namespace Player
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
-            
+            gun = transform.Find("Hand").Find("Gun");
+            shotCenter = transform.Find("ShotCenter");
             playerParameter = new PlayerParameter(playerData);
             animator = new PlayerAnimController(this);
             playerMove = new PlayerMove(this);
             playerStamina = new PlayerStamina(this);
             PlayerHand = new PlayerHand(this);
-            gun = GetComponentInChildren<Gun>();
-            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressE,PressQ,PressF);
+            playerEquipment = new PlayerEquipment(this);
+            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressR,PressE,PressQ,PressF);
+            GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
 
@@ -73,6 +82,59 @@ namespace Player
             PlayerHand.UpdateFieldOfView();
         }
 
+        private void StateChange(PlayerState previousState,PlayerState curState)
+        {
+            if (curState == PlayerState.Run)
+            {
+                playerStamina.StartRunConsumeStamina();
+            }
+            else if(previousState == PlayerState.Run)
+            {
+                playerStamina.StopRunConsumeStamina();
+            }
+        }
+
+        public BaseGun ChangeGun_1()
+        {
+            var weapon = LocalPlayerDataThing.GetData().weapon_1;
+            
+            if (weapon.Name.Equals(""))
+                return gun_1;
+            if(gun_1 != null && gun_1.WeaponData == weapon)
+                return gun_1;
+            gun_1 = ChangeGun(weapon);
+            return gun_1;
+        }
+        
+        public BaseGun ChangeGun_2()
+        {
+            var weapon = LocalPlayerDataThing.GetData().weapon_2;
+            
+            if (weapon.Name.Equals(""))
+                return gun_2;
+            if(gun_2 != null && gun_2.WeaponData == weapon)
+                return gun_2;
+            gun_2 = ChangeGun(weapon);
+            return gun_2;
+        }
+        
+        public BaseGun ChangeGun(WeaponData weapon)
+        {
+            GunData gunData = ResourcesDataManager.GetPackageItemSoData(weapon.Name) as GunData;
+            // GameObject gunObj = GameObject.Instantiate(gunData.prefab,gun);
+            // gunObj.transform.localPosition = Vector3.zero;
+            // gunObj.transform.localRotation = Quaternion.identity;
+            // gunObj.transform.localScale = Vector3.one;
+            switch (gunData.shotType)
+            {
+                case ShotType.Triple:
+                    return new TripleGun(this,gun,shotCenter,gunData,weapon);
+                case ShotType.ShotGun:
+                    return new ShotGun(this,gun,shotCenter,gunData,weapon);
+                default:
+                    return new BaseGun(this,gun,shotCenter,gunData,weapon);
+            }
+        }
         private void OnMove(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed && playerMove.CanMove)
@@ -92,12 +154,17 @@ namespace Player
         
         private void LeftMouse(InputAction.CallbackContext context)
         {
-            gun.GunFire(context);
+            playerEquipment.currentWeapon?.GunFire(context);
         }
         
         private void RightMouse(InputAction.CallbackContext context)
         {
             PlayerHand.RightMouse(context);
+        }
+        
+        private void PressR(InputAction.CallbackContext context)
+        {
+            playerEquipment.currentWeapon?.ReloadBullet(context);
         }
         
         private void PressShift(InputAction.CallbackContext context)
@@ -112,18 +179,7 @@ namespace Player
             }
         }
 
-        private void StateChange(PlayerState previousState,PlayerState curState)
-        {
-            if (curState == PlayerState.Run)
-            {
-                playerStamina.StartRunConsumeStamina();
-            }
-            else if(previousState == PlayerState.Run)
-            {
-                playerStamina.StopRunConsumeStamina();
-            }
-            
-        }
+        
         private void PressE(InputAction.CallbackContext context)
         {   
             
@@ -136,6 +192,42 @@ namespace Player
         }
         
         private void PressF(InputAction.CallbackContext context)
+        {
+            
+        }
+        
+        private void Press1(InputAction.CallbackContext context)
+        {
+            playerEquipment.SwitchToWeapon1();
+            
+        }
+        
+        private void Press2(InputAction.CallbackContext context)
+        {
+            playerEquipment.SwitchToWeapon2();
+        }
+        
+        private void Press3(InputAction.CallbackContext context)
+        {
+            
+        }
+        
+        private void Press4(InputAction.CallbackContext context)
+        {
+            
+        }
+        
+        private void Press5(InputAction.CallbackContext context)
+        {
+            
+        }
+        
+        private void Press6(InputAction.CallbackContext context)
+        {
+            
+        }
+        
+        private void Press7(InputAction.CallbackContext context)
         {
             
         }

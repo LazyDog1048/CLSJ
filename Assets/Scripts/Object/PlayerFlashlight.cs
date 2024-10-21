@@ -1,34 +1,42 @@
 using System.Collections.Generic;
+using other;
 using Player;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 namespace game
 {
-    public class PlayerFlashlight : MonoBehaviour
+    public class PlayerFlashlight : Mono_Singleton<PlayerFlashlight>
     {
-        [SerializeField]
-        int rayCount = 10;
-        
-        [SerializeField]
-        int accuracy = 20;
-        [SerializeField]
-        protected LayerMask lightMask;
-        public float inner = 10;
-        public float outer = 11;
-        public float angle = 90;
+        private int rayCount = 10;
+
+        private float innerLength = 10;
+        private float outerLength = 11;
+        private float innerAngle = 90;
+        private float outerAngle = 80;
+
         private EdgeCollider2D edgeCollider2D;
         private Light2D light2D;
 
-        private float curAngle;
-        private float curInner;
-
+        public float curOuterAngle { get;private set; }
+        public float curOuter{ get;private set; }
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             light2D = GetComponent<Light2D>();
             edgeCollider2D = GetComponent<EdgeCollider2D>();
-            GetPoints(angle,outer);
+            GetPoints(innerAngle,outerLength);
+        }
+
+        public void SetLight(float innerLength,float outerLength,float innerAngle,float outerAngle,int rayCount)
+        {
+            this.innerLength = innerLength;
+            this.outerLength = outerLength;
+            this.innerAngle = innerAngle;
+            this.outerAngle = outerAngle;
+            
+            this.rayCount = rayCount;
         }
 
         private void GetPoints(float fov,float length)
@@ -53,90 +61,34 @@ namespace game
 
         public void AimMode()
         {
-            curAngle = angle/2;
-            curInner = outer*2;
-            light2D.pointLightInnerRadius = inner;
-            light2D.pointLightOuterRadius = outer * 2;
-            light2D.pointLightInnerAngle = curAngle;
-            light2D.pointLightOuterAngle = curAngle;
-            GetPoints(curAngle,curInner);
+            curOuter = outerLength*2;
+            curOuterAngle = outerAngle/2;
+                
+            
+            
+            light2D.pointLightInnerAngle = innerAngle / 2;
+            light2D.pointLightOuterAngle = outerAngle / 2;
+            
+            light2D.pointLightInnerRadius = innerLength * 2;
+            light2D.pointLightOuterRadius = outerLength * 2;
+            GetPoints(curOuterAngle,curOuter);
         }
         
         public void NormalMode()
         {
-            curAngle = angle;
-            curInner = outer;
-            light2D.pointLightInnerRadius = inner;
-            light2D.pointLightOuterRadius = outer;
-            light2D.pointLightInnerAngle = angle;
-            light2D.pointLightOuterAngle = angle;
-            GetPoints(curAngle,curInner);
+            curOuter = outerLength;
+            curOuterAngle = outerAngle;
+            
+            light2D.pointLightInnerAngle = innerAngle;
+            light2D.pointLightOuterAngle = outerAngle;
+            
+            light2D.pointLightInnerRadius = innerLength;
+            light2D.pointLightOuterRadius = outerLength;
+            GetPoints(curOuterAngle,curOuter);
             
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            var lightObj = col.GetComponentInParent<LightObj>();
-            if (lightObj)
-            {
-                if(CheckLightTouch(col))
-                    lightObj.LightEnter();
-            }
-        }
-        
-        private void OnTriggerStay2D(Collider2D col)
-        {
-            var lightObj = col.GetComponentInParent<LightObj>();
-            if (lightObj)
-            {
-                // if(CheckLightTouch(col,lightObj))
-                if(CheckLightTouch(col))
-                    lightObj.LightEnter();
-                else
-                    lightObj.LightExit();
-            }
-        }
-        
-        private void OnTriggerExit2D(Collider2D col)
-        {
-            var lightObj = col.GetComponentInParent<LightObj>();
-            if (lightObj)
-            {
-                lightObj.LightExit();
-            }
-        }
-
-        private bool CheckLightTouch(Collider2D col)
-        {
-            Vector2 dir = (col.transform.position - transform.position).normalized;
-            var ray = Physics2D.Raycast(transform.position,dir, inner,lightMask);
-            if (ray.collider != null)
-            {
-                return col == ray.collider;
-            }
-            return true;
-        }
      
-        private bool AccuracyCheckLightTouch(Collider2D col)
-        {
-            var tempAngle = PlayerController.Instance.PlayerHand.angle - curAngle / 2 + curAngle;
-            var origin = transform.position;
-            float angleIncrease = curAngle / accuracy;
-            
-            for(int i=0;i<=accuracy;i++)
-            {
-                var ray = Physics2D.Raycast(origin,GetAngle.GetAngleFormVectorFloat(tempAngle), curInner, lightMask);
-                Debug.DrawRay(origin,GetAngle.GetAngleFormVectorFloat(tempAngle)*curInner,Color.red);
-                if (ray.collider != null && ray.collider == col)
-                {
-                    return true;
-                }
-                
-                tempAngle -= angleIncrease;
-            }
-
-            return false;
-        }
     }
     
 }

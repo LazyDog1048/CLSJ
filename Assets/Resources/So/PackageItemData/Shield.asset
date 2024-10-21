@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: Shield
+  icon: {fileID: 21300000, guid: eeb8edd68bbbd2145b779f4662200ced, type: 3}
+  prefab: {fileID: 1726577015640154295, guid: 8e5c1ccb53a1dc448bb22d2c5b0746d8, type: 3}
+  shapeData:
+    size: {x: 1, y: 1}
+    points:
+    - {x: 0, y: 0}
+    keeper: 01
+  ItemType: 7

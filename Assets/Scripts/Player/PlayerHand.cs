@@ -1,3 +1,4 @@
+using EquipmentSystem;
 using game;
 using other;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace Player
         public float angle { get; set; }
 
         public GunParameter GunParameter;
+        
+        public bool isAiming => isPressRightMouse;
         public PlayerHand(PlayerController mono) : base(mono)
         {
             playerController = mono;
@@ -63,10 +66,12 @@ namespace Player
             {
                 case FaceDir.Right:
                     gunSprite.sortingOrder = 1;
+                    gunSprite.flipY = false;
                     body.localScale = new Vector3(1, 1, 1);
                     break; 
                 case FaceDir.Left:
                     gunSprite.sortingOrder = -1;
+                    gunSprite.flipY = true;
                     body.localScale = new Vector3(-1, 1, 1);
                     break;
             }

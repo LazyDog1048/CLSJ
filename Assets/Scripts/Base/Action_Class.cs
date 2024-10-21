@@ -17,6 +17,11 @@ namespace other
             
         }
 
+        public void Create()
+        {
+            
+        }
+         
         public virtual void GameQuite()
         {
             

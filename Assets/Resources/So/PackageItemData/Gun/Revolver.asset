@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
+  m_Name: Revolver
+  m_EditorClassIdentifier: 
+  Name: Revolver
+  icon: {fileID: -1287446274303986919, guid: b41eaf3b04cb2834098c88cb233f2a2f, type: 3}
+  prefab: {fileID: 1097658583501273490, guid: 9c5108a0f4d92d543b7be007418fe3f7, type: 3}
+  shapeData:
+    size: {x: 3, y: 2}
+    points:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 2, y: 0}
+    - {x: 2, y: 1}
+    keeper: 010101010101
+  ItemType: 0
+  quality: 0
+  price: 0
+  weight: 0
+  description: 
+  Damage: 0
+  shotType: 1
+  shotMode: 1
+  shotDelay: 0.2
+  maxShotShake: 20
+  minShotShake: 10
+  shotStability: 10
+  shotCalibration: 20
+  reloadTime: 3
+  maxAmmo: 100
+  penetrateNum: 1
+  bulletSpeed: 40
+  bulletStayTime: 4
+  bulletData: {fileID: 11400000, guid: f1c8751f77c67eb4da5e50f26d893462, type: 2}

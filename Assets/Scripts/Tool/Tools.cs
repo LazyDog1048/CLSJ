@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
+
 public class GetMousePos
 {
     public static Vector2 GetMousePosition()                                               //通过mainCamera获取
@@ -255,6 +256,12 @@ public class ColorTool
         return color;
     }
    
+    public static Color Trans16StrToColor(string colorStr)
+    {
+        
+        ColorUtility.TryParseHtmlString(colorStr, out Color color);
+        return color;
+    }
 }
 
 public class CompareTool

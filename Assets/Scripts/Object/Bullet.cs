@@ -1,22 +1,19 @@
+using EquipmentSystem;
+using game;
+using GridSystem;
 using UnityEngine;
 
-namespace game
+namespace EquipmentSystem
 {
-    public class Bullet : MonoPoolObj
+    public class Bullet : GridGameObject
     {
         #region get&set
-        [SerializeField]
-        private BulletData data;
 
         private int penetrateNum = 1;
-        private Gun gun;
-        // private BulletParameter parameter { get; set; }
-        
+        private BaseGun gun;
 
 
         #region paramater
-        
-        // protected EventExtraFloat moveSpeed = new EventExtraFloat(0);
 
 
         protected Vector2 currentDir;
@@ -24,18 +21,10 @@ namespace game
         #endregion
         
         #endregion
-        protected override void OnAwake()
-        {
-            base.OnAwake();
-            
-            // parameter = new BulletParameter(data);
-            // moveSpeed = new EventExtraFloat(parameter.speed);
-            
-        }
 
         #region BulletAction
         
-        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,Gun gun)
+        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,BaseGun gun)
         {
             this.gun = gun;
             transform.position = shot;
@@ -64,7 +53,7 @@ namespace game
 
         protected virtual void UpdateBullet()
         {
-            transform.position += (Vector3)currentDir * gun.bulletSpeed.FinalValue * Time.deltaTime;
+            transform.position += (Vector3)currentDir * gun.bulletSpeed * Time.deltaTime;
         }
         
         protected virtual void FinishBullet()
@@ -107,7 +96,7 @@ namespace game
         {
         }
       
-        public override string poolId => data.name;
+        public override string poolId => gridObjectSo.Name;
         
         public override void OnPushObj()
         {

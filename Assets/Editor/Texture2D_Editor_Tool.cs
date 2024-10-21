@@ -44,6 +44,12 @@ namespace Editor.Tool
             ChangeDirTextureToSprite2D(8);
         }
         
+        [MenuItem("Assets/Check/TextureToSprite2D&Pixel_16")]
+        public static void ChangeDirTextureToSprite2D_16()
+        {
+            ChangeDirTextureToSprite2D(16);
+        }
+        
         [MenuItem("Assets/Check/TextureToSprite2D&Pixel_40")]
         public static void ChangeDirTextureToSprite2D_40()
         {
@@ -71,7 +77,7 @@ namespace Editor.Tool
                 
                 textureImporter.textureCompression = TextureImporterCompression.Uncompressed; 
                 textureImporter.maxTextureSize = BestSize(texture);
-                textureImporter.wrapMode = TextureWrapMode.Repeat;
+                textureImporter.wrapMode = TextureWrapMode.Clamp;
                 textureImporter.SaveAndReimport();
             }
         }

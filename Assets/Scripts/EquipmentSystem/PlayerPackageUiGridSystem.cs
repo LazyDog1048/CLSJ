@@ -1,31 +1,42 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using EquipmentSystem;
 
 namespace GridSystem
 {
     public class PlayerPackageUiGridSystem : PackageUiGridSystem
     {
-        public override void PutDownItem(UiPackageItem item)
-        {
-            if(!item.CheckCanPut(Grid))
-                return;
-            item.PutOnGrid(this);
-            item.SaveItemToPackage(this);
-            PackageItemPreview.Instance.ClearItem();
-        }
         
-        public override void PickUpItem()
+        public void OpenPanelSaveData()
         {
-            var mousePos = GetMousePos.GetMousePosition();
-            UiGridObject uiGridObject = Grid.GetGridObject(mousePos);
-            if (uiGridObject != null && uiGridObject.UiPackageItem != null)
+            List<UiPackageItem> tPackageItems = new List<UiPackageItem>();
+            foreach (var cell in Grid.GridArray)
             {
-                var item = uiGridObject.UiPackageItem;
-                item.PickOnGrid(Grid);
-                item.RemoveItemToPackage(this);
-                PackageItemPreview.Instance.SetPackageItem(item);
+                if(cell.UiPackageItem != null && !tPackageItems.Contains(cell.UiPackageItem))
+                    tPackageItems.Add(cell.UiPackageItem);
             }
+
+            LocalPackageThing.GetData().ClearPackageData();
+            foreach (var packageItem in tPackageItems)
+            {
+                packageItem.SaveItemToPackage();
+            }
+            LocalPackageThing.Save();
+        }
+        public void ClosePanelSaveData()
+        {
+            List<UiPackageItem> tPackageItems = new List<UiPackageItem>();
+            foreach (var cell in Grid.GridArray)
+            {
+                if(cell.UiPackageItem != null && !tPackageItems.Contains(cell.UiPackageItem))
+                    tPackageItems.Add(cell.UiPackageItem);
+            }
+
+            LocalPackageThing.GetData().ClearPackageData();
+            foreach (var packageItem in tPackageItems)
+            {
+                packageItem.SaveItemToPackage();
+            }
+            LocalPackageThing.Save();
         }
     }
     
