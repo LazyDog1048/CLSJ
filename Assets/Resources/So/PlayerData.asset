@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c0cc3c0cc59264b81477f6f27a9a26, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  speed: 5
-  runRate: 10
+  speed: 3
+  runRate: 75
   stamina: 50
   staminaResume: {x: 1, y: 0.5}
   runStaminaConsume: {x: 1, y: 0.1}
