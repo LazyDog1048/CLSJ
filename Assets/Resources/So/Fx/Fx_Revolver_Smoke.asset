@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858d8181cf697ed4e84f78876a2965e2, type: 3}
+  m_Name: Fx_Revolver_Smoke
+  m_EditorClassIdentifier: 
+  Name: Fx_Revolver_Smoke
+  fxType: 0
+  Layer: Ui
+  sortingOrder: 2
+  delayShowTime: 0
+  rotaOffset: 0
+  isLoop: 0
+  isFlip: 0
+  isRandomFlip: 0
+  isInvert: 0
+  isRotate: 0
+  AnimatorController: {fileID: 22100000, guid: e13722bab609e904e93066d30a03ae9e, type: 2}

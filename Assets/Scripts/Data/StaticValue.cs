@@ -12,7 +12,7 @@ namespace game
         public const float pixelsPerUnit = 11f;
         // public const float pixelsPerUnit = 13.3333f;
         public const float AnimInterval = 0.07f;
-        public const float TransparencyTime = 0.5f;
+        public const float TransparencyTime = 0.2f;
         
         private static bool isDevelop = Debug.isDebugBuild;
         private static bool isOnEditor = Application.isEditor;

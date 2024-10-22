@@ -1,3 +1,6 @@
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using EquipmentSystem;
 using game;
 using other;
@@ -21,6 +24,12 @@ namespace Player
         public GunParameter GunParameter;
         
         public bool isAiming => isPressRightMouse;
+
+        public float maxAimingShake => playerController.playerEquipment.currentWeapon.minShotShake;
+        public float aimingShake { get; set; }
+        public float aimingTime = 0.5f;
+        
+        TweenerCore<float,float,FloatOptions> aimingShakeTween;
         public PlayerHand(PlayerController mono) : base(mono)
         {
             playerController = mono;
@@ -32,6 +41,7 @@ namespace Player
         
         public void MouseMove(InputAction.CallbackContext context)
         {
+
             angle = GetAngle.Angle(GameCursor.Instance.transform.position, transform.position);
             hand.rotation = Quaternion.Euler(0, 0, angle);
             FaceMouse();
@@ -42,13 +52,21 @@ namespace Player
             if (context.phase == InputActionPhase.Started)
             {
                 isPressRightMouse = true;
-                // playerController.fieldOfView.AimMode();
+                if(aimingShakeTween!=null)
+                    aimingShakeTween.Kill();
+                
+                aimingShakeTween = DOTween.To(() => aimingShake, x => aimingShake = x, maxAimingShake, aimingTime).SetEase(Ease.Linear);
+                
                 flashlight.AimMode();
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
                 isPressRightMouse = false;
-                // playerController.fieldOfView.NormalMode();
+                
+                if(aimingShakeTween!=null)
+                    aimingShakeTween.Kill();
+                aimingShakeTween = DOTween.To(() => aimingShake, x => aimingShake = x, 0, aimingTime).SetEase(Ease.Linear);
+                
                 flashlight.NormalMode();
             }
         }

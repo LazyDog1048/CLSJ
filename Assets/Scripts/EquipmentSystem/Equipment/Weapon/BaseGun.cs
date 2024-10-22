@@ -4,6 +4,8 @@ using buff;
 using data;
 using DG.Tweening;
 using game;
+using GridSystem;
+using item;
 using other;
 using Player;
 using UnityEngine;
@@ -16,21 +18,23 @@ namespace EquipmentSystem
         public GunData gunData{ get; set; }
 
         public GunParameter gunParameter { get; set; }
-        private SpriteRenderer icon;
         public float shotDelay => playerController.playerEquipment.shotDelay;
         public float bulletSpeed => playerController.playerEquipment.bulletSpeed;
         public float reloadTime => playerController.playerEquipment.reloadTime;
         
         public float maxShotShake => playerController.playerEquipment.maxShotShake;
-        public float minShotShake => playerController.PlayerHand.isAiming ? 0: playerController.playerEquipment.minShotShake;
+        public float minShotShake => playerController.playerEquipment.minShotShake;
+
+        public float aimingShotShake => playerController.PlayerHand.aimingShake;
         public float shotStability => playerController.playerEquipment.shotStability;
         public float shotCalibration => playerController.playerEquipment.shotCalibration;
         public int maxAmmo => playerController.playerEquipment.maxAmmo;
-        
+
+        public int Damage => gunParameter.Damage;
         
         public float currentShotShake{ get; set; }
         // public float basicShotShake{ get; set; }
-        public float range => currentShotShake/2f  + minShotShake;
+        public float range => currentShotShake/2f  + minShotShake - aimingShotShake;
 
         public WeaponData WeaponData { get; private set; }
         // protected GameObject GunObj;
@@ -40,6 +44,14 @@ namespace EquipmentSystem
         protected bool shotLock = false;
         protected bool isReloading = false;
         private float calibrateTime = 0.1f;
+
+        // private GunAnimatorController gunAnimatorController;
+        private GunObject _gunObject;
+        public GunState CurState
+        {
+            get => _gunObject.CurState;
+            set => _gunObject.CurState = value;
+        }
         // private int _currentAmmo;
         public int currentAmmo
         {
@@ -63,15 +75,15 @@ namespace EquipmentSystem
             }
         }
 
-        public BaseGun(PlayerController playerController,Transform gunObj,Transform shotCenter,GunData gunData,WeaponData weaponData):base(playerController)
+        public BaseGun(PlayerController playerController,GunObject gunObj,Transform shotCenter,GunData gunData,WeaponData weaponData):base(playerController)
         {
             this.WeaponData = weaponData;
-            icon = gunObj.GetComponent<SpriteRenderer>();
+            _gunObject = gunObj;
             this.shotCenter = shotCenter;
-            icon.sprite = gunData.icon;
             this.playerController = playerController;
             this.gunData = gunData;
             
+            _gunObject.ReloadGun(gunData);
             gunParameter = new GunParameter(this.gunData);
             // currentShotShake = basicShotShake;
         }
@@ -117,38 +129,36 @@ namespace EquipmentSystem
         }
         public virtual void Shot(BulletData bulletData) 
         {
+            CurState = GunState.Shot;
             var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
-            var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, 1);
+            var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength);
+            var smokePoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength-0.2f);
             var afterDir = dir.Rota2DAxis(Random.Range(-range, range));
             Bullet baseBullet = Load<Bullet>(bulletData);
+
+            FxPlayer.PlayFx(gunData.shotFx, shotPoint).Rotate(GetAngle.Angle(afterDir));
+            FxPlayer.PlayFx(gunData.smokeFx, smokePoint).Rotate(GetAngle.Angle(afterDir));
             baseBullet.BulletPrepare(shotPoint,afterDir,this);
             
-            //开始偏移
-            if (currentShotShake < 0.01f)
-                GunCalibration();
-            
+            CameraShake.Instance.ShakeCamera(0.1f,0.1f);
             currentShotShake += shotStability;
             if(currentShotShake > maxShotShake)
                 currentShotShake = maxShotShake;
+            
+            if(currentShotShake > 0)
+                GunCalibration();
             currentAmmo--;
         }
         
         protected void GunCalibration()
         {
-            playerController.LoopDelayExecute(calibrateTime,()=> currentShotShake <= 0, () =>
+            float eachCalibration = shotCalibration / (calibrateTime/0.02f);
+            playerController.WaitFixedExecute(()=> currentShotShake <= 0, () =>
             {
-                float target = currentShotShake - shotCalibration;
-                if (target > 0)
-                {
-                    DOTween.To(() => currentShotShake, x => currentShotShake = x, target, calibrateTime - 0.01f)
-                            .SetEase(Ease.Linear).onComplete =
-                        () =>
-                        {
-                            if(currentShotShake < 0)
-                                currentShotShake = 0;
-                        };
-                }
-                // currentShotShake -= shotCalibration;
+                currentShotShake = 0;
+            }, () =>
+            {
+                currentShotShake -= eachCalibration;
             });
         }
         
@@ -157,7 +167,8 @@ namespace EquipmentSystem
             string path = $"Prefab/Item/{data.name}";
             return PoolManager.Instance.PopObj<T>(data.name,path);
         }
-        
+
+       
     }
     
 }

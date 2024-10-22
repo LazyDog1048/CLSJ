@@ -34,9 +34,7 @@ namespace other
         {
             transform.position = GetMousePos.GetMousePosition();
             float lineLength = Vector3.Distance(playerController.shotCenter.position, transform.position);
-
-
-            
+           
             AimingChange(playerGun.range,lineLength);
         }
 

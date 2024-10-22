@@ -2,6 +2,7 @@ using buff;
 using data;
 using EquipmentSystem;
 using game;
+using so;
 using UnityEngine;
 
 namespace EquipmentSystem
@@ -38,11 +39,16 @@ namespace EquipmentSystem
         public float bulletSpeed = 10.0f;
         public float bulletStayTime = 4.0f;
         public BulletData bulletData;
+        
+        public float shotLength = .8f;
+        public FxSoData shotFx;
+        public FxSoData smokeFx;
+        public RuntimeAnimatorController gunAnimator;
     }
     
     public class GunParameter
     {
-        public Animator gunAnimator;
+        public int Damage;
         public ShotType shotType;
         public ShotMode shotMode;
 
@@ -65,6 +71,7 @@ namespace EquipmentSystem
         
         public GunParameter(GunData data)
         {
+            Damage = data.Damage;
             shotType = data.shotType;
             shotMode = data.shotMode;
             shotDelay = new EventExtraFloat(data.shotDelay);

@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     
-    public class PlayerController : MonoBehaviour, IAnimController
+    public class PlayerController : MonoBehaviour, IAnimatorController
     {
         [SerializeField]
         private PlayerData playerData;
@@ -28,15 +28,15 @@ namespace Player
         private BaseGun gun_1;
         private BaseGun gun_2;
 
-        private Transform gun;
+        private GunObject gun;
         public Transform shotCenter { get; set; }
         public float angle => PlayerHand.angle;
         
         public bool isRun => PlayerState == PlayerState.Run;
-        public InputActionPhase phase{ get; set; }
+        
         
         private bool isPressShift;
-
+        public bool isPressMove{ get; set; }
         // public PlayerState previousState;
         public PlayerState PlayerState
         {
@@ -59,8 +59,9 @@ namespace Player
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
-            gun = transform.Find("Hand").Find("Gun");
+            gun = transform.Find("Hand").Find("Gun").GetComponent<GunObject>();
             shotCenter = transform.Find("ShotCenter");
+            gun.Init();
             playerParameter = new PlayerParameter(playerData);
             animator = new PlayerAnimController(this);
             playerMove = new PlayerMove(this);
@@ -78,6 +79,15 @@ namespace Player
 
         private void Update()
         {
+            if (playerMove.CanMove)
+            {
+                PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
+            }
+            else
+            {
+                PlayerState = PlayerState.Idle;    
+            }
+            
             playerMove.Move(GamePlay_InputAction.moveDir);
             PlayerHand.UpdateFieldOfView();
         }
@@ -137,13 +147,24 @@ namespace Player
         }
         private void OnMove(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed && playerMove.CanMove)
+            // Debug.Log("move");
+            // if (context.phase == InputActionPhase.Performed && playerMove.CanMove)
+            // {
+            //     PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
+            // }
+            // else if (context.phase == InputActionPhase.Canceled)
+            // {
+            //     PlayerState = PlayerState.Idle;    
+            // }
+            
+            if (context.phase == InputActionPhase.Performed)
             {
-                PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
+                isPressMove = true;
+                
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
-                PlayerState = PlayerState.Idle;    
+                isPressMove = false;
             }
         }
 

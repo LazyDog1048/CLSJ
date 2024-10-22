@@ -7,9 +7,12 @@ namespace Enemy
     {
         public string Name;
         public float Speed;
-        public float Health;
+        public int Health;
         public float Damage;
-        public float AttackRange;
+        public float FindRange = 10;
+        public float AttackRange = 2;
+
+        public float AttackInterval;
     }
 
 
@@ -17,10 +20,12 @@ namespace Enemy
     {
         public string Name;
         public float Speed;
-        public float Health;
+        public int Health;
         public float Damage;
+        public float FindRange;
         public float AttackRange;
-
+        public float AttackInterval;
+        
         public EnemyParameter(EnemySoData data)
         {
             Name = data.Name;
@@ -28,6 +33,8 @@ namespace Enemy
             Health = data.Health;
             Damage = data.Damage;
             AttackRange = data.AttackRange;
+            FindRange = data.FindRange;
+            AttackInterval = data.AttackInterval;
         }
     }
     

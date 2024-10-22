@@ -11,13 +11,13 @@ namespace game
         
         protected virtual int curState{ get;}
         protected readonly Animator animator;
-        protected readonly IAnimController AnimController;
+        protected readonly IAnimatorController AnimController;
         
         private bool selfStateLock;
         public bool stateLock => selfStateLock;
         
         protected Dictionary<int,int> StateDic;
-        protected BaseAnimController(IAnimController anim,MonoBehaviour mono):base(mono)
+        protected BaseAnimController(IAnimatorController anim,MonoBehaviour mono):base(mono)
         {
             animator = mono.GetComponentInChildren<Animator>();
             AnimController = anim;

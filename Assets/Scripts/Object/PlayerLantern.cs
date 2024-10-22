@@ -11,15 +11,12 @@ namespace game
         
         private Light2D light2D;
         private CircleCollider2D circleCollider2D;
-        protected override void Awake()
-        {
-            base.Awake();
-            light2D = GetComponent<Light2D>();
-            circleCollider2D = GetComponent<CircleCollider2D>();
-        }
+        
         
         public void SetLight(float innerLength,float outerLength)
         {
+            light2D = GetComponent<Light2D>();
+            circleCollider2D = GetComponent<CircleCollider2D>();
             this.innerLength = innerLength;
             this.outerLength = outerLength;
             light2D.pointLightOuterRadius = outerLength;

@@ -3,6 +3,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace game
 {
@@ -16,7 +17,9 @@ namespace game
         private float _isLight;
         private bool isLight;
         List<TweenerCore<Color,Color,ColorOptions>> doColorList;
-        
+
+        public UnityEvent lightEnter;
+        public UnityEvent lightExit;
         private void Awake()
         {
             _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -35,10 +38,11 @@ namespace game
     
         public void LightEnter()
         {
-            if (!lightColliderData.isTransparency || isLight)
+            if (isLight)
                 return;
-
+            
             isLight = true;
+            
             foreach (var doColor in doColorList)
             {
                 doColor.Kill();
@@ -47,14 +51,14 @@ namespace game
             {
                 doColorList[i] = _spriteRenderers[i].DOFade(1, StaticValue.TransparencyTime);
             }
+            lightEnter?.Invoke();
         }
 
         public void LightExit()
         {
-            if (!lightColliderData.isTransparency || !isLight)
+            if (!isLight)
                 return;
             isLight = false;
-            
             foreach (var doColor in doColorList)
             {
                 doColor.Kill();
@@ -63,7 +67,7 @@ namespace game
             {
                 doColorList[i] = _spriteRenderers[i].DOFade(0, StaticValue.TransparencyTime);
             }
-            
+            lightExit?.Invoke();
         }
     }
 }

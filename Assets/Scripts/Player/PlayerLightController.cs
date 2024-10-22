@@ -10,7 +10,7 @@ namespace Player
         [SerializeField]
         public int accuracy = 20;
         [SerializeField]
-        public LayerMask lightMask;
+        public LayerMask lightTouch;
         private float curOuter => playerFlashlight.curOuter;
         private float curAngle => playerFlashlight.curOuterAngle;
 
@@ -23,6 +23,8 @@ namespace Player
 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            if(!col.gameObject.tag.Equals("HideInShadow"))
+                return;
             var lightObj = col.GetComponentInParent<LightObj>();
             if (lightObj)
             {
@@ -33,6 +35,8 @@ namespace Player
         
         private void OnTriggerStay2D(Collider2D col)
         {
+            if(!col.gameObject.tag.Equals("HideInShadow"))
+                return;
             var lightObj = col.GetComponentInParent<LightObj>();
             if (lightObj)
             {
@@ -46,6 +50,8 @@ namespace Player
         
         private void OnTriggerExit2D(Collider2D col)
         {
+            if(!col.gameObject.tag.Equals("HideInShadow"))
+                return;
             var lightObj = col.GetComponentInParent<LightObj>();
             if (lightObj)
             {
@@ -56,7 +62,7 @@ namespace Player
         private bool CheckLightTouch(Collider2D col)
         {
             Vector2 dir = (col.transform.position - transform.position).normalized;
-            var ray = Physics2D.Raycast(transform.position,dir, curOuter,lightMask);
+            var ray = Physics2D.Raycast(transform.position,dir, curOuter,lightTouch);
             if (ray.collider != null)
             {
                 return col == ray.collider;
@@ -72,7 +78,7 @@ namespace Player
             
             for(int i=0;i<=accuracy;i++)
             {
-                var ray = Physics2D.Raycast(origin,GetAngle.GetAngleFormVectorFloat(tempAngle), curOuter, lightMask);
+                var ray = Physics2D.Raycast(origin,GetAngle.GetAngleFormVectorFloat(tempAngle), curOuter, lightTouch);
                 Debug.DrawRay(origin,GetAngle.GetAngleFormVectorFloat(tempAngle)*curOuter,Color.red);
                 if (ray.collider != null && ray.collider == col)
                 {

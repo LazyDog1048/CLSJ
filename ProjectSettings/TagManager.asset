@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Scene
+  - HitObj
+  - HideInShadow
   layers:
   - Default
   - TransparentFX
@@ -14,11 +17,11 @@ TagManager:
   - Light
   - LightTouch
   - Player
-  - PlayerTouch
+  - 
   - PlayerBullet
-  - PlayerBulletTouch
-  - 
-  - 
+  - EnemyFind
+  - Wall
+  - Enemy
   - 
   - 
   - 

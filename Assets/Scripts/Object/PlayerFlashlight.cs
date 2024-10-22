@@ -20,23 +20,20 @@ namespace game
 
         public float curOuterAngle { get;private set; }
         public float curOuter{ get;private set; }
-        
-        protected override void Awake()
-        {
-            base.Awake();
-            light2D = GetComponent<Light2D>();
-            edgeCollider2D = GetComponent<EdgeCollider2D>();
-            GetPoints(innerAngle,outerLength);
-        }
+
 
         public void SetLight(float innerLength,float outerLength,float innerAngle,float outerAngle,int rayCount)
         {
+            light2D = GetComponent<Light2D>();
+            edgeCollider2D = GetComponent<EdgeCollider2D>();
+            
             this.innerLength = innerLength;
             this.outerLength = outerLength;
             this.innerAngle = innerAngle;
             this.outerAngle = outerAngle;
             
             this.rayCount = rayCount;
+            GetPoints(innerAngle,outerLength);
         }
 
         private void GetPoints(float fov,float length)

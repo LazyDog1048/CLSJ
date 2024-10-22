@@ -11,11 +11,12 @@ namespace plug
         
         public virtual float MoveSpeed=> moveSpeed;
         public float moveSpeed;
-
+        public FaceDir faceDir { get;private set; }
 
         public Moveable(float Speed,MonoBehaviour mono) : base(mono)
         {
             moveSpeed = Speed;
+            faceDir = new FaceDir(mono);
         }
 
 

@@ -27,7 +27,7 @@ namespace data
         public const string Re_TilePath = "TileBase";
         public const string Re_PrefabPath = "Prefab";
 
-        public const string Re_ItemsPath = "Prefab/Other/Items";
+        public const string Re_ItemsPath = "Prefab/Other";
         public const string Re_CameraPath = "VirtualCamera";
         public const string Re_Bullet_SoPath = So + "/Bullet";
         

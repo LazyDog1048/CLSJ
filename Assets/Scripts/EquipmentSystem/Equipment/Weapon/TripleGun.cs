@@ -9,24 +9,25 @@ namespace EquipmentSystem
     {
         public float tripleShotTime = 0.1f;
         
-        public TripleGun(PlayerController playerController, Transform gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
+        public TripleGun(PlayerController playerController, GunObject gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
         {
         }
         
-        // public override void Shot(BulletData bulletData) 
-        // {
-        //     var time = tripleShotTime;
-        //     float maxTime = tripleShotTime * 3;
-        //     if(maxTime > shotDelay)
-        //         time = shotDelay / 3;
-        //     
-        //     playerController.LoopDelayExecute(time,3, (index) =>
-        //     {
-        //         if(currentAmmo<=0)
-        //             return;
-        //         base.Shot(bulletData);
-        //     });
-        // }
+        public override void Shot(BulletData bulletData) 
+        {
+            var time = tripleShotTime;
+            float maxTime = tripleShotTime * 3;
+            if(maxTime > shotDelay)
+                time = shotDelay / 3;
+            
+            playerController.LoopDelayExecute(time,3, (index) =>
+            {
+                if(currentAmmo<=0)
+                    return;
+                CurState = GunState.Idle;
+                base.Shot(bulletData);
+            });
+        }
 
         
     }

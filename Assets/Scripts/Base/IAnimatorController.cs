@@ -1,8 +1,11 @@
+using UnityEngine;
+
 namespace game
 {
-    public interface IAnimController
+    public interface IAnimatorController
     {
         void AnimatorStateEnter();
         void AnimatorStateComplete();
     }
+    
 }

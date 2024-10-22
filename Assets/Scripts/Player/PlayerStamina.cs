@@ -33,15 +33,15 @@ namespace Player
         public Vector2 staminaResume { get;private set; }
         public Vector2 runStaminaConsume { get;private set; }
         
-        public bool StaminaLock { get;private set; }
+        // public bool StaminaLock { get;private set; }
         
         private PlayerController playerController;
 
         public bool CanConsume => CurrentStamina <= MaxStamina;
-        public bool CanRun => !StaminaLock && CurrentStamina > 0;
+        // public bool CanRun => !StaminaLock && CurrentStamina > 0;
+        public bool CanRun =>  CurrentStamina > 0;
         public PlayerStamina(PlayerController mono) : base(mono)
         {
-            StaminaLock = false;
             playerController = mono;
             MaxStamina = playerController.playerParameter.stamina;
             CurrentStamina = MaxStamina;
@@ -68,11 +68,10 @@ namespace Player
             if (CurrentStamina <= 0)
             {
                 CurrentStamina = 0;
-                StaminaLock = true;
-                mono.WaitExecute(()=>CurrentStamina >= MaxStamina,() =>
-                {
-                    StaminaLock = false;
-                });
+                // mono.WaitExecute(()=>CurrentStamina >= MaxStamina,() =>
+                // {
+                //     StaminaLock = false;
+                // });
             }
             playerController.playerMove.PlayerRunComplete();
             mono.LoopDelayExecute(staminaResume.y,()=>!CanConsume || playerController.isRun,StaminaResume);

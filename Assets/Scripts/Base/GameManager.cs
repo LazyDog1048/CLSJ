@@ -16,6 +16,7 @@ namespace game
             InputManager.Instance.Create();
             GamePlay_InputAction.Instance.Create();
             Ui_InputAction.Instance.Create();
+            CameraManager.Instance.Load();
             LayerPanel.Load();
             PlayerUiPanel.Load();
             Package_Panel.Load();

@@ -33,27 +33,7 @@ namespace game
 
 
         #region LoadMap
-        
-        public void MapInit()
-        {
-            
-        }
-
-        public void CreateBuildMap(int x,int y)
-        {
-     
-        }
-       
-  
-
-        public void SetTile(TileMapType mapType ,TileBase tileBase,Vector3Int pos,bool isClear)
-        {
-            // Tilemap tilemap = TileMapSetting.GetTileMap(mapType);
-            // if(tilemap == null)
-            //     return;
-            // tilemap.SetTile(pos,tileBase);
-        }
-        
+      
         
         #endregion
 

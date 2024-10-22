@@ -43,4 +43,8 @@ MonoBehaviour:
   penetrateNum: 1
   bulletSpeed: 40
   bulletStayTime: 4
-  bulletData: {fileID: 11400000, guid: f1c8751f77c67eb4da5e50f26d893462, type: 2}
+  bulletData: {fileID: 11400000, guid: eff0d0558b6f4684e8cab4dc1205f2f1, type: 2}
+  shotLength: 0.8
+  shotFx: {fileID: 0}
+  smokeFx: {fileID: 0}
+  gunAnimator: {fileID: 22100000, guid: b86b86015e0e28c4aa89845ba45ad33e, type: 2}

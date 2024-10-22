@@ -8,6 +8,7 @@ namespace Enemy
     {
         Idle,
         Walk,
+        WalkToPlayer,
         Attack,
         Dead
     }
@@ -20,7 +21,7 @@ namespace Enemy
         protected override int curState => (int)CurState;
         private Dictionary<EnemyState,int> animStateHashDic;
         
-        public EnemyAnimator(IAnimController anim, MonoBehaviour mono) : base(anim, mono)
+        public EnemyAnimator(BaseEnemy enemy) : base(enemy, enemy)
         {
         }
         
@@ -30,12 +31,14 @@ namespace Enemy
             {
                 {EnemyState.Idle, AnimaHash.state_Idle},
                 {EnemyState.Walk, AnimaHash.state_Walk},
+                {EnemyState.WalkToPlayer, AnimaHash.state_Walk},
                 {EnemyState.Attack, AnimaHash.state_Attack},
                 {EnemyState.Dead, AnimaHash.state_Dead}
                
             };
             
             CurState = EnemyState.Idle;
+            AddLockState((int)EnemyState.Dead);
         }
 
         public void SetAnim(EnemyState state)

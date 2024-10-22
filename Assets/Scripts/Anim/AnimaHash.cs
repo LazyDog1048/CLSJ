@@ -40,7 +40,8 @@ namespace game
         
         //laser
         public static readonly int laser_level = Animator.StringToHash("Level");
-
+        public static readonly int state_Shot = Animator.StringToHash("Shot");
+        
         public static readonly int state_Click = Animator.StringToHash("Click");
         public static readonly int state_Idle = Animator.StringToHash("Idle");
         public static readonly int state_Walk = Animator.StringToHash("Walk");

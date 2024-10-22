@@ -1,6 +1,8 @@
+using System;
 using EquipmentSystem;
 using game;
 using GridSystem;
+using item;
 using UnityEngine;
 
 namespace EquipmentSystem
@@ -10,28 +12,38 @@ namespace EquipmentSystem
         #region get&set
 
         private int penetrateNum = 1;
-        private BaseGun gun;
+        public BaseGun gun { get;private set; }
 
+        private TrailRenderer trail;
 
+        private float angle;
         #region paramater
 
 
-        protected Vector2 currentDir;
-        
+        public Vector2 currentDir { get; private set; }
+        private Vector3 startPos;
         #endregion
         
         #endregion
 
         #region BulletAction
-        
+
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            trail = GetComponentInChildren<TrailRenderer>();
+        }
+
         public virtual void BulletPrepare(Vector3 shot,Vector2 dir,BaseGun gun)
         {
             this.gun = gun;
             transform.position = shot;
+            startPos = shot;
             currentDir = dir;
-            float angle = GetAngle.Angle(currentDir);
+            angle = GetAngle.Angle(currentDir);
             transform.localRotation = Quaternion.Euler(0,0,angle);
             penetrateNum = gun.gunParameter.penetrateNum;
+            ResetTrailEffect();
             BulletShot();
         }
 
@@ -66,22 +78,43 @@ namespace EquipmentSystem
 
         #region Hit
 
+        // private void OnCollisionEnter2D(Collision2D col)
+        // {
+        //     Debug.Log($"hit {col.collider.name}");
+        //     penetrateNum--;
+        //     if (col.collider.tag.Equals("Scene"))
+        //     {
+        //         Vector3 point = col.GetContact(0).point;
+        //         FxPlayer.PlayFx("Fx_Gun_Miss", point).Rotate(angle);
+        //     }
+        //     if(penetrateNum <= 0)
+        //         FinishBullet();
+        //     
+        // }
+
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
-            // Debug.Log($"hit {col.name}");
-            
+            penetrateNum--;
+            if (col.tag.Equals("Scene"))
+            {
+                var ray = Physics2D.Raycast(startPos,currentDir,100, LayerMask.GetMask("Wall"));
+                if (ray.collider == col)
+                {
+                    FxPlayer.PlayFx("Fx_Gun_Miss", ray.point).Rotate(angle);
+                    // FinishBullet();
+                }
+            }
+            else if (col.tag.Equals("HitObj"))
+            {
+                var hit = col.transform.GetComponentInParent<IHitObj>();
+                hit?.HitObj(this);
+            }
             if(penetrateNum <= 0)
                 FinishBullet();
-            else
-                penetrateNum--;
-            
-        }
-        
-        private void OnTriggerExit2D(Collider2D col)
-        {
-            
         }
 
+   
         protected virtual void HitPoint()
         {
             HitFxPlay();
@@ -102,7 +135,16 @@ namespace EquipmentSystem
         {
             gameObject.SetActive(false);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            ResetTrailEffect();
             base.OnPushObj();
+        }
+
+        void ResetTrailEffect()
+        {
+            if(trail == null)
+                return;
+            trail.enabled = true;
+            trail.Clear();  // 清除当前的拖尾
         }
 
         #endregion

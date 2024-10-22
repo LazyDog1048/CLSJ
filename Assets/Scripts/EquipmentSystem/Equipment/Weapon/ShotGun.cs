@@ -13,7 +13,7 @@ namespace EquipmentSystem
         [SerializeField]
         private int bulletNum = 5;
         
-        public ShotGun(PlayerController playerController, Transform gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
+        public ShotGun(PlayerController playerController, GunObject gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
         {
         }
         
