@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CommonUi_LayerPanelObj: {fileID: 8954299787401531211, guid: abd434da09d6b6a47bbb52e5d3462363, type: 3}
   PackagePanelObj: {fileID: 1958563527552550306, guid: 618c46150a7947b429edde0337b2ac89, type: 3}
+  PlayerPackagePanelObj: {fileID: 1958563527552550306, guid: 5f65d563f1ea8564bbcc5d11538c2f9a, type: 3}
   PlayerUiPanel: {fileID: 6952081484936390883, guid: b0af6361f03fc7d4997b7b6341f60f0a, type: 3}

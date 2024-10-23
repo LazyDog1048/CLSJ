@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
+  m_Name: AmmoM
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: AmmoM
+  icon: {fileID: 1563142297340239633, guid: 9253a2d346c23ac4aa548aa67f5eb040, type: 3}
+  prefab: {fileID: 1726577015640154295, guid: dd00fd7dbd15f5343a67b7b667ce9882, type: 3}
+  shapeData:
+    size: {x: 2, y: 2}
+    points:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    keeper: 01010101
+  ItemType: 9
+  quality: 0
+  price: 0
+  weight: 0
+  description: 

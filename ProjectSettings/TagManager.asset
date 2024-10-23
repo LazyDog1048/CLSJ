@@ -16,13 +16,13 @@ TagManager:
   - UI
   - Light
   - LightTouch
-  - Player
-  - 
+  - PlayerBody
+  - PlayerCollider
   - PlayerBullet
   - EnemyFind
   - Wall
-  - Enemy
-  - 
+  - EnemyBody
+  - EnemyCollider
   - 
   - 
   - 

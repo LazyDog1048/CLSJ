@@ -7,9 +7,13 @@ namespace Enemy
     public enum EnemyState
     {
         Idle,
+        PatrolIdle,
         Walk,
+        PatrolWalk,
         WalkToPlayer,
         Attack,
+        Alert,
+        Recover,
         Dead
     }
 
@@ -30,15 +34,22 @@ namespace Enemy
             animStateHashDic = new Dictionary<EnemyState, int>
             {
                 {EnemyState.Idle, AnimaHash.state_Idle},
+                {EnemyState.PatrolIdle, AnimaHash.state_Idle},
                 {EnemyState.Walk, AnimaHash.state_Walk},
+                {EnemyState.PatrolWalk, AnimaHash.state_Walk},
                 {EnemyState.WalkToPlayer, AnimaHash.state_Walk},
                 {EnemyState.Attack, AnimaHash.state_Attack},
+                {EnemyState.Alert, AnimaHash.state_Alert},
+                {EnemyState.Recover, AnimaHash.state_Recover},
                 {EnemyState.Dead, AnimaHash.state_Dead}
                
             };
             
             CurState = EnemyState.Idle;
             AddLockState((int)EnemyState.Dead);
+            AddLockState((int)EnemyState.Alert);
+            AddLockState((int)EnemyState.Recover);
+            AddLockState((int)EnemyState.Attack);
         }
 
         public void SetAnim(EnemyState state)

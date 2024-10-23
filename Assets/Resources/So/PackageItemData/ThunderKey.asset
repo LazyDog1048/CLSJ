@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
+  m_Name: ThunderKey
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: ThunderKey
+  icon: {fileID: -5845011966902167879, guid: 089f1da20e89fc340afb3ed7e6045185, type: 3}
+  prefab: {fileID: 1726577015640154295, guid: 36c4c009b4825324ba8569581c0c90a1, type: 3}
+  shapeData:
+    size: {x: 2, y: 2}
+    points:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    keeper: 01010101
+  ItemType: 9
+  quality: 0
+  price: 0
+  weight: 0
+  description: 

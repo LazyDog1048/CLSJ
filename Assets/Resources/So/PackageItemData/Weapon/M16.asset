@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
+  m_Name: M16
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: M16
+  icon: {fileID: 1459489413229935907, guid: 369a6429e5262fb41b4f50bb9b4caa84, type: 3}
+  prefab: {fileID: 1726577015640154295, guid: 25241c7c4702fa24e9b3ff1de455c7df, type: 3}
+  shapeData:
+    size: {x: 5, y: 3}
+    points:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 0}
+    - {x: 2, y: 1}
+    - {x: 2, y: 2}
+    - {x: 3, y: 0}
+    - {x: 3, y: 1}
+    - {x: 3, y: 2}
+    - {x: 4, y: 0}
+    - {x: 4, y: 1}
+    - {x: 4, y: 2}
+    keeper: 010101010101010101010101010101
+  ItemType: 0
+  quality: 0
+  price: 0
+  weight: 0
+  description: 
+  Damage: 0
+  shotType: 0
+  shotMode: 1
+  shotDelay: 0.5
+  maxShotShake: 50
+  minShotShake: 10
+  shotStability: 4
+  shotCalibration: 10
+  reloadTime: 1
+  maxAmmo: 10
+  penetrateNum: 1
+  bulletSpeed: 10
+  bulletStayTime: 4
+  bulletData: {fileID: 11400000, guid: eff0d0558b6f4684e8cab4dc1205f2f1, type: 2}
+  shotLength: 0.8
+  shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
+  smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
+  gunAnimator: {fileID: 22100000, guid: b86b86015e0e28c4aa89845ba45ad33e, type: 2}

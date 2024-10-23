@@ -47,6 +47,7 @@ namespace game
         public static readonly int state_Walk = Animator.StringToHash("Walk");
         public static readonly int state_Dead = Animator.StringToHash("Dead");
         public static readonly int state_Attack = Animator.StringToHash("Attack");
+        public static readonly int state_Alert = Animator.StringToHash("Alert");
         public static readonly int state_MeleeAtk = Animator.StringToHash("Melee_Atk");
         public static readonly int state_RangedAtk = Animator.StringToHash("Ranged_Atk");
         public static readonly int state_Skill = Animator.StringToHash("Skill");

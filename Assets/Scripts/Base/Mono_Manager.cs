@@ -80,7 +80,7 @@ namespace game
             }
             else if (Input.GetKeyDown(KeyCode.Tab))
             {
-                Package_Panel.Instance.ShowOrHide();
+                PlayerPackage_Panel.Instance.ShowOrHide();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {

@@ -83,11 +83,17 @@ namespace other
 
         public override void LevelPrepare()
         {
-            LoadCM_Level_1920();
+            // LoadCM_Level_1920();
+            
             
         }
-        public void LoadCM_Level_1920()
+        public void LoadCM_Level_1920(Transform CM_1920)
         {
+            CinemachineVirtualCamera camera = CM_1920.GetComponent<CinemachineVirtualCamera>();
+            camera.name = CinemachineType.CM_1920.ToString();
+            camera.Priority = 0;
+            cameraDic.Add(CinemachineType.CM_1920, camera);
+            
             Instance.LoadVirtualCamera(CinemachineType.CM_1920);
             ChangeToCamera(CinemachineType.CM_1920);
             CinemachineBrain.SoloCamera = Instance[CinemachineType.CM_1920];

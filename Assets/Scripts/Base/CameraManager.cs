@@ -22,7 +22,7 @@ namespace game
 
         public void Load()
         {
-            cinemachineSwitcher.LoadCM_Level_1920();
+            cinemachineSwitcher.LoadCM_Level_1920(transform.Find("CM_1920"));
         }
 
     }

@@ -270,6 +270,17 @@ namespace Player
             PlayerState = PlayerState.Idle;
         }
 
+        public void KnockBackPlayer(Vector3 point)
+        {
+            playerMove.AddForce(point,0.5f);
+        }
+
+        
+        private void PlayerInvincible()
+        {
+            // playerMove.MoveEnable(false);
+            // playerStamina.StopRunConsumeStamina();
+        }
         #region IAnimController
         public virtual void AnimatorStateEnter()
         {
