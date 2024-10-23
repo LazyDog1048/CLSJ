@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
+using data;
 using EquipmentSystem;
 using game;
 using Player;
@@ -205,15 +206,19 @@ namespace GridSystem
     public class ItemFunctionPanel:BasePanel
     {
         public UiPackageItem item;
-        protected Button unpackBtn;
-        
+        protected Button Weapon_1;
+        protected Button Weapon_2;
+
         protected Vector3 offset = new Vector3(79,0,0);
         protected bool isShow;
         public ItemFunctionPanel(Transform trans) : base(trans)
         {
             isShow = false;
-            unpackBtn = trans.Find("UnpackBtn").GetComponent<Button>();
-            unpackBtn.onClick.AddListener(UnpackItem);
+            Weapon_1 = trans.Find("Weapon_1").GetComponent<Button>();
+            Weapon_2 = trans.Find("Weapon_2").GetComponent<Button>();
+            
+            Weapon_1.onClick.AddListener(EquipWeapon_1);
+            Weapon_2.onClick.AddListener(EquipWeapon_2);
         }
 
         public void EnterItemPanel()
@@ -221,7 +226,20 @@ namespace GridSystem
             isShow = true;
             item = UiPackageItem.cursorUiPackageItem;
         }
-      
+
+        public void EquipWeapon_1()
+        {
+            LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+            localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
+            LocalPlayerDataThing.Save();
+        }
+        public void EquipWeapon_2()
+        {
+            LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+            localPlayerDataThing.weapon_2 = item.packageItemData as WeaponData;
+            LocalPlayerDataThing.Save();
+        }
+        
         public void UnpackItem()
         {
             if(item.Count <= 1)
