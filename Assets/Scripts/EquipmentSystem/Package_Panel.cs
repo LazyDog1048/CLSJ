@@ -22,9 +22,10 @@ namespace GridSystem
         // private PlayerEquipmentSlot[] playerEquipmentSlots;
         public UiPackageItem uiItemOri;
 
-        public WeaponDetailPanel weaponDetailPanel;
-        public PackageItemDetailPanel packageItemDetailPanel;
-        public ItemFunctionPanel itemFunctionPanel;
+        // public WeaponDetailPanel weaponDetailPanel;
+        // public PackageItemDetailPanel packageItemDetailPanel;
+        // public ItemFunctionPanel itemFunctionPanel;
+        public ItemDetailPanel itemDetailPanel;
         public static Package_Panel Load()
         {
             return Create(UiObjRefrenceSO.Instance.PackagePanelObj);
@@ -37,9 +38,11 @@ namespace GridSystem
             playerPackageUiGridSystem = trans.Find("PackagePanel").GetComponentInChildren<PlayerPackageUiGridSystem>();
             boxUiGridSystem = trans.Find("BoxPanel").GetComponentInChildren<PackageUiGridSystem>();
             
-            weaponDetailPanel = new WeaponDetailPanel(trans.Find("WeaponDetailPanel"));
-            packageItemDetailPanel = new PackageItemDetailPanel(trans.Find("PackageItemDetailPanel"));
-            itemFunctionPanel = new ItemFunctionPanel(trans.Find("ItemFunctionPanel"));
+            
+            itemDetailPanel = new ItemDetailPanel(trans.Find("ItemDetailPanel"));
+            // weaponDetailPanel = new WeaponDetailPanel(trans.Find("WeaponDetailPanel"));
+            // packageItemDetailPanel = new PackageItemDetailPanel(trans.Find("PackageItemDetailPanel"));
+            // itemFunctionPanel = new ItemFunctionPanel(trans.Find("ItemFunctionPanel"));
             _preview = trans.GetComponentInChildren<PackageItemPreview>();
             var closeBtn = trans.Find("CloseBtn").GetComponent<Button>();
             playerPackageUiGridSystem.Init();
@@ -87,7 +90,7 @@ namespace GridSystem
             PlayerController.Instance.playerEquipment.UpdateEquipment();
             boxUiGridSystem.ClearItem();
             playerPackageUiGridSystem.ClearItem();
-            HidePreview();
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
 
  
@@ -110,13 +113,6 @@ namespace GridSystem
             _preview.RightClick(context);
 
         }
-        
-        public void HidePreview()
-        {
-            itemFunctionPanel.ExitItemPanel();
-            packageItemDetailPanel.ExitItemPanel();
-            weaponDetailPanel.ExitItemPanel();
-        }
     }
     
     public class BaseItemPanel:BasePanel
@@ -127,7 +123,8 @@ namespace GridSystem
         
         protected TextMeshProUGUI priceText;
         protected TextMeshProUGUI weightText;
-        protected Vector3 offset = new Vector3(109,0,0);
+
+        protected Vector3 offset = new Vector3(79,0,0);
         
         protected BaseItemPanel(Transform trans) : base(trans)
         {
@@ -141,8 +138,6 @@ namespace GridSystem
         
         public virtual void EnterItemPanel(UiPackageItem item)
         {
-            Vector3 itemSize = item.rectTransform.sizeDelta;
-            transform.position = item.transform.position + new Vector3((itemSize.x+offset.x)/2/13.33f,0,0);
             var data = item.packageItemSoData;
             nameText.text = data.Name;
             typeText.text = data.ItemType.ToString();
@@ -150,11 +145,7 @@ namespace GridSystem
             priceText.text = data.price.ToString();
             weightText.text = data.weight.ToString(CultureInfo.InvariantCulture);
         }
-        
-        public void ExitItemPanel()
-        {
-            transform.position = new Vector3(-1000,-1000,0);
-        }
+   
     }
     public class WeaponDetailPanel:BaseItemPanel
     {
@@ -205,7 +196,6 @@ namespace GridSystem
         
         public override void EnterItemPanel(UiPackageItem item)
         {
-            
             base.EnterItemPanel(item);
             var data = item.packageItemSoData;
             itemDescription_Text.text = data.description;
@@ -217,7 +207,7 @@ namespace GridSystem
         public UiPackageItem item;
         protected Button unpackBtn;
         
-        protected Vector3 offset = new Vector3(109,0,0);
+        protected Vector3 offset = new Vector3(79,0,0);
         protected bool isShow;
         public ItemFunctionPanel(Transform trans) : base(trans)
         {
@@ -225,46 +215,13 @@ namespace GridSystem
             unpackBtn = trans.Find("UnpackBtn").GetComponent<Button>();
             unpackBtn.onClick.AddListener(UnpackItem);
         }
-        
-        public void CheckItemFunctionPanel()
-        {
-            if(isShow)
-            {
-                ExitItemPanel();
-            }
-            else
-            {
-                EnterItemPanel();
-            }
-        }
+
         public void EnterItemPanel()
         {
             isShow = true;
             item = UiPackageItem.cursorUiPackageItem;
-            Vector3 itemSize = item.rectTransform.sizeDelta;
-            transform.position = item.transform.position + new Vector3((itemSize.x+offset.x)/2/13.33f,0,0);
-            Package_Panel.Instance.weaponDetailPanel.ExitItemPanel();
-            Package_Panel.Instance.packageItemDetailPanel.ExitItemPanel();
         }
-        
-        public void ExitItemPanel()
-        {
-            if (UiPackageItem.cursorUiPackageItem != null)
-            {
-                switch (UiPackageItem.cursorUiPackageItem.packageItemSoData)
-                {
-                    case GunData gunData:
-                        Package_Panel.Instance.weaponDetailPanel.EnterItemPanel(UiPackageItem.cursorUiPackageItem);
-                        break;
-                    default:
-                        Package_Panel.Instance.packageItemDetailPanel.EnterItemPanel(UiPackageItem.cursorUiPackageItem);
-                        break;
-                }
-            }
-            transform.position = new Vector3(-1000,-1000,0);
-            isShow = false;
-        }
-        
+      
         public void UnpackItem()
         {
             if(item.Count <= 1)
@@ -272,6 +229,79 @@ namespace GridSystem
             int halfCount = item.Count / 2;
             item.Count -= halfCount;
             SceneBox.Instance.AddPreview(item.packageItemSoData.Name,halfCount);
+        }
+        
+    }
+    
+    public class ItemDetailPanel:BasePanel
+    {
+        private WeaponDetailPanel weaponDetailPanel;
+        private PackageItemDetailPanel packageItemDetailPanel;
+        private ItemFunctionPanel itemFunctionPanel;
+
+        private bool isRightClick;
+        protected Vector3 offset = new Vector3(79,0,0);
+        private UiPackageItem item;
+        public ItemDetailPanel(Transform trans) : base(trans)
+        {
+            weaponDetailPanel = new WeaponDetailPanel(trans.Find("WeaponDetailPanel"));
+            packageItemDetailPanel = new PackageItemDetailPanel(trans.Find("PackageItemDetailPanel"));
+            itemFunctionPanel = new ItemFunctionPanel(trans.Find("ItemFunctionPanel"));
+        }
+    
+        public virtual void EnterItemPanel(UiPackageItem item)
+        {
+            this.item = item;
+            Vector3 itemSize = item.rectTransform.sizeDelta;
+            transform.position = item.transform.position + new Vector3((itemSize.x+offset.x)/2/13.33f,0,0);
+            item.SetLastIndex();
+            transform.SetParent(item.rectTransform);
+            isRightClick = false;
+            SwitchState();
+        }
+
+        public void RightClick()
+        {
+            isRightClick =  !isRightClick;
+            SwitchState();
+        }
+
+        private void SwitchState()
+        {
+            weaponDetailPanel.transform.gameObject.SetActive(false);
+            packageItemDetailPanel.transform.gameObject.SetActive(false);
+            itemFunctionPanel.transform.gameObject.SetActive(false);
+            
+            if(item == null)
+                return;
+            var data = item.packageItemSoData;
+
+            if (!isRightClick)
+            {
+                switch (data)
+                {
+                    case GunData gunData:
+                        weaponDetailPanel.transform.gameObject.SetActive(true);
+                        weaponDetailPanel.EnterItemPanel(item);
+                        break;
+                    default:
+                        packageItemDetailPanel.transform.gameObject.SetActive(true);
+                        packageItemDetailPanel.EnterItemPanel(item);
+                        break;
+                }
+            }
+            else
+            {
+                itemFunctionPanel.transform.gameObject.SetActive(true);
+                itemFunctionPanel.EnterItemPanel();
+            }
+        }
+        
+        public void ExitItemPanel()
+        {
+            item = null;
+            transform.SetParent(Package_Panel.Instance.transform);
+            transform.position = new Vector3(-1000,-1000,0);
         }
     }
 }

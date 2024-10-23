@@ -117,21 +117,12 @@ namespace GridSystem
         {
             if(packageItem == null || PackageItemPreview.Instance.currentUiPackageItem != null)
                 return;
-            
-            switch (SoData)
-            {
-                case GunData gunData:
-                    Package_Panel.Instance.weaponDetailPanel.EnterItemPanel(packageItem);
-                    break;
-                default:
-                    Package_Panel.Instance.packageItemDetailPanel.EnterItemPanel(packageItem);
-                    break;
-            }
+            Package_Panel.Instance.itemDetailPanel.EnterItemPanel(packageItem);
         }
 
         public void CheckPointerExit()
         {
-            Package_Panel.Instance.HidePreview();
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
         public virtual void SavePlayerEquipmentSlotData()
         {

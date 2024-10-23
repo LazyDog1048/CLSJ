@@ -25,7 +25,7 @@ namespace GridSystem
 
         private static Color canPutColor;
         private static Color cantPutColor;
-        
+        RectTransform rectTransform => transform as RectTransform;
         protected override void Awake()
         {
             base.Awake();
@@ -36,6 +36,14 @@ namespace GridSystem
             followBg.gameObject.SetActive(false);
         }
 
+        public void EnterUiPackageItem(UiPackageItem item)
+        {
+            if(OnPickUp)
+                return;
+            transform.position = item.transform.position;
+            rectTransform.sizeDelta = item.rectTransform.sizeDelta;
+        }
+        
         public void SwitchSlot(IPlayerPackageSlot gridSystem)
         {
             playerPackageSlot = gridSystem;
@@ -148,7 +156,7 @@ namespace GridSystem
                 else if(!OnPickUp)
                 {
                    if(UiPackageItem.cursorUiPackageItem != null)
-                       Package_Panel.Instance.itemFunctionPanel.CheckItemFunctionPanel();
+                       Package_Panel.Instance.itemDetailPanel.RightClick();
                 }
             }
             

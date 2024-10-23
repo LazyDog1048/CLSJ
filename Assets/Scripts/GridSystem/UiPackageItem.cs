@@ -19,7 +19,18 @@ namespace GridSystem
     public class UiPackageItem : GridGameObject,IPointerEnterHandler,IPointerExitHandler
     {
         public static bool InDetailPanel;
-        public static UiPackageItem cursorUiPackageItem;   
+        public static UiPackageItem _cursorUiPackageItem;
+
+        public static UiPackageItem cursorUiPackageItem
+        {
+            get=>_cursorUiPackageItem;
+            private set
+            {
+                _cursorUiPackageItem = value;
+            }
+        }
+        
+        
         public string Name => packageItemSoData.Name;
         public PackageItemSoData packageItemSoData { get; private set; }
         public PackageItemData packageItemData { get;private set; }
@@ -70,6 +81,11 @@ namespace GridSystem
             state = UiPackageItemState.None;
         }
 
+        public void SetLastIndex()
+        {
+            transform.SetAsLastSibling();
+        }
+        
         public void InitItem(PackageItemData packageItemData)
         {
             this.packageItemData = packageItemData;
@@ -269,14 +285,14 @@ namespace GridSystem
                 uiGridObject.RemoveGridItem();
             }
             bg.gameObject.SetActive(false);
-            Package_Panel.Instance.HidePreview();
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
         
         public void PickOnSlot(PlayerEquipmentSlot slot)
         {
             state = UiPackageItemState.None;
             bg.gameObject.SetActive(false);
-            Package_Panel.Instance.HidePreview();
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
 
         // private Vector2Int pickPos;
@@ -291,22 +307,14 @@ namespace GridSystem
             if(PackageItemPreview.Instance.currentUiPackageItem != null)
                 return;
             cursorUiPackageItem = this;
-            switch (packageItemSoData)
-            {
-                case GunData gunData:
-                    Package_Panel.Instance.weaponDetailPanel.EnterItemPanel(this);
-                    break;
-                default:
-                    Package_Panel.Instance.packageItemDetailPanel.EnterItemPanel(this);
-                    break;
-            }
+            Package_Panel.Instance.itemDetailPanel.EnterItemPanel(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             InDetailPanel = false;
             cursorUiPackageItem = null;
-            Package_Panel.Instance.HidePreview();
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
     }
     
