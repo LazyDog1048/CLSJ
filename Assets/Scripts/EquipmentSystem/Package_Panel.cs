@@ -19,7 +19,7 @@ namespace GridSystem
         public PackageUiGridSystem boxUiGridSystem;
         private PackageItemPreview _preview;
 
-        private PlayerEquipmentSlot[] playerEquipmentSlots;
+        // private PlayerEquipmentSlot[] playerEquipmentSlots;
         public UiPackageItem uiItemOri;
 
         public WeaponDetailPanel weaponDetailPanel;
@@ -32,7 +32,7 @@ namespace GridSystem
         
         public Package_Panel(Transform trans) : base(trans)
         {
-            playerEquipmentSlots = trans.Find("EquipmentPanel").GetComponentsInChildren<PlayerEquipmentSlot>();
+            // playerEquipmentSlots = trans.Find("EquipmentPanel").GetComponentsInChildren<PlayerEquipmentSlot>();
             uiItemOri = trans.Find("UiPackageItem").GetComponent<UiPackageItem>();
             playerPackageUiGridSystem = trans.Find("PackagePanel").GetComponentInChildren<PlayerPackageUiGridSystem>();
             boxUiGridSystem = trans.Find("BoxPanel").GetComponentInChildren<PackageUiGridSystem>();
@@ -80,10 +80,10 @@ namespace GridSystem
             if(playerPackageUiGridSystem == null)
                 return;
             playerPackageUiGridSystem.ClosePanelSaveData();
-            foreach (var playerEquipmentSlot in playerEquipmentSlots)
-            {
-                playerEquipmentSlot.SavePlayerEquipmentSlotData();
-            }
+            // foreach (var playerEquipmentSlot in playerEquipmentSlots)
+            // {
+            //     playerEquipmentSlot.SavePlayerEquipmentSlotData();
+            // }
             PlayerController.Instance.playerEquipment.UpdateEquipment();
             boxUiGridSystem.ClearItem();
             playerPackageUiGridSystem.ClearItem();

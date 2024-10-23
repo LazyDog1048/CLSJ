@@ -2255,7 +2255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44, y: 57}
+  m_AnchoredPosition: {x: -55, y: 39.5}
   m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8160370440628991997
@@ -2283,7 +2283,7 @@ MonoBehaviour:
   oriGridCell: {fileID: 89156827619607977}
   uiItemOri: {fileID: 25384057819069365}
   gridWidth: 8
-  gridHeight: 6
+  gridHeight: 10
   cellSize: 11
 --- !u!114 &518125611271939350
 MonoBehaviour:
@@ -4634,7 +4634,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 8.5, y: -4}
-  m_SizeDelta: {x: 169, y: 136}
+  m_SizeDelta: {x: 147, y: 136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3024112484185878431
 CanvasRenderer:
@@ -4664,7 +4664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -339904598545932352, guid: 5d7a1af7437850a46b1497fc0958e0c5, type: 3}
+  m_Sprite: {fileID: 4060397032798800726, guid: 7e50a990a7a3d0848a4263c255809e36, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5449,7 +5449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44, y: 57}
+  m_AnchoredPosition: {x: -44, y: 39.5}
   m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4231399207320102146
@@ -5477,7 +5477,7 @@ MonoBehaviour:
   oriGridCell: {fileID: 89156827619607977}
   uiItemOri: {fileID: 25384057819069365}
   gridWidth: 8
-  gridHeight: 12
+  gridHeight: 8
   cellSize: 11
 --- !u!114 &7355545787363036824
 MonoBehaviour:
@@ -5993,7 +5993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4924206647694822372
 RectTransform:
   m_ObjectHideFlags: 0

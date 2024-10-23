@@ -127,6 +127,7 @@ namespace GridSystem
             rectTransform.sizeDelta = sizeDelta;
             icon.rectTransform.sizeDelta = sizeDelta;
             icon.sprite = packageItemSoData.icon;
+            icon.SetNativeSize();
             //设置cell的位置
             foreach (var shapePoint in packageItemSoData.shapeData.points)
             {
@@ -150,6 +151,7 @@ namespace GridSystem
             rectTransform.sizeDelta = sizeDelta;
             icon.rectTransform.sizeDelta = sizeDelta;
             icon.sprite = packageItemSoData.icon;
+            icon.SetNativeSize();
             //设置cell的位置
             foreach (var shapePoint in packageItemSoData.shapeData.points)
             {

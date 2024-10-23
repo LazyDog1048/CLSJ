@@ -62,19 +62,13 @@ namespace EquipmentSystem
         
         public void TestBox()
         {
-            AddBox("Gun");
             AddBox("ShotGun");
-            AddBox("MeleeWeapon");
-            AddBox("Armor_Cap");
-            AddBox("Armor_Coat");
-            AddBox("Armor_LeftShoe");
-            AddBox("Armor_RightShoe");
-            AddBox("Spell");
-            AddBox("Shield");
-            AddBox("Accessory");
-            AddBox("Consumable_1");
-            AddBox("Package");
-            AddBox("Magic_Bullet",100);
+            AddBox("Cannon");
+            AddBox("Revolver");
+            AddBox("M16");
+            AddBox("Uzi");
+            AddBox("AmmoL",100);
+            AddBox("Revolver_Bullet",100);
             
         }
     }
