@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using EquipmentSystem;
+using GridSystem;
 using UnityEngine;
 
 namespace Player
@@ -94,6 +95,7 @@ namespace Player
             weapon_1 = PlayerController.Instance.ChangeGun_1();
             playerController.DelayExecute(0.1f, () =>
             {
+                Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
             });
         }
@@ -103,6 +105,7 @@ namespace Player
             weapon_1 = null;
             playerController.DelayExecute(0.1f, () =>
             {
+                Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
             });
         }

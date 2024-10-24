@@ -68,7 +68,7 @@ namespace Player
             playerStamina = new PlayerStamina(this);
             PlayerHand = new PlayerHand(this);
             playerEquipment = new PlayerEquipment(this);
-            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressR,PressE,PressQ,PressF);
+            GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressTab,PressR,PressE,PressQ,PressF);
             GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
@@ -200,6 +200,14 @@ namespace Player
             }
         }
 
+        private void PressTab(InputAction.CallbackContext context)
+        {
+            // var list = transform.position.FindCircleAllCollider<Container>(3,LayerMask.GetMask("PlayerBody"),"Container");
+            // if(list.Count <=0)
+            //     return;
+            // list.SortByDis(transform.position);
+            // list[0].OpenOrClose();
+        }
         
         private void PressE(InputAction.CallbackContext context)
         {   

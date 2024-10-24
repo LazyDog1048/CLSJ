@@ -86,9 +86,9 @@ namespace GridSystem
             followBg.gameObject.SetActive(false);
         }
 
-        public void RotaBg(bool isRota)
+        public void RotaBg(bool isRota,float time = 0)
         {
-            followBg.transform.DORotate(new Vector3(0, 0, isRota?90:0),StaticValue.BtnAnimTime);
+            followBg.transform.DORotate(new Vector3(0, 0, isRota?90:0),time);
         }
         public void ItemUpdatePosition()
         {

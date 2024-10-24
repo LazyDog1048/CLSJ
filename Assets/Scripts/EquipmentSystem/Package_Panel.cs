@@ -56,7 +56,7 @@ namespace GridSystem
         {
             if(playerPackageUiGridSystem == null)
                 return;
-            LocalPackageThing.GetData().LoadPlayerPackage(uiItemOri,playerPackageUiGridSystem);
+            playerPackageUiGridSystem.LoadPackage(LocalPackageThing.GetData());
         }
 
         public void AddPreviewItem(PackageItemData packageItemData)
@@ -205,6 +205,7 @@ namespace GridSystem
         protected Button unEquipBtn;
         protected Button useBtn;
         public static bool isActive;
+
         public ItemFunctionPanel(Transform trans) : base(trans)
         {
             equipBtn = trans.Find("EquipBtn").GetComponent<Button>();
@@ -252,20 +253,16 @@ namespace GridSystem
             localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
             LocalPlayerDataThing.Save();
             PlayerController.Instance.playerEquipment.UpdateWeapon_1();
+            
         }
         public void UnEquipWeapon()
         {
             LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
-            localPlayerDataThing.weapon_1 = new WeaponData("Hand");
+            localPlayerDataThing.weapon_1 = new WeaponData("");
             LocalPlayerDataThing.Save();
-            PlayerController.Instance.playerEquipment.UpdateEquipment();
+            PlayerController.Instance.playerEquipment.UnEquipWeapon();
         }
-        
-        public void UseItem()
-        {
-            // item.UseItem();
-        }
-        
+
         public void ExitItemPanel()
         {
             isActive = false;
@@ -275,7 +272,6 @@ namespace GridSystem
             useBtn.gameObject.SetActive(false);
         }
  
-        
     }
     
     public class ItemDetailPanel:BasePanel
@@ -283,7 +279,9 @@ namespace GridSystem
         private WeaponDetailPanel weaponDetailPanel;
         private PackageItemDetailPanel packageItemDetailPanel;
         private ItemFunctionPanel itemFunctionPanel;
-
+        
+        
+        
         private bool isRightClick;
         protected float offset = 149;
         private UiPackageItem item;
@@ -293,7 +291,7 @@ namespace GridSystem
             packageItemDetailPanel = new PackageItemDetailPanel(trans.Find("PackageItemDetailPanel"));
             itemFunctionPanel = new ItemFunctionPanel(trans.Find("ItemFunctionPanel"));
         }
-    
+
         public virtual void EnterItemPanel(UiPackageItem item)
         {
             this.item = item;
@@ -317,7 +315,7 @@ namespace GridSystem
             weaponDetailPanel.transform.gameObject.SetActive(false);
             packageItemDetailPanel.transform.gameObject.SetActive(false);
             itemFunctionPanel.transform.gameObject.SetActive(false);
-            
+            ItemFunctionPanel.isActive = false;   
             if(item == null)
                 return;
             var data = item.packageItemSoData;

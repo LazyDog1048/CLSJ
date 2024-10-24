@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using game;
 using GridSystem;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -58,6 +59,7 @@ namespace ui
 
             Ui_InputAction.Instance.ConfirmUiAction(ConfirmUi);
             Ui_InputAction.Instance.RightClickUiAction(RightClick);
+            Ui_InputAction.Instance.TabUiAction(PressTab);
             Ui_InputAction.Instance.CancelUiAction(CancelUi);
             Ui_InputAction.Instance.SpeedUiRegisterAction(SpeedChange);
             Ui_InputAction.Instance.MouseMoveRegisterAction(MouseMoveUi);
@@ -105,6 +107,18 @@ namespace ui
             Package_Panel.Instance.RightClick(context);
             // if (!isFontNull)
             //     fontPanelStack.Peek().Confirm(context);
+        }
+        
+        private void PressTab(InputAction.CallbackContext context)
+        {
+            if(context.phase != InputActionPhase.Started)
+                return;
+            var list = PlayerController.Instance.transform.position.FindCircleAllCollider<Container>(3,LayerMask.GetMask("Container"),"Container");
+            Debug .Log($"PressTab {list.Count}");
+            if(list.Count <=0)
+                return;
+            list.SortByDis(PlayerController.Instance.transform.position);
+            list[0].OpenOrClose();
         }
         
         private void CancelUi(InputAction.CallbackContext context)
@@ -221,10 +235,12 @@ namespace ui
             //font不为空
             if (!isFontNull)
             {
+                GameManager.Instance.Pause(true);
                 GamePlay_InputAction.Instance.UiBlock(true);
             }
             if(PauseGame)
             {
+                GameManager.Instance.Pause(true);
                 GamePlay_InputAction.Instance.UiBlock(true);
             }
         }
@@ -232,11 +248,13 @@ namespace ui
         {
             if (isFontNull)
             {
+                GameManager.Instance.Pause(false);
                 GamePlay_InputAction.Instance.UiBlock(false);
             }
             
             if (!PauseGame)
             {
+                GameManager.Instance.Pause(false);
                 GamePlay_InputAction.Instance.UiBlock(false);
                              
             }

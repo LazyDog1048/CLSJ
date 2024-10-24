@@ -14,6 +14,7 @@ namespace game
         private ActionThing cursorMove;
         private ActionThing rightMouse;
         private ActionThing pressShift;
+        private ActionThing pressTab;
         private ActionThing pressR;
         private ActionThing pressE;
         private ActionThing pressQ;
@@ -48,6 +49,7 @@ namespace game
             cursorMove = AddAction("CursorMove");
             rightMouse = AddAction("RightMouse");
             pressShift = AddAction("PressShift");
+            pressTab = AddAction("PressTab");
             pressR = AddAction("PressR");
             pressE = AddAction("PressE");
             pressQ = AddAction("PressQ");
@@ -66,6 +68,7 @@ namespace game
                                          UnityAction<InputAction.CallbackContext> cursorMoveEvent,
                                          UnityAction<InputAction.CallbackContext> rightMouseEvent,
                                          UnityAction<InputAction.CallbackContext> pressShiftEvent,
+                                         UnityAction<InputAction.CallbackContext> pressTabEvent,
                                          UnityAction<InputAction.CallbackContext> pressREvent,
                                          UnityAction<InputAction.CallbackContext> pressEEvent,
                                          UnityAction<InputAction.CallbackContext> pressQEvent,
@@ -75,6 +78,7 @@ namespace game
             cursorMove?.AddListener(cursorMoveEvent);
             rightMouse?.AddListener(rightMouseEvent);
             pressShift?.AddListener(pressShiftEvent);
+            pressTab?.AddListener(pressTabEvent);
             pressR?.AddListener(pressREvent);
             pressE?.AddListener(pressEEvent);
             pressQ?.AddListener(pressQEvent);
@@ -105,6 +109,7 @@ namespace game
             cursorMove?.RemoveAllListeners();
             rightMouse?.RemoveAllListeners();
             pressShift?.RemoveAllListeners();
+            pressTab?.RemoveAllListeners();
             pressR?.RemoveAllListeners();
             pressE?.RemoveAllListeners();
             pressQ?.RemoveAllListeners();

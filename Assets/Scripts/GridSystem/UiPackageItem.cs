@@ -53,6 +53,7 @@ namespace GridSystem
         private bool isRotated = true;
 
         private RectTransform countParent;
+        private RectTransform equipmentIcon;
         private Vector3 countOriPos;
         public int Count
         {
@@ -80,6 +81,7 @@ namespace GridSystem
             countText = countParent.Find("Text").GetComponent<TextMeshProUGUI>();
             cells = new List<GameObject>();
             cellPanel = transform.Find("CellPanel");
+            equipmentIcon = transform.Find("EquipmentIcon").GetComponent<RectTransform>();
             packageItemSoData = gridObjectSo as PackageItemSoData;
             state = UiPackageItemState.None;
         }
@@ -122,6 +124,8 @@ namespace GridSystem
             bg.gameObject.SetActive(true);
             Count = packageItemData.count;
             FindRightDownCell();
+            CheckEquip();
+            gridSystem.boxItemDataList.Add(this);
         }
         
         public void InitItem(PlayerEquipmentSlot slot,PackageItemSoData soData)
@@ -216,13 +220,15 @@ namespace GridSystem
             return true;
         }
         
-        public bool CheckCanPutOnGrid(UiGrid<UiGridObject> grid)
+        public bool CheckCanPutOnGrid(PackageUiGridSystem packageUiGrid)
         {
             if (state != UiPackageItemState.None)
                 return false;
+            if(CheckIsEquip() && packageUiGrid is not PlayerPackageUiGridSystem)
+                return false;
             foreach (var cell in cells)
             {
-                UiGridObject uiGridObject = grid.GetGridObject(cell.transform.position);
+                UiGridObject uiGridObject = packageUiGrid.Grid.GetGridObject(cell.transform.position);
                 if (uiGridObject == null || !uiGridObject.CanBuild())
                 {
                     return false;
@@ -238,11 +244,12 @@ namespace GridSystem
             if (!isRotated)
             {
                 PackageItemPreview.Instance.transform.DORotate(new Vector3(0, 0, 90), StaticValue.BtnAnimTime);
-                PackageItemPreview.Instance.RotaBg(true);
+                PackageItemPreview.Instance.RotaBg(true,StaticValue.BtnAnimTime);
                 rectTransform.DORotate(new Vector3(0,0,90),StaticValue.BtnAnimTime).onComplete += () =>
                 {
                     state = UiPackageItemState.None;
                     UpdatePosition();
+                    CheckEquipRota();
                 };
                 isRotated = true;
             }
@@ -252,8 +259,9 @@ namespace GridSystem
                 {
                     state = UiPackageItemState.None;
                     UpdatePosition();
+                    CheckEquipRota();
                 };
-                PackageItemPreview.Instance.RotaBg(false);
+                PackageItemPreview.Instance.RotaBg(false,StaticValue.BtnAnimTime);
                 isRotated = false;
             }
             FindRightDownCell();
@@ -314,6 +322,7 @@ namespace GridSystem
                 uiGridObject.RemoveGridItem();
             }
             bg.gameObject.SetActive(false);
+            PackageItemPreview.Instance.RotaBg(isRotated);
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
         
@@ -344,6 +353,51 @@ namespace GridSystem
             InDetailPanel = false;
             cursorUiPackageItem = null;
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
+        }
+
+
+        public void CheckEquip()
+        {
+            var weapon = LocalPlayerDataThing.GetData().weapon_1;
+            if (packageItemData.Name.Equals(weapon.Name))
+            {
+                equipmentIcon.gameObject.SetActive(true);
+                CheckEquipRota();
+            }
+            else
+            {
+                equipmentIcon.gameObject.SetActive(false);
+            }
+        }
+        public bool CheckIsEquip()
+        {
+            var weapon = LocalPlayerDataThing.GetData().weapon_1;
+            if (packageItemData.Name.Equals(weapon.Name))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        
+        public void CheckEquipRota()
+        {
+            Vector3 size = rectTransform.sizeDelta / StaticValue.uiToWorldScale;
+            Vector3 rightDownPos = new Vector3(size.x / 2, -size.y / 2);
+            
+            equipmentIcon.localRotation = Quaternion.Euler(0,0,0);
+            if (isRotated)
+            {
+                rightDownPos =  new Vector3(size.y / 2, -size.x / 2);
+                equipmentIcon.localRotation = Quaternion.Euler(0,0,-90);
+            }
+            Vector3 iconSize = equipmentIcon.sizeDelta / StaticValue.uiToWorldScale;
+            equipmentIcon.position = transform.position + rightDownPos + new Vector3(-iconSize.x / 2,iconSize.y / 2);
+
+
         }
     }
     

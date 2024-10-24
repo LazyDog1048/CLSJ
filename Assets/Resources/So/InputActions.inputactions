@@ -9,7 +9,7 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "0e20f149-45b9-4eee-8b7c-2603e9019567",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -54,7 +54,16 @@
                     "name": "PressShift",
                     "type": "Button",
                     "id": "0442280c-298d-4764-8501-9f0004a72a4c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressTab",
+                    "type": "Button",
+                    "id": "a75dbdc2-b3f0-45f0-abbf-6d4c9be0a133",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,7 +72,7 @@
                     "name": "PressR",
                     "type": "Button",
                     "id": "e3aaa383-9de1-4a8c-8a69-2c5714b2a0de",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -322,6 +331,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PressShift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffe4d271-13e6-42a0-8f07-73d44133700d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressTab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -683,7 +703,7 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "f87365d9-ec51-457a-af0c-06cb52c36024",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -747,6 +767,15 @@
                     "type": "Button",
                     "id": "4bef1f79-84de-4cf6-ad0b-d87a69f5dbf0",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressTab",
+                    "type": "Button",
+                    "id": "dc453b24-fcbc-4f3c-baf6-89f6d1ae059b",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -928,6 +957,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5cd7a86c-281f-4dd8-824a-21bb672d8a0a",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

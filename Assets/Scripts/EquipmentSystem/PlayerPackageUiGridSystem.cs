@@ -1,11 +1,14 @@
+using System;
 using System.Collections.Generic;
+using data;
 using EquipmentSystem;
+using UnityEngine;
 
 namespace GridSystem
 {
     public class PlayerPackageUiGridSystem : PackageUiGridSystem
     {
-        
+
         public void OpenPanelSaveData()
         {
             List<UiPackageItem> tPackageItems = new List<UiPackageItem>();
@@ -37,6 +40,14 @@ namespace GridSystem
                 packageItem.SaveItemToPackage();
             }
             LocalPackageThing.Save();
+        }
+
+        public void CheckEquipIcon()
+        {
+            foreach (var item in boxItemDataList)
+            {
+                item.CheckEquip();
+            }
         }
     }
     

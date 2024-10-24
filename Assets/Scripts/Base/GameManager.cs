@@ -3,6 +3,7 @@ using GridSystem;
 using other;
 using Player;
 using ui;
+using UnityEngine;
 
 namespace game
 {
@@ -21,7 +22,19 @@ namespace game
             PlayerUiPanel.Load();
             Package_Panel.Load();
         }
-
+        
+        public void Pause(bool pause)
+        {
+            if (pause)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
+        
     }
     
 }

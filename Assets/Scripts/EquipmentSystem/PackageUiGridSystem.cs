@@ -43,7 +43,11 @@ namespace GridSystem
         {
             return new UiGridObject(grid,x,y);
         }
-        
+
+        public void LoadPackage(PackageThing packageThing)
+        {
+            packageThing.LoadPlayerPackage(uiItemOri,this);
+        }
         private void AddCell(Transform ori,RectTransform parent)
         {
             grid.ForEach((cell) =>
@@ -78,8 +82,9 @@ namespace GridSystem
                 PackageItemPreview.Instance.ClearItem();
                 return;
             }
-            if (item.CheckCanPutOnGrid(grid))
+            if (item.CheckCanPutOnGrid(this))
             {
+                
                 item.PutOnGrid(this);
                 boxItemDataList.Add(item);
                 PackageItemPreview.Instance.ClearItem();
@@ -119,7 +124,7 @@ namespace GridSystem
         {
             UiPackageItem uiPackageItem = Instantiate(uiItemOri);
             uiPackageItem.InitItem(this,packageItemData);            
-            boxItemDataList.Add(uiPackageItem);
+            // boxItemDataList.Add(uiPackageItem);
         }
 
         public Vector2Int FindEnablePoint(Shape_Data shapeData)

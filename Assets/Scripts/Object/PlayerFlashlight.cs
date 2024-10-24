@@ -10,11 +10,16 @@ namespace game
     {
         private int rayCount = 10;
 
-        private float innerLength = 10;
-        private float outerLength = 11;
-        private float innerAngle = 90;
-        private float outerAngle = 80;
+        private float normalInnerLength = 10;
+        private float normalOuterLength = 11;
+        private float normalInnerAngle = 90;
+        private float normalOuterAngle = 80;
 
+        private float aimInnerLength = 20;
+        private float aimOuterLength = 22;
+        private float aimInnerAngle = 45;
+        private float aimOuterAngle = 40;
+        
         private EdgeCollider2D edgeCollider2D;
         private Light2D light2D;
 
@@ -22,18 +27,24 @@ namespace game
         public float curOuter{ get;private set; }
 
 
-        public void SetLight(float innerLength,float outerLength,float innerAngle,float outerAngle,int rayCount)
+        public void SetLight(float normalInnerLength,float normalOuterLength,float normalInnerAngle,float normalOuterAngle,float aimInnerLength,float aimOuterLength,float aimInnerAngle,float aimOuterAngle,int rayCount)
         {
             light2D = GetComponent<Light2D>();
             edgeCollider2D = GetComponent<EdgeCollider2D>();
             
-            this.innerLength = innerLength;
-            this.outerLength = outerLength;
-            this.innerAngle = innerAngle;
-            this.outerAngle = outerAngle;
+            this.normalInnerLength = normalInnerLength;
+            this.normalOuterLength = normalOuterLength;
+            this.normalInnerAngle = normalInnerAngle;
+            this.normalOuterAngle = normalOuterAngle;
+            
+            this.aimInnerLength = aimInnerLength;
+            this.aimOuterLength = aimOuterLength;
+            this.aimInnerAngle = aimInnerAngle;
+            this.aimOuterAngle = aimOuterAngle;
             
             this.rayCount = rayCount;
-            GetPoints(innerAngle,outerLength);
+            GetPoints(normalInnerAngle,normalOuterLength);
+            NormalMode();
         }
 
         private void GetPoints(float fov,float length)
@@ -58,29 +69,29 @@ namespace game
 
         public void AimMode()
         {
-            curOuter = outerLength*2;
-            curOuterAngle = outerAngle/2;
-                
+            curOuter = aimOuterLength;
+            curOuterAngle = aimOuterAngle;
+
+
+
+            light2D.pointLightInnerAngle = aimInnerAngle;
+            light2D.pointLightOuterAngle = aimOuterAngle;
             
-            
-            light2D.pointLightInnerAngle = innerAngle / 2;
-            light2D.pointLightOuterAngle = outerAngle / 2;
-            
-            light2D.pointLightInnerRadius = innerLength * 2;
-            light2D.pointLightOuterRadius = outerLength * 2;
+            light2D.pointLightInnerRadius = aimInnerLength;
+            light2D.pointLightOuterRadius = aimOuterLength;
             GetPoints(curOuterAngle,curOuter);
         }
         
         public void NormalMode()
         {
-            curOuter = outerLength;
-            curOuterAngle = outerAngle;
+            curOuter = normalOuterLength;
+            curOuterAngle = normalOuterAngle;
             
-            light2D.pointLightInnerAngle = innerAngle;
-            light2D.pointLightOuterAngle = outerAngle;
+            light2D.pointLightInnerAngle = normalInnerAngle;
+            light2D.pointLightOuterAngle = normalOuterAngle;
             
-            light2D.pointLightInnerRadius = innerLength;
-            light2D.pointLightOuterRadius = outerLength;
+            light2D.pointLightInnerRadius = normalInnerLength;
+            light2D.pointLightOuterRadius = normalOuterLength;
             GetPoints(curOuterAngle,curOuter);
             
         }
