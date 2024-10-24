@@ -10,6 +10,7 @@ namespace GridSystem
 {
     public class PackageUiGridSystem : MonoBehaviour,IPlayerPackageSlot,IPointerEnterHandler,IPointerExitHandler
     {
+        public static bool isPlayerGrid = false;
         [SerializeField]
         private RectTransform gridParent;
         [SerializeField]
@@ -54,6 +55,7 @@ namespace GridSystem
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            isPlayerGrid = GetType() == typeof(PlayerPackageUiGridSystem);
             PackageItemPreview.Instance.SwitchSlot(this);
         }
 
@@ -88,7 +90,8 @@ namespace GridSystem
         {
             var mousePos = GetMousePos.GetMousePosition();
             UiGridObject uiGridObject = grid.GetGridObject(mousePos);
-            if (uiGridObject != null && uiGridObject.UiPackageItem != null)
+            
+            if (!ItemFunctionPanel.isActive && uiGridObject != null && uiGridObject.UiPackageItem != null)
             {
                 var item = uiGridObject.UiPackageItem;
                 item.PickOnGrid(grid);

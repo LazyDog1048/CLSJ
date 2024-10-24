@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
-  m_Name: Revolver
-  m_EditorClassIdentifier: 
-  Name: Revolver
-  icon: {fileID: -1287446274303986919, guid: b41eaf3b04cb2834098c88cb233f2a2f, type: 3}
-  prefab: {fileID: 1097658583501273490, guid: 9c5108a0f4d92d543b7be007418fe3f7, type: 3}
+  m_Name: Hand
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: Hand
+  icon: {fileID: -8482871585627513185, guid: 661213505b3a608408b8576ad3c27615, type: 3}
+  prefab: {fileID: 1726577015640154295, guid: 6c50ec413b041fc4493c17d6a48596e5, type: 3}
   shapeData:
     size: {x: 3, y: 2}
     points:
@@ -31,20 +31,20 @@ MonoBehaviour:
   weight: 0
   description: 
   Damage: 0
-  shotType: 1
-  shotMode: 1
-  shotDelay: 0.2
+  shotType: 0
+  shotMode: 0
+  shotDelay: 1
   maxShotShake: 20
-  minShotShake: 10
-  shotStability: 10
-  shotCalibration: 20
-  reloadTime: 3
-  maxAmmo: 100
+  minShotShake: 2
+  shotStability: 5
+  shotCalibration: 3
+  reloadTime: 2
+  maxAmmo: 20
   penetrateNum: 1
-  bulletSpeed: 40
+  bulletSpeed: 100
   bulletStayTime: 4
-  bulletData: {fileID: 11400000, guid: f1c8751f77c67eb4da5e50f26d893462, type: 2}
+  bulletData: {fileID: 11400000, guid: 772952fe1cb31a344b4f608b9bde5487, type: 2}
   shotLength: 0.8
-  shotFx: {fileID: 0}
-  smokeFx: {fileID: 0}
+  shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
+  smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: b86b86015e0e28c4aa89845ba45ad33e, type: 2}

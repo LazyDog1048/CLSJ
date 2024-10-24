@@ -159,4 +159,18 @@ namespace data
             
         }
     }
+    
+    [Serializable]
+    public class Bullet_Data:BaseSaveData
+    {
+        public Bullet_Data(string name) : base(name)
+        {
+            
+        }
+        
+        public Bullet_Data(PackageItemSoData soData) : base(soData.Name)
+        {
+            
+        }
+    }
 }

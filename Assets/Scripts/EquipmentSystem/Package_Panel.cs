@@ -88,7 +88,7 @@ namespace GridSystem
             // {
             //     playerEquipmentSlot.SavePlayerEquipmentSlotData();
             // }
-            PlayerController.Instance.playerEquipment.UpdateEquipment();
+            // PlayerController.Instance.playerEquipment.UpdateEquipment();
             boxUiGridSystem.ClearItem();
             playerPackageUiGridSystem.ClearItem();
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
@@ -206,48 +206,80 @@ namespace GridSystem
     public class ItemFunctionPanel:BasePanel
     {
         public UiPackageItem item;
-        protected Button Weapon_1;
-        protected Button Weapon_2;
-
-        protected Vector3 offset = new Vector3(79,0,0);
-        protected bool isShow;
+        protected Button equipBtn;
+        protected Button unEquipBtn;
+        protected Button useBtn;
+        public static bool isActive;
         public ItemFunctionPanel(Transform trans) : base(trans)
         {
-            isShow = false;
-            Weapon_1 = trans.Find("Weapon_1").GetComponent<Button>();
-            Weapon_2 = trans.Find("Weapon_2").GetComponent<Button>();
+            equipBtn = trans.Find("EquipBtn").GetComponent<Button>();
+            unEquipBtn = trans.Find("UnEquipBtn").GetComponent<Button>();
+            useBtn = trans.Find("UseBtn").GetComponent<Button>();
             
-            Weapon_1.onClick.AddListener(EquipWeapon_1);
-            Weapon_2.onClick.AddListener(EquipWeapon_2);
+            
+            equipBtn.onClick.AddListener(EquipWeapon);
+            unEquipBtn.onClick.AddListener(UnEquipWeapon);
         }
 
         public void EnterItemPanel()
         {
-            isShow = true;
+            Vector3 pos = GetMousePos.GetMousePositionWithZ() + new Vector3(37/2f/13.33f,0,0);
+            pos.z = 0;
+            transform.position = pos;
             item = UiPackageItem.cursorUiPackageItem;
+            equipBtn.gameObject.SetActive(false);
+            unEquipBtn.gameObject.SetActive(false);
+            useBtn.gameObject.SetActive(false);
+            isActive = false;
+            if (item.packageItemData is WeaponData)
+            {
+                isActive = true;
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                if (localPlayerDataThing.weapon_1.Name.Equals(item.packageItemData.Name))
+                {
+                    unEquipBtn.gameObject.SetActive(true);
+                }
+                else
+                {
+                    equipBtn.gameObject.SetActive(true);
+                }
+            }
+            else if (item.packageItemData is Consumable_Data)
+            {
+                isActive = true;
+                useBtn.gameObject.SetActive(true);
+            }
         }
 
-        public void EquipWeapon_1()
+        public void EquipWeapon()
         {
             LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
             localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
             LocalPlayerDataThing.Save();
+            PlayerController.Instance.playerEquipment.UpdateEquipment();
         }
-        public void EquipWeapon_2()
+        public void UnEquipWeapon()
         {
             LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
-            localPlayerDataThing.weapon_2 = item.packageItemData as WeaponData;
+            localPlayerDataThing.weapon_1 = new WeaponData("Hand");
             LocalPlayerDataThing.Save();
+            PlayerController.Instance.playerEquipment.UpdateEquipment();
         }
         
-        public void UnpackItem()
+        public void UseItem()
         {
-            if(item.Count <= 1)
-                return;
-            int halfCount = item.Count / 2;
-            item.Count -= halfCount;
-            SceneBox.Instance.AddPreview(item.packageItemSoData.Name,halfCount);
+            // item.UseItem();
         }
+        
+        public void ExitItemPanel()
+        {
+            isActive = false;
+            item = null;
+            equipBtn.gameObject.SetActive(false);
+            unEquipBtn.gameObject.SetActive(false);
+            useBtn.gameObject.SetActive(false);
+        }
+ 
         
     }
     
@@ -258,7 +290,7 @@ namespace GridSystem
         private ItemFunctionPanel itemFunctionPanel;
 
         private bool isRightClick;
-        protected Vector3 offset = new Vector3(79,0,0);
+        protected float offset = 149;
         private UiPackageItem item;
         public ItemDetailPanel(Transform trans) : base(trans)
         {
@@ -270,10 +302,11 @@ namespace GridSystem
         public virtual void EnterItemPanel(UiPackageItem item)
         {
             this.item = item;
-            Vector3 itemSize = item.rectTransform.sizeDelta;
-            transform.position = item.transform.position + new Vector3((itemSize.x+offset.x)/2/13.33f,0,0);
             item.SetLastIndex();
+            Vector3 itemSize = item.rectTransform.sizeDelta;
             transform.SetParent(item.rectTransform);
+            // rectTransform.anchoredPosition = new Vector2((itemSize.x + offset)/2-1, 0);
+            transform.position = item.transform.position + new Vector3((itemSize.x+offset)/2/13.33f,0,0);
             isRightClick = false;
             SwitchState();
         }
@@ -318,6 +351,7 @@ namespace GridSystem
         public void ExitItemPanel()
         {
             item = null;
+            itemFunctionPanel.ExitItemPanel();
             transform.SetParent(Package_Panel.Instance.transform);
             transform.position = new Vector3(-1000,-1000,0);
         }

@@ -30,7 +30,7 @@ namespace GridSystem
             }
         }
         
-        
+        private PackageUiGridSystem currentGridSystem;
         public string Name => packageItemSoData.Name;
         public PackageItemSoData packageItemSoData { get; private set; }
         public PackageItemData packageItemData { get;private set; }
@@ -52,6 +52,8 @@ namespace GridSystem
         
         private bool isRotated = true;
 
+        private RectTransform countParent;
+        private Vector3 countOriPos;
         public int Count
         {
             get => packageItemData.count;
@@ -74,7 +76,8 @@ namespace GridSystem
         {
             bg = transform.Find("Bg").GetComponent<Image>();
             icon = transform.Find("Icon").GetComponent<Image>();
-            countText = transform.Find("Count").Find("Text").GetComponent<TextMeshProUGUI>();
+            countParent = transform.Find("Count") as RectTransform;
+            countText = countParent.Find("Text").GetComponent<TextMeshProUGUI>();
             cells = new List<GameObject>();
             cellPanel = transform.Find("CellPanel");
             packageItemSoData = gridObjectSo as PackageItemSoData;
@@ -99,6 +102,7 @@ namespace GridSystem
         
         public void InitItem(PackageUiGridSystem gridSystem,PackageItemData packageItemData)
         {
+            currentGridSystem = gridSystem;
             this.packageItemData = packageItemData;
             gameObject.name = packageItemData.Name;
             packageItemSoData = ResourcesDataManager.GetPackageItemSoData(packageItemData.Name);
@@ -116,8 +120,8 @@ namespace GridSystem
                 uiGridObject.SetGridItem(this); 
             }
             bg.gameObject.SetActive(true);
-            
             Count = packageItemData.count;
+            FindRightDownCell();
         }
         
         public void InitItem(PlayerEquipmentSlot slot,PackageItemSoData soData)
@@ -127,7 +131,7 @@ namespace GridSystem
             gameObject.name = packageItemData.Name;
             packageItemSoData = ResourcesDataManager.GetPackageItemSoData(soData.Name);
             BaseInitItem(soData);
-            
+            FindRightDownCell();
             Count = packageItemData.count;
         }
 
@@ -144,6 +148,7 @@ namespace GridSystem
             icon.rectTransform.sizeDelta = sizeDelta;
             icon.sprite = packageItemSoData.icon;
             icon.SetNativeSize();
+            countOriPos = countParent.localPosition;
             //设置cell的位置
             foreach (var shapePoint in packageItemSoData.shapeData.points)
             {
@@ -154,6 +159,7 @@ namespace GridSystem
                 cellOri.sizeDelta = Vector2.one * StaticValue.pixelsPerUnit;
                 rt.anchoredPosition = new Vector2(shapePoint.x,-shapePoint.y) * StaticValue.pixelsPerUnit + (cellOffset * StaticValue.pixelsPerUnit);
             }
+            
         }
         
         private void BaseInitItem(PackageItemSoData soData)
@@ -168,6 +174,7 @@ namespace GridSystem
             icon.rectTransform.sizeDelta = sizeDelta;
             icon.sprite = packageItemSoData.icon;
             icon.SetNativeSize();
+            countOriPos = countParent.localPosition;
             //设置cell的位置
             foreach (var shapePoint in packageItemSoData.shapeData.points)
             {
@@ -178,6 +185,8 @@ namespace GridSystem
                 rt.anchoredPosition = new Vector2(shapePoint.x,-shapePoint.y) * StaticValue.pixelsPerUnit + (cellOffset * StaticValue.pixelsPerUnit);
             }
         }
+
+
         public void UpdatePosition()
         {
             var mousePos = GetMousePos.GetMousePosition();
@@ -186,7 +195,7 @@ namespace GridSystem
 
         public bool CheckAddToItem(UiGrid<UiGridObject> grid)
         {
-            if(packageItemSoData.ItemType != PackageItemType.Consumable)
+            if(packageItemSoData.ItemType != PackageItemType.Bullet)
             {
                 return false;
             }
@@ -228,6 +237,8 @@ namespace GridSystem
             state = UiPackageItemState.Disable;
             if (!isRotated)
             {
+                PackageItemPreview.Instance.transform.DORotate(new Vector3(0, 0, 90), StaticValue.BtnAnimTime);
+                PackageItemPreview.Instance.RotaBg(true);
                 rectTransform.DORotate(new Vector3(0,0,90),StaticValue.BtnAnimTime).onComplete += () =>
                 {
                     state = UiPackageItemState.None;
@@ -242,13 +253,31 @@ namespace GridSystem
                     state = UiPackageItemState.None;
                     UpdatePosition();
                 };
+                PackageItemPreview.Instance.RotaBg(false);
                 isRotated = false;
             }
+            FindRightDownCell();
         }
 
+        public void FindRightDownCell()
+        {
+            Vector3 pos = cells[^1].transform.position;
+            if (isRotated)
+            {
+                pos = pos.Rota2DPoint(transform.position, -90);
+                countParent.localRotation = Quaternion.Euler(0,0,-90);    
+                countParent.anchoredPosition = new Vector2(-18f,7.5f);
+            }
+            else
+            {
+                countParent.localRotation = Quaternion.Euler(0,0,0);
+                countParent.anchoredPosition = new Vector2(-7.5f,4f);
+            }
+        }
         
         public void PutOnGrid(PackageUiGridSystem gridSystem)
         {
+            currentGridSystem = gridSystem;
             transform.SetParent(gridSystem.itemParent);
             state = UiPackageItemState.Settle;
             // List<Vector2Int> gridPos = new List<Vector2Int>();
@@ -304,7 +333,7 @@ namespace GridSystem
         public void OnPointerEnter(PointerEventData eventData)
         {
             InDetailPanel = true;
-            if(PackageItemPreview.Instance.currentUiPackageItem != null)
+            if(currentGridSystem is not PlayerPackageUiGridSystem || PackageItemPreview.Instance.currentUiPackageItem != null)
                 return;
             cursorUiPackageItem = this;
             Package_Panel.Instance.itemDetailPanel.EnterItemPanel(this);

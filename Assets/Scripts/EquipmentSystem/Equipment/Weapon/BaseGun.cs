@@ -46,12 +46,8 @@ namespace EquipmentSystem
         private float calibrateTime = 0.1f;
 
         // private GunAnimatorController gunAnimatorController;
-        private GunObject _gunObject;
-        public GunState CurState
-        {
-            get => _gunObject.CurState;
-            set => _gunObject.CurState = value;
-        }
+        protected GunObject gunObject;
+    
         // private int _currentAmmo;
         public int currentAmmo
         {
@@ -78,12 +74,12 @@ namespace EquipmentSystem
         public BaseGun(PlayerController playerController,GunObject gunObj,Transform shotCenter,GunData gunData,WeaponData weaponData):base(playerController)
         {
             this.WeaponData = weaponData;
-            _gunObject = gunObj;
+            gunObject = gunObj;
             this.shotCenter = shotCenter;
             this.playerController = playerController;
             this.gunData = gunData;
             
-            _gunObject.ReloadGun(gunData);
+            gunObject.ReloadGun(gunData);
             gunParameter = new GunParameter(this.gunData);
             // currentShotShake = basicShotShake;
         }
@@ -129,18 +125,17 @@ namespace EquipmentSystem
         }
         public virtual void Shot(BulletData bulletData) 
         {
-            CurState = GunState.Shot;
+            Debug.Log(bulletData.Name);
             var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
             var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength);
-            var smokePoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength-0.2f);
+
             var afterDir = dir.Rota2DAxis(Random.Range(-range, range));
             Bullet baseBullet = Load<Bullet>(bulletData);
 
-            FxPlayer.PlayFx(gunData.shotFx, shotPoint).Rotate(GetAngle.Angle(afterDir));
-            FxPlayer.PlayFx(gunData.smokeFx, smokePoint).Rotate(GetAngle.Angle(afterDir));
+            gunObject.GunShot(shotCenter.position,afterDir);
             baseBullet.BulletPrepare(shotPoint,afterDir,this);
             
-            CameraShake.Instance.ShakeCamera(0.1f,0.1f);
+            
             currentShotShake += shotStability;
             if(currentShotShake > maxShotShake)
                 currentShotShake = maxShotShake;
@@ -164,8 +159,8 @@ namespace EquipmentSystem
         
         public static T Load<T>(BulletData data) where T:Bullet
         {
-            string path = $"Prefab/Item/{data.name}";
-            return PoolManager.Instance.PopObj<T>(data.name,path);
+            string path = $"Prefab/Bullet/{data.Name}";
+            return PoolManager.Instance.PopObj<T>(data.Name,path);
         }
 
        

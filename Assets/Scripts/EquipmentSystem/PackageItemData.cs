@@ -46,6 +46,8 @@ namespace EquipmentSystem
                     return new AccessoryData(soData);
                 case PackageItemType.Consumable:
                     return new Consumable_Data(soData);
+                case PackageItemType.Bullet:
+                    return new Bullet_Data(soData);
                 case PackageItemType.Package:
                     return new PackageData(soData);
                 default:

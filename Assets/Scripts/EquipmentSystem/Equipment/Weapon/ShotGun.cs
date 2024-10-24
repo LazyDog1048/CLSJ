@@ -23,6 +23,8 @@ namespace EquipmentSystem
             // var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
             var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, 1);
             var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
+            
+            gunObject.GunShot(shotCenter.position,dir);
             for (int i = 0; i < bulletNum; i++)
             {
                 playerController.DelayExecute(Random.Range(0,delay), () =>

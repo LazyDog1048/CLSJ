@@ -15,6 +15,7 @@ namespace data
         Shield,
         Accessory,
         Consumable,
+        Bullet,
         Package,
         Other
     }

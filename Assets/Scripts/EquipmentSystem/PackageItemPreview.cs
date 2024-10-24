@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using EquipmentSystem;
+using game;
 using other;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -79,10 +81,15 @@ namespace GridSystem
         }
         public void ClearItem()
         {
+            followBg.transform.DORotate(new Vector3(0, 0, 0),0);
             currentUiPackageItem = null;
             followBg.gameObject.SetActive(false);
         }
-        
+
+        public void RotaBg(bool isRota)
+        {
+            followBg.transform.DORotate(new Vector3(0, 0, isRota?90:0),StaticValue.BtnAnimTime);
+        }
         public void ItemUpdatePosition()
         {
             if(currentUiPackageItem != null)

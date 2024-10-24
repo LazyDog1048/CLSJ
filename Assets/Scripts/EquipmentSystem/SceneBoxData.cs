@@ -34,7 +34,7 @@ namespace EquipmentSystem
         {
             foreach(var item in boxItemList)
             {
-                if (item.packageItemData.Name == itemName && item.packageItemSoData.ItemType == PackageItemType.Consumable)
+                if (item.packageItemData.Name == itemName && item.packageItemSoData.ItemType == PackageItemType.Bullet)
                 {
                     item.Count += count;
                     return;
@@ -62,14 +62,16 @@ namespace EquipmentSystem
         
         public void TestBox()
         {
-            AddBox("ShotGun");
-            AddBox("Cannon");
-            AddBox("Revolver");
-            AddBox("M16");
-            AddBox("Uzi");
-            AddBox("AmmoL",100);
-            AddBox("Revolver_Bullet",100);
-            
+            // AddBox("ShotGun");
+            // AddBox("Cannon");
+            // AddBox("Revolver");
+            // AddBox("M16");
+            // AddBox("Uzi");
+            AddBox("Herb");
+            AddBox("AmmoL",300);
+            AddBox("AmmoM",300);
+            AddBox("AmmoS",300);
+            AddBox("AmmoShotGun",300);
         }
     }
     

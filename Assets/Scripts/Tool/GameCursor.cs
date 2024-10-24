@@ -33,33 +33,33 @@ namespace other
         private void Update()
         {
             transform.position = GetMousePos.GetMousePosition();
-            float lineLength = Vector3.Distance(playerController.shotCenter.position, transform.position);
            
-            AimingChange(playerGun.range,lineLength);
+            AimingChange(playerGun.range);
         }
 
-        public void AimingChange(float angleA,float lengthB)
+        public void AimingChange(float angleA)
         {
-            float angleRadians = angleA * Mathf.Deg2Rad;
-            float lengthC = lengthB / Mathf.Cos(angleRadians);
-            float lengthA = lengthC * Mathf.Sin(angleRadians);
-            
+            // float lengthB = Vector3.Distance(playerController.shotCenter.position, transform.position);
+            // float angleRadians = angleA * Mathf.Deg2Rad;
+            // float lengthC = lengthB / Mathf.Cos(angleRadians);
+            // float lengthA = lengthC * Mathf.Sin(angleRadians);
+            float lengthA = angleA / 10f;
             up.transform.localPosition =  Vector3.up * lengthA;
             down.transform.localPosition =  Vector3.down * lengthA;
             left.transform.localPosition = Vector3.left * lengthA;      
             right.transform.localPosition = Vector3.right * lengthA;
         }
         
-        public void RenderTriangle(float angleA,float lengthB)
-        {
-            float angleRadians = angleA * Mathf.Deg2Rad;
-            float lengthC = lengthB / Mathf.Cos(angleRadians);
-            float lengthA = lengthC * Mathf.Sin(angleRadians);
-
-            Debug.DrawRay(playerController.shotCenter.position,Vector3.right * lengthB,Color.green);
-            Debug.DrawRay(playerController.shotCenter.position,Vector3.right.Rota2DAxis(angleA) * lengthC,Color.red);
-            Debug.DrawRay(transform.position,Vector3.up * lengthA,Color.blue);
-        }
+        // public void RenderTriangle(float angleA,float lengthB)
+        // {
+        //     float angleRadians = angleA * Mathf.Deg2Rad;
+        //     float lengthC = lengthB / Mathf.Cos(angleRadians);
+        //     float lengthA = lengthC * Mathf.Sin(angleRadians);
+        //
+        //     Debug.DrawRay(playerController.shotCenter.position,Vector3.right * lengthB,Color.green);
+        //     Debug.DrawRay(playerController.shotCenter.position,Vector3.right.Rota2DAxis(angleA) * lengthC,Color.red);
+        //     Debug.DrawRay(transform.position,Vector3.up * lengthA,Color.blue);
+        // }
         
     }
 

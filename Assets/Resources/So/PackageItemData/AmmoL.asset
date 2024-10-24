@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
+  m_Script: {fileID: 11500000, guid: 34f6b2c31a9212146bb22edda51719dc, type: 3}
   m_Name: AmmoL
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: AmmoL
@@ -23,8 +23,10 @@ MonoBehaviour:
     - {x: 1, y: 0}
     - {x: 1, y: 1}
     keeper: 01010101
-  ItemType: 9
+  ItemType: 10
   quality: 0
   price: 0
   weight: 0
   description: 
+  speed: 0
+  stayTime: 5

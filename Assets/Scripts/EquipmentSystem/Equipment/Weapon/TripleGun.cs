@@ -24,7 +24,7 @@ namespace EquipmentSystem
             {
                 if(currentAmmo<=0)
                     return;
-                CurState = GunState.Idle;
+                
                 base.Shot(bulletData);
             });
         }

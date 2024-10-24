@@ -18,6 +18,7 @@ namespace EquipmentSystem
         public List<ShieldData> shieldDataList;
         public List<AccessoryData> accessoryDataList;
         public List<Consumable_Data> consumableDataList;
+        public List<Bullet_Data> bulletDataList;
         public List<PackageData> packageDataList;
         
         
@@ -32,6 +33,7 @@ namespace EquipmentSystem
             shieldDataList = new List<ShieldData>();
             accessoryDataList = new List<AccessoryData>();
             consumableDataList = new List<Consumable_Data>();
+            bulletDataList = new List<Bullet_Data>();
             packageDataList = new List<PackageData>();
         }
 
@@ -82,6 +84,11 @@ namespace EquipmentSystem
                 UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
+            foreach (var item in bulletDataList)
+            {
+                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                uiPackageItem.InitItem(playerPackageUiGridSystem,item);
+            }
             foreach (var item in packageDataList)
             {
                 UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
@@ -124,6 +131,9 @@ namespace EquipmentSystem
                 case PackageItemType.Consumable:
                     consumableDataList.Add(uiPackageItem.packageItemData as Consumable_Data);
                     break;
+                case PackageItemType.Bullet:
+                    bulletDataList.Add(uiPackageItem.packageItemData as Bullet_Data);
+                    break;
                 case PackageItemType.Package:
                     packageDataList.Add(uiPackageItem.packageItemData as PackageData);
                     break;
@@ -144,6 +154,7 @@ namespace EquipmentSystem
             shieldDataList.Clear();
             accessoryDataList.Clear();
             consumableDataList.Clear();
+            bulletDataList.Clear();
             packageDataList.Clear();
             // localPackageDataList.Clear();
         }

@@ -36,7 +36,8 @@ namespace Player
         #endregion
 
         public bool firstGun { get;private set; }
-        public BaseGun currentWeapon => firstGun?weapon_1:weapon_2;
+        // public BaseGun currentWeapon => firstGun?weapon_1:weapon_2;
+        public BaseGun currentWeapon => weapon_1;
         public BaseGun weapon_1 { get;private set; }
         public BaseGun weapon_2 { get;private set; }
         public MeleeWeapon meleeWeapon{ get;private set; }
@@ -58,12 +59,12 @@ namespace Player
         {
             this.playerController = playerController;
             weapon_1 = PlayerController.Instance.ChangeGun_1();
-            weapon_2 = PlayerController.Instance.ChangeGun_2();
-            
-            if(weapon_1 != null && weapon_2 == null)
-                firstGun = true;
-            if(weapon_1 == null && weapon_2 != null)
-                firstGun = false;
+            // weapon_2 = PlayerController.Instance.ChangeGun_2();
+            //
+            // if(weapon_1 != null && weapon_2 == null)
+            //     firstGun = true;
+            // if(weapon_1 == null && weapon_2 != null)
+            //     firstGun = false;
             
                 
             meleeWeapon = new MeleeWeapon(playerController);
@@ -86,15 +87,23 @@ namespace Player
             });
         }
 
+        public void UpdateWeapon_1()
+        {
+            weapon_1 = PlayerController.Instance.ChangeGun_1();
+            playerController.DelayExecute(0.1f, () =>
+            {
+                PlayerUiPanel.Instance.SwitchGun(currentWeapon);
+            });
+        }
         public void UpdateEquipment()
         {
             weapon_1 = PlayerController.Instance.ChangeGun_1();
-            weapon_2 = PlayerController.Instance.ChangeGun_2();
-            
-            if(weapon_1 != null && weapon_2 == null)
-                firstGun = true;
-            if(weapon_1 == null && weapon_2 != null)
-                firstGun = false;
+            // weapon_2 = PlayerController.Instance.ChangeGun_2();
+            //
+            // if(weapon_1 != null && weapon_2 == null)
+            //     firstGun = true;
+            // if(weapon_1 == null && weapon_2 != null)
+            //     firstGun = false;
             
             meleeWeapon.UpdateEquipment();
             coat.UpdateEquipment();

@@ -1,6 +1,8 @@
 using EquipmentSystem;
 using game;
 using GridSystem;
+using item;
+using other;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,6 +12,7 @@ namespace Player
     {
         [SerializeField]
         private Light2D fireLight;
+        private GunData gunData;
         public GunState CurState
         {
             get => gunAnimatorController.CurState;
@@ -25,11 +28,22 @@ namespace Player
 
         public void ReloadGun(GunData data)
         {
+            gunData = data;
             gridObjectSo = data;
             gunAnimatorController.ReloadAnimator(data.gunAnimator);
             CurState = GunState.Idle;
         }
-     
+
+        public void GunShot(Vector3 shotCenter,Vector2 dir)
+        {
+            var shotPoint = shotCenter.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength);
+            var smokePoint = shotCenter.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength-0.2f);
+            
+            FxPlayer.PlayFx(gunData.shotFx, shotPoint).Rotate(GetAngle.Angle(dir));
+            FxPlayer.PlayFx(gunData.smokeFx, smokePoint).Rotate(GetAngle.Angle(dir));
+            CameraShake.Instance.ShakeCamera(0.1f,0.1f);
+            CurState = GunState.Shot;
+        }
         public void AnimatorStateEnter()
         {
             switch (CurState)
