@@ -125,7 +125,6 @@ namespace EquipmentSystem
         }
         public virtual void Shot(BulletData bulletData) 
         {
-            Debug.Log(bulletData.Name);
             var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
             var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength);
 

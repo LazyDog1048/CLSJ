@@ -49,11 +49,7 @@ namespace GridSystem
             playerPackageUiGridSystem.Init();
             boxUiGridSystem.Init();
             
-            closeBtn.onClick.AddListener(() =>
-            {
-                Debug.Log("close");
-                Hide();
-            });
+            closeBtn.onClick.AddListener(Hide);
         }
 
         private void LoadPlayerPackage()
@@ -79,7 +75,6 @@ namespace GridSystem
 
         protected override void OnHideAction()
         {
-            Debug.Log("OnHideAction");
             base.OnHideAction();
             if(playerPackageUiGridSystem == null)
                 return;

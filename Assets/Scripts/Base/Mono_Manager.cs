@@ -68,7 +68,11 @@ namespace game
 // #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.P))
             {
-                SceneBox.Instance.TestBox();
+                SceneBox.Instance.GetAmmo();
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                SceneBox.Instance.GetWeapon();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {

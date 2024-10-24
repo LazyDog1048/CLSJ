@@ -27,21 +27,21 @@ namespace EquipmentSystem
         public int GetBulletFormPackage(string bulletName,int NeedAmmo)
         {
             int bulletNum = 0;
-            for(int i=ConsumableDatas.Count - 1;i>=0;i--)
+            for(int i=BulletDatas.Count - 1;i>=0;i--)
             {
-                if (ConsumableDatas[i].Name == bulletName)
+                if (BulletDatas[i].Name == bulletName)
                 {
-                    int count = ConsumableDatas[i].count;
+                    int count = BulletDatas[i].count;
                     int needCount = NeedAmmo - bulletNum;
                     if (count > needCount)
                     {
-                        ConsumableDatas[i].count -= needCount;
+                        BulletDatas[i].count -= needCount;
                         bulletNum += needCount;
                     }
                     else
                     {
                         bulletNum += count;
-                        ConsumableDatas.RemoveAt(i);
+                        BulletDatas.RemoveAt(i);
                     }
                 }
                 

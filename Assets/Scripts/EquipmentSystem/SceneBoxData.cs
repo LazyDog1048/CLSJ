@@ -60,18 +60,21 @@ namespace EquipmentSystem
             Package_Panel.Instance.AddPreviewItem(packageItemData);
         }
         
-        public void TestBox()
+        public void GetAmmo()
         {
-            // AddBox("ShotGun");
-            // AddBox("Cannon");
-            // AddBox("Revolver");
-            // AddBox("M16");
-            // AddBox("Uzi");
-            AddBox("Herb");
             AddBox("AmmoL",300);
             AddBox("AmmoM",300);
             AddBox("AmmoS",300);
             AddBox("AmmoShotGun",300);
+        }
+        
+        public void GetWeapon()
+        {
+            AddBox("ShotGun");
+            AddBox("Cannon");
+            AddBox("Revolver");
+            AddBox("M16");
+            AddBox("Uzi");
         }
     }
     
