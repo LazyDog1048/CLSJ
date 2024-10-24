@@ -31,16 +31,7 @@ namespace game
         private float aimInnerAngle = 20;
         [SerializeField]
         private float aimOuterAngle = 25;
-        
-        [SerializeField]
-        public float flashLightInner = 10;
-        [SerializeField]
-        public float flashLightOuter = 11;
-        [SerializeField]
-        public float innerAngle = 80;
-        [SerializeField]
-        public float outerAngle = 90;
-        
+
         [Header("Player Lantern")]
         [SerializeField]
         public float lanternLightInner = 2.5f;
