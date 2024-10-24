@@ -25,7 +25,7 @@ namespace Player
         
         public bool isAiming => isPressRightMouse;
 
-        public float maxAimingShake => playerController.playerEquipment.currentWeapon.minShotShake;
+        public float minAimingShake => playerController.playerEquipment.minCalibration;
         public float aimingShake { get; set; }
         public float aimingTime = 0.5f;
         
@@ -55,7 +55,7 @@ namespace Player
                 if(aimingShakeTween!=null)
                     aimingShakeTween.Kill();
                 
-                aimingShakeTween = DOTween.To(() => aimingShake, x => aimingShake = x, maxAimingShake, aimingTime).SetEase(Ease.Linear);
+                aimingShakeTween = DOTween.To(() => aimingShake, x => aimingShake = x, minAimingShake, aimingTime).SetEase(Ease.Linear);
                 
                 flashlight.AimMode();
             }

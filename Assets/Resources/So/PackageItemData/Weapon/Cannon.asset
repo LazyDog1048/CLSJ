@@ -41,6 +41,7 @@ MonoBehaviour:
   minShotShake: 10
   shotStability: 4
   shotCalibration: 10
+  minCalibration: 5
   reloadTime: 1
   maxAmmo: 10
   penetrateNum: 1

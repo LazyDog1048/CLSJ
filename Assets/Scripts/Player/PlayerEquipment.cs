@@ -16,6 +16,8 @@ namespace Player
         
         public float maxShotShake => currentWeapon.gunParameter.maxShotShake.FinalValue;
         public float minShotShake => currentWeapon.gunParameter.minShotShake.FinalValue;
+        
+        public float minCalibration => minShotShake - currentWeapon.gunParameter.minCalibration;
         public float shotStability => currentWeapon.gunParameter.shotStability.FinalValue + cap.shotStability;
         public float shotCalibration => currentWeapon.gunParameter.shotCalibration.FinalValue + cap.shotCalibration;
         public int maxAmmo => currentWeapon.gunParameter.maxAmmo.FinalValue;
@@ -90,6 +92,15 @@ namespace Player
         public void UpdateWeapon_1()
         {
             weapon_1 = PlayerController.Instance.ChangeGun_1();
+            playerController.DelayExecute(0.1f, () =>
+            {
+                PlayerUiPanel.Instance.SwitchGun(currentWeapon);
+            });
+        }
+        
+        public void UnEquipWeapon()
+        {
+            weapon_1 = null;
             playerController.DelayExecute(0.1f, () =>
             {
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);

@@ -251,7 +251,7 @@ namespace GridSystem
             LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
             localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
             LocalPlayerDataThing.Save();
-            PlayerController.Instance.playerEquipment.UpdateEquipment();
+            PlayerController.Instance.playerEquipment.UpdateWeapon_1();
         }
         public void UnEquipWeapon()
         {

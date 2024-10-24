@@ -16,7 +16,7 @@ namespace Player
         private Image _gunImage;
         private TextMeshProUGUI _gunText;
         private Image _reloadingImage;
-        
+        private Transform _gunBar;
         public static PlayerUiPanel Load()
         {
             return Create(UiObjRefrenceSO.Instance.PlayerUiPanel);
@@ -28,7 +28,7 @@ namespace Player
             _staminaImage = _staminaBar.Find("Image").GetComponent<Image>();
             _staminaText = _staminaBar.transform.Find("Text").GetComponent<TextMeshProUGUI>();
             
-            var _gunBar = trans.Find("GunBar");
+            _gunBar = trans.Find("GunBar");
             _gunImage = _gunBar.Find("Image").GetComponent<Image>();
             _gunText = _gunBar.transform.Find("Text").GetComponent<TextMeshProUGUI>();
             _reloadingImage = _gunBar.Find("ReloadingImage").GetComponent<Image>();
@@ -57,7 +57,13 @@ namespace Player
 
         public void SwitchGun(BaseGun gun)
         {
-            UpdateGunBar(gun.currentAmmo,gun.maxAmmo);
+            if(gun == null)
+                _gunBar.gameObject.SetActive(false);
+            else
+            {
+                _gunBar.gameObject.SetActive(true);
+                UpdateGunBar(gun.currentAmmo,gun.maxAmmo);
+            }
         }
     }
 }

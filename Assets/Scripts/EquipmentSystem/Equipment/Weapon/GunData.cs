@@ -30,8 +30,11 @@ namespace EquipmentSystem
         
         public float maxShotShake = 50;
         public float minShotShake = 10;
+        public float minCalibration = 5;
+        
         public float shotStability = 4;
         public float shotCalibration = 10;
+        
         
         public float reloadTime = 1.0f;
         public int maxAmmo = 10;
@@ -54,6 +57,7 @@ namespace EquipmentSystem
 
         public int penetrateNum;
         public float bulletStayTime;
+        public float minCalibration;
         
         public EventExtraFloat shotDelay{ get; set; }
         public EventExtraFloat bulletSpeed{ get; set; }
@@ -74,6 +78,7 @@ namespace EquipmentSystem
             Damage = data.Damage;
             shotType = data.shotType;
             shotMode = data.shotMode;
+            minCalibration = data.minCalibration;
             shotDelay = new EventExtraFloat(data.shotDelay);
             maxShotShake = new EventExtraFloat(data.maxShotShake);
             minShotShake = new EventExtraFloat(data.minShotShake);
