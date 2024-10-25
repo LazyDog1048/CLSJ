@@ -24,6 +24,7 @@ namespace Player
         public PlayerHand PlayerHand { get; set; }
         public PlayerEquipment playerEquipment { get; set; }
         public PlayerAttacker playerAttacker { get; set; }
+        public PlayerFlashlight playerFlashlight { get; set; }
         private BaseGun gun_1;
         private BaseGun gun_2;
 
@@ -61,6 +62,7 @@ namespace Player
             Instance = this;
             Head = transform.Find("Head");
             gun = transform.Find("Hand").Find("Gun").GetComponent<GunObject>();
+            playerFlashlight = GetComponentInChildren<PlayerFlashlight>();
             shotCenter = transform.Find("ShotCenter");
             gun.Init();
             playerParameter = new PlayerParameter(playerData);

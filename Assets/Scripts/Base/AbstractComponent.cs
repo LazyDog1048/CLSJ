@@ -10,4 +10,9 @@ public class AbstractComponent
     {
         this.mono = mono;
     }
+    
+    public virtual void Reset()
+    {
+                
+    }
 }

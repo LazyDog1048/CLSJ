@@ -18,7 +18,7 @@ namespace Enemy
         protected float patrolIdleTime = 2f;
         protected bool patrolLock = false;
         
-        
+        public bool SeenPlayer{ get;private set; }
         // protected Rigidbody2D rigidbody2D;
         public EnemySoData enemySoData;
         public EnemyParameter enemyParameter{ get; private set;}
@@ -74,7 +74,12 @@ namespace Enemy
                 return;
             if (enemyAttacker.CanAttack)
             {
+                SeenPlayer = true;
                 EnemyAttack();
+            }
+            else if (SeenPlayer)
+            {
+                CurState = EnemyState.WalkToPlayer;
             }
             else
             {
@@ -119,7 +124,7 @@ namespace Enemy
             
         }
 
-        protected void AttackTrigger()
+        protected virtual void AttackTrigger()
         {
             if (!transform.DisLongerThan(playerPos, 1f))
             {
@@ -131,6 +136,7 @@ namespace Enemy
         {
             
         }
+        
         public void HitObj(Bullet bullet)
         {
             enemyMove.AddForce(bullet.currentDir,knockBackTime);
@@ -165,6 +171,14 @@ namespace Enemy
                     gameObject.SetActive(false);
                     break;
             }
+        }
+
+        public override void OnPopObj()
+        {
+            base.OnPopObj();
+            SeenPlayer = false;
+            enemyAttacker.Reset();
+            enemyAnimator.Reset();
         }
     }
     

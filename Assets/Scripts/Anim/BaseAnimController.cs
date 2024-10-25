@@ -126,5 +126,10 @@ namespace game
             selfStateLock = false;
             AnimController.AnimatorStateComplete();
         }
+
+        public override void Reset()
+        {
+            selfStateLock = false;
+        }
     }
 }

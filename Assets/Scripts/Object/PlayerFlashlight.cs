@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EquipmentSystem;
 using other;
 using Player;
 using UnityEngine;
@@ -10,40 +11,25 @@ namespace game
     {
         private int rayCount = 10;
 
-        private float normalInnerLength = 10;
-        private float normalOuterLength = 11;
-        private float normalInnerAngle = 90;
-        private float normalOuterAngle = 80;
 
-        private float aimInnerLength = 20;
-        private float aimOuterLength = 22;
-        private float aimInnerAngle = 45;
-        private float aimOuterAngle = 40;
+        public FlashlightData currentFlashlightData;
+        public FlashlightData baseFlashlightData;
         
         private EdgeCollider2D edgeCollider2D;
         private Light2D light2D;
 
         public float curOuterAngle { get;private set; }
         public float curOuter{ get;private set; }
-
-
-        public void SetLight(float normalInnerLength,float normalOuterLength,float normalInnerAngle,float normalOuterAngle,float aimInnerLength,float aimOuterLength,float aimInnerAngle,float aimOuterAngle,int rayCount)
+        
+        
+        public void SetLight(FlashlightData flashlightData,int rayCount)
         {
+            this.rayCount = rayCount;
             light2D = GetComponent<Light2D>();
             edgeCollider2D = GetComponent<EdgeCollider2D>();
+            baseFlashlightData = flashlightData;
+            currentFlashlightData = flashlightData;
             
-            this.normalInnerLength = normalInnerLength;
-            this.normalOuterLength = normalOuterLength;
-            this.normalInnerAngle = normalInnerAngle;
-            this.normalOuterAngle = normalOuterAngle;
-            
-            this.aimInnerLength = aimInnerLength;
-            this.aimOuterLength = aimOuterLength;
-            this.aimInnerAngle = aimInnerAngle;
-            this.aimOuterAngle = aimOuterAngle;
-            
-            this.rayCount = rayCount;
-            GetPoints(normalInnerAngle,normalOuterLength);
             NormalMode();
         }
 
@@ -67,36 +53,46 @@ namespace game
             edgeCollider2D.SetPoints(pointList);
         }
 
+
+        public void SwitchGun(BaseGun gun)
+        {
+            if (gun == null)
+            {
+                currentFlashlightData = baseFlashlightData;
+            }
+            else
+            {
+                currentFlashlightData = gun.gunData.flashlightData;
+            }
+
+            NormalMode();
+        }
         public void AimMode()
         {
-            curOuter = aimOuterLength;
-            curOuterAngle = aimOuterAngle;
+            curOuter = currentFlashlightData.aimOuterLength;
+            curOuterAngle = currentFlashlightData.aimOuterAngle;
 
-
-
-            light2D.pointLightInnerAngle = aimInnerAngle;
-            light2D.pointLightOuterAngle = aimOuterAngle;
+            light2D.pointLightInnerAngle = currentFlashlightData.aimInnerAngle;
+            light2D.pointLightOuterAngle = currentFlashlightData.aimOuterAngle;
             
-            light2D.pointLightInnerRadius = aimInnerLength;
-            light2D.pointLightOuterRadius = aimOuterLength;
-            GetPoints(curOuterAngle,curOuter);
+            light2D.pointLightInnerRadius = currentFlashlightData.aimInnerLength;
+            light2D.pointLightOuterRadius = currentFlashlightData.aimOuterLength;
+            GetPoints(currentFlashlightData.aimOuterAngle,currentFlashlightData.aimOuterLength);
         }
         
         public void NormalMode()
         {
-            curOuter = normalOuterLength;
-            curOuterAngle = normalOuterAngle;
+            curOuter = currentFlashlightData.normalOuterLength;
+            curOuterAngle = currentFlashlightData.normalOuterAngle;
+
+            light2D.pointLightInnerAngle = currentFlashlightData.normalInnerAngle;
+            light2D.pointLightOuterAngle = currentFlashlightData.normalOuterAngle;
             
-            light2D.pointLightInnerAngle = normalInnerAngle;
-            light2D.pointLightOuterAngle = normalOuterAngle;
-            
-            light2D.pointLightInnerRadius = normalInnerLength;
-            light2D.pointLightOuterRadius = normalOuterLength;
-            GetPoints(curOuterAngle,curOuter);
-            
+            light2D.pointLightInnerRadius = currentFlashlightData.normalInnerLength;
+            light2D.pointLightOuterRadius = currentFlashlightData.normalOuterLength;
+            GetPoints(currentFlashlightData.normalOuterAngle,currentFlashlightData.normalOuterLength);
         }
 
-     
     }
     
 }

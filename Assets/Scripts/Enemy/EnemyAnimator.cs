@@ -8,6 +8,7 @@ namespace Enemy
     {
         Idle,
         PatrolIdle,
+        WaitIdle,
         Walk,
         PatrolWalk,
         WalkToPlayer,
@@ -35,6 +36,7 @@ namespace Enemy
             {
                 {EnemyState.Idle, AnimaHash.state_Idle},
                 {EnemyState.PatrolIdle, AnimaHash.state_Idle},
+                {EnemyState.WaitIdle, AnimaHash.state_Idle},
                 {EnemyState.Walk, AnimaHash.state_Walk},
                 {EnemyState.PatrolWalk, AnimaHash.state_Walk},
                 {EnemyState.WalkToPlayer, AnimaHash.state_Walk},

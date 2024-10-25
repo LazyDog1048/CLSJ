@@ -87,6 +87,7 @@ namespace Player
             playerController.DelayRealTimeExecute(0.1f, () =>
             {
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
+                playerController.playerFlashlight.SwitchGun(currentWeapon);
             });
         }
 
@@ -97,6 +98,7 @@ namespace Player
             {
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
+                playerController.playerFlashlight.SwitchGun(currentWeapon);
             });
         }
         
@@ -107,6 +109,7 @@ namespace Player
             {
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
+                playerController.playerFlashlight.SwitchGun(currentWeapon);
             });
         }
         public void UpdateEquipment()

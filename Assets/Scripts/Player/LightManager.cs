@@ -1,3 +1,4 @@
+using EquipmentSystem;
 using other;
 using Player;
 using UnityEngine;
@@ -15,22 +16,7 @@ namespace game
         [SerializeField]
         int rayCount = 10;
         [SerializeField]
-        private float normalInnerLength = 10;
-        [SerializeField]
-        private float normalOuterLength = 11;
-        [SerializeField]
-        private float normalInnerAngle = 40;
-        [SerializeField]
-        private float normalOuterAngle = 45;
-
-        [SerializeField]
-        private float aimInnerLength = 20;
-        [SerializeField]
-        private float aimOuterLength = 22;
-        [SerializeField]
-        private float aimInnerAngle = 20;
-        [SerializeField]
-        private float aimOuterAngle = 25;
+        private FlashlightData flashlightData;
 
         [Header("Player Lantern")]
         [SerializeField]
@@ -52,7 +38,7 @@ namespace game
             playerLantern = PlayerLantern.Instance;
             playerLightController = PlayerLightController.Instance;
             
-            playerFlashLight.SetLight(normalInnerLength,normalOuterLength,normalInnerAngle,normalOuterAngle,aimInnerLength,aimOuterLength,aimInnerAngle,aimOuterAngle,rayCount);
+            playerFlashLight.SetLight(flashlightData,rayCount);
             playerLantern.SetLight(lanternLightInner,lanternLightOuter);
             
         }

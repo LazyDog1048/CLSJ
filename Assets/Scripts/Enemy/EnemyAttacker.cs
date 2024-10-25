@@ -13,6 +13,7 @@ namespace plug
         public int maxHp;
         public int currentHp;
         public bool CanAttack => playerEnter && CheckWatchPlayer();
+
         private BaseEnemy _enemy;
         public EnemyAttacker(BaseEnemy enemy,EnemyParameter enemyParameter) : base(enemy)
         {
@@ -23,6 +24,12 @@ namespace plug
             maxHp = enemyParameter.Health;
             currentHp = maxHp;
 
+        }
+
+       
+        public override void Reset()
+        {
+            currentHp = maxHp;
         }
         
         public bool CheckWatchPlayer()
@@ -57,14 +64,6 @@ namespace plug
             });
         }
 
-        public void TakeDamage(Bullet bullet)
-        {
-            currentHp -= bullet.gun.Damage;
-            if (currentHp <= 0)
-            {
-                
-            }
-        }
     }
     
 }

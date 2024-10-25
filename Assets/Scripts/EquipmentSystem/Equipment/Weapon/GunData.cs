@@ -1,3 +1,4 @@
+using System;
 using buff;
 using data;
 using EquipmentSystem;
@@ -47,6 +48,9 @@ namespace EquipmentSystem
         public FxSoData shotFx;
         public FxSoData smokeFx;
         public RuntimeAnimatorController gunAnimator;
+
+        public FlashlightData flashlightData;
+
     }
     
     public class GunParameter
@@ -93,6 +97,26 @@ namespace EquipmentSystem
             penetrateNum = data.penetrateNum;
             bulletStayTime = data.bulletStayTime;
             bulletData = data.bulletData;
+            
+        }
+    }
+
+    
+    [Serializable]
+    public class FlashlightData 
+    {
+        public float normalInnerLength = 10;
+        public float normalOuterLength = 11;
+        public float normalInnerAngle = 40;
+        public float normalOuterAngle = 45;
+
+        public float aimInnerLength = 20;
+        public float aimOuterLength = 22;
+        public float aimInnerAngle = 20;
+        public float aimOuterAngle = 25;
+
+        public FlashlightData()
+        {
             
         }
     }
