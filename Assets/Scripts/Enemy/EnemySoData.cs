@@ -8,7 +8,7 @@ namespace Enemy
         public string Name;
         public float Speed;
         public int Health;
-        public float Damage;
+        public int Damage;
         public float FindRange = 10;
         public float AttackRange = 2;
 
@@ -21,7 +21,7 @@ namespace Enemy
         public string Name;
         public float Speed;
         public int Health;
-        public float Damage;
+        public int Damage;
         public float FindRange;
         public float AttackRange;
         public float AttackInterval;

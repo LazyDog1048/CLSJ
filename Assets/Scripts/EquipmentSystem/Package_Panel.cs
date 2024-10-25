@@ -34,6 +34,7 @@ namespace GridSystem
         
         public Package_Panel(Transform trans) : base(trans)
         {
+            PanelType = PanelType.PauseGame;
             // playerEquipmentSlots = trans.Find("EquipmentPanel").GetComponentsInChildren<PlayerEquipmentSlot>();
             uiItemOri = trans.Find("UiPackageItem").GetComponent<UiPackageItem>();
             playerPackageUiGridSystem = trans.Find("PackagePanel").GetComponentInChildren<PlayerPackageUiGridSystem>();

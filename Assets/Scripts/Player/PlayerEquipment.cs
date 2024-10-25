@@ -84,7 +84,7 @@ namespace Player
             consumable_3 = new Consumable(playerController,3);
             consumable_4 = new Consumable(playerController,4);
             
-            playerController.DelayExecute(0.1f, () =>
+            playerController.DelayRealTimeExecute(0.1f, () =>
             {
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
             });
@@ -93,7 +93,7 @@ namespace Player
         public void UpdateWeapon_1()
         {
             weapon_1 = PlayerController.Instance.ChangeGun_1();
-            playerController.DelayExecute(0.1f, () =>
+            playerController.DelayRealTimeExecute(0.1f, () =>
             {
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
@@ -103,7 +103,7 @@ namespace Player
         public void UnEquipWeapon()
         {
             weapon_1 = null;
-            playerController.DelayExecute(0.1f, () =>
+            playerController.DelayRealTimeExecute(0.1f, () =>
             {
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
@@ -134,7 +134,7 @@ namespace Player
             consumable_4.UpdateEquipment();
             
             
-            playerController.DelayExecute(0.1f, () =>
+            playerController.DelayRealTimeExecute(0.1f, () =>
             {
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
             });

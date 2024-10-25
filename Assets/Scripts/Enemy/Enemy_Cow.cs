@@ -34,10 +34,7 @@ namespace Enemy
                 if (CurState == EnemyState.Attack)
                 {
                     cowMove.DirMove(direction,dashSpeed);
-                    if (!transform.DisLongerThan(playerPos, 1f))
-                    {
-                        PlayerController.Instance.KnockBackPlayer(enemyPosition);
-                    }
+                    AttackTrigger();
                 }
             }
             else if (enemyAttacker.CanAttack)
@@ -56,6 +53,7 @@ namespace Enemy
             if (!isEnterAttack)
             {
                 direction = (playerPos - enemyPosition).normalized;
+                cowMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Alert;
                 isEnterAttack = true;
             }

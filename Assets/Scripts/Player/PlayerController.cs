@@ -15,7 +15,6 @@ namespace Player
         [SerializeField]
         private PlayerData playerData;
 
-        public BulletData BulletData;
         public PlayerParameter playerParameter { get; set; }
         
         public static PlayerController Instance;
@@ -24,11 +23,12 @@ namespace Player
         private PlayerStamina playerStamina { get; set; }
         public PlayerHand PlayerHand { get; set; }
         public PlayerEquipment playerEquipment { get; set; }
-        
+        public PlayerAttacker playerAttacker { get; set; }
         private BaseGun gun_1;
         private BaseGun gun_2;
 
         private GunObject gun;
+        public Transform Head { get; set; }
         public Transform shotCenter { get; set; }
         public float angle => PlayerHand.angle;
         
@@ -59,6 +59,7 @@ namespace Player
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
+            Head = transform.Find("Head");
             gun = transform.Find("Hand").Find("Gun").GetComponent<GunObject>();
             shotCenter = transform.Find("ShotCenter");
             gun.Init();
@@ -68,6 +69,7 @@ namespace Player
             playerStamina = new PlayerStamina(this);
             PlayerHand = new PlayerHand(this);
             playerEquipment = new PlayerEquipment(this);
+            playerAttacker = new PlayerAttacker(this,playerParameter);
             GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressTab,PressR,PressE,PressQ,PressF);
             GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
@@ -211,7 +213,14 @@ namespace Player
         
         private void PressE(InputAction.CallbackContext context)
         {   
+            if(context.phase != InputActionPhase.Started)
+                return;
+            var list = transform.position.FindCircleAllCollider<RoomDoor>(3,LayerMask.GetMask("SceneObj"),"RoomDoor");
             
+            if(list.Count <=0)
+                return;
+            list.SortByDis(transform.position);
+            list[0].TryOpenDoor();
            
         }
 
@@ -289,6 +298,16 @@ namespace Player
             // playerMove.MoveEnable(false);
             // playerStamina.StopRunConsumeStamina();
         }
+        
+        public void PlayerDead()
+        {
+            PlayerState = PlayerState.Dead;
+        }
+        
+        private void DeadComplete()
+        {
+            PlayerState = PlayerState.Dead;
+        }
         #region IAnimController
         public virtual void AnimatorStateEnter()
         {
@@ -296,7 +315,12 @@ namespace Player
         }
         public virtual void AnimatorStateComplete()
         {
-        
+            switch (PlayerState)
+            {
+                case PlayerState.Dead:
+                    DeadComplete();
+                    break;
+            }
         }
         #endregion
     }

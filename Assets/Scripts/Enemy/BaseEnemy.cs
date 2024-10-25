@@ -21,7 +21,7 @@ namespace Enemy
         
         // protected Rigidbody2D rigidbody2D;
         public EnemySoData enemySoData;
-        protected EnemyParameter enemyParameter;
+        public EnemyParameter enemyParameter{ get; private set;}
         protected EnemyMove enemyMove;
         protected EnemyAnimator enemyAnimator;
         protected EnemyAttacker enemyAttacker;
@@ -119,9 +119,12 @@ namespace Enemy
             
         }
 
-        private void AttackTrigger()
+        protected void AttackTrigger()
         {
-            
+            if (!transform.DisLongerThan(playerPos, 1f))
+            {
+                PlayerController.Instance.playerAttacker.TakeDamage(this);
+            }
         }
 
         private void CheckPlayer()

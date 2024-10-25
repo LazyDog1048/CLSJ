@@ -21,6 +21,7 @@ namespace game
             LayerPanel.Load();
             PlayerUiPanel.Load();
             Package_Panel.Load();
+            DoorPanel.Load();
         }
         
         public void Pause(bool pause)

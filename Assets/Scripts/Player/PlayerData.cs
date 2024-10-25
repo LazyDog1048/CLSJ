@@ -9,6 +9,7 @@ namespace Player
     [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
     public class PlayerData :ScriptableObject 
     {
+        public int health = 100;
         public float speed = 10;
         public int runRate = 30;
 
@@ -19,6 +20,8 @@ namespace Player
     
     public class PlayerParameter
     {
+        public int health;
+        
         public float speed;
         public int runRate;
         
@@ -29,6 +32,7 @@ namespace Player
         public Vector2 runStaminaConsume;
         public PlayerParameter(PlayerData data)
         {
+            health = data.health;
             speed = data.speed;
             runRate = data.runRate;
 
