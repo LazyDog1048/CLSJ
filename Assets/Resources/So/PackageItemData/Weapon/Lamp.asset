@@ -55,9 +55,9 @@ MonoBehaviour:
   flashlightData:
     normalInnerLength: 5
     normalOuterLength: 10
-    normalInnerAngle: 55
-    normalOuterAngle: 60
+    normalInnerAngle: 60
+    normalOuterAngle: 65
     aimInnerLength: 5
     aimOuterLength: 10
-    aimInnerAngle: 55
-    aimOuterAngle: 60
+    aimInnerAngle: 60
+    aimOuterAngle: 65

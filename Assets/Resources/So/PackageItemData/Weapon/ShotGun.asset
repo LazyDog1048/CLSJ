@@ -48,7 +48,7 @@ MonoBehaviour:
   minCalibration: 10
   shotStability: 20
   shotCalibration: 10
-  reloadTime: 3
+  reloadTime: 1.4
   maxAmmo: 2
   penetrateNum: 1
   bulletSpeed: 60
@@ -59,8 +59,8 @@ MonoBehaviour:
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: 3e1c61ff2b1612c4aad3bf36d2942bab, type: 2}
   flashlightData:
-    normalInnerLength: 3
-    normalOuterLength: 6
+    normalInnerLength: 4
+    normalOuterLength: 8
     normalInnerAngle: 40
     normalOuterAngle: 45
     aimInnerLength: 3
