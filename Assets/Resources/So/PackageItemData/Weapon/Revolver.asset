@@ -30,7 +30,7 @@ MonoBehaviour:
   price: 0
   weight: 0
   description: 
-  Damage: 0
+  Damage: 3
   shotType: 0
   shotMode: 0
   shotDelay: 0.2

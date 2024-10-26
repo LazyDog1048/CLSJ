@@ -44,11 +44,11 @@ MonoBehaviour:
   shotMode: 0
   shotDelay: 0.5
   maxShotShake: 45
-  minShotShake: 15
+  minShotShake: 10
   minCalibration: 10
   shotStability: 20
   shotCalibration: 10
-  reloadTime: 1.4
+  reloadTime: 1.2
   maxAmmo: 2
   penetrateNum: 1
   bulletSpeed: 60

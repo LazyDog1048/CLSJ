@@ -33,7 +33,7 @@ MonoBehaviour:
   price: 0
   weight: 0
   description: 
-  Damage: 0
+  Damage: 12
   shotType: 0
   shotMode: 0
   shotDelay: 0.5
@@ -42,8 +42,8 @@ MonoBehaviour:
   minCalibration: 5
   shotStability: 4
   shotCalibration: 10
-  reloadTime: 1
-  maxAmmo: 10
+  reloadTime: 2
+  maxAmmo: 7
   penetrateNum: 1
   bulletSpeed: 10
   bulletStayTime: 4
