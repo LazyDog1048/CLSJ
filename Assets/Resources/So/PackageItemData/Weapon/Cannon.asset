@@ -36,7 +36,7 @@ MonoBehaviour:
   Damage: 12
   shotType: 0
   shotMode: 0
-  shotDelay: 0.5
+  shotDelay: 1
   maxShotShake: 50
   minShotShake: 10
   minCalibration: 5
