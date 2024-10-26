@@ -13,6 +13,12 @@ namespace game
     {
         [SerializeField]
         public int targetRoomId;
+        
+        [SerializeField]
+        public Room targetRoom;
+        [SerializeField]
+        public Room thisRoom;
+        
         [SerializeField]
         private List<PackageItemSoData> itemDatas;
         [SerializeField]
@@ -35,6 +41,7 @@ namespace game
             else if (CheckKey())
             {
                 UnlockDoor();
+                GameManager.Instance.CheckDoor(this);
                 DescriptionUi.Instance.ShowDescription("Door is open!");
             }
             else
@@ -81,11 +88,17 @@ namespace game
         private void Open()
         {
             DoorPanel.Instance.OpenDoor(this);
+            GameManager.Instance.CheckDoor(this);
         }
 
         public void MovePlayer()
         {
             PlayerController.Instance.transform.position = target.position;
+        }
+        
+        public void ResumePlayer()
+        {
+            PlayerController.Instance.Resume(resume.position);
         }
     }
     

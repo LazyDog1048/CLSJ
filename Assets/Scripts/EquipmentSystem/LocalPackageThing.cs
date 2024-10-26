@@ -16,19 +16,14 @@ namespace EquipmentSystem
         }
 
 
-        public static KeepDataHandler<LocalPackageThing> GetDataHandler()
-        {
-            return DataManager.Instance.LocalPackageThingHandler;
-        }
-        
         public static LocalPackageThing GetData()
         {
-            return DataManager.Instance.LocalPackageThingHandler.Data;
+            return DataManager.Instance.LocalPackageThing;
         }
 
         public static void Save()
         {
-            GetDataHandler().SaveData();
+            // GetDataHandler().SaveData();
         }
     }    
 }

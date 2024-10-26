@@ -16,6 +16,8 @@ namespace ui
         [AssetsOnly]
         public GameObject DoorPanelObj;
         [AssetsOnly]
+        public GameObject MapPanelObj;
+        [AssetsOnly]
         public GameObject PlayerUiPanel;
 
     }

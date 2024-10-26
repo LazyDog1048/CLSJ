@@ -5,8 +5,13 @@ namespace game
     public class Room : MonoBehaviour
     {
         [SerializeField]
-        public int roomId;
+        public string roomName;
         
+        
+        public void BackToRoom()
+        {
+            // gameObject.SetActive(true);
+        }
     }
     
 }

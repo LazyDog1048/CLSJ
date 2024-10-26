@@ -29,8 +29,8 @@ namespace data
         // public List<KeepDataHandler<LocalPackageThing>> LocalPackageThingHandlerList;
         // public List<KeepDataHandler<LocalPlayerDataThing>> LocalPlayerDataThingHandlerList;
 
-        public KeepDataHandler<LocalPackageThing> LocalPackageThingHandler;
-        public KeepDataHandler<LocalPlayerDataThing> LocalPlayerDataThingHandler;
+        public LocalPackageThing LocalPackageThing;
+        public LocalPlayerDataThing LocalPlayerDataThing;
         #endregion
         
         #region Data
@@ -53,8 +53,10 @@ namespace data
         protected override void Init()
         {
             base.Init();
-            LocalPackageThingHandler = new KeepDataHandler<LocalPackageThing>();
-            LocalPlayerDataThingHandler = new KeepDataHandler<LocalPlayerDataThing>();
+            LocalPackageThing = new LocalPackageThing();
+            LocalPlayerDataThing = new LocalPlayerDataThing();
+            // LocalPackageThingHandler = new KeepDataHandler<LocalPackageThing>();
+            // LocalPlayerDataThingHandler = new KeepDataHandler<LocalPlayerDataThing>();
             StartLoad(0);
         }
 
@@ -72,10 +74,14 @@ namespace data
 
         public void SaveAllData()
         {
-            LocalPackageThingHandler.SaveData();
-            LocalPlayerDataThingHandler.SaveData();
+            // LocalPlayerDataThingHandler.SaveData();
             // LocalPackageThingHandlerList[0].SaveData();
             // LocalPlayerDataThingHandlerList[0].SaveData();
+        }
+        
+        public LocalPackageThing CopyData(LocalPackageThing data)
+        {
+            return new LocalPackageThing();
         }
 
         public void ClearData(int index)

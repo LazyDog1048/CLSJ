@@ -61,6 +61,7 @@ namespace ui
             Ui_InputAction.Instance.RightClickUiAction(RightClick);
             Ui_InputAction.Instance.TabUiAction(PressTab);
             Ui_InputAction.Instance.EUiAction(PressE);
+            Ui_InputAction.Instance.MUiAction(PressM);
             Ui_InputAction.Instance.CancelUiAction(CancelUi);
             Ui_InputAction.Instance.SpeedUiRegisterAction(SpeedChange);
             Ui_InputAction.Instance.MouseMoveRegisterAction(MouseMoveUi);
@@ -137,6 +138,13 @@ namespace ui
                 return;
             list.SortByDis(PlayerController.Instance.transform.position);
             list[0].PressE();
+        }
+        
+        private void PressM(InputAction.CallbackContext context)
+        {
+            if(context.phase != InputActionPhase.Started)
+                return;
+            Map_Panel.Instance.ShowOrHide();
         }
         
         private void CancelUi(InputAction.CallbackContext context)

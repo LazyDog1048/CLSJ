@@ -68,7 +68,6 @@ namespace EquipmentSystem
         
         public void LightOff()
         {
-            Debug.Log("LightOff");
             batteryTween.Pause();
             PlayerLamp.Instance.Resume();
             PlayerFlashlight.Instance.ResumeLight();
@@ -98,6 +97,7 @@ namespace EquipmentSystem
             playerController.DelayExecute(reloadTime, () =>
             {
                 int packageBullet = playerController.playerEquipment.package.GetBulletFormPackage(gunData.bulletData.Name,1);
+                Debug.Log($"LoadBattery {packageBullet}");
                 isReloading = false;
                 if (packageBullet > 0)
                 {
@@ -113,6 +113,7 @@ namespace EquipmentSystem
         {
             currentBattery = time;
             batteryTween = DOTween.To(() => currentBattery, x => currentBattery = x, 0, time).SetEase(Ease.Linear);
+            PlayerFlashlight.Instance.SwitchGun(this);
             batteryTween.onUpdate = Update;
             batteryTween.OnComplete(Complete);
             batteryTween.Pause();

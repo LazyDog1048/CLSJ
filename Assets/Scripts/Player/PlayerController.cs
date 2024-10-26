@@ -321,7 +321,7 @@ namespace Player
         
         private void DeadComplete()
         {
-            PlayerState = PlayerState.Dead;
+            GameManager.Instance.BackToRoom();
         }
         #region IAnimController
         public virtual void AnimatorStateEnter()
@@ -343,6 +343,14 @@ namespace Player
         {
             FxPlayer.PlayFx("Fx_Gun_Hit", Center);
             playerAttacker.TakeDamage(bullet);
+        }
+
+        public void Resume(Vector3 position)
+        {
+            animator.Reset();
+            playerAttacker.Resume();
+            PlayerState = PlayerState.Idle;
+            transform.position = position;
         }
     }
 
