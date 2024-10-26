@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KnifeCat
+  m_Controller: {fileID: 9100000, guid: 11ffe3dadaa651444b607d65804ec6ed, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 08c975a3c42f0094cb98faa53bb28f0b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8b57975cbd5ea8c40ad285a30ff51fb9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8e787ea8bd33417489fd7834576abd09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 181b7515dab4fd346b895f920fbabee0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 91a6fb8e3093ada48a8411b35f0ddb18, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3f3182375851b8c489b4b447076ad185, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6b730f47c131c23419c94d1c468b4f75, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c1869c3bfe714941b873d88eb4d5ac3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 92263d4a25167ec4cb22edc68a7534ae, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ff4d9152695b967448da6e3b484651ce, type: 2}

@@ -15,7 +15,8 @@ namespace Enemy
         Attack,
         Alert,
         Recover,
-        Dead
+        Dead,
+        Transform
     }
 
     public class EnemyAnimator : BaseAnimController
@@ -43,7 +44,8 @@ namespace Enemy
                 {EnemyState.Attack, AnimaHash.state_Attack},
                 {EnemyState.Alert, AnimaHash.state_Alert},
                 {EnemyState.Recover, AnimaHash.state_Recover},
-                {EnemyState.Dead, AnimaHash.state_Dead}
+                {EnemyState.Dead, AnimaHash.state_Dead},
+                {EnemyState.Transform, AnimaHash.state_Transform}
                
             };
             
@@ -52,6 +54,7 @@ namespace Enemy
             AddLockState((int)EnemyState.Alert);
             AddLockState((int)EnemyState.Recover);
             AddLockState((int)EnemyState.Attack);
+            AddLockState((int)EnemyState.Transform);
         }
 
         public void SetAnim(EnemyState state)

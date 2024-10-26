@@ -6,10 +6,12 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class Enemy_Cow : BaseEnemy
+    public class Enemy_Dash : BaseEnemy
     {
         [SerializeField]
         protected float dashTime = 1;
+        [SerializeField]
+        protected float alertTime = 1;
         [SerializeField]
         protected float dashSpeed = 5;
 
@@ -18,11 +20,11 @@ namespace Enemy
 
         protected Vector3 direction;
         
-        CowMove cowMove;
+        protected DashMove dashMove;
         protected override void SetMove()
         {
-            cowMove = new CowMove(this,enemyParameter.Speed,this);
-            enemyMove = cowMove;
+            dashMove = new DashMove(this,enemyParameter.Speed,this);
+            enemyMove = dashMove;
         }
         
         protected override void EnemyUpdate()
@@ -33,7 +35,7 @@ namespace Enemy
             {
                 if (CurState == EnemyState.Attack)
                 {
-                    cowMove.DirMove(direction,dashSpeed);
+                    dashMove.DirMove(direction,dashSpeed);
                     AttackTrigger();
                 }
             }
@@ -53,7 +55,7 @@ namespace Enemy
             if (!isEnterAttack)
             {
                 direction = (playerPos - enemyPosition).normalized;
-                cowMove.faceDir.FaceToTarget(playerPos);
+                dashMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Alert;
                 isEnterAttack = true;
             }
@@ -68,6 +70,12 @@ namespace Enemy
         {
             switch (CurState)
             {
+                case EnemyState.Alert:
+                    this.DelayExecute(alertTime, () =>
+                    {
+                        CurState = EnemyState.Attack;
+                    });
+                    break;
                 case EnemyState.Attack:
                     enemyAttacker.AttackEnterCd();
                     this.DelayExecute(dashTime,DashComplete);
@@ -83,7 +91,6 @@ namespace Enemy
             switch (CurState)
             {
                 case EnemyState.Alert:
-                    CurState = EnemyState.Attack;
                     break;
                 case EnemyState.Recover:
                     CurState = EnemyState.Idle;

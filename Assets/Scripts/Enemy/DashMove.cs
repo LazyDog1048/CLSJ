@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class CowMove : EnemyMove 
+    public class DashMove : EnemyMove 
     {
         protected override bool isMoveState => base.isMoveState ||  enemy.CurState is EnemyState.Attack;
 
-        public CowMove(BaseEnemy enemy, float Speed, MonoBehaviour mono) : base(enemy, Speed, mono)
+        public DashMove(BaseEnemy enemy, float Speed, MonoBehaviour mono) : base(enemy, Speed, mono)
         {
         }
         

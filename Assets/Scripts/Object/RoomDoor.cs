@@ -13,6 +13,9 @@ namespace game
     {
         [SerializeField]
         private List<PackageItemSoData> itemDatas;
+        [SerializeField]
+        private string Description = "Open the door";
+        
         private bool isOpened = false;
 
         private Transform target;
@@ -29,11 +32,12 @@ namespace game
                 Open();
             else if (CheckKey())
             {
-                FirstOpen();
+                UnlockDoor();
+                DescriptionUi.Instance.ShowDescription("Door is open!");
             }
             else
             {
-                Debug.Log("Door is locked!");
+                DescriptionUi.Instance.ShowDescription("Door is locked!");
             }
         }
 
@@ -54,7 +58,7 @@ namespace game
             return  much == itemDatas.Count;
         }
 
-        private void FirstOpen()
+        private void UnlockDoor()
         {
             var list = LocalPackageThing.GetData().consumableDataList;
             for(int i=list.Count-1;i>=0;i--)
@@ -70,7 +74,6 @@ namespace game
             }
             LocalPackageThing.Save();
             isOpened = true;
-            Open();
         }
 
         private void Open()
