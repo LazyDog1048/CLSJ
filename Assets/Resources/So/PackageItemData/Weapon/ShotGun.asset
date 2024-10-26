@@ -63,7 +63,7 @@ MonoBehaviour:
     normalOuterLength: 8
     normalInnerAngle: 40
     normalOuterAngle: 45
-    aimInnerLength: 3
-    aimOuterLength: 6
+    aimInnerLength: 4
+    aimOuterLength: 8
     aimInnerAngle: 40
     aimOuterAngle: 45
