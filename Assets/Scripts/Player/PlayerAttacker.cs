@@ -46,7 +46,6 @@ namespace Player
             playerController.DelayExecute(0.1f, () =>
             {
                 currentHp = maxHp;
-                Debug.Log($"PlayerHp:{currentHp}");
             });
 
         }
@@ -54,7 +53,6 @@ namespace Player
 
         public void TakeDamage(BaseEnemy enemy)
         {
-            Debug.Log("TakeDamage");
             if (isInvincible)
             {
                 return;
@@ -73,13 +71,16 @@ namespace Player
         
         public void TakeDamage(Bullet bullet)
         {
-            Debug.Log($"TakeDamage {bullet.gunParameter.Damage}");
-            
             currentHp -= bullet.gunParameter.Damage;
             if (currentHp <= 0)
             {
                 playerController.PlayerDead();
             }
+        }
+        
+        public void Heal(int healValue)
+        {
+            currentHp += healValue;
         }
         
         private void EnterInvincible()

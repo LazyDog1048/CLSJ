@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Enemy_Cult
   Speed: 3
   Health: 100
-  Damage: 1
-  FindRange: 10
-  AttackRange: 2
+  Damage: 5
+  FindRange: 15
+  AttackRange: 10
   AttackInterval: 2

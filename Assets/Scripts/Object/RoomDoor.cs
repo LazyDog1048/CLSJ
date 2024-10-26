@@ -23,7 +23,7 @@ namespace game
         }
 
 
-        public void TryOpenDoor()
+        public override void PressE()
         {
             if(isOpened)
                 Open();

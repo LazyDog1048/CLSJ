@@ -766,7 +766,7 @@
                     "name": "RotateItem",
                     "type": "Button",
                     "id": "4bef1f79-84de-4cf6-ad0b-d87a69f5dbf0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -775,6 +775,15 @@
                     "name": "PressTab",
                     "type": "Button",
                     "id": "dc453b24-fcbc-4f3c-baf6-89f6d1ae059b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressE",
+                    "type": "Button",
+                    "id": "b609af81-8d44-4838-957b-45c8016b4689",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -966,6 +975,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PressTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b580aecd-aa22-451e-9b53-bd1fe29b89ee",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressE",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

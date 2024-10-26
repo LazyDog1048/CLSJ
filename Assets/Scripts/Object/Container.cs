@@ -33,8 +33,9 @@ namespace game
             packageThing = new PackageThing();
         }
 
-        public void OpenOrClose()
+        public override void PressE()
         {
+        
             boxUiGridSystem = Package_Panel.Instance.boxUiGridSystem;
             if (isOpen)
             {
@@ -44,7 +45,7 @@ namespace game
             }
             else
             {
-                Package_Panel.Instance.Show();
+                Package_Panel.Instance.OpenByE();
                 if(isFirstOpen)
                     FirstOpen();
                 else

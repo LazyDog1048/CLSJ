@@ -112,7 +112,11 @@ namespace EquipmentSystem
             }
             else if (col.tag.Equals("HitObj"))
             {
-                Debug.Log("HitObj");
+                var hit = col.transform.GetComponentInParent<IHitObj>();
+                hit?.HitObj(this);
+            }
+            else if (col.tag.Equals("Player"))
+            {
                 var hit = col.transform.GetComponentInParent<IHitObj>();
                 hit?.HitObj(this);
             }

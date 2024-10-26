@@ -232,15 +232,7 @@ namespace Player
         
         private void PressE(InputAction.CallbackContext context)
         {   
-            if(context.phase != InputActionPhase.Started)
-                return;
-            var list = transform.position.FindCircleAllCollider<RoomDoor>(3,LayerMask.GetMask("SceneObj"),"RoomDoor");
-            
-            if(list.Count <=0)
-                return;
-            list.SortByDis(transform.position);
-            list[0].TryOpenDoor();
-           
+      
         }
 
         private void PressQ(InputAction.CallbackContext context)

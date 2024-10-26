@@ -10,24 +10,19 @@ namespace data
         protected T dataContainer;
         // public DataSettings dataSettings { get; private set; }
         public readonly string dataId;
-        protected virtual int index { get; set; }
-        public KeepDataHandler(int index)
+        public KeepDataHandler()
         {
             dataId = typeof(T).Name;
-            this.index = index;
-            
-            dataContainer = SaveLoadTool.LoadFromLocal<T>(index);
+            dataContainer = new T();
         }
 
         public virtual void SetToDefaultData()
         {
-            SaveLoadTool.DeleteFromLocal<T>(index);
-            dataContainer = SaveLoadTool.LoadFromLocal<T>(index);
         }
 
         public virtual void SaveData()
         {
-            SaveLoadTool.SaveToLocal(dataContainer,index);
+            // SaveLoadTool.SaveToLocal(dataContainer,index);
         }
 
         public void Dispose()

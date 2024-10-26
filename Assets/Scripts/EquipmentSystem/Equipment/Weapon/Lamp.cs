@@ -97,7 +97,6 @@ namespace EquipmentSystem
             playerController.DelayExecute(reloadTime, () =>
             {
                 int packageBullet = playerController.playerEquipment.package.GetBulletFormPackage(gunData.bulletData.Name,1);
-                Debug.Log(packageBullet);
                 isReloading = false;
                 if (packageBullet > 0)
                 {

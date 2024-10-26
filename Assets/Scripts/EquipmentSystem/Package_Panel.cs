@@ -20,6 +20,7 @@ namespace GridSystem
         public PackageUiGridSystem boxUiGridSystem;
         private PackageItemPreview _preview;
 
+        private GameObject boxPanel;
         // private PlayerEquipmentSlot[] playerEquipmentSlots;
         public UiPackageItem uiItemOri;
 
@@ -38,7 +39,8 @@ namespace GridSystem
             // playerEquipmentSlots = trans.Find("EquipmentPanel").GetComponentsInChildren<PlayerEquipmentSlot>();
             uiItemOri = trans.Find("UiPackageItem").GetComponent<UiPackageItem>();
             playerPackageUiGridSystem = trans.Find("PackagePanel").GetComponentInChildren<PlayerPackageUiGridSystem>();
-            boxUiGridSystem = trans.Find("BoxPanel").GetComponentInChildren<PackageUiGridSystem>();
+            boxPanel = trans.Find("BoxPanel").gameObject;
+            boxUiGridSystem = boxPanel.GetComponentInChildren<PackageUiGridSystem>();
             
             
             itemDetailPanel = new ItemDetailPanel(trans.Find("ItemDetailPanel"));
@@ -60,6 +62,19 @@ namespace GridSystem
             playerPackageUiGridSystem.LoadPackage(LocalPackageThing.GetData());
         }
 
+
+        public void OpenByTab()
+        {
+            boxPanel.SetActive(false);
+            ShowOrHide();
+        }
+        
+        public void OpenByE()
+        {
+            boxPanel.SetActive(true);
+            Show();
+        }
+        
         public void AddPreviewItem(PackageItemData packageItemData)
         {
             UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
@@ -214,6 +229,7 @@ namespace GridSystem
             
             equipBtn.onClick.AddListener(EquipWeapon);
             unEquipBtn.onClick.AddListener(UnEquipWeapon);
+            useBtn.onClick.AddListener(UseItem);
         }
 
         public void EnterItemPanel()
@@ -286,6 +302,15 @@ namespace GridSystem
                 LocalPlayerDataThing.Save();
                 PlayerController.Instance.playerEquipment.UpdateLamp();
             }
+        }
+
+        public void UseItem()
+        {
+            HealSoData healSoData = item.packageItemSoData as HealSoData;
+            if (healSoData == null)
+                return;
+            PlayerController.Instance.playerAttacker.Heal(healSoData.healAmount);
+            item.RemoveItem();
         }
 
         public void ExitItemPanel()
