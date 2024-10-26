@@ -45,19 +45,19 @@ namespace EquipmentSystem
         }
 
 
-        public static KeepDataHandler<LocalPlayerDataThing> GetDataHandler()
-        {
-            return DataManager.Instance.LocalPlayerDataThingHandler;
-        }
-        
+        // public static KeepDataHandler<LocalPlayerDataThing> GetDataHandler()
+        // {
+        //     return DataManager.Instance.LocalPlayerDataThingHandler;
+        // }
+        //
         public static LocalPlayerDataThing GetData()
         {
-            return DataManager.Instance.LocalPlayerDataThingHandler.Data;
+            return DataManager.Instance.LocalPlayerDataThing;
         }
 
         public static void Save()
         {
-            GetDataHandler().SaveData();
+            // GetDataHandler().SaveData();
         }
     }    
 }

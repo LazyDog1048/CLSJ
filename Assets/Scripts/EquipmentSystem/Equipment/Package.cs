@@ -9,12 +9,12 @@ namespace EquipmentSystem
     public class Package : BaseEquipment
     {
         // public List<PackageItemData> packageDataList;
-        public List<Consumable_Data> ConsumableDatas;
-        public List<Bullet_Data> BulletDatas;
+        public List<Consumable_Data> ConsumableDatas => LocalPackageThing.GetData().consumableDataList;
+        public List<Bullet_Data> BulletDatas =>LocalPackageThing.GetData().bulletDataList;
         public Package(PlayerController playerController) : base(playerController)
         {
-            ConsumableDatas = LocalPackageThing.GetData().consumableDataList;
-            BulletDatas = LocalPackageThing.GetData().bulletDataList;
+            // ConsumableDatas = LocalPackageThing.GetData().consumableDataList;
+            // BulletDatas = LocalPackageThing.GetData().bulletDataList;
             // packageDataList = LocalPackageThing.GetData().localPackageDataList;
         }
         

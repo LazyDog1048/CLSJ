@@ -114,6 +114,7 @@ namespace EquipmentSystem
         
         public void AddPackageData(UiPackageItem uiPackageItem)
         {
+            Debug.Log("AddPackageData");
             switch (uiPackageItem.packageItemSoData.ItemType)
             {
                 case PackageItemType.Weapon:

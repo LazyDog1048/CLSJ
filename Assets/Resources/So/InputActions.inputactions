@@ -108,7 +108,7 @@
                     "name": "Press1",
                     "type": "Button",
                     "id": "b3ad16b9-8e22-4cad-bbdf-c7d418916a63",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -788,6 +788,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PressM",
+                    "type": "Button",
+                    "id": "e63f98f9-7d51-4969-87d4-6dc0a48c1cd2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -986,6 +995,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PressE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ad81769-4e7e-4922-bdd0-4e9c5f2124b1",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PressM",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -91,5 +91,11 @@ namespace Player
                 isInvincible = false;
             });
         }
+
+        public void Resume()
+        {
+            currentHp = maxHp;
+            isInvincible = false;
+        }
     }
 }

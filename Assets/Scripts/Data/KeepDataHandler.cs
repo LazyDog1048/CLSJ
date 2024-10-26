@@ -25,6 +25,11 @@ namespace data
             // SaveLoadTool.SaveToLocal(dataContainer,index);
         }
 
+        public void SetData(T data)
+        {
+            dataContainer = data;
+        }
+        
         public void Dispose()
         {
             OnDispose();
