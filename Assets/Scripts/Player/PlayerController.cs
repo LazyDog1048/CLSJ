@@ -1,6 +1,8 @@
 ﻿using data;
+using Enemy;
 using EquipmentSystem;
 using game;
+using item;
 using plug;
 using tool;
 using UnityEngine;
@@ -10,7 +12,7 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     
-    public class PlayerController : MonoBehaviour, IAnimatorController
+    public class PlayerController : MonoBehaviour,IHitObj,IAnimatorController
     {
         [SerializeField]
         private PlayerData playerData;
@@ -30,7 +32,8 @@ namespace Player
 
         private PlayerGunObject _playerGun;
         private Lamp lamp;
-        
+        private Transform Center;
+        public Transform playerTrans => Center;
         public Transform Head { get; set; }
         public Transform shotCenter { get; set; }
         public float angle => PlayerHand.angle;
@@ -62,6 +65,7 @@ namespace Player
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
+            Center = transform.Find("Center");
             Head = transform.Find("Head");
             _playerGun = transform.Find("Hand").Find("Gun").GetComponent<PlayerGunObject>();
             playerFlashlight = GetComponentInChildren<PlayerFlashlight>();
@@ -342,6 +346,12 @@ namespace Player
             }
         }
         #endregion
+
+        public void HitObj(Bullet bullet)
+        {
+            FxPlayer.PlayFx("Fx_Gun_Hit", Center);
+            playerAttacker.TakeDamage(bullet);
+        }
     }
 
 }

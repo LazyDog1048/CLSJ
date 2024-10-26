@@ -51,7 +51,6 @@ namespace Enemy
         {
             if(CurState == EnemyState.Dead)
                 return;
-            Debug.Log(enemyAttacker.playerEnter);
             if (enemyAttacker.CanAttack)
             {
                 SeenPlayer = true;

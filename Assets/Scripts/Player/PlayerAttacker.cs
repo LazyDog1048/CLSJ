@@ -71,6 +71,17 @@ namespace Player
             }
         }
         
+        public void TakeDamage(Bullet bullet)
+        {
+            Debug.Log($"TakeDamage {bullet.gunParameter.Damage}");
+            
+            currentHp -= bullet.gunParameter.Damage;
+            if (currentHp <= 0)
+            {
+                playerController.PlayerDead();
+            }
+        }
+        
         private void EnterInvincible()
         {
             isInvincible = true;

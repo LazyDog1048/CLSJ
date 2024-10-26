@@ -145,6 +145,7 @@ namespace Enemy
             enemyMove.AddForce(bullet.currentDir,knockBackTime);
             FxPlayer.PlayFx("Fx_Gun_Hit", enemyPosition);
             enemyAttacker.currentHp -= bullet.gunParameter.Damage;
+            Debug.Log($"EnemyHp:{enemyAttacker.currentHp}");
             if (enemyAttacker.currentHp <= 0)
                 CurState = EnemyState.Dead;
         }
