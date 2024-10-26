@@ -12,18 +12,20 @@ namespace game
     public class RoomDoor : SceneObject
     {
         [SerializeField]
+        public int targetRoomId;
+        [SerializeField]
         private List<PackageItemSoData> itemDatas;
         [SerializeField]
         private string Description = "Open the door";
         
         private bool isOpened = false;
 
+        [SerializeField]
         private Transform target;
-        protected override void Awake()
-        {
-            base.Awake();
-            target = transform.Find("Target");
-        }
+        [SerializeField]
+        private Transform resume;
+        
+        
 
 
         public override void PressE()

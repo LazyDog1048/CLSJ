@@ -71,6 +71,7 @@ namespace EquipmentSystem
             Debug.Log("LightOff");
             batteryTween.Pause();
             PlayerLamp.Instance.Resume();
+            PlayerFlashlight.Instance.ResumeLight();
         }
 
         protected override void BulletReLoad()

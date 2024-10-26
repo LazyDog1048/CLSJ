@@ -37,7 +37,7 @@ namespace Player
         {
             var shotPoint = shotCenter.GetDirDistance(target, gunData.shotLength);
             var smokePoint = shotCenter.GetDirDistance(target, gunData.shotLength-0.2f);
-            
+            gunData.shotClip.PlayClip();
             FxPlayer.PlayFx(gunData.shotFx, shotPoint).Rotate(GetAngle.Angle(dir));
             FxPlayer.PlayFx(gunData.smokeFx, smokePoint).Rotate(GetAngle.Angle(dir));
             CameraShake.Instance.ShakeCamera(0.1f,0.1f);

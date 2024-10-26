@@ -61,10 +61,20 @@ namespace game
             {
                 currentFlashlightData = baseFlashlightData;
             }
+            else if (gun is Lamp lamp)
+            {
+                currentFlashlightData = lamp.currentBattery<=0 ? baseFlashlightData : lamp.gunData.flashlightData;
+            }
             else
             {
                 currentFlashlightData = gun.gunData.flashlightData;
             }
+            NormalMode();
+        }
+        
+        public void ResumeLight()
+        {
+            currentFlashlightData = baseFlashlightData;
             NormalMode();
         }
 
