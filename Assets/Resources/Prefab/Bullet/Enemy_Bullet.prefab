@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389376931}
   - component: {fileID: 1389376932}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,8 +108,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.65882355, g: 1, b: 0.98823535, a: 1}
-      key1: {r: 0.8313726, g: 1, b: 0.9960785, a: 0.19607843}
+      key0: {r: 1, g: 0.83921576, b: 0.21568629, a: 1}
+      key1: {r: 1, g: 0.9686275, b: 0.83921576, a: 0.19607843}
       key2: {r: 0.8980392, g: 0.88235295, b: 0.3372549, a: 0}
       key3: {r: 0.8980392, g: 0.88235295, b: 0.3372549, a: 0}
       key4: {r: 0.32669038, g: 0.90882355, b: 0.10002764, a: 0}
@@ -161,8 +161,8 @@ GameObject:
   - component: {fileID: -555690322815184829}
   - component: {fileID: 5579060380183078941}
   - component: {fileID: -7712225085707950261}
-  m_Layer: 13
-  m_Name: DeerShotGun_Bullet
+  m_Layer: 16
+  m_Name: Enemy_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8532000250299485185, guid: 147e7020a73872945962022188c50bcf, type: 3}
+  m_Sprite: {fileID: -4867468097483604108, guid: 7ae62fb6b940e924084e9d5a2b0f52af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

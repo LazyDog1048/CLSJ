@@ -15,7 +15,6 @@ namespace game
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log($"{col.tag}");
             if (col.tag.Equals("Player"))
             {
                 eCheck.gameObject.SetActive(true);
@@ -24,11 +23,15 @@ namespace game
         
         private void OnTriggerExit2D(Collider2D col)
         {
-            Debug.Log($"{col.tag}");
             if (col.tag.Equals("Player"))
             {
                 eCheck.gameObject.SetActive(false);
             }
+        }
+
+        public virtual void PressE()
+        {
+            
         }
     }
     

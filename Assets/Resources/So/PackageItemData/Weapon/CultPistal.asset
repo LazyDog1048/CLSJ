@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
+  m_Name: CultPistal
+  m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
+  Name: CultPistal
+  icon: {fileID: 8696830440083233211, guid: d82629387682eec419432b388727ac02, type: 3}
+  prefab: {fileID: 2467453439497934888, guid: e437b44f603b479459380d10cc6b0206, type: 3}
+  shapeData:
+    size: {x: 5, y: 3}
+    points:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 0}
+    - {x: 2, y: 1}
+    - {x: 2, y: 2}
+    - {x: 3, y: 0}
+    - {x: 3, y: 1}
+    - {x: 3, y: 2}
+    - {x: 4, y: 0}
+    - {x: 4, y: 1}
+    - {x: 4, y: 2}
+    keeper: 010101010101010101010101010101
+  ItemType: 0
+  quality: 0
+  price: 0
+  weight: 0
+  description: 
+  Damage: 2
+  shotType: 0
+  shotMode: 0
+  shotDelay: 0.5
+  maxShotShake: 45
+  minShotShake: 20
+  minCalibration: 10
+  shotStability: 20
+  shotCalibration: 10
+  reloadTime: 3
+  maxAmmo: 10
+  penetrateNum: 1
+  bulletSpeed: 60
+  bulletStayTime: 4
+  bulletData: {fileID: 11400000, guid: b10ce62206f6538499979ae781550f91, type: 2}
+  shotLength: 0.5
+  shotFx: {fileID: 11400000, guid: e28027f8de05f4f49a2b67f4797fdbc1, type: 2}
+  smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
+  gunAnimator: {fileID: 22100000, guid: f5a0a0afac237244fb5da14953531164, type: 2}
+  flashlightData:
+    normalInnerLength: 5
+    normalOuterLength: 5.5
+    normalInnerAngle: 80
+    normalOuterAngle: 90
+    aimInnerLength: 10
+    aimOuterLength: 11
+    aimInnerAngle: 40
+    aimOuterAngle: 45

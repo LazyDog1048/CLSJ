@@ -325,6 +325,18 @@ namespace GridSystem
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
         
+        public void PickOnGrid()
+        {
+            state = UiPackageItemState.None;
+            foreach (var cell in cells)
+            {
+                UiGridObject uiGridObject = currentGridSystem.Grid.GetGridObject(cell.transform.position);
+                uiGridObject.RemoveGridItem();
+            }
+            bg.gameObject.SetActive(false);
+            PackageItemPreview.Instance.RotaBg(isRotated);
+            Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
+        }
         public void PickOnSlot(PlayerEquipmentSlot slot)
         {
             state = UiPackageItemState.None;
@@ -397,8 +409,12 @@ namespace GridSystem
             }
             Vector3 iconSize = equipmentIcon.sizeDelta / StaticValue.uiToWorldScale;
             equipmentIcon.position = transform.position + rightDownPos + new Vector3(-iconSize.x / 2,iconSize.y / 2);
+        }
 
-
+        public void RemoveItem()
+        {
+            PickOnGrid();
+            DestroyImmediate(gameObject);
         }
     }
     

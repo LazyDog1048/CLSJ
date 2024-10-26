@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34f6b2c31a9212146bb22edda51719dc, type: 3}
-  m_Name: AmmoDeerShotGun
+  m_Name: Enemy_Bullet
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: DeerShotGun
+  Name: Enemy_Bullet
   icon: {fileID: 5004147347841525134, guid: 122863dffff07a649b045e2cc1a3c390, type: 3}
   prefab: {fileID: 1289426341008922188, guid: 8d29883af6daac84ca0168a389990bd4, type: 3}
   shapeData:

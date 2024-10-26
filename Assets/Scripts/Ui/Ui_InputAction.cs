@@ -26,6 +26,8 @@ namespace ui
         private ActionThing speedChange; 
         private ActionThing rightClick; 
         private ActionThing pressTab; 
+        private ActionThing pressE; 
+        
         public static Vector2 moveDir => Instance.actionMap["Move"].ReadValue<Vector2>();
         public static Vector2 point => Instance.actionMap["Point"].ReadValue<Vector2>();
 
@@ -46,6 +48,7 @@ namespace ui
             speedChange = AddAction("SpeedChange");
             rightClick = AddAction("RightClick");
             pressTab = AddAction("PressTab");
+            pressE = AddAction("PressE");
         }
 
 
@@ -68,6 +71,11 @@ namespace ui
         {
             pressTab?.AddListener(action);
         }
+        
+        public void EUiAction(UnityAction<InputAction.CallbackContext> action)
+        {
+            pressE?.AddListener(action);
+        }
         public override void DisposeInputAction()
         {
             base.DisposeInputAction();
@@ -75,6 +83,7 @@ namespace ui
             speedChange?.RemoveAllListeners();
             rightClick?.RemoveAllListeners();
             pressTab?.RemoveAllListeners();
+            pressE?.RemoveAllListeners();
         }
 
         private void Click(InputAction.CallbackContext context)

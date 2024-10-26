@@ -60,6 +60,7 @@ namespace ui
             Ui_InputAction.Instance.ConfirmUiAction(ConfirmUi);
             Ui_InputAction.Instance.RightClickUiAction(RightClick);
             Ui_InputAction.Instance.TabUiAction(PressTab);
+            Ui_InputAction.Instance.EUiAction(PressE);
             Ui_InputAction.Instance.CancelUiAction(CancelUi);
             Ui_InputAction.Instance.SpeedUiRegisterAction(SpeedChange);
             Ui_InputAction.Instance.MouseMoveRegisterAction(MouseMoveUi);
@@ -115,12 +116,27 @@ namespace ui
         {
             if(context.phase != InputActionPhase.Started)
                 return;
-            var list = PlayerController.Instance.transform.position.FindCircleAllCollider<Container>(3,LayerMask.GetMask("SceneObj"),"Container");
-            Debug .Log($"PressTab {list.Count}");
+            
+            var list = PlayerController.Instance.transform.position.FindCircleAllCollider<Container>(3,LayerMask.GetMask("SceneObj"));
+            if (list.Count <= 0)
+            {
+                Package_Panel.Instance.OpenByTab();    
+                return;
+            }
+            list.SortByDis(PlayerController.Instance.transform.position);
+            list[0].PressE();
+        }
+        
+        private void PressE(InputAction.CallbackContext context)
+        {
+            if(context.phase != InputActionPhase.Started)
+                return;
+
+            var list = PlayerController.Instance.transform.position.FindCircleAllCollider<SceneObject>(3,LayerMask.GetMask("SceneObj"));
             if(list.Count <=0)
                 return;
             list.SortByDis(PlayerController.Instance.transform.position);
-            list[0].OpenOrClose();
+            list[0].PressE();
         }
         
         private void CancelUi(InputAction.CallbackContext context)

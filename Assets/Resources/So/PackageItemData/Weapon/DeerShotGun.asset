@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: DeerShotGun
   icon: {fileID: 8696830440083233211, guid: d82629387682eec419432b388727ac02, type: 3}
-  prefab: {fileID: 1726577015640154295, guid: 524d1f6f847b67d4e9c22dbcf75ea960, type: 3}
+  prefab: {fileID: 2467453439497934888, guid: e437b44f603b479459380d10cc6b0206, type: 3}
   shapeData:
     size: {x: 5, y: 3}
     points:
@@ -53,9 +53,9 @@ MonoBehaviour:
   penetrateNum: 1
   bulletSpeed: 60
   bulletStayTime: 4
-  bulletData: {fileID: 11400000, guid: cefaccb14b1efd24ab74392253026751, type: 2}
+  bulletData: {fileID: 11400000, guid: b10ce62206f6538499979ae781550f91, type: 2}
   shotLength: 1.2
-  shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
+  shotFx: {fileID: 11400000, guid: e28027f8de05f4f49a2b67f4797fdbc1, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: 1c516eed33becb546b7ea5d6377f66a9, type: 2}
   flashlightData:

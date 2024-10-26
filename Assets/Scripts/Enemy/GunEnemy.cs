@@ -60,8 +60,6 @@ namespace Enemy
             else if (SeenPlayer)
             {
                 CurState = enemyAttacker.isAttackCd? EnemyState.WaitIdle : EnemyState.Attack;
-                // var angle = GetAngle.Angle(lastPlayerPos, transform.position);
-                // FaceMouse(angle);
             }
             else
             {
@@ -85,6 +83,31 @@ namespace Enemy
             }
         }
         
+        protected override void EnemyPatrol()
+        {
+            if(patrolLock)
+                return;
+                
+            if (transform.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
+            {
+                CurState = EnemyState.PatrolWalk;
+                enemyMove.Move(PatrolPoints[patrolIndex]);
+                FaceMouse(PatrolPoints[patrolIndex]);
+            }
+            else
+            {
+                patrolLock = true;
+                this.DelayExecute(patrolIdleTime, () =>
+                {
+                    patrolLock = false;
+                });
+                CurState = EnemyState.PatrolIdle;
+                patrolIndex++;
+                patrolIndex %= PatrolPoints.Count;
+            }
+            
+        }
+        
         private void FaceMouse(float angle)
         {
             switch (VectorThing.WatchToTargetTwoDir(angle))
@@ -101,9 +124,25 @@ namespace Enemy
             hand.rotation = Quaternion.Euler(0, 0, angle);
         }
         
+        private void FaceMouse(Vector3 target)
+        {
+            if(transform.position.x > target.x)
+            {
+                gunSprite.sortingOrder = -1;
+                gunSprite.flipY = true;
+                hand.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            else
+            {
+                gunSprite.sortingOrder = 1;
+                gunSprite.flipY = false;
+                hand.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+        
         protected override void AttackTrigger()
         {
-            _enemyGun.CheckFire(playerPos);
+            _enemyGun.CheckFire(lastPlayerPos);
         }
     }
     

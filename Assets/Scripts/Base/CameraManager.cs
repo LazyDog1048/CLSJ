@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace game
 {
-    public class CameraManager : KeepMonoSingleton<CameraManager>
+    public class CameraManager : Mono_Singleton<CameraManager>
     {
         [HideInInspector]
         public Camera mainCamera;
@@ -16,7 +16,7 @@ namespace game
         public CinemachineSwitcher cinemachineSwitcher{ get;private set; }
 
         public CinemachineVirtualCamera cinemachineVirtualCamera { get;private set; }
-        protected override void KeepInit()
+        protected override void Init()
         {
             mainCamera = transform.Find("MainCamera").GetComponent<Camera>();
             cinemachineSwitcher = GetComponent<CinemachineSwitcher>();
