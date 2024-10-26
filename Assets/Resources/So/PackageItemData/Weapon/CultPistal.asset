@@ -59,11 +59,11 @@ MonoBehaviour:
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: f5a0a0afac237244fb5da14953531164, type: 2}
   flashlightData:
-    normalInnerLength: 5
-    normalOuterLength: 5.5
-    normalInnerAngle: 80
-    normalOuterAngle: 90
-    aimInnerLength: 10
-    aimOuterLength: 11
+    normalInnerLength: 4
+    normalOuterLength: 8
+    normalInnerAngle: 40
+    normalOuterAngle: 50
+    aimInnerLength: 4
+    aimOuterLength: 8
     aimInnerAngle: 40
-    aimOuterAngle: 45
+    aimOuterAngle: 50

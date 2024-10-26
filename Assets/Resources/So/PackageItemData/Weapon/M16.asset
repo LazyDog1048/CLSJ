@@ -58,12 +58,20 @@ MonoBehaviour:
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: 54bc24d9f74b64b4ab0a2f12d54f1234, type: 2}
+  shotClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
   flashlightData:
-    normalInnerLength: 4
-    normalOuterLength: 8
+    normalInnerLength: 5
+    normalOuterLength: 10
     normalInnerAngle: 40
     normalOuterAngle: 45
-    aimInnerLength: 4
-    aimOuterLength: 8
+    aimInnerLength: 5
+    aimOuterLength: 10
     aimInnerAngle: 40
     aimOuterAngle: 45
