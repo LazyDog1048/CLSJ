@@ -25,10 +25,12 @@ namespace Player
         public PlayerEquipment playerEquipment { get; set; }
         public PlayerAttacker playerAttacker { get; set; }
         public PlayerFlashlight playerFlashlight { get; set; }
-        private BaseGun gun_1;
-        private BaseGun gun_2;
+        private PlayerGun gun_1;
+        private PlayerGun gun_2;
 
-        private GunObject gun;
+        private PlayerGunObject _playerGun;
+        private Lamp lamp;
+        
         public Transform Head { get; set; }
         public Transform shotCenter { get; set; }
         public float angle => PlayerHand.angle;
@@ -61,10 +63,10 @@ namespace Player
                 Destroy(Instance);
             Instance = this;
             Head = transform.Find("Head");
-            gun = transform.Find("Hand").Find("Gun").GetComponent<GunObject>();
+            _playerGun = transform.Find("Hand").Find("Gun").GetComponent<PlayerGunObject>();
             playerFlashlight = GetComponentInChildren<PlayerFlashlight>();
             shotCenter = transform.Find("ShotCenter");
-            gun.Init();
+            _playerGun.Init();
             playerParameter = new PlayerParameter(playerData);
             animator = new PlayerAnimController(this);
             playerMove = new PlayerMove(this);
@@ -108,7 +110,7 @@ namespace Player
             }
         }
 
-        public BaseGun ChangeGun_1()
+        public PlayerGun ChangeGun_1()
         {
             var weapon = LocalPlayerDataThing.GetData().weapon_1;
             
@@ -120,7 +122,7 @@ namespace Player
             return gun_1;
         }
         
-        public BaseGun ChangeGun_2()
+        public PlayerGun ChangeGun_2()
         {
             var weapon = LocalPlayerDataThing.GetData().weapon_2;
             
@@ -131,8 +133,8 @@ namespace Player
             gun_2 = ChangeGun(weapon);
             return gun_2;
         }
-        
-        public BaseGun ChangeGun(WeaponData weapon)
+
+        public PlayerGun ChangeGun(WeaponData weapon)
         {
             GunData gunData = ResourcesDataManager.GetPackageItemSoData(weapon.Name) as GunData;
             // GameObject gunObj = GameObject.Instantiate(gunData.prefab,gun);
@@ -142,12 +144,23 @@ namespace Player
             switch (gunData.shotType)
             {
                 case ShotType.Triple:
-                    return new TripleGun(this,gun,shotCenter,gunData,weapon);
+                    return new TripleGun(this,_playerGun,shotCenter,gunData,weapon);
                 case ShotType.ShotGun:
-                    return new ShotGun(this,gun,shotCenter,gunData,weapon);
+                    return new ShotGun(this,_playerGun,shotCenter,gunData,weapon);
+                case ShotType.Lamp:
+                    if(lamp == null)
+                        lamp = new Lamp(this,_playerGun,shotCenter,gunData,weapon);
+                    return lamp;
+                case ShotType.Hand:
+                    return new Hand(this,_playerGun,shotCenter,gunData,weapon);
                 default:
-                    return new BaseGun(this,gun,shotCenter,gunData,weapon);
+                    return new PlayerGun(this,_playerGun,shotCenter,gunData,weapon);
             }
+        }
+        
+        public void UpdateGun(PlayerGun playerGun)
+        {
+            _playerGun.ReloadGun(playerGun);
         }
         private void OnMove(InputAction.CallbackContext context)
         {
@@ -238,12 +251,16 @@ namespace Player
         
         private void Press1(InputAction.CallbackContext context)
         {
+            if(context.phase != InputActionPhase.Started)
+                return;
             playerEquipment.SwitchToWeapon1();
             
         }
         
         private void Press2(InputAction.CallbackContext context)
         {
+            if(context.phase != InputActionPhase.Started)
+                return;
             playerEquipment.SwitchToWeapon2();
         }
         

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using EquipmentSystem;
+using game;
 using TMPro;
 using ui;
 using UnityEngine;
@@ -21,8 +22,11 @@ namespace Player
         private TextMeshProUGUI _gunText;
         private Transform _gunBar;
 
-        private Transform reloadTransform;
+        private RectTransform reloadTransform;
         private Image reloadingImage;
+        
+        private Transform batteryBar;
+        private Image _batteryImage;
         public static PlayerUiPanel Load()
         {
             return Create(UiObjRefrenceSO.Instance.PlayerUiPanel);
@@ -42,8 +46,11 @@ namespace Player
             _gunImage = _gunBar.Find("Image").GetComponent<Image>();
             _gunText = _gunBar.transform.Find("Text").GetComponent<TextMeshProUGUI>();
             
-            reloadTransform = trans.Find("Reloading");
+            reloadTransform = trans.Find("Reloading") as RectTransform;
             reloadingImage = reloadTransform.Find("Image").GetComponent<Image>();
+
+            batteryBar = trans.Find("BatteryBar");
+            _batteryImage = batteryBar.Find("Image").GetComponent<Image>();
             
         }
         
@@ -65,33 +72,53 @@ namespace Player
             _gunText.text = $"{currentAmmo}/{maxAmmo}";
         }
         
+        public void UpdateBatteryBar(float currentTime,float MaxTime)
+        {
+            _batteryImage.fillAmount = currentTime / MaxTime;
+        }
+        
         public void GunReloading(float time)
         {
+            ReloadingUi.Instance.GunReloading(time);
+            return;
             reloadTransform.gameObject.SetActive(true);
-            
             reloadingImage.fillAmount = 0;
             var doTween = reloadingImage.DOFillAmount(1, time).SetEase(Ease.Linear);
             doTween.onUpdate = () =>
             {
-                Debug.Log(reloadingImage.fillAmount);
-                reloadTransform.position = PlayerController.Instance.Head.position;
+                reloadTransform.anchoredPosition = CameraManager.Instance.PlayerPosToUiPos();
             };
             
             doTween.OnComplete(() =>
             {
-                reloadTransform.position = new Vector3(1000,1000,1000);
+                reloadTransform.anchoredPosition = new Vector2(9999, 9999);
                 reloadTransform.gameObject.SetActive(false);
             });
         }
 
-        public void SwitchGun(BaseGun gun)
+        public void SwitchGun(PlayerGun gun)
         {
             if(gun == null)
                 _gunBar.gameObject.SetActive(false);
             else
             {
-                _gunBar.gameObject.SetActive(true);
-                UpdateGunBar(gun.currentAmmo,gun.maxAmmo);
+                if (gun is Lamp lamp)
+                {
+                    batteryBar.gameObject.SetActive(true);
+                    _gunBar.gameObject.SetActive(false);
+                    UpdateBatteryBar(lamp.currentBattery, lamp.time);
+                }
+                else if (gun is Hand)
+                {
+                    batteryBar.gameObject.SetActive(false);
+                    _gunBar.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _gunBar.gameObject.SetActive(true);
+                    batteryBar.gameObject.SetActive(false);
+                    UpdateGunBar(gun.currentAmmo,gun.maxAmmo);
+                }
             }
         }
     }

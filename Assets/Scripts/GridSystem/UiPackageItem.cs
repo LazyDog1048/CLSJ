@@ -142,8 +142,6 @@ namespace GridSystem
         private void BaseInitItem(PackageItemData packageItemData)
         {
             state = UiPackageItemState.Settle;
-            
-
             isRotated = packageItemData.isRotated;
             rectTransform.rotation = Quaternion.Euler(0, 0, isRotated ? 90 : 0);
             rectTransform.localScale = Vector3.one;
@@ -193,13 +191,14 @@ namespace GridSystem
 
         public void UpdatePosition()
         {
-            var mousePos = GetMousePos.GetMousePosition();
+            var mousePos = GetMousePos.GetUiMousePositionWithZ(CameraManager.Instance.uiCamera);
+            // var mousePos = GetMousePos.GetMousePosition();
             transform.position = mousePos;
         }
 
         public bool CheckAddToItem(UiGrid<UiGridObject> grid)
         {
-            if(packageItemSoData.ItemType != PackageItemType.Bullet)
+            if(packageItemSoData.ItemType != PackageItemType.Bullet || packageItemSoData.Name.Equals("Battery"))
             {
                 return false;
             }
@@ -359,7 +358,8 @@ namespace GridSystem
         public void CheckEquip()
         {
             var weapon = LocalPlayerDataThing.GetData().weapon_1;
-            if (packageItemData.Name.Equals(weapon.Name))
+            var lamp = LocalPlayerDataThing.GetData().weapon_2;
+            if (packageItemData.Name.Equals(weapon.Name) || packageItemData.Name.Equals(lamp.Name))
             {
                 equipmentIcon.gameObject.SetActive(true);
                 CheckEquipRota();
@@ -372,7 +372,8 @@ namespace GridSystem
         public bool CheckIsEquip()
         {
             var weapon = LocalPlayerDataThing.GetData().weapon_1;
-            if (packageItemData.Name.Equals(weapon.Name))
+            var lamp = LocalPlayerDataThing.GetData().weapon_2;
+            if (packageItemData.Name.Equals(weapon.Name) || packageItemData.Name.Equals(lamp.Name))
             {
                 return true;
             }

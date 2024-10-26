@@ -23,9 +23,13 @@ namespace game
         public float lanternLightInner = 2.5f;
         [SerializeField]
         public float lanternLightOuter = 3.5f;
+        public float lampLightInner = 5;
+        [SerializeField]
+        public float lampLightOuter = 5.5f;
+        
         public Light2D globalLight { get;private set; }
         public PlayerFlashlight playerFlashLight { get;private set; }
-        public PlayerLantern playerLantern { get;private set; }
+        public PlayerLamp PlayerLamp { get;private set; }
         public PlayerLightController playerLightController { get;private set; }
         
         protected override void Awake()
@@ -35,11 +39,11 @@ namespace game
             globalLight.intensity = globalLightIntensity;
             
             playerFlashLight = PlayerFlashlight.Instance;
-            playerLantern = PlayerLantern.Instance;
+            PlayerLamp = PlayerLamp.Instance;
             playerLightController = PlayerLightController.Instance;
             
             playerFlashLight.SetLight(flashlightData,rayCount);
-            playerLantern.SetLight(lanternLightInner,lanternLightOuter);
+            PlayerLamp.SetLight(lanternLightInner,lanternLightOuter,lampLightInner,lampLightOuter);
             
         }
         

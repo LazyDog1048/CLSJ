@@ -54,9 +54,10 @@ namespace game
         }
 
 
-        public void SwitchGun(BaseGun gun)
+        public void SwitchGun(PlayerGun gun)
         {
-            if (gun == null)
+            // gameObject.SetActive(true);
+            if (gun is Hand)
             {
                 currentFlashlightData = baseFlashlightData;
             }
@@ -64,9 +65,10 @@ namespace game
             {
                 currentFlashlightData = gun.gunData.flashlightData;
             }
-
             NormalMode();
         }
+
+
         public void AimMode()
         {
             curOuter = currentFlashlightData.aimOuterLength;

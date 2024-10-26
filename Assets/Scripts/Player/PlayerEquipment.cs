@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using data;
 using EquipmentSystem;
 using GridSystem;
 using UnityEngine;
@@ -39,10 +40,12 @@ namespace Player
         #endregion
 
         public bool firstGun { get;private set; }
-        // public BaseGun currentWeapon => firstGun?weapon_1:weapon_2;
-        public BaseGun currentWeapon => weapon_1;
-        public BaseGun weapon_1 { get;private set; }
-        public BaseGun weapon_2 { get;private set; }
+        public PlayerGun currentWeapon => firstGun?weapon_1:lamp;
+        // public BaseGun currentWeapon => weapon_1;
+        public PlayerGun weapon_1 { get;private set; }
+        public PlayerGun tempWeapon { get;private set; }
+        public PlayerGun lamp { get;private set; }
+        public Lamp tempLamp { get;private set; }
         public MeleeWeapon meleeWeapon{ get;private set; }
         public Armor_Coat coat { get;private set; }
         public Armor_LeftShoe leftShoe { get;private set; }
@@ -62,13 +65,18 @@ namespace Player
         {
             this.playerController = playerController;
             weapon_1 = PlayerController.Instance.ChangeGun_1();
-            // weapon_2 = PlayerController.Instance.ChangeGun_2();
-            //
+            lamp = PlayerController.Instance.ChangeGun_2();
+            if (lamp is Lamp l)
+            {
+                tempLamp = l;
+            }
+            
+            firstGun = true;
             // if(weapon_1 != null && weapon_2 == null)
             //     firstGun = true;
             // if(weapon_1 == null && weapon_2 != null)
             //     firstGun = false;
-            
+            Debug.Log("weapon_1:"+weapon_1);
                 
             meleeWeapon = new MeleeWeapon(playerController);
             coat = new Armor_Coat(playerController);
@@ -86,32 +94,106 @@ namespace Player
             
             playerController.DelayRealTimeExecute(0.1f, () =>
             {
-                PlayerUiPanel.Instance.SwitchGun(currentWeapon);
-                playerController.playerFlashlight.SwitchGun(currentWeapon);
+                playerController.UpdateGun(currentWeapon);
             });
         }
 
-        public void UpdateWeapon_1()
+        public void UpdateWeapon()
         {
             weapon_1 = PlayerController.Instance.ChangeGun_1();
             playerController.DelayRealTimeExecute(0.1f, () =>
             {
+                if (weapon_1 is not Hand)
+                {
+                    tempWeapon = weapon_1;
+                }
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
-                PlayerUiPanel.Instance.SwitchGun(currentWeapon);
-                playerController.playerFlashlight.SwitchGun(currentWeapon);
+                playerController.UpdateGun(currentWeapon);
             });
         }
         
-        public void UnEquipWeapon()
+        public void UpdateLamp()
         {
-            weapon_1 = null;
+            lamp = PlayerController.Instance.ChangeGun_2();
             playerController.DelayRealTimeExecute(0.1f, () =>
             {
+                if (lamp is Lamp l && currentWeapon == lamp)
+                {
+                    tempLamp = l;
+                    tempLamp.LightOn();
+                }
+                else if(tempLamp != null)
+                {
+                    tempLamp.LightOff();
+                }
+                
                 Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
-                PlayerUiPanel.Instance.SwitchGun(currentWeapon);
-                playerController.playerFlashlight.SwitchGun(currentWeapon);
+                playerController.UpdateGun(currentWeapon);
             });
         }
+
+        public void SwitchToWeapon1()
+        {
+            firstGun = true;
+            playerController.UpdateGun(weapon_1);
+            if(lamp is Lamp l)
+            {
+                l.LightOff();
+            }
+        }
+        
+        public void SwitchToWeapon2()
+        {
+            firstGun = false;
+            playerController.UpdateGun(lamp);
+            if(lamp is Lamp l)
+            {
+                l.LightOn();
+            }
+        }
+        
+        public void EquipWeapon()
+        {
+            GunData gunData = weapon_1.gunData;
+            if (gunData == null)
+                return;
+            if (weapon_1 is Hand)
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_1 = tempWeapon.WeaponData;
+                LocalPlayerDataThing.Save();
+                PlayerController.Instance.playerEquipment.UpdateWeapon();
+            }
+            else
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_1 = new WeaponData("Hand");
+            }
+            LocalPlayerDataThing.Save();
+            UpdateWeapon();
+        }
+        
+        public void EquipLamp()
+        {
+            GunData gunData = lamp.gunData;
+            if (gunData == null)
+                return;
+            if (lamp is Hand)
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_2 = tempLamp.WeaponData;
+            }
+            else
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_2 = new WeaponData("Hand");
+            }
+            LocalPlayerDataThing.Save();
+            UpdateLamp();
+        }
+        
+        
+                
         public void UpdateEquipment()
         {
             weapon_1 = PlayerController.Instance.ChangeGun_1();
@@ -142,17 +224,6 @@ namespace Player
                 PlayerUiPanel.Instance.SwitchGun(currentWeapon);
             });
         }
-   
-        public void SwitchToWeapon1()
-        {
-            firstGun = true;
-            PlayerUiPanel.Instance.SwitchGun(currentWeapon);
-        }
-        
-        public void SwitchToWeapon2()
-        {
-            firstGun = false;
-            PlayerUiPanel.Instance.SwitchGun(currentWeapon);
-        }
+
     }    
 }

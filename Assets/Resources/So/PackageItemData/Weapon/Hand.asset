@@ -31,15 +31,16 @@ MonoBehaviour:
   weight: 0
   description: 
   Damage: 0
-  shotType: 0
+  shotType: 4
   shotMode: 0
   shotDelay: 0.5
   maxShotShake: 20
   minShotShake: 2
+  minCalibration: 5
   shotStability: 5
   shotCalibration: 3
   reloadTime: 2
-  maxAmmo: 20
+  maxAmmo: 0
   penetrateNum: 1
   bulletSpeed: 100
   bulletStayTime: 4
@@ -47,4 +48,13 @@ MonoBehaviour:
   shotLength: 0.8
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
-  gunAnimator: {fileID: 22100000, guid: b86b86015e0e28c4aa89845ba45ad33e, type: 2}
+  gunAnimator: {fileID: 22100000, guid: 9988d28c515d9dd48ba70549d20cb3d6, type: 2}
+  flashlightData:
+    normalInnerLength: 10
+    normalOuterLength: 11
+    normalInnerAngle: 40
+    normalOuterAngle: 45
+    aimInnerLength: 20
+    aimOuterLength: 22
+    aimInnerAngle: 20
+    aimOuterAngle: 25

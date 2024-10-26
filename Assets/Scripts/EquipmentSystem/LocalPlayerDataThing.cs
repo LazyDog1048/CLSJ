@@ -26,8 +26,8 @@ namespace EquipmentSystem
         
         public LocalPlayerDataThing()
         {
-            weapon_1 = new WeaponData("");
-            weapon_2 = new WeaponData("");
+            weapon_1 = new WeaponData("Hand");
+            weapon_2 = new WeaponData("Hand");
             meleeWeapon = new MeleeWeaponData("");
             accessory = new AccessoryData("");
             spell = new SpellData("");

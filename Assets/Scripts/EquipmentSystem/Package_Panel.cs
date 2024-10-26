@@ -85,7 +85,6 @@ namespace GridSystem
             //     playerEquipmentSlot.SavePlayerEquipmentSlotData();
             // }
             // PlayerController.Instance.playerEquipment.UpdateEquipment();
-            boxUiGridSystem.ClearItem();
             playerPackageUiGridSystem.ClearItem();
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
@@ -114,33 +113,33 @@ namespace GridSystem
     
     public class BaseItemPanel:BasePanel
     {
-        protected TextMeshProUGUI nameText;
-        protected TextMeshProUGUI typeText;
-        protected TextMeshProUGUI rareText;
-        
-        protected TextMeshProUGUI priceText;
-        protected TextMeshProUGUI weightText;
+        protected TextMeshProUGUI text;
+        // protected TextMeshProUGUI typeText;
+        // protected TextMeshProUGUI rareText;
+        //
+        // protected TextMeshProUGUI priceText;
+        // protected TextMeshProUGUI weightText;
 
         protected Vector3 offset = new Vector3(79,0,0);
         
         protected BaseItemPanel(Transform trans) : base(trans)
         {
-            nameText = trans.Find("NameText").GetComponent<TextMeshProUGUI>();
-            typeText = trans.Find("TypeText").GetComponent<TextMeshProUGUI>();
-            rareText = trans.Find("RareText").GetComponent<TextMeshProUGUI>();
-            
-            priceText = trans.Find("PriceText").GetComponent<TextMeshProUGUI>();
-            weightText = trans.Find("WeightText").GetComponent<TextMeshProUGUI>();
+            text = trans.Find("Text").GetComponent<TextMeshProUGUI>();
+            // typeText = trans.Find("TypeText").GetComponent<TextMeshProUGUI>();
+            // rareText = trans.Find("RareText").GetComponent<TextMeshProUGUI>();
+            //
+            // priceText = trans.Find("PriceText").GetComponent<TextMeshProUGUI>();
+            // weightText = trans.Find("WeightText").GetComponent<TextMeshProUGUI>();
         }
         
         public virtual void EnterItemPanel(UiPackageItem item)
         {
             var data = item.packageItemSoData;
-            nameText.text = data.Name;
-            typeText.text = data.ItemType.ToString();
-            rareText.text = data.quality.ToString();
-            priceText.text = data.price.ToString();
-            weightText.text = data.weight.ToString(CultureInfo.InvariantCulture);
+            text.text = data.description;
+            // typeText.text = data.ItemType.ToString();
+            // rareText.text = data.quality.ToString();
+            // priceText.text = data.price.ToString();
+            // weightText.text = data.weight.ToString(CultureInfo.InvariantCulture);
         }
    
     }
@@ -156,46 +155,45 @@ namespace GridSystem
 
         public WeaponDetailPanel(Transform trans) : base(trans)
         {
-            damageText = trans.Find("DamagePanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            shotDelayText = trans.Find("ShotDelayPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            shotStabilityText = trans.Find("ShotStabilityPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            shotCalibrationText = trans.Find("ShotCalibrationPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            bulletSpeedText = trans.Find("BulletSpeedPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            reloadTimeText = trans.Find("ReloadTimePanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
-            maxAmmoText = trans.Find("MaxAmmoPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // damageText = trans.Find("DamagePanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // shotDelayText = trans.Find("ShotDelayPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // shotStabilityText = trans.Find("ShotStabilityPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // shotCalibrationText = trans.Find("ShotCalibrationPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // bulletSpeedText = trans.Find("BulletSpeedPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // reloadTimeText = trans.Find("ReloadTimePanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
+            // maxAmmoText = trans.Find("MaxAmmoPanel").Find("ValueText").GetComponent<TextMeshProUGUI>();
         }
         
         public override void EnterItemPanel(UiPackageItem item)
         {
             base.EnterItemPanel(item);
-            GunData gunData = item.packageItemSoData as GunData;
-            typeText.text = gunData.shotType.ToString();
+            // GunData gunData = item.packageItemSoData as GunData;
+            // typeText.text = gunData.shotType.ToString();
             
-            damageText.text = gunData.Damage.ToString();
-            shotDelayText.text = gunData.shotDelay.ToString(CultureInfo.InvariantCulture);
-            shotStabilityText.text = gunData.shotStability.ToString(CultureInfo.InvariantCulture);
-            shotCalibrationText.text = gunData.shotCalibration.ToString(CultureInfo.InvariantCulture);
-            bulletSpeedText.text = gunData.bulletSpeed.ToString(CultureInfo.InvariantCulture);
-            reloadTimeText.text = gunData.reloadTime.ToString(CultureInfo.InvariantCulture);
-            maxAmmoText.text = gunData.maxAmmo.ToString();
+            // damageText.text = gunData.Damage.ToString();
+            // shotDelayText.text = gunData.shotDelay.ToString(CultureInfo.InvariantCulture);
+            // shotStabilityText.text = gunData.shotStability.ToString(CultureInfo.InvariantCulture);
+            // shotCalibrationText.text = gunData.shotCalibration.ToString(CultureInfo.InvariantCulture);
+            // bulletSpeedText.text = gunData.bulletSpeed.ToString(CultureInfo.InvariantCulture);
+            // reloadTimeText.text = gunData.reloadTime.ToString(CultureInfo.InvariantCulture);
+            // maxAmmoText.text = gunData.maxAmmo.ToString();
         }
         
     }
 
     public class PackageItemDetailPanel : BaseItemPanel
     {
-        private TextMeshProUGUI itemDescription_Text;
-        Vector3 offset = new Vector3(90,0,0);
+        // private TextMeshProUGUI itemDescription_Text;
         public PackageItemDetailPanel(Transform trans) : base(trans)
         {
-            itemDescription_Text = trans.Find("ItemDescription_Panel").Find("NameText").GetComponent<TextMeshProUGUI>();
+            // itemDescription_Text = trans.Find("ItemDescription_Panel").Find("NameText").GetComponent<TextMeshProUGUI>();
         }
         
         public override void EnterItemPanel(UiPackageItem item)
         {
             base.EnterItemPanel(item);
-            var data = item.packageItemSoData;
-            itemDescription_Text.text = data.description;
+            // var data = item.packageItemSoData;
+            // itemDescription_Text.text = data.description;
         }
     }
     
@@ -220,7 +218,7 @@ namespace GridSystem
 
         public void EnterItemPanel()
         {
-            Vector3 pos = GetMousePos.GetMousePositionWithZ() + new Vector3(37/2f/13.33f,0,0);
+            Vector3 pos = GetMousePos.GetUiMousePositionWithZ(CameraManager.Instance.uiCamera) + new Vector3(37/2f/13.33f,0,0);
             pos.z = 0;
             transform.position = pos;
             item = UiPackageItem.cursorUiPackageItem;
@@ -232,7 +230,7 @@ namespace GridSystem
             {
                 isActive = true;
                 LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
-                if (localPlayerDataThing.weapon_1.Name.Equals(item.packageItemData.Name))
+                if (localPlayerDataThing.weapon_1.Name.Equals(item.packageItemData.Name) || localPlayerDataThing.weapon_2.Name.Equals(item.packageItemData.Name))
                 {
                     unEquipBtn.gameObject.SetActive(true);
                 }
@@ -250,18 +248,44 @@ namespace GridSystem
 
         public void EquipWeapon()
         {
-            LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
-            localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
-            LocalPlayerDataThing.Save();
-            PlayerController.Instance.playerEquipment.UpdateWeapon_1();
-            
+            GunData gunData = item.packageItemSoData as GunData;
+            if (gunData == null)
+                return;
+            if (gunData.shotType != ShotType.Lamp)
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_1 = item.packageItemData as WeaponData;
+                LocalPlayerDataThing.Save();
+                PlayerController.Instance.playerEquipment.UpdateWeapon();
+            }
+            else
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_2 = item.packageItemData as WeaponData;
+                LocalPlayerDataThing.Save();
+                PlayerController.Instance.playerEquipment.UpdateLamp();
+            }
         }
+        
         public void UnEquipWeapon()
         {
-            LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
-            localPlayerDataThing.weapon_1 = new WeaponData("");
-            LocalPlayerDataThing.Save();
-            PlayerController.Instance.playerEquipment.UnEquipWeapon();
+            GunData gunData = item.packageItemSoData as GunData;
+            if (gunData == null)
+                return;
+            if (gunData.shotType != ShotType.Lamp)
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_1 = new WeaponData("Hand");
+                LocalPlayerDataThing.Save();
+                PlayerController.Instance.playerEquipment.UpdateWeapon();
+            }
+            else
+            {
+                LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
+                localPlayerDataThing.weapon_2 = new WeaponData("Hand");
+                LocalPlayerDataThing.Save();
+                PlayerController.Instance.playerEquipment.UpdateLamp();
+            }
         }
 
         public void ExitItemPanel()

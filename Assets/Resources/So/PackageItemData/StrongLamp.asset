@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
+  m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: StrongLamp
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: StrongLamp
@@ -23,8 +23,36 @@ MonoBehaviour:
     - {x: 1, y: 0}
     - {x: 1, y: 1}
     keeper: 01010101
-  ItemType: 9
+  ItemType: 0
   quality: 0
   price: 0
   weight: 0
   description: 
+  Damage: 0
+  shotType: 3
+  shotMode: 1
+  shotDelay: 0.5
+  maxShotShake: 50
+  minShotShake: 10
+  minCalibration: 5
+  shotStability: 4
+  shotCalibration: 10
+  reloadTime: 1
+  maxAmmo: 1
+  penetrateNum: 1
+  bulletSpeed: 10
+  bulletStayTime: 4
+  bulletData: {fileID: 0}
+  shotLength: 0.8
+  shotFx: {fileID: 0}
+  smokeFx: {fileID: 0}
+  gunAnimator: {fileID: 0}
+  flashlightData:
+    normalInnerLength: 10
+    normalOuterLength: 11
+    normalInnerAngle: 40
+    normalOuterAngle: 45
+    aimInnerLength: 20
+    aimOuterLength: 22
+    aimInnerAngle: 20
+    aimOuterAngle: 25

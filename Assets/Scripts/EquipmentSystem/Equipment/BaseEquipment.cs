@@ -8,7 +8,7 @@ namespace EquipmentSystem
 {
     public class BaseEquipment
     {
-        protected PlayerController playerController;
+        protected MonoBehaviour playerController;
         
         
         public BaseEquipment(PlayerController playerController)

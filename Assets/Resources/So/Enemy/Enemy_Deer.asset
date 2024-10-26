@@ -16,6 +16,6 @@ MonoBehaviour:
   Speed: 3
   Health: 100
   Damage: 1
-  FindRange: 10
-  AttackRange: 2
+  FindRange: 15
+  AttackRange: 8
   AttackInterval: 2

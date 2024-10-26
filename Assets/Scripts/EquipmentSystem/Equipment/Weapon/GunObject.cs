@@ -11,39 +11,39 @@ namespace Player
     public class GunObject : GridGameObject,IAnimatorController
     {
         [SerializeField]
-        private Light2D fireLight;
-        private GunData gunData;
+        protected Light2D fireLight;
+        protected GunData gunData;
+        protected GunAnimatorController gunAnimatorController;
         public GunState CurState
         {
             get => gunAnimatorController.CurState;
             set => gunAnimatorController.SetAnim(value);
         }
-        private GunAnimatorController gunAnimatorController;
-        private SpriteRenderer icon;
 
         public void Init()
         {
             gunAnimatorController = new GunAnimatorController(this);
         }
 
-        public void ReloadGun(GunData data)
+        public virtual void ReloadGun(GunData gunData)
         {
-            gunData = data;
-            gridObjectSo = data;
-            gunAnimatorController.ReloadAnimator(data.gunAnimator);
+            this.gunData = gunData;
+            gridObjectSo = gunData;
+            gunAnimatorController.ReloadAnimator(gunData.gunAnimator);
             CurState = GunState.Idle;
         }
 
-        public void GunShot(Vector3 shotCenter,Vector2 dir)
+        public void GunShot(Vector3 target,Vector3 shotCenter,Vector2 dir)
         {
-            var shotPoint = shotCenter.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength);
-            var smokePoint = shotCenter.GetDirDistance(GameCursor.Instance.transform.position, gunData.shotLength-0.2f);
+            var shotPoint = shotCenter.GetDirDistance(target, gunData.shotLength);
+            var smokePoint = shotCenter.GetDirDistance(target, gunData.shotLength-0.2f);
             
             FxPlayer.PlayFx(gunData.shotFx, shotPoint).Rotate(GetAngle.Angle(dir));
             FxPlayer.PlayFx(gunData.smokeFx, smokePoint).Rotate(GetAngle.Angle(dir));
             CameraShake.Instance.ShakeCamera(0.1f,0.1f);
             CurState = GunState.Shot;
         }
+        
         public void AnimatorStateEnter()
         {
             switch (CurState)
@@ -68,6 +68,5 @@ namespace Player
                     break;
             }
         }
-    }
-    
+    }    
 }

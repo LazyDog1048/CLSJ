@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 
 namespace EquipmentSystem
 {
-    public class BaseGun:BaseEquipment
+    public class PlayerGun:BaseEquipment
     {
         public GunData gunData{ get; set; }
 
@@ -46,7 +46,7 @@ namespace EquipmentSystem
         private float calibrateTime = 0.1f;
 
         // private GunAnimatorController gunAnimatorController;
-        protected GunObject gunObject;
+        protected PlayerGunObject PlayerGunObject;
     
         // private int _currentAmmo;
         public int currentAmmo
@@ -58,7 +58,7 @@ namespace EquipmentSystem
                 PlayerUiPanel.Instance.UpdateGunBar(WeaponData.currentAmmo,maxAmmo);
             }
         }
-        private bool CanShot
+        protected virtual bool CanShot
         {
             get
             {
@@ -71,20 +71,20 @@ namespace EquipmentSystem
             }
         }
 
-        public BaseGun(PlayerController playerController,GunObject gunObj,Transform shotCenter,GunData gunData,WeaponData weaponData):base(playerController)
+        public PlayerGun(PlayerController playerController,PlayerGunObject playerGunObj,Transform shotCenter,GunData gunData,WeaponData weaponData):base(playerController)
         {
             this.WeaponData = weaponData;
-            gunObject = gunObj;
+            PlayerGunObject = playerGunObj;
             this.shotCenter = shotCenter;
             this.playerController = playerController;
             this.gunData = gunData;
             
-            gunObject.ReloadGun(gunData);
+            // gunObject.ReloadGun(gunData);
             gunParameter = new GunParameter(this.gunData);
             // currentShotShake = basicShotShake;
         }
 
-        public void GunFire(InputAction.CallbackContext context)
+        public virtual void GunFire(InputAction.CallbackContext context)
         {
             curPhase = context.phase;
             if(context.phase == InputActionPhase.Started && gunParameter.shotMode == ShotMode.Click)
@@ -111,7 +111,7 @@ namespace EquipmentSystem
             }
         }
 
-        protected void BulletReLoad()
+        protected virtual void BulletReLoad()
         {
             isReloading = true;
             PlayerUiPanel.Instance.GunReloading(reloadTime);
@@ -131,7 +131,7 @@ namespace EquipmentSystem
             var afterDir = dir.Rota2DAxis(Random.Range(-range, range));
             Bullet baseBullet = Load<Bullet>(bulletData);
 
-            gunObject.GunShot(shotCenter.position,afterDir);
+            PlayerGunObject.GunShot(GameCursor.Instance.transform.position,shotCenter.position,afterDir);
             baseBullet.BulletPrepare(shotPoint,afterDir,this);
             
             

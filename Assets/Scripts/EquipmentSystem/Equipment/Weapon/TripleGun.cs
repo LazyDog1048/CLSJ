@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace EquipmentSystem
 {
-    public class TripleGun : BaseGun
+    public class TripleGun : PlayerGun
     {
         public float tripleShotTime = 0.1f;
         
-        public TripleGun(PlayerController playerController, GunObject gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
+        public TripleGun(PlayerController playerController, PlayerGunObject playerGunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, playerGunObj,shotCenter, gunData,weaponData)
         {
         }
         

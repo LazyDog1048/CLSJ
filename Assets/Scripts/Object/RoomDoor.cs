@@ -9,17 +9,19 @@ using UnityEngine;
 
 namespace game
 {
-    public class RoomDoor : MonoBehaviour
+    public class RoomDoor : SceneObject
     {
         [SerializeField]
         private List<PackageItemSoData> itemDatas;
         private bool isOpened = false;
 
         private Transform target;
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             target = transform.Find("Target");
         }
+
 
         public void TryOpenDoor()
         {

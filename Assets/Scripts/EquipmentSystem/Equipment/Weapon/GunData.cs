@@ -12,7 +12,9 @@ namespace EquipmentSystem
     {
         Single,
         Triple,
-        ShotGun
+        ShotGun,
+        Lamp,
+        Hand
     }
     
     public enum ShotMode

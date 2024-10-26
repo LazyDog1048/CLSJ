@@ -18,13 +18,15 @@ namespace Enemy
         protected float patrolIdleTime = 2f;
         protected bool patrolLock = false;
         
-        public bool SeenPlayer{ get;private set; }
+        public bool SeenPlayer{ get;protected set; }
         // protected Rigidbody2D rigidbody2D;
         public EnemySoData enemySoData;
         public EnemyParameter enemyParameter{ get; private set;}
         protected EnemyMove enemyMove;
         protected EnemyAnimator enemyAnimator;
         protected EnemyAttacker enemyAttacker;
+
+        
         public EnemyState CurState
         {
             get => enemyAnimator.CurState;
@@ -45,6 +47,7 @@ namespace Enemy
             // rigidbody2D = GetComponent<Rigidbody2D>();
             lightObj = GetComponent<LightObj>();
             center = transform.Find("Center");
+            
             enemyParameter = new EnemyParameter(enemySoData);
             SetMove();
             enemyAnimator = new EnemyAnimator(this);
@@ -79,7 +82,7 @@ namespace Enemy
             }
             else if (SeenPlayer)
             {
-                CurState = EnemyState.WalkToPlayer;
+                CurState = EnemyState.WaitIdle;
             }
             else
             {
@@ -141,7 +144,7 @@ namespace Enemy
         {
             enemyMove.AddForce(bullet.currentDir,knockBackTime);
             FxPlayer.PlayFx("Fx_Gun_Hit", enemyPosition);
-            enemyAttacker.currentHp -= bullet.gun.Damage;
+            enemyAttacker.currentHp -= bullet.gunParameter.Damage;
             if (enemyAttacker.currentHp <= 0)
                 CurState = EnemyState.Dead;
         }

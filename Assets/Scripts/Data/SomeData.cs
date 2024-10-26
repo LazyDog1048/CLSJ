@@ -26,7 +26,6 @@ namespace data
         public WeaponData(PackageItemSoData soData) : base(soData.Name)
         {
             currentAmmo = ((GunData)soData).maxAmmo;
-            Debug.Log("currentAmmo:"+currentAmmo);
         }
     }
     

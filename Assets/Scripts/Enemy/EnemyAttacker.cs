@@ -34,8 +34,13 @@ namespace plug
         
         public bool CheckWatchPlayer()
         {
+            float distance = Vector2.Distance(PlayerController.Instance.transform.position, transform.position);
+            if(distance > enemyParameter.FindRange/2)
+                return false;
+            
             Vector2 dir = (PlayerController.Instance.transform.position - transform.position).normalized;
-            var ray = Physics2D.Raycast(transform.position,dir, enemyParameter.FindRange,LayerMask.GetMask("Wall"));
+            
+            var ray = Physics2D.Raycast(transform.position,dir, distance,LayerMask.GetMask("Wall"));
             return ray.collider == null;
         }
         

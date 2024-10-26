@@ -100,4 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b1f797b9532d245b2cead41c3976cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObjectSo: {fileID: 11400000, guid: 335b1fc9971dac34f847a78d6a873bde, type: 2}
+  gridObjectSo: {fileID: 11400000, guid: 68b4830c6b216904e8b6510fca0c4993, type: 2}

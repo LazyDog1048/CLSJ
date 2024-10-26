@@ -16,7 +16,7 @@ namespace other
         private Transform right;
 
         private PlayerController playerController;
-        private BaseGun playerGun => playerController.playerEquipment.currentWeapon;
+        private PlayerGun playerGun => playerController.playerEquipment.currentWeapon;
         
         protected override void Awake()
         {

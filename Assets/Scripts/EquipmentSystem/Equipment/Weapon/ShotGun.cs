@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace EquipmentSystem
 {
-    public class ShotGun : BaseGun
+    public class ShotGun : PlayerGun
     {
         [SerializeField]
         private float delay = 0.12f;
         [SerializeField]
         private int bulletNum = 5;
         
-        public ShotGun(PlayerController playerController, GunObject gunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, gunObj,shotCenter, gunData,weaponData)
+        public ShotGun(PlayerController playerController, PlayerGunObject playerGunObj,Transform shotCenter, GunData gunData,WeaponData weaponData) : base(playerController, playerGunObj,shotCenter, gunData,weaponData)
         {
         }
         
@@ -24,7 +24,7 @@ namespace EquipmentSystem
             var shotPoint = shotCenter.position.GetDirDistance(GameCursor.Instance.transform.position, 1);
             var dir = (GameCursor.Instance.transform.position - shotCenter.position).normalized;
             
-            gunObject.GunShot(shotCenter.position,dir);
+            PlayerGunObject.GunShot(GameCursor.Instance.transform.position,shotCenter.position,dir);
             for (int i = 0; i < bulletNum; i++)
             {
                 playerController.DelayExecute(Random.Range(0,delay), () =>
@@ -45,8 +45,6 @@ namespace EquipmentSystem
             
             currentAmmo--;
         }
-
-        
     }
     
 }

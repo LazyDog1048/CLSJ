@@ -93,7 +93,7 @@ namespace GridSystem
         
         public virtual void PickUpItem()
         {
-            var mousePos = GetMousePos.GetMousePosition();
+            var mousePos = GetMousePos.GetUiMousePositionWithZ(CameraManager.Instance.uiCamera);
             UiGridObject uiGridObject = grid.GetGridObject(mousePos);
             
             if (!ItemFunctionPanel.isActive && uiGridObject != null && uiGridObject.UiPackageItem != null)

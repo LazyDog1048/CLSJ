@@ -68,7 +68,9 @@ namespace ui
         private void InitCanvas(Transform trans)
         {
             canvas = trans.GetComponent<Canvas>();
-            canvas.worldCamera = CameraManager.Instance.mainCamera;
+            
+            // canvas.worldCamera = CameraManager.Instance.mainCamera;
+            canvas.worldCamera = CameraManager.Instance.uiCamera;
         }
 
 

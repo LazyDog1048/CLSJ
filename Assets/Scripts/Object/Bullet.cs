@@ -12,8 +12,9 @@ namespace EquipmentSystem
         #region get&set
 
         private int penetrateNum = 1;
-        public BaseGun gun { get;private set; }
+        // public PlayerGun gun { get;private set; }
 
+        public GunParameter gunParameter{ get;private set; }
         private TrailRenderer trail;
 
         private float angle;
@@ -34,19 +35,23 @@ namespace EquipmentSystem
             trail = GetComponentInChildren<TrailRenderer>();
         }
 
-        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,BaseGun gun)
+        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,PlayerGun gun)
         {
-            this.gun = gun;
+            BulletPrepare(shot,dir,gun.gunParameter);
+        }
+
+        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,GunParameter gunParameter)
+        {
+            this.gunParameter = gunParameter;
             transform.position = shot;
             startPos = shot;
             currentDir = dir;
             angle = GetAngle.Angle(currentDir);
             transform.localRotation = Quaternion.Euler(0,0,angle);
-            penetrateNum = gun.gunParameter.penetrateNum;
+            penetrateNum = gunParameter.penetrateNum;
             ResetTrailEffect();
             BulletShot();
         }
-
         private void BulletShot()
         {
             ShotFxPlay();
@@ -55,7 +60,7 @@ namespace EquipmentSystem
 
         private void BulletDelay()
         {
-            this.DelayExecute(gun.gunParameter.bulletStayTime, ReleaseObj);
+            this.DelayExecute(gunParameter.bulletStayTime, ReleaseObj);
         }
 
         private void Update()
@@ -65,7 +70,7 @@ namespace EquipmentSystem
 
         protected virtual void UpdateBullet()
         {
-            transform.position += (Vector3)currentDir * gun.bulletSpeed * Time.deltaTime;
+            transform.position += (Vector3)currentDir * gunParameter.bulletSpeed.FinalValue * Time.deltaTime;
         }
         
         protected virtual void FinishBullet()

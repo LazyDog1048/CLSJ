@@ -34,6 +34,8 @@ namespace EquipmentSystem
         {
             foreach(var item in boxItemList)
             {
+                if(itemName.Equals("Battery"))
+                    return;
                 if (item.packageItemData.Name == itemName && item.packageItemSoData.ItemType == PackageItemType.Bullet)
                 {
                     item.Count += count;

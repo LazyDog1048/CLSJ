@@ -27,6 +27,29 @@ public class GetMousePos
         Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
         return worldPosition;
     }
+    
+    
+    public static Vector2 GetUiMousePosition()                                               //通过mainCamera获取
+    {
+        return  GetUiMousePositionWithZ();                                          //通过mainCamera获取
+    }
+    public static Vector3 GetUiMousePositionWithZ()                                               //通过mainCamera获取
+    {
+        // return GetMousePositionWithZ(Input.mousePosition, Camera.main);
+        return GetUiMousePositionWithZ(Mouse.current.position.ReadValue(), Camera.main);
+    }
+
+    public static Vector3 GetUiMousePositionWithZ(Camera worldCamera)                 //通过指定Camera获取
+    {
+        return GetUiMousePositionWithZ(Mouse.current.position.ReadValue(), worldCamera);
+    }
+
+    public static Vector3 GetUiMousePositionWithZ(Vector3 screenPosition, Camera worldCamera)
+    {
+        Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
+        worldPosition.z = 0;
+        return worldPosition;
+    }
 }
 public static class GetAngle                                       //仅获取2d xy的夹角
 {

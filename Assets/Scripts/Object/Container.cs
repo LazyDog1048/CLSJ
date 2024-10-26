@@ -14,7 +14,7 @@ namespace game
         public BulletData bullet;
         public int count =10;
     }
-    public class Container : MonoBehaviour
+    public class Container : SceneObject
     {
         private PackageUiGridSystem boxUiGridSystem;
         public List<UiPackageItem> boxItemList =>boxUiGridSystem.boxItemDataList;
@@ -27,8 +27,9 @@ namespace game
         private bool isOpen = false;
         private bool isFirstOpen = true;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             packageThing = new PackageThing();
         }
 
@@ -70,24 +71,10 @@ namespace game
         private void Close()
         {
             ClosePanelSaveData();
+            boxUiGridSystem.ClearItem();
         }
 
 
-        public void OpenPanelSaveData()
-        {
-            List<UiPackageItem> tPackageItems = new List<UiPackageItem>();
-            foreach (var cell in boxUiGridSystem.Grid.GridArray)
-            {
-                if(cell.UiPackageItem != null && !tPackageItems.Contains(cell.UiPackageItem))
-                    tPackageItems.Add(cell.UiPackageItem);
-            }
-
-            packageThing.ClearPackageData();
-            foreach (var packageItem in tPackageItems)
-            {
-                packageItem.SaveItemToPackage();
-            }
-        }
         public void ClosePanelSaveData()
         {
             packageThing.ClearPackageData();
@@ -121,7 +108,7 @@ namespace game
         {
             foreach(var item in boxItemList)
             {
-                if (item.packageItemData.Name == itemName && item.packageItemSoData.ItemType == PackageItemType.Bullet)
+                if (item.packageItemData.Name == itemName && item.packageItemSoData.ItemType == PackageItemType.Bullet && !itemName.Equals("Battery"))
                 {
                     item.Count += count;
                     return;
