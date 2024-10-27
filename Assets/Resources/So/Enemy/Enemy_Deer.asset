@@ -19,9 +19,9 @@ MonoBehaviour:
   DamageRange: 2
   DamageForce: 8
   DamageForceTime: 0.5
-  TouchDamage: 2
-  TouchForce: 5
-  TouchForceTime: 0.5
+  TouchDamage: 5
+  TouchForce: 20
+  TouchForceTime: 0.1
   FindRange: 20
-  AttackRange: 5
-  AttackInterval: 2
+  AttackRange: 10
+  AttackInterval: 4
