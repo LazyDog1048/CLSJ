@@ -59,7 +59,8 @@ namespace game
         public void StartGame()
         {
             CheckDoor(startRoomDoor);
-            BackToRoom();
+            EnterRoom();
+            
         }
         public void CheckDoor(RoomDoor roomDoor)
         {
@@ -70,7 +71,7 @@ namespace game
             beforeEnterPlayerData = JsonUtility.ToJson(DataManager.Instance.LocalPlayerDataThing);
         }
 
-        public void BackToRoom()
+        public void EnterRoom()
         {
             DataManager.Instance.LocalPackageThing = JsonUtility.FromJson<LocalPackageThing>(beforeEnterPackageData);
             DataManager.Instance.LocalPlayerDataThing = JsonUtility.FromJson<LocalPlayerDataThing>(beforeEnterPlayerData);

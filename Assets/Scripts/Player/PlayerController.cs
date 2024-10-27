@@ -325,7 +325,7 @@ namespace Player
         
         private void DeadComplete()
         {
-            GameManager.Instance.BackToRoom();
+            GameManager.Instance.EnterRoom();
         }
         #region IAnimController
         public virtual void AnimatorStateEnter()

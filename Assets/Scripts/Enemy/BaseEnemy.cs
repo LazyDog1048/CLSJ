@@ -41,6 +41,13 @@ namespace Enemy
         private float knockBackTime = 0.2f;
         protected virtual Vector3 playerPos => PlayerController.Instance.transform.position;
         protected Transform center;
+
+        public static BaseEnemy Load(EnemySoData data)
+        {
+            string path = $"Prefab/Enemy/{data.Name}";
+            return PoolManager.Instance.PopObj<BaseEnemy>(data.Name,path);
+        }
+        
         protected override void OnAwake()
         {
             base.OnAwake();
@@ -52,13 +59,13 @@ namespace Enemy
             SetMove();
             enemyAnimator = new EnemyAnimator(this);
             enemyAttacker = new EnemyAttacker(this, enemyParameter);
-            PatrolPoints = new List<Vector3>();
+        }
+
+        public void InitEnemy(List<Vector3> points)
+        {
+            PatrolPoints = points;
             patrolIndex = 0;
-            var patrol = transform.Find("Patrol");
-            for (int i = 0; i < patrol.childCount; i++)
-            {
-                PatrolPoints.Add(patrol.GetChild(i).position);
-            }
+            transform.position = PatrolPoints[patrolIndex];
         }
 
         protected virtual void SetMove()

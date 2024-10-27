@@ -96,6 +96,7 @@ namespace game
         public void ResumePlayer()
         {
             PlayerController.Instance.Resume(resume.position);
+            thisRoom.EnterRoom();
         }
     }
     
