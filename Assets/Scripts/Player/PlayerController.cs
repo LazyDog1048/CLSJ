@@ -307,6 +307,10 @@ namespace Player
             playerMove.AddForce(point,force,time);
         }
 
+        public void KnockBackPlayer(Vector2 dir,float force,float time)
+        {
+            playerMove.AddForce(dir,force,time);
+        }
         
         private void PlayerInvincible()
         {

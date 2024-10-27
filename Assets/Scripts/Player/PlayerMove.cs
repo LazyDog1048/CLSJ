@@ -44,6 +44,13 @@ namespace plug
                 return;
             
             Vector2 dir = (transform.position - targetPos).normalized;
+            AddForce(dir,force,time);
+        }
+        
+        public void AddForce(Vector2 dir,float force,float time)
+        {
+            if(isKnockBack)
+                return;
             if (50.RandomBy100Percent())
                 dir = dir.Rota2DAxis(Random.Range(30, 60));
             else
@@ -54,7 +61,6 @@ namespace plug
             rb.AddForce(dir * force,ForceMode2D.Impulse);
             mono.DelayExecute(time,Stop);
         }
-        
         public void Stop()
         {
             isKnockBack = false;

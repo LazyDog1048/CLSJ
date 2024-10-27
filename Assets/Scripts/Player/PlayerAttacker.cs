@@ -45,6 +45,7 @@ namespace Player
             this.playerParameter = playerParameter;
             maxHp = playerParameter.health;
             isInvincible = false;
+            lockKnockBack = false;
             Check2DRange check2DRange = transform.Find("Body").GetComponent<Check2DRange>();
             check2DRange.Init(OnTriggerEnter2D,OnTriggerExit2D);
             playerController.DelayExecute(0.1f, () =>
@@ -82,7 +83,8 @@ namespace Player
             }
             else if (!lockKnockBack)
             {
-                playerController.KnockBackPlayer(bullet.transform.position,1,0.1f);
+                
+                playerController.KnockBackPlayer(bullet.currentDir,3,0.2f);
                 EnterLockKnockBack();
             }
         }
@@ -114,6 +116,7 @@ namespace Player
         {
             currentHp = maxHp;
             isInvincible = false;
+            lockKnockBack = false;
         }
         
         private void OnTriggerEnter2D(Collider2D col)

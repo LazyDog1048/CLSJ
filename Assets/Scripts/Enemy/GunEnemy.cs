@@ -24,6 +24,8 @@ namespace Enemy
         private SpriteRenderer gunSprite;
         private Transform shotPoint;
         private Vector3 lastPlayerPos;
+        
+        protected override Vector3 playerPos => PlayerController.Instance.playerTrans.position;
         protected override void OnAwake()
         {
             base.OnAwake();

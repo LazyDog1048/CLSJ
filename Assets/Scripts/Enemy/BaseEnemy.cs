@@ -39,7 +39,7 @@ namespace Enemy
         
         
         private float knockBackTime = 0.2f;
-        protected Vector3 playerPos => PlayerController.Instance.transform.position;
+        protected virtual Vector3 playerPos => PlayerController.Instance.transform.position;
         protected Transform center;
         protected override void OnAwake()
         {
