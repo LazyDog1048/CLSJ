@@ -43,10 +43,10 @@ MonoBehaviour:
   shotType: 0
   shotMode: 1
   shotDelay: 0.1
-  maxShotShake: 10
-  minShotShake: 4
+  maxShotShake: 15
+  minShotShake: 5
   minCalibration: 3
-  shotStability: 4
+  shotStability: 5
   shotCalibration: 3
   reloadTime: 2.4
   maxAmmo: 30
