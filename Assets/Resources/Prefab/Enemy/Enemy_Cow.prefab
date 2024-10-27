@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySoData: {fileID: 11400000, guid: 6ace98727ba8ae844ab3253777f576ab, type: 2}
   dashTime: 1
+  alertTime: 1
   dashSpeed: 30
 --- !u!114 &5110581678303605071
 MonoBehaviour:

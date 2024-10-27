@@ -44,7 +44,7 @@ namespace GridSystem
             if (packageItemData != null && !packageItemData.Name.Equals(""))
             {
                 var packageItemSoData = ResourcesDataManager.GetPackageItemSoData(packageItemData.Name);
-                UiPackageItem uiPackageItem = Instantiate(Package_Panel.Instance.uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(this, packageItemSoData);
                 PutDownItem(uiPackageItem);
             }

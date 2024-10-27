@@ -38,7 +38,7 @@ namespace plug
             SpeedRate -= parameter.runRate;
         }
         
-        public void AddForce(Vector3 targetPos,float time)
+        public void AddForce(Vector3 targetPos,float force,float time)
         {
             if(isKnockBack)
                 return;
@@ -51,7 +51,6 @@ namespace plug
             
             isKnockBack = true;
             MoveEnable(false);
-            float force = 10;
             rb.AddForce(dir * force,ForceMode2D.Impulse);
             mono.DelayExecute(time,Stop);
         }

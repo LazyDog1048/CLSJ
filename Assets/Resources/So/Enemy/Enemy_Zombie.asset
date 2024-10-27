@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Enemy_Zombie
   Speed: 3
   Health: 100
-  Damage: 1
+  Damage: 10
+  TouchDamage: 2
   FindRange: 10
   AttackRange: 2
-  AttackInterval: 2
+  AttackInterval: 10

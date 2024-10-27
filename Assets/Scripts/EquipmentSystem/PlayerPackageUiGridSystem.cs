@@ -27,19 +27,13 @@ namespace GridSystem
         }
         public void ClosePanelSaveData()
         {
-            List<UiPackageItem> tPackageItems = new List<UiPackageItem>();
-            foreach (var cell in Grid.GridArray)
-            {
-                if(cell.UiPackageItem != null && !tPackageItems.Contains(cell.UiPackageItem))
-                    tPackageItems.Add(cell.UiPackageItem);
-            }
-
             LocalPackageThing.GetData().ClearPackageData();
-            foreach (var packageItem in tPackageItems)
+             for(int i = boxItemDataList.Count - 1; i >= 0; i--)
             {
-                packageItem.SaveItemToPackage();
+                boxItemDataList[i].SaveItemToPackage();
             }
             LocalPackageThing.Save();
+            ClearItem();
         }
 
         public void CheckEquipIcon()

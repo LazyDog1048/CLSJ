@@ -53,68 +53,67 @@ namespace EquipmentSystem
             // localPackageDataList.Clear();
         }
         
-        public void LoadPlayerPackage(UiPackageItem uiItemOri,PackageUiGridSystem playerPackageUiGridSystem)
+        public void LoadPlayerPackage(PackageUiGridSystem playerPackageUiGridSystem)
         {
             foreach (var item in weaponDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in meleeWeaponDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in capDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in coatDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in shoeDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in spellDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in shieldDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in accessoryDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in consumableDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in bulletDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
             foreach (var item in packageDataList)
             {
-                UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+                UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
                 uiPackageItem.InitItem(playerPackageUiGridSystem,item);
             }
         }
         
         public void AddPackageData(UiPackageItem uiPackageItem)
         {
-            Debug.Log("AddPackageData");
             switch (uiPackageItem.packageItemSoData.ItemType)
             {
                 case PackageItemType.Weapon:

@@ -17,8 +17,7 @@ namespace GridSystem
         public RectTransform itemParent;
         [SerializeField]
         private Transform oriGridCell;
-        [SerializeField]
-        private UiPackageItem uiItemOri;   
+           
         public int gridWidth = 20;
         public int gridHeight = 10;
         public float cellSize = 10;
@@ -46,7 +45,7 @@ namespace GridSystem
 
         public void LoadPackage(PackageThing packageThing)
         {
-            packageThing.LoadPlayerPackage(uiItemOri,this);
+            packageThing.LoadPlayerPackage(this);
         }
         private void AddCell(Transform ori,RectTransform parent)
         {
@@ -100,29 +99,43 @@ namespace GridSystem
             {
                 var item = uiGridObject.UiPackageItem;
                 item.PickOnGrid(grid);
-                boxItemDataList.Remove(item);
                 PackageItemPreview.Instance.SetPackageItem(item);
             }
         }
         
-        public void ClearItem()
+        public virtual void RemoveItem(string Name)
         {
-            foreach (var uiGridObject in grid.GridArray)
+            UiPackageItem uiGridObject = null;
+            foreach (var item in boxItemDataList)
             {
-                if (uiGridObject.HasItem)
+                if (item.packageItemData.Name.Equals(Name))
                 {
-                    var item = uiGridObject.UiPackageItem;
-                    uiGridObject.UiPackageItem.PickOnGrid(grid);
-                    GameObject.DestroyImmediate(item.gameObject);
+                    uiGridObject = item;
+                    break;
                 }
             }
+            
+            if (uiGridObject != null)
+            {
+                uiGridObject.RemoveItem();
+            }
+        }
+        
+        
+        public void ClearItem()
+        {
+            for(int i = boxItemDataList.Count - 1; i >= 0; i--)
+            {
+                boxItemDataList[i].RemoveItem();
+            }
+            
             boxItemDataList.Clear();
         }
 
 
         public void AddItem(PackageItemData packageItemData)
         {
-            UiPackageItem uiPackageItem = Instantiate(uiItemOri);
+            UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
             uiPackageItem.InitItem(this,packageItemData);            
             // boxItemDataList.Add(uiPackageItem);
         }

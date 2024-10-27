@@ -27,7 +27,7 @@ namespace EquipmentSystem
 
         public Lamp(PlayerController playerController, PlayerGunObject playerGunObj, Transform shotCenter, GunData gunData, WeaponData weaponData) : base(playerController, playerGunObj, shotCenter, gunData, weaponData)
         {
-            Debug.Log($"New Lamp");
+            Debug.Log($"New Lamp {gunData.Name}");
             time = gunData.bulletData.stayTime;
             ResetBattery();
         }

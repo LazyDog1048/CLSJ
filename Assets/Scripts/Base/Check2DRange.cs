@@ -35,7 +35,11 @@ namespace plug
             triggerEnter = enter;
             triggerExit = exit;
         }
-
+        public void Init(UnityAction<Collider2D> enter,UnityAction<Collider2D> exit)
+        {
+            triggerEnter = enter;
+            triggerExit = exit;
+        }
         public void AddListener(UnityAction<Collider2D> enter,UnityAction<Collider2D> exit)
         {
             triggerEnterEvent.AddListener(enter);

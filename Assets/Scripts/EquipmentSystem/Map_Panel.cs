@@ -20,7 +20,6 @@ namespace ui
             {
                 roomUis.Add(child.GetComponent<RoomUi>());
             }
-            Debug.Log(roomUis.Count);
             // roomUis = trans.GetComponentsInChildren<RoomUi>();
         }
 
@@ -32,7 +31,6 @@ namespace ui
 
         private void UpdataRoom()
         {
-            Debug.Log(GameManager.Instance.lastRoom.roomName);
             foreach (var roomUi in roomUis)
             {
                 roomUi.CheckRoom(GameManager.Instance.lastRoom);

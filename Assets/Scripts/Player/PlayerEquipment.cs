@@ -132,6 +132,27 @@ namespace Player
             });
         }
 
+        public void UpgradeLamp()
+        {
+            lamp = PlayerController.Instance.ChangeGun_2();
+            tempLamp = lamp as Lamp;
+            playerController.DelayRealTimeExecute(0.1f, () =>
+            {
+                if (lamp is Lamp l && currentWeapon == lamp)
+                {
+                    tempLamp = l;
+                    tempLamp.LightOn();
+                }
+                else if(tempLamp != null)
+                {
+                    tempLamp.LightOff();
+                }
+                
+                Package_Panel.Instance.playerPackageUiGridSystem.CheckEquipIcon();
+                playerController.UpdateGun(currentWeapon);
+            });
+        }
+        
         public void SwitchToWeapon1()
         {
             firstGun = true;

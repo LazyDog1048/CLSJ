@@ -31,7 +31,9 @@ namespace GridSystem
         }
         
         private PackageUiGridSystem currentGridSystem;
-        public string Name => packageItemSoData.Name;
+        public override string poolId => nameof(UiPackageItem); 
+        public static string Name => nameof(UiPackageItem);
+        public string ItemName => packageItemSoData.Name;
         public PackageItemSoData packageItemSoData { get; private set; }
         public PackageItemData packageItemData { get;private set; }
         [SerializeField]
@@ -73,6 +75,13 @@ namespace GridSystem
         private static Color hadItemColor;
         private static Color enterColor;
         private static Color cantPutColor;
+        
+        public static T Load<T>() where T:UiPackageItem
+        {
+            string path = $"Prefab/Other/{Name}";
+            return PoolManager.Instance.PopObj<T>(Name,path);
+        }
+        
         private void Awake()
         {
             bg = transform.Find("Bg").GetComponent<Image>();
@@ -206,7 +215,7 @@ namespace GridSystem
             foreach (var cell in Cells)
             {
                 UiGridObject playerGrid = grid.GetGridObject(cell.transform.position);
-                if (playerGrid == null || playerGrid.CanBuild() || !playerGrid.UiPackageItem.Name.Equals(Name))
+                if (playerGrid == null || playerGrid.CanBuild() || !playerGrid.UiPackageItem.ItemName.Equals(ItemName))
                 {
                     return false;
                 }
@@ -215,7 +224,7 @@ namespace GridSystem
             Debug.Log("CheckAddToItem_2");
 
             first.UiPackageItem.Count += packageItemData.count;
-            DestroyImmediate(gameObject);
+            ReleaseObj();
             return true;
         }
         
@@ -303,7 +312,7 @@ namespace GridSystem
             packageItemData.firstGridPoint = new Vector2Int(first.X,first.Y);
             packageItemData.isRotated = isRotated;
         }
-        
+
         public void PutOnSlot(PlayerEquipmentSlot slot)
         {
             transform.SetParent(slot.transform);
@@ -320,6 +329,8 @@ namespace GridSystem
                 UiGridObject uiGridObject = grid.GetGridObject(cell.transform.position);
                 uiGridObject.RemoveGridItem();
             }
+
+            currentGridSystem.boxItemDataList.Remove(this);
             bg.gameObject.SetActive(false);
             PackageItemPreview.Instance.RotaBg(isRotated);
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
@@ -413,8 +424,30 @@ namespace GridSystem
 
         public void RemoveItem()
         {
-            PickOnGrid();
-            DestroyImmediate(gameObject);
+            ReleaseObj();
+        }
+
+        public override void OnPushObj()
+        {
+            if(currentGridSystem == null)
+                return;
+            
+            state = UiPackageItemState.None;
+            bg.gameObject.SetActive(false);
+
+            foreach (var cell in cells)
+            {
+                UiGridObject uiGridObject = currentGridSystem.Grid.GetGridObject(cell.transform.position);
+                uiGridObject.RemoveGridItem();
+            }
+            currentGridSystem.boxItemDataList.Remove(this);
+            
+            foreach (var cell in cells)
+            {
+                Destroy(cell);
+            }
+            cells.Clear();
+
         }
     }
     

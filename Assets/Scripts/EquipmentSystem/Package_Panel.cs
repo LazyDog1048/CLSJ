@@ -22,7 +22,7 @@ namespace GridSystem
 
         private GameObject boxPanel;
         // private PlayerEquipmentSlot[] playerEquipmentSlots;
-        public UiPackageItem uiItemOri;
+        // public UiPackageItem uiItemOri;
 
         // public WeaponDetailPanel weaponDetailPanel;
         // public PackageItemDetailPanel packageItemDetailPanel;
@@ -37,7 +37,7 @@ namespace GridSystem
         {
             PanelType = PanelType.PauseGame;
             // playerEquipmentSlots = trans.Find("EquipmentPanel").GetComponentsInChildren<PlayerEquipmentSlot>();
-            uiItemOri = trans.Find("UiPackageItem").GetComponent<UiPackageItem>();
+            // uiItemOri = trans.Find("UiPackageItem").GetComponent<UiPackageItem>();
             playerPackageUiGridSystem = trans.Find("PackagePanel").GetComponentInChildren<PlayerPackageUiGridSystem>();
             boxPanel = trans.Find("BoxPanel").gameObject;
             boxUiGridSystem = boxPanel.GetComponentInChildren<PackageUiGridSystem>();
@@ -77,7 +77,8 @@ namespace GridSystem
         
         public void AddPreviewItem(PackageItemData packageItemData)
         {
-            UiPackageItem uiPackageItem = GameObject.Instantiate(uiItemOri);
+
+            UiPackageItem uiPackageItem = UiPackageItem.Load<UiPackageItem>();
             uiPackageItem.InitItem(packageItemData);
             PackageItemPreview.Instance.SetPackageItem(uiPackageItem);
         }
@@ -95,12 +96,8 @@ namespace GridSystem
             if(playerPackageUiGridSystem == null)
                 return;
             playerPackageUiGridSystem.ClosePanelSaveData();
-            // foreach (var playerEquipmentSlot in playerEquipmentSlots)
-            // {
-            //     playerEquipmentSlot.SavePlayerEquipmentSlotData();
-            // }
-            // PlayerController.Instance.playerEquipment.UpdateEquipment();
             playerPackageUiGridSystem.ClearItem();
+            _preview.ClearItem();
             Package_Panel.Instance.itemDetailPanel.ExitItemPanel();
         }
 

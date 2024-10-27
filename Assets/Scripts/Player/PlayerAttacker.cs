@@ -35,6 +35,8 @@ namespace Player
         private bool isInvincible;
         private float invincibleTime = 1f;
 
+        private bool lockKnockBack;
+        private float knockBackTime = 0.2f;
         private PlayerController playerController;
         
         public PlayerAttacker(PlayerController player,PlayerParameter playerParameter) : base(player)
@@ -43,6 +45,8 @@ namespace Player
             this.playerParameter = playerParameter;
             maxHp = playerParameter.health;
             isInvincible = false;
+            Check2DRange check2DRange = transform.Find("Body").GetComponent<Check2DRange>();
+            check2DRange.Init(OnTriggerEnter2D,OnTriggerExit2D);
             playerController.DelayExecute(0.1f, () =>
             {
                 currentHp = maxHp;
@@ -64,7 +68,7 @@ namespace Player
             }
             else
             {
-                playerController.KnockBackPlayer(enemy.transform.position);
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.DamageForce);
                 EnterInvincible();
             }
         }
@@ -75,6 +79,11 @@ namespace Player
             if (currentHp <= 0)
             {
                 playerController.PlayerDead();
+            }
+            else if (!lockKnockBack)
+            {
+                playerController.KnockBackPlayer(bullet.transform.position,1);
+                EnterLockKnockBack();
             }
         }
         
@@ -92,10 +101,53 @@ namespace Player
             });
         }
 
+        private void EnterLockKnockBack()
+        {
+            lockKnockBack = true;
+            mono.DelayExecute(knockBackTime, () =>
+            {
+                lockKnockBack = false;
+            });
+        }
+        
         public void Resume()
         {
             currentHp = maxHp;
             isInvincible = false;
+        }
+        
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.layer == LayerMask.NameToLayer("EnemyBody"))
+            {
+                var enemy = col.GetComponentInParent<BaseEnemy>();
+                if (enemy != null)
+                {
+                    TouchDamage(enemy);
+                }
+            }
+        }
+        
+        private void OnTriggerExit2D(Collider2D col)
+        {
+        }
+
+        public void TouchDamage(BaseEnemy enemy)
+        {
+            if (isInvincible)
+            {
+                return;
+            }
+            currentHp -= enemy.enemyParameter.TouchDamage;
+            if (currentHp <= 0)
+            {
+                playerController.PlayerDead();
+            }
+            else
+            {
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.TouchForce);
+                EnterInvincible();
+            }
         }
     }
 }

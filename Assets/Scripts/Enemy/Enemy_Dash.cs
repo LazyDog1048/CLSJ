@@ -11,6 +11,8 @@ namespace Enemy
         [SerializeField]
         protected float dashTime = 1;
         [SerializeField]
+        protected float recoverTime = 1;
+        [SerializeField]
         protected float alertTime = 1;
         [SerializeField]
         protected float dashSpeed = 5;
@@ -33,7 +35,7 @@ namespace Enemy
                 return;
             if (isEnterAttack)
             {
-                if (CurState == EnemyState.Attack)
+                if ( CurState == EnemyState.Attack)
                 {
                     dashMove.DirMove(direction,dashSpeed);
                     AttackTrigger();
@@ -41,44 +43,90 @@ namespace Enemy
             }
             else if (enemyAttacker.CanAttack)
             {
+                dashMove.faceDir.FaceToTarget(playerPos);
+                SeenPlayer = true;
+                
                 EnemyAttack();
+            }
+            else if (SeenPlayer)
+            {
+                CurState = EnemyState.WaitIdle;
             }
             else
             {
                 EnemyPatrol();
             }
-            
+
         }
         
         protected override void EnemyAttack()
         {
-            if (!isEnterAttack)
+            if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
                 direction = (playerPos - enemyPosition).normalized;
                 dashMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Alert;
                 isEnterAttack = true;
             }
+            else
+            {
+                CurState = EnemyState.WalkToPlayer;
+                enemyMove.Move(playerPos);
+            }
+            // if (transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
+            // {
+            //     CurState = EnemyState.WalkToPlayer;
+            //     enemyMove.Move(playerPos);
+            // }
+            // else
+            // {
+            //     if (!isEnterAttack && !enemyAttacker.isAttackCd)
+            //     {
+            //         direction = (playerPos - enemyPosition).normalized;
+            //         dashMove.faceDir.FaceToTarget(playerPos);
+            //         CurState = EnemyState.Alert;
+            //         isEnterAttack = true;
+            //     }
+            // }
         }
+        // protected override void EnemyAttack()
+        // {
+        //     if (!isEnterAttack)
+        //     {
+        //         direction = (playerPos - enemyPosition).normalized;
+        //         dashMove.faceDir.FaceToTarget(playerPos);
+        //         CurState = EnemyState.Alert;
+        //         isEnterAttack = true;
+        //     }
+        // }
 
-        
-        protected void DashComplete()
+
+        private void DashComplete()
         {
             CurState = EnemyState.Recover;
+            this.DelayExecute(recoverTime,RecoverComplete);
+        }
+
+        private void RecoverComplete()
+        {
+            isEnterAttack = false;
         }
         public override void AnimatorStateEnter()
         {
             switch (CurState)
             {
                 case EnemyState.Alert:
+                    enemyAttacker.AttackEnterCd();
                     this.DelayExecute(alertTime, () =>
                     {
                         CurState = EnemyState.Attack;
                     });
                     break;
                 case EnemyState.Attack:
-                    enemyAttacker.AttackEnterCd();
                     this.DelayExecute(dashTime,DashComplete);
+                    break;
+                case EnemyState.Recover:
+                    
                     break;
                 case EnemyState.Dead:
                     FxPlayer.PlayFx("Fx_EnemyDeath", enemyPosition);
@@ -94,7 +142,6 @@ namespace Enemy
                     break;
                 case EnemyState.Recover:
                     CurState = EnemyState.Idle;
-                    isEnterAttack = false;
                     break;
                 case EnemyState.Attack:
                     break;

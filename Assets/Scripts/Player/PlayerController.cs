@@ -152,7 +152,7 @@ namespace Player
                 case ShotType.ShotGun:
                     return new ShotGun(this,_playerGun,shotCenter,gunData,weapon);
                 case ShotType.Lamp:
-                    if(lamp == null)
+                    if(lamp == null || lamp.WeaponData.Name != weapon.Name)
                         lamp = new Lamp(this,_playerGun,shotCenter,gunData,weapon);
                     return lamp;
                 case ShotType.Hand:
@@ -302,9 +302,9 @@ namespace Player
             PlayerState = PlayerState.Idle;
         }
 
-        public void KnockBackPlayer(Vector3 point)
+        public void KnockBackPlayer(Vector3 point,float force)
         {
-            playerMove.AddForce(point,0.5f);
+            playerMove.AddForce(point,force,0.5f);
         }
 
         
