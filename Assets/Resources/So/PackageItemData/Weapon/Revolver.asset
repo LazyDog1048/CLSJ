@@ -30,7 +30,7 @@ MonoBehaviour:
   price: 0
   weight: 0
   description: 
-  Damage: 3
+  Damage: 5
   shotType: 0
   shotMode: 0
   shotDelay: 0.2
@@ -58,8 +58,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     Clip: {fileID: 0}
   flashlightData:
-    normalInnerLength: 5
-    normalOuterLength: 10
+    normalInnerLength: 4
+    normalOuterLength: 8
     normalInnerAngle: 40
     normalOuterAngle: 45
     aimInnerLength: 4

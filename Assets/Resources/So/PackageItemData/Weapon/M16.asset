@@ -43,10 +43,10 @@ MonoBehaviour:
   shotType: 0
   shotMode: 1
   shotDelay: 0.1
-  maxShotShake: 10
-  minShotShake: 4
+  maxShotShake: 15
+  minShotShake: 5
   minCalibration: 3
-  shotStability: 4
+  shotStability: 5
   shotCalibration: 3
   reloadTime: 2.4
   maxAmmo: 30
@@ -67,11 +67,11 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     Clip: {fileID: 0}
   flashlightData:
-    normalInnerLength: 5
-    normalOuterLength: 10
+    normalInnerLength: 4
+    normalOuterLength: 8
     normalInnerAngle: 40
     normalOuterAngle: 45
-    aimInnerLength: 5
-    aimOuterLength: 10
+    aimInnerLength: 4
+    aimOuterLength: 8
     aimInnerAngle: 40
     aimOuterAngle: 45
