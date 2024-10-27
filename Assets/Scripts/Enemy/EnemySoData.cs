@@ -9,6 +9,7 @@ namespace Enemy
         public float Speed;
         public int Health;
         public int Damage;
+        public float DamageRange = 2;
         public int DamageForce = 8;
         public float DamageForceTime = 0.5f;
         public int TouchDamage = 2;
@@ -16,7 +17,6 @@ namespace Enemy
         public float TouchForceTime = 0.5f;
         public float FindRange = 10;
         public float AttackRange = 2;
-
         public float AttackInterval;
     }
 
@@ -27,6 +27,7 @@ namespace Enemy
         public float Speed;
         public int Health;
         public int Damage;
+        public float DamageRange;
         public int DamageForce;
         public float DamageForceTime;
         public int TouchDamage;
@@ -42,6 +43,7 @@ namespace Enemy
             Speed = data.Speed;
             Health = data.Health;
             Damage = data.Damage;
+            DamageRange = data.DamageRange;
             DamageForce = data.DamageForce;
             DamageForceTime = data.DamageForceTime;
             TouchDamage = data.TouchDamage;

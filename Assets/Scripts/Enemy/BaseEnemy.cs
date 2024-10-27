@@ -129,7 +129,7 @@ namespace Enemy
 
         protected virtual void AttackTrigger()
         {
-            if (!transform.DisLongerThan(playerPos, 1f))
+            if (!transform.DisLongerThan(playerPos, enemyParameter.DamageRange))
             {
                 PlayerController.Instance.playerAttacker.TakeDamage(this);
             }

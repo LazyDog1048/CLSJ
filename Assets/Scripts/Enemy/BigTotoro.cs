@@ -1,9 +1,27 @@
+using game;
+using Player;
 using UnityEngine;
 
 namespace Enemy
 {
     public class BigTotoro : Enemy_Dash
     {
+        private LightObj lightObj;
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            lightObj = GetComponentInChildren<LightObj>();
+            lightObj.lightEnter.AddListener(LightEnter);
+        }
+
+        private void LightEnter()
+        {
+            if (PlayerController.Instance.playerEquipment.lamp.gunData.Name.Equals("StrongLamp"))
+            {
+                CurState = EnemyState.Dead;
+                lightObj.gameObject.SetActive(false);
+            }
+        }
         protected override void EnemyAttack()
         {
             if (!isEnterAttack)
