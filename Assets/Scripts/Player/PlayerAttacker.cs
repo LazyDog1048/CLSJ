@@ -68,7 +68,7 @@ namespace Player
             }
             else
             {
-                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.DamageForce,enemy.enemyParameter.DamageForce);
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.DamageForce,enemy.enemyParameter.DamageForceTime);
                 EnterInvincible();
             }
         }
@@ -145,7 +145,7 @@ namespace Player
             }
             else
             {
-                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.TouchForce,enemy.enemyParameter.TouchForce);
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.TouchForce,enemy.enemyParameter.TouchForceTime);
                 EnterInvincible();
             }
         }
