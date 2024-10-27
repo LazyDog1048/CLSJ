@@ -12,9 +12,6 @@ namespace game
     public class RoomDoor : SceneObject
     {
         [SerializeField]
-        public int targetRoomId;
-        
-        [SerializeField]
         public Room targetRoom;
         [SerializeField]
         public Room thisRoom;
