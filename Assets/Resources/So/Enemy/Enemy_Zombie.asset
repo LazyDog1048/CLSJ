@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Enemy_Zombie
   m_EditorClassIdentifier: 
   Name: Enemy_Zombie
-  Speed: 4
+  Speed: 3
   Health: 32
   Damage: 20
+  DamageRange: 2
   DamageForce: 14
   DamageForceTime: 0.2
   TouchDamage: 5
