@@ -302,9 +302,9 @@ namespace Player
             PlayerState = PlayerState.Idle;
         }
 
-        public void KnockBackPlayer(Vector3 point,float force)
+        public void KnockBackPlayer(Vector3 point,float force,float time)
         {
-            playerMove.AddForce(point,force,0.5f);
+            playerMove.AddForce(point,force,time);
         }
 
         

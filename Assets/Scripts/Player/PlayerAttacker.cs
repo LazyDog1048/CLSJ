@@ -68,7 +68,7 @@ namespace Player
             }
             else
             {
-                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.DamageForce);
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.DamageForce,enemy.enemyParameter.DamageForce);
                 EnterInvincible();
             }
         }
@@ -82,7 +82,7 @@ namespace Player
             }
             else if (!lockKnockBack)
             {
-                playerController.KnockBackPlayer(bullet.transform.position,1);
+                playerController.KnockBackPlayer(bullet.transform.position,1,0.1f);
                 EnterLockKnockBack();
             }
         }
@@ -145,7 +145,7 @@ namespace Player
             }
             else
             {
-                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.TouchForce);
+                playerController.KnockBackPlayer(enemy.transform.position,enemy.enemyParameter.TouchForce,enemy.enemyParameter.TouchForce);
                 EnterInvincible();
             }
         }
