@@ -90,6 +90,18 @@ namespace GridSystem
             }
         }
         
+        public virtual void PutDownItem(string item)
+        {
+            var packageItemSoData = ResourcesDataManager.GetPackageItemSoData(item);
+            var shapeData = packageItemSoData.shapeData;
+            Vector2Int enablePoint = FindEnablePoint(shapeData);
+            if (enablePoint.x == -1)
+                return;
+            PackageItemData packageItemData = PackageItemData.CreatPackageItemData(packageItemSoData);
+            packageItemData.firstGridPoint = enablePoint;
+            AddItem(packageItemData);
+        }
+        
         public virtual void PickUpItem()
         {
             var mousePos = GetMousePos.GetUiMousePositionWithZ(CameraManager.Instance.uiCamera);

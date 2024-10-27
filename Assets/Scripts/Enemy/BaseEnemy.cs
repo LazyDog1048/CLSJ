@@ -32,7 +32,7 @@ namespace Enemy
             get => enemyAnimator.CurState;
             set => enemyAnimator.SetAnim(value);
         }
-        private LightObj lightObj;
+        protected LightObj lightObj;
         public Vector3 centerPosition=>center.position;
         public override string poolId => enemySoData.Name;
 
@@ -156,9 +156,6 @@ namespace Enemy
                 case EnemyState.Attack:
                     enemyAttacker.AttackEnterCd();
                     break;
-                case EnemyState.Dead:
-                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
-                    break;
             }
         }
 
@@ -171,6 +168,7 @@ namespace Enemy
                     break;
                 case EnemyState.Dead:
                     CurState = EnemyState.Idle;
+                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     gameObject.SetActive(false);
                     break;
             }

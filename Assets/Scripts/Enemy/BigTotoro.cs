@@ -1,12 +1,15 @@
 using game;
+using item;
 using Player;
+using tool;
 using UnityEngine;
 
 namespace Enemy
 {
     public class BigTotoro : Enemy_Dash
     {
-        private LightObj lightObj;
+        // private LightObj lightObj;
+        private float distance = 5;
         protected override void OnAwake()
         {
             base.OnAwake();
@@ -16,23 +19,44 @@ namespace Enemy
 
         private void LightEnter()
         {
-            if (PlayerController.Instance.playerEquipment.lamp.gunData.Name.Equals("StrongLamp"))
+            if (PlayerController.Instance.playerEquipment.currentWeapon.gunData.Name.Equals("StrongLamp"))
             {
-                CurState = EnemyState.Dead;
-                lightObj.gameObject.SetActive(false);
+                if (!centerPosition.DisLongerThan(playerPos, distance) && CurState != EnemyState.Dead)
+                {
+                    CurState = EnemyState.Dead;
+                    Debug.Log("Dead");
+                    lightObj.enabled = false;
+                }
             }
         }
         protected override void EnemyAttack()
         {
-            if (!isEnterAttack)
+            if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
                 direction = (playerPos - centerPosition).normalized;
                 dashMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Transform;
                 isEnterAttack = true;
             }
+            else
+            {
+                CurState = EnemyState.WalkToPlayer;
+                enemyMove.Move(playerPos);
+            }
         }
         
+        // protected override void EnemyAttack()
+        // {
+        //     if (!isEnterAttack)
+        //     {
+        //         direction = (playerPos - centerPosition).normalized;
+        //         dashMove.faceDir.FaceToTarget(playerPos);
+        //         CurState = EnemyState.Transform;
+        //         isEnterAttack = true;
+        //     }
+        // }
+
+
         public override void AnimatorStateComplete()
         {
             switch (CurState)
@@ -50,6 +74,7 @@ namespace Enemy
                     break;
                 case EnemyState.Dead:
                     CurState = EnemyState.Idle;
+                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     gameObject.SetActive(false);
                     break;
             }

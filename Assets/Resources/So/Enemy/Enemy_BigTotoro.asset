@@ -16,6 +16,12 @@ MonoBehaviour:
   Speed: 3
   Health: 100
   Damage: 1
+  DamageRange: 3
+  DamageForce: 8
+  DamageForceTime: 0.5
+  TouchDamage: 2
+  TouchForce: 5
+  TouchForceTime: 0.5
   FindRange: 10
-  AttackRange: 2
+  AttackRange: 5
   AttackInterval: 2

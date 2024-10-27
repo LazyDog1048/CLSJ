@@ -73,21 +73,6 @@ namespace Enemy
                 CurState = EnemyState.WalkToPlayer;
                 enemyMove.Move(playerPos);
             }
-            // if (transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
-            // {
-            //     CurState = EnemyState.WalkToPlayer;
-            //     enemyMove.Move(playerPos);
-            // }
-            // else
-            // {
-            //     if (!isEnterAttack && !enemyAttacker.isAttackCd)
-            //     {
-            //         direction = (playerPos - enemyPosition).normalized;
-            //         dashMove.faceDir.FaceToTarget(playerPos);
-            //         CurState = EnemyState.Alert;
-            //         isEnterAttack = true;
-            //     }
-            // }
         }
         // protected override void EnemyAttack()
         // {
@@ -126,11 +111,8 @@ namespace Enemy
                     this.DelayExecute(dashTime,DashComplete);
                     break;
                 case EnemyState.Recover:
-                    
                     break;
-                case EnemyState.Dead:
-                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
-                    break;
+                
             }
         }
 
@@ -147,6 +129,7 @@ namespace Enemy
                     break;
                 case EnemyState.Dead:
                     CurState = EnemyState.Idle;
+                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     gameObject.SetActive(false);
                     break;
             }

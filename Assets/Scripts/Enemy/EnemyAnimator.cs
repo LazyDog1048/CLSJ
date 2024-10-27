@@ -77,6 +77,7 @@ namespace Enemy
         {
             PreviousState = CurState;
             CurState = (EnemyState) state;
+            
             animator.Play(animStateHashDic[CurState],0,0);
         }
     }

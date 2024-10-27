@@ -72,12 +72,8 @@ namespace Player
             }
             
             firstGun = true;
-            // if(weapon_1 != null && weapon_2 == null)
-            //     firstGun = true;
-            // if(weapon_1 == null && weapon_2 != null)
-            //     firstGun = false;
-            Debug.Log("weapon_1:"+weapon_1);
-                
+
+
             meleeWeapon = new MeleeWeapon(playerController);
             coat = new Armor_Coat(playerController);
             leftShoe = new Armor_LeftShoe(playerController);

@@ -48,11 +48,24 @@ namespace game
 
         private void UpgradeLamp()
         {
+            var list = LocalPackageThing.GetData().weaponDataList;
+            foreach (var data in list)
+            {
+                if (data.Name.Equals(lamp.Name))
+                {
+                    data.Name = strongLamp.Name;
+                }
+            }
+            
+            // LocalPackageThing.GetData().weaponDataList.Add(new WeaponData(strongLamp.Name));
+            // playerPackageUiGridSystem.RemoveItem(lamp.Name);
+            // playerPackageUiGridSystem.PutDownItem(strongLamp.Name);
+            
             LocalPlayerDataThing localPlayerDataThing = LocalPlayerDataThing.GetData();
             localPlayerDataThing.weapon_2 = new WeaponData(strongLamp.Name);
-            LocalPlayerDataThing.Save();
             PlayerController.Instance.playerEquipment.UpgradeLamp();
-            playerPackageUiGridSystem.RemoveItem(strongLamp.Name);
+            
+            LocalPlayerDataThing.Save();
         }
     }
     
