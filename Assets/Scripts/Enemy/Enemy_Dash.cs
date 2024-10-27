@@ -63,7 +63,7 @@ namespace Enemy
         {
             if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
-                direction = (playerPos - enemyPosition).normalized;
+                direction = (playerPos - centerPosition).normalized;
                 dashMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Alert;
                 isEnterAttack = true;
@@ -129,7 +129,7 @@ namespace Enemy
                     
                     break;
                 case EnemyState.Dead:
-                    FxPlayer.PlayFx("Fx_EnemyDeath", enemyPosition);
+                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     break;
             }
         }

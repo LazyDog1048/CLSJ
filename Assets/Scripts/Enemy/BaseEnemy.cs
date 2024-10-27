@@ -33,7 +33,7 @@ namespace Enemy
             set => enemyAnimator.SetAnim(value);
         }
         private LightObj lightObj;
-        public Vector3 enemyPosition=>center.position;
+        public Vector3 centerPosition=>center.position;
         public override string poolId => enemySoData.Name;
 
         
@@ -92,7 +92,7 @@ namespace Enemy
 
         protected virtual void EnemyAttack()
         {
-            if (transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
+            if (center.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
                 CurState = EnemyState.WalkToPlayer;
                 enemyMove.Move(playerPos);
@@ -108,7 +108,7 @@ namespace Enemy
             if(patrolLock)
                 return;
                 
-            if (transform.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
+            if (center.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
             {
                 CurState = EnemyState.PatrolWalk;
                 enemyMove.Move(PatrolPoints[patrolIndex]);
@@ -129,7 +129,7 @@ namespace Enemy
 
         protected virtual void AttackTrigger()
         {
-            if (!transform.DisLongerThan(playerPos, enemyParameter.DamageRange))
+            if (!center.DisLongerThan(playerPos, enemyParameter.DamageRange))
             {
                 PlayerController.Instance.playerAttacker.TakeDamage(this);
             }
@@ -143,7 +143,7 @@ namespace Enemy
         public void HitObj(Bullet bullet)
         {
             enemyMove.AddForce(bullet.currentDir,knockBackTime);
-            FxPlayer.PlayFx("Fx_Gun_Hit", enemyPosition);
+            FxPlayer.PlayFx("Fx_Gun_Hit", centerPosition);
             enemyAttacker.currentHp -= bullet.gunParameter.Damage;
             if (enemyAttacker.currentHp <= 0)
                 CurState = EnemyState.Dead;
@@ -157,7 +157,7 @@ namespace Enemy
                     enemyAttacker.AttackEnterCd();
                     break;
                 case EnemyState.Dead:
-                    FxPlayer.PlayFx("Fx_EnemyDeath", enemyPosition);
+                    FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     break;
             }
         }

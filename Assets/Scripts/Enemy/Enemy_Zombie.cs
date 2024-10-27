@@ -36,7 +36,7 @@ namespace Enemy
         {
             if (!isEnterAttack)
             {
-                direction = (playerPos - enemyPosition).normalized;
+                direction = (playerPos - centerPosition).normalized;
                 dashMove.faceDir.FaceToTarget(playerPos);
                 CurState = EnemyState.Alert;
                 isEnterAttack = true;
