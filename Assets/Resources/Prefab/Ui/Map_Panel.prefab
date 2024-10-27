@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7112500991974021999}
   - component: {fileID: 2778448471443638039}
   m_Layer: 5
-  m_Name: Room_15
+  m_Name: ParentingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 15
+  roomName: ParentingRoom
 --- !u!1 &843594193313749111
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1785560431614038381}
   - component: {fileID: 751794787382143128}
   m_Layer: 5
-  m_Name: Room_7
+  m_Name: PrisonRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 7
+  roomName: PrisonRoom
 --- !u!1 &1312368675740292681
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 8550958513530809362}
   - component: {fileID: 2854301775031707339}
   m_Layer: 5
-  m_Name: Room_5
+  m_Name: HearingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 5
+  roomName: HearingRoom
 --- !u!1 &1678597752377200757
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 8888299546770644753}
   - component: {fileID: 9179162108945369823}
   m_Layer: 5
-  m_Name: Room_4
+  m_Name: Corridor_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 4
+  roomName: Corridor_Left
 --- !u!1 &3313065171743481268
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 5071337849188380427}
   - component: {fileID: 4083461184385430135}
   m_Layer: 5
-  m_Name: Room_2
+  m_Name: ParlorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 2
+  roomName: ParlorRoom
 --- !u!1 &4109821188732644600
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 3802459440169487415}
   - component: {fileID: 4193642743059228}
   m_Layer: 5
-  m_Name: Room_16
+  m_Name: AbattoirRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 16
+  roomName: AbattoirRoom
 --- !u!1 &4456526520497167487
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 3557350360052866367}
   - component: {fileID: 9038653235571988161}
   m_Layer: 5
-  m_Name: Room_9
+  m_Name: DiningRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 9
+  roomName: DiningRoom
 --- !u!1 &4546798192087210953
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 6069677425974531164}
   - component: {fileID: 2641826524483895152}
   m_Layer: 5
-  m_Name: Room_12
+  m_Name: Corridor_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 12
+  roomName: Corridor_Right
 --- !u!1 &4726118834857002853
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 8104275419289018308}
   - component: {fileID: 4242602113665250570}
   m_Layer: 5
-  m_Name: Room_13
+  m_Name: KitchenRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 13
+  roomName: KitchenRoom
 --- !u!1 &6244344480717850358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 999786661151692744}
   - component: {fileID: 7402473133076802268}
   m_Layer: 5
-  m_Name: Room_8
+  m_Name: Corridor_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 8
+  roomName: Corridor_Top
 --- !u!1 &7059691932825974921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 5410119816511158648}
   - component: {fileID: 2114352328753120140}
   m_Layer: 5
-  m_Name: Room_3
+  m_Name: MonitoringRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 3
+  roomName: MonitoringRoom
 --- !u!1 &7416139953046462663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 7754127552164563028}
   - component: {fileID: 986093486242663095}
   m_Layer: 5
-  m_Name: Room_14
+  m_Name: StoreRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 14
+  roomName: StoreRoom
 --- !u!1 &7742214700040421533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 5585272432297584592}
   - component: {fileID: 2195698108129833513}
   m_Layer: 5
-  m_Name: Room_6
+  m_Name: ShowerRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 6
+  roomName: ShowerRoom
 --- !u!1 &7954851992497909165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 3875215704140454756}
   - component: {fileID: 4024514601172305461}
   m_Layer: 5
-  m_Name: Room_1
+  m_Name: LobbyRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 1
+  roomName: LobbyRoom
 --- !u!1 &8706925632240653468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,7 +1515,7 @@ GameObject:
   - component: {fileID: 3919149937439037362}
   - component: {fileID: 5106045411320089336}
   m_Layer: 5
-  m_Name: Room_10
+  m_Name: GuardRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1590,4 +1590,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40028d2564813645896c5266dfe1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 10
+  roomName: GuardRoom
