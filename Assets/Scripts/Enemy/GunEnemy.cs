@@ -69,6 +69,22 @@ namespace Enemy
             }
         }
         
+        // protected override void EnemyAttack()
+        // {
+        //     if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
+        //     {
+        //         direction = (playerPos - centerPosition).normalized;
+        //         dashMove.faceDir.FaceToTarget(playerPos);
+        //         CurState = EnemyState.Alert;
+        //         isEnterAttack = true;
+        //     }
+        //     else
+        //     {
+        //         CurState = EnemyState.WalkToPlayer;
+        //         enemyMove.Move(playerPos);
+        //     }
+        // }
+        //
         protected override void EnemyAttack()
         {
             var angle = GetAngle.Angle(playerPos, transform.position);

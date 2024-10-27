@@ -31,7 +31,7 @@ namespace plug
 
         public void Init(float range,UnityAction<Collider2D> enter,UnityAction<Collider2D> exit)
         {
-            transform.localScale = Vector3.one * range;
+            transform.localScale = Vector3.one * range * 2;
             triggerEnter = enter;
             triggerExit = exit;
         }
