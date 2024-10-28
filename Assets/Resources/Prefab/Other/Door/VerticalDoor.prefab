@@ -112,11 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRoom: {fileID: 0}
-  thisRoom: {fileID: 0}
-  itemDatas: []
-  Description: Open the door
-  target: {fileID: 918812108935133129}
-  resume: {fileID: 873606589544778597}
 --- !u!212 &5917965609174822487
 SpriteRenderer:
   m_ObjectHideFlags: 0
