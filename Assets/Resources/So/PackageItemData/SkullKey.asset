@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: SkullKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: SkullKey
+  Name: "\u60CA\u6016\u4EBA\u9996"
   icon: {fileID: -2172392494366778985, guid: e2c3c83919ae0724e9973bbbd7f83355, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 98081e4a34e019e4bb733a51a064406f, type: 3}
   shapeData:
@@ -27,4 +27,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u7070\u767D\u7684\u4EBA\u9996\uFF0C\u4F3C\u4E4E\u80FD\u6253\u5F00\u67D0\u6247\u95E8"

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: Wrench
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: Wrench
+  Name: "\u732B\u7528\u7BA1\u94B32.0"
   icon: {fileID: -7332345788060434925, guid: 2a5b4d9c521814040a55fa26ca081a9b, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 5a25c8bf995e9f947ba9596584c48c66, type: 3}
   shapeData:
@@ -31,4 +31,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u8BA9\u4E16\u754C\u4E0A\u6BCF\u4E00\u53EA\u732B\u90FD\u80FD\u8F7B\u677E\u526A\u65AD\u9501\u94FE"

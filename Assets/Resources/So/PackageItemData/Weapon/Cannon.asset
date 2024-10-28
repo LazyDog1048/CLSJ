@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: Cannon
+  Name: "\u5C0F\u732B\u624B\u70AE"
   icon: {fileID: -8016027206864825703, guid: 7a8d2975f810e82408547c2cff055da6, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 65cdacbe3a64daf44927382a9fbbab75, type: 3}
   shapeData:
@@ -32,8 +32,8 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
-  Damage: 15
+  description: "\u6765\u6E90\u795E\u79D8\u7684\u6B66\u5668\uFF0C\u636E\u8BF4\u8BDE\u751F\u4E8E\u67D0\u53EA\u732B\u7684\u5BFB\u601D\uFF0C\u62E5\u6709\u4E0E\u5B83\u5916\u89C2\u4E0D\u7B26\u7684\u5F3A\u5927\u7834\u574F\u6027"
+  Damage: 50
   shotType: 0
   shotMode: 0
   shotDelay: 1

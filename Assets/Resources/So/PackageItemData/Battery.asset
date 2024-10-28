@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f6b2c31a9212146bb22edda51719dc, type: 3}
   m_Name: Battery
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: Battery
+  Name: "\u624B\u7535\u7B52\u7535\u6C60"
   icon: {fileID: 3166058737126218618, guid: c186a91cd1ef3f148b895c47bb920a4c, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 5c4cd1abd5c51a74babbb162b823901d, type: 3}
   shapeData:
@@ -24,6 +24,6 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u4E3A\u4F60\u7684\u624B\u7535\u7B52\u5145\u6EE1\u7535\u91CF"
   speed: 0
   stayTime: 10

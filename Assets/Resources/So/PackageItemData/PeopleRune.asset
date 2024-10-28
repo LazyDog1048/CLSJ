@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: PeopleRune
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: PeopleRune
+  Name: "\u4EBA\u796D\u7B26\u6587"
   icon: {fileID: -3441862148347895030, guid: bf21c2926ca700c41b07d3bce04b5866, type: 3}
   prefab: {fileID: 1726577015640154295, guid: f075e0baca9b5344c8bc5681fc72d6f9, type: 3}
   shapeData:
@@ -27,4 +27,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u6BDB\u9AA8\u609A\u7136\u7684\u7B26\u6587\uFF0C\u662D\u793A\u7740\u4EBA\u7C7B\u7684\u727A\u7272"

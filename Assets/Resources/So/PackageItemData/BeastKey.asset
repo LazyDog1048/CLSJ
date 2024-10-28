@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: BeastKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: BeastKey
+  Name: "\u6050\u60E7\u517D\u9996"
   icon: {fileID: -4447391813707793198, guid: c29efcf061cf273489c57f5fa35bccf9, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 9b0296e27b746d04096ca34ec73db88c, type: 3}
   shapeData:
@@ -27,4 +27,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u72F0\u72DE\u7684\u517D\u9996\uFF0C\u4F3C\u4E4E\u80FD\u6253\u5F00\u67D0\u6247\u95E8"

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: CupKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: CupKey
+  Name: "\u9EC4\u91D1\u5723\u676F"
   icon: {fileID: 1552124792238184271, guid: 75aacd285f676824c83f7bfd90f401b0, type: 3}
   prefab: {fileID: 1726577015640154295, guid: ebe7a6fb488005e4892bf182919ccebe, type: 3}
   shapeData:
@@ -27,4 +27,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u7EAF\u91D1\u5236\u6210\u7684\u5723\u676F\uFF0C\u4F3C\u4E4E\u80FD\u6253\u5F00\u67D0\u6247\u95E8"

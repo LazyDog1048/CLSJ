@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: Lamp
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: Lamp
+  Name: "\u730E\u4EBA\u706F\u7B3C"
   icon: {fileID: 7508760904015813404, guid: f2a2659b704e0844b86b86c9df26b95d, type: 3}
   prefab: {fileID: 1726577015640154295, guid: dab8d8e7c21d5b949862f5ec8ab65c82, type: 3}
   shapeData:
@@ -32,7 +32,7 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u5728\u9ED1\u591C\u4E2D\u63D0\u4F9B\u53EF\u9760\u7684\u5149\u7167"
   Damage: 1
   shotType: 3
   shotMode: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
   maxAmmo: 1
   penetrateNum: 1
   bulletSpeed: 80
-  bulletStayTime: 4
+  bulletStayTime: 60
   bulletData: {fileID: 11400000, guid: e0c83bfe7071098499980437073e8549, type: 2}
   shotLength: 1
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: ThunderKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: ThunderKey
+  Name: "\u517D\u796D\u7B26\u6587"
   icon: {fileID: -5845011966902167879, guid: 089f1da20e89fc340afb3ed7e6045185, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 36c4c009b4825324ba8569581c0c90a1, type: 3}
   shapeData:
@@ -27,4 +27,4 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u6BDB\u9AA8\u609A\u7136\u7684\u7B26\u6587\uFF0C\u662D\u793A\u7740\u91CE\u517D\u7684\u727A\u7272"

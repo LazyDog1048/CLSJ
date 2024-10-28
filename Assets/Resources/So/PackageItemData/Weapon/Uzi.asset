@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: Uzi
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: Uzi
+  Name: "\u51B2\u950B\u9B54\u6CD5\u4E66"
   icon: {fileID: -1074559057221326846, guid: ab051153894bcf64ea323d81f8c9bee8, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 65d407238b2a01a49900fcdefd3d180c, type: 3}
   shapeData:
@@ -32,7 +32,7 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u9AD8\u901F\u67AA\u68B0\u6539\u88C5\u9B54\u6CD5\u4E66\uFF0C\u901A\u8FC7\u7CBE\u5BC6\u523B\u5370\u7684\u9B54\u6CD5\u4E66\u91CA\u653E\u9AD8\u901F\u5B50\u5F39\u9B54\u6CD5"
   Damage: 3
   shotType: 0
   shotMode: 1

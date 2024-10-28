@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: StrongLamp
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: StrongLamp
+  Name: "\u9A71\u9B54\u706F\u7B3C"
   icon: {fileID: 6700022662024591443, guid: de50caf3d09f1b34caac17c9bc73607f, type: 3}
   prefab: {fileID: 1726577015640154295, guid: e4c2db400734db2498b2c0a3d57d92e7, type: 3}
   shapeData:
@@ -32,7 +32,7 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u5728\u9ED1\u591C\u4E2D\u63D0\u4F9B\u53EF\u9760\u7684\u5149\u7167\uFF0C\u53EF\u4EE5\u9A71\u6563\u9634\u5F71\u91CE\u517D"
   Damage: 1
   shotType: 3
   shotMode: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
   maxAmmo: 1
   penetrateNum: 1
   bulletSpeed: 80
-  bulletStayTime: 4
+  bulletStayTime: 80
   bulletData: {fileID: 11400000, guid: e0c83bfe7071098499980437073e8549, type: 2}
   shotLength: 1
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
@@ -61,11 +61,11 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     Clip: {fileID: 0}
   flashlightData:
-    normalInnerLength: 8
+    normalInnerLength: 9
     normalOuterLength: 12
     normalInnerAngle: 65
     normalOuterAngle: 75
-    aimInnerLength: 8
+    aimInnerLength: 9
     aimOuterLength: 12
     aimInnerAngle: 65
     aimOuterAngle: 75

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3348c5d3a6036db48990f55451467d00, type: 3}
   m_Name: HealBag
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: HealBag
+  Name: "\u533B\u7597\u5305"
   icon: {fileID: -869901171445350850, guid: 45ae9a6d333d2d04484bad4addfcadaa, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 86c8ae97fe9d43c408b492937ba96d5d, type: 3}
   shapeData:
@@ -29,5 +29,5 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u51C6\u5907\u9F50\u5168\u7684\u533B\u7597\u5305\uFF0C\u63D0\u4F9B\u5B8C\u6574\u5168\u9762\u7684\u6CBB\u7597"
   healAmount: 100

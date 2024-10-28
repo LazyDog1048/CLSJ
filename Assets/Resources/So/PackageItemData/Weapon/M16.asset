@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: M16
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: M16
+  Name: "\u5236\u5F0F\u6B65\u67AA\u6CD5\u6756"
   icon: {fileID: 1459489413229935907, guid: 369a6429e5262fb41b4f50bb9b4caa84, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 25241c7c4702fa24e9b3ff1de455c7df, type: 3}
   shapeData:
@@ -38,7 +38,7 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: 
+  description: "\u6807\u51C6\u67AA\u68B0\u6539\u88C5\u6CD5\u6756\uFF0C\u901A\u8FC7\u7CBE\u5BC6\u523B\u5370\u7684\u6CD5\u6756\u91CA\u653E\u7A33\u5B9A\u5B50\u5F39\u9B54\u6CD5"
   Damage: 3
   shotType: 0
   shotMode: 1
