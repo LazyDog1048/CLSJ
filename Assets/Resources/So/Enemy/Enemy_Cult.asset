@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Enemy_Cult
   Speed: 3
-  Health: 100
+  Health: 72
   Damage: 5
   DamageRange: 2
   DamageForce: 8
@@ -22,6 +22,6 @@ MonoBehaviour:
   TouchDamage: 5
   TouchForce: 20
   TouchForceTime: 0.1
-  FindRange: 15
-  AttackRange: 10
+  FindRange: 20
+  AttackRange: 8
   AttackInterval: 2

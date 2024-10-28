@@ -43,9 +43,9 @@ MonoBehaviour:
   shotType: 2
   shotMode: 0
   shotDelay: 0.5
-  maxShotShake: 80
-  minShotShake: 40
-  minCalibration: 30
+  maxShotShake: 50
+  minShotShake: 50
+  minCalibration: 10
   shotStability: 30
   shotCalibration: 30
   reloadTime: 3
