@@ -1,8 +1,10 @@
-﻿using data;
+﻿using System;
+using data;
 using Enemy;
 using EquipmentSystem;
 using game;
 using item;
+using other;
 using plug;
 using tool;
 using UnityEngine;
@@ -12,14 +14,16 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     
-    public class PlayerController : MonoBehaviour,IHitObj,IAnimatorController
+    public class PlayerController : Mono_Singleton<PlayerController>,IHitObj,IAnimatorController
     {
         [SerializeField]
         private PlayerData playerData;
 
-        public PlayerParameter playerParameter { get; set; }
+        [SerializeField]
+        private GameCursor gameCursor;
         
-        public static PlayerController Instance;
+        public PlayerParameter playerParameter { get; set; }
+
         private PlayerAnimController animator { get;set; }
         public PlayerMove playerMove { get; set; }
         private PlayerStamina playerStamina { get; set; }
@@ -60,16 +64,30 @@ namespace Player
         // private GamePlayInput gamePlayInput;
         #region UnityAction
 
-        protected void Awake()
+        protected override void Awake()
         {
-            if (Instance != null)
-                Destroy(Instance);
-            Instance = this;
+            base.Awake();
             Center = transform.Find("Center");
             Head = transform.Find("Head");
             _playerGun = transform.Find("Hand").Find("Gun").GetComponent<PlayerGunObject>();
             playerFlashlight = GetComponentInChildren<PlayerFlashlight>();
             shotCenter = transform.Find("ShotCenter");
+            
+            // _playerGun.Init();
+            // playerParameter = new PlayerParameter(playerData);
+            // animator = new PlayerAnimController(this);
+            // playerMove = new PlayerMove(this);
+            // playerStamina = new PlayerStamina(this);
+            // PlayerHand = new PlayerHand(this);
+            // playerEquipment = new PlayerEquipment(this);
+            // playerAttacker = new PlayerAttacker(this,playerParameter);
+            // GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressTab,PressR,PressE,PressQ,PressF);
+            // GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
+            // GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
+        }
+
+        public void PlayerInit()
+        {
             _playerGun.Init();
             playerParameter = new PlayerParameter(playerData);
             animator = new PlayerAnimController(this);
@@ -78,6 +96,7 @@ namespace Player
             PlayerHand = new PlayerHand(this);
             playerEquipment = new PlayerEquipment(this);
             playerAttacker = new PlayerAttacker(this,playerParameter);
+            gameCursor.SetPlayerController(this);
             GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressTab,PressR,PressE,PressQ,PressF);
             GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
             GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
@@ -89,6 +108,8 @@ namespace Player
 
         private void Update()
         {
+            if(playerMove == null)
+                return;
             if (playerMove.CanMove)
             {
                 PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
@@ -325,7 +346,7 @@ namespace Player
         
         private void DeadComplete()
         {
-            GameManager.Instance.EnterRoom();
+            GameManager.Instance.EnterTargetRoom(GameManager.Instance.lastRoomDoor);
         }
         #region IAnimController
         public virtual void AnimatorStateEnter()
@@ -355,6 +376,13 @@ namespace Player
             playerAttacker.Resume();
             PlayerState = PlayerState.Idle;
             transform.position = position;
+        }
+        
+        public void EnterRoom(RoomDoor door)
+        {
+            animator.Reset();
+            PlayerState = PlayerState.Idle;
+            transform.position = door.TargetPosition;
         }
     }
 

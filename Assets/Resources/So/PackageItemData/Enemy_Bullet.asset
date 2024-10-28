@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Bullet
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: Enemy_Bullet
+  ItemName: Enemy_Bullet
   icon: {fileID: 5004147347841525134, guid: 122863dffff07a649b045e2cc1a3c390, type: 3}
   prefab: {fileID: 1289426341008922188, guid: 8d29883af6daac84ca0168a389990bd4, type: 3}
   shapeData:

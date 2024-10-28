@@ -98,7 +98,7 @@ namespace other
             ChangeToCamera(CinemachineType.CM_1920);
             CinemachineBrain.SoloCamera = Instance[CinemachineType.CM_1920];
             Instance[CinemachineType.CM_1920].transform.position = new Vector3(0,0,-10);
-            Instance[CinemachineType.CM_1920].gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = Instance.cameraCollider;
+            // Instance[CinemachineType.CM_1920].gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = Instance.cameraCollider;
             cameraShake.SetVirtualCamera();
         }
     }

@@ -20,6 +20,7 @@ namespace ui
         private void DoorAudio()
         {
             doorAudio.PlayClip();
+            roomDoor.MovePlayer();
         }
         
         public void SetRoomDoor(RoomDoor roomDoor)
@@ -29,7 +30,7 @@ namespace ui
 
         private void MovePlayer()
         {
-            roomDoor.MovePlayer();
+            // roomDoor.MovePlayer();
         }
     }
     

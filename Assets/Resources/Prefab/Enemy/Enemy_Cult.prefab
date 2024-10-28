@@ -104,6 +104,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridObjectSo: {fileID: 11400000, guid: 09dd5045c2be2d544835349bcc4aa8d4, type: 2}
   fireLight: {fileID: 4013399406569377332}
+  reloadClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
 --- !u!95 &3686412936028598302
 Animator:
   serializedVersion: 7
@@ -285,7 +293,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.12, y: 0.52}
+  m_Offset: {x: 0.12, y: 0.52}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

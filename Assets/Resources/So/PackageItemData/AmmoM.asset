@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f6b2c31a9212146bb22edda51719dc, type: 3}
   m_Name: AmmoM
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u6807\u51C6\u53E3\u5F84\u9B54\u529B\u5B50\u5F39"
+  Name: AmmoM
+  ItemName: "\u6807\u51C6\u53E3\u5F84\u9B54\u529B\u5B50\u5F39"
   icon: {fileID: 1563142297340239633, guid: 9253a2d346c23ac4aa548aa67f5eb040, type: 3}
   prefab: {fileID: 1726577015640154295, guid: dd00fd7dbd15f5343a67b7b667ce9882, type: 3}
   shapeData:

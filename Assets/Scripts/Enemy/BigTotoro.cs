@@ -73,9 +73,7 @@ namespace Enemy
                 case EnemyState.Attack:
                     break;
                 case EnemyState.Dead:
-                    CurState = EnemyState.Idle;
                     FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
-                    gameObject.SetActive(false);
                     break;
             }
         }

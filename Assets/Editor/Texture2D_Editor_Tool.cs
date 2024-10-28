@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -82,6 +83,38 @@ namespace Editor.Tool
             }
         }
 
+        
+        [MenuItem("Assets/Check/MoveSpritePivotToBottom")]
+        public static void MovePivotToBottom()
+        {
+            MovePivot(new Vector2(0.5f,0));
+        }
+        public static void MovePivot(Vector2 pivot)
+        {
+            var select = Selection.activeObject;
+            var selectPath = AssetDatabase.GetAssetPath(select);
+            List<string> allPath = FindNoneRefrences.GetAllResourcePath(selectPath, "t:Texture");
+            
+            foreach (var path in allPath)
+            {
+                TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+
+                SpriteMetaData[] datas = textureImporter.spritesheet;
+                
+                
+                
+                for (int i = 0; i < datas.Length; i++)
+                {
+                    datas[i].alignment = (int)SpriteAlignment.BottomCenter;
+                    // datas[i].pivot = pivot;
+                }
+                
+                textureImporter.spritesheet = datas;
+                EditorUtility.SetDirty(textureImporter);     // 标记 importer 已更改
+                textureImporter.SaveAndReimport();
+            }
+        }
+        
         public static int BestSize(Texture texture)
         {
             int bestSize = 2048;

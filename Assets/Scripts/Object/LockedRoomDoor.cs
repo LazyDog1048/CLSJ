@@ -9,14 +9,17 @@ namespace game
     public class LockedRoomDoor : RoomDoor
     {
         [SerializeField]
-        private List<PackageItemSoData> lockItemDatas;
+        protected List<PackageItemSoData> lockItemDatas;
         
         [SerializeField]
-        private string LockedDescription = "Door is locked!";
+        protected string LockedDescription = "Door is locked!";
         [SerializeField]
-        private string UnlockDescription = "锁开了";
+        protected string UnlockDescription = "锁开了";
         
-        private bool isOpened = false;
+        protected bool isOpened = false;
+        
+        [SerializeField]
+        private LockedRoomDoor otherSide;
         
         public override void PressE()
         {
@@ -35,7 +38,7 @@ namespace game
         }
 
 
-        private void UnlockDoor()
+        protected void UnlockDoor()
         {
             var list = LocalPackageThing.GetData().consumableDataList;
             for(int i=list.Count-1;i>=0;i--)
@@ -51,9 +54,10 @@ namespace game
             }
             LocalPackageThing.Save();
             isOpened = true;
+            otherSide.isOpened = true;
         }
 
-        private bool CheckKey()
+        protected bool CheckKey()
         {
             int much = 0;
             foreach (var consumableData in LocalPackageThing.GetData().consumableDataList)

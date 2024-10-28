@@ -7,7 +7,8 @@ namespace other
 {
     public class GameCursor : Mono_Singleton<GameCursor>
     {
-        private GameObject body;
+        // private GameObject body;
+        private GameObject range;
         private bool cursorClicked;
 
         private Transform up;
@@ -15,25 +16,34 @@ namespace other
         private Transform left;
         private Transform right;
 
-        private PlayerController playerController;
-        private PlayerGun playerGun => playerController.playerEquipment.currentWeapon;
         
+        private PlayerGun playerGun => PlayerController.Instance.playerEquipment.currentWeapon;
+
         protected override void Awake()
         {
             base.Awake();
-            playerController = PlayerController.Instance;
-            body = transform.Find("Body").gameObject;
-            var range = transform.Find("Range").gameObject;
+            Cursor.visible = false;
+            range = transform.Find("Range").gameObject;
             up = range.transform.Find("Up");
             down = range.transform.Find("Down");
             left = range.transform.Find("Left");
             right = range.transform.Find("Right");
         }
+        
+        public void SetPlayerController(PlayerController playerController)
+        {
+            // this.playerController = playerController;
+        }
+        
+        public void SwitchMode(bool isAiming)
+        {
+            Cursor.visible = !isAiming;
+            range.SetActive(isAiming);
+        }
 
         private void Update()
         {
             transform.position = GetMousePos.GetMousePosition();
-              
             AimingChange(playerGun.range);
         }
 

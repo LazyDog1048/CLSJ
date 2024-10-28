@@ -13,7 +13,7 @@ namespace game
             eCheck.gameObject.SetActive(false);
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        protected virtual void OnTriggerEnter2D(Collider2D col)
         {
             if (col.tag.Equals("Player"))
             {
@@ -21,7 +21,7 @@ namespace game
             }
         }
         
-        private void OnTriggerExit2D(Collider2D col)
+        protected virtual void OnTriggerExit2D(Collider2D col)
         {
             if (col.tag.Equals("Player"))
             {

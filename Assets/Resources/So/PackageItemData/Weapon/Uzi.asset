@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: Uzi
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u51B2\u950B\u9B54\u6CD5\u4E66"
+  Name: Uzi
+  ItemName: "\u51B2\u950B\u9B54\u6CD5\u4E66"
   icon: {fileID: -1074559057221326846, guid: ab051153894bcf64ea323d81f8c9bee8, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 65d407238b2a01a49900fcdefd3d180c, type: 3}
   shapeData:
@@ -52,14 +53,6 @@ MonoBehaviour:
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: 33456a9edaf002f4bacc43ccfd8b44e3, type: 2}
-  shotClip:
-    priority: 0
-    isLoop: 0
-    randomVolume: 0
-    randomPitch: 0
-    volumeRange: {x: 0.9, y: 1.1}
-    pitchRange: {x: 0.9, y: 1.1}
-    Clip: {fileID: 0}
   flashlightData:
     normalInnerLength: 4
     normalOuterLength: 8
@@ -69,3 +62,35 @@ MonoBehaviour:
     aimOuterLength: 8
     aimInnerAngle: 40
     aimOuterAngle: 45
+  shotClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 396a5a051f314e040a2c5f5aef1a9e85, type: 3}
+  HitClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  reloadClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 7049334460517fa429d074e48a23a771, type: 3}
+  reloadCompleteClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 8cc31c6852e558f4f9f2bfb55d0f0bda, type: 3}

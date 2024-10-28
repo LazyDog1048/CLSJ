@@ -147,7 +147,8 @@ namespace GridSystem
         public virtual void EnterItemPanel(UiPackageItem item)
         {
             var data = item.packageItemSoData;
-            text.text = data.description;
+            text.text = $"{data.ItemName}/n{data.description}";
+            // text.text = data.description;
             // typeText.text = data.ItemType.ToString();
             // rareText.text = data.quality.ToString();
             // priceText.text = data.price.ToString();

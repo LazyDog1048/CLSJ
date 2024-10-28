@@ -97,7 +97,7 @@ namespace EquipmentSystem
             Bullet baseBullet = Load<Bullet>(gunData.bulletData);
 
             GunObject.GunShot(target,shotCenter.position,afterDir);
-            baseBullet.BulletPrepare(shotPoint,afterDir,gunParameter);
+            baseBullet.BulletPrepare(shotPoint,afterDir,gunData,gunParameter);
             
             
             currentShotShake += shotStability;

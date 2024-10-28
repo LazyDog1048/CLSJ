@@ -7,6 +7,7 @@ namespace GridSystem
     public abstract class GridObjectSo : ScriptableObject
     {
         public string Name;
+        public string ItemName;
         public Sprite icon;
         [AssetsOnly]
         public GameObject prefab;

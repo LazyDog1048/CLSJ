@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using game;
 using UnityEngine;
 
 namespace Enemy
@@ -22,20 +23,27 @@ namespace Enemy
             }
         }
 
-        private void GenerateEnemy()
+        private void GenerateEnemy(Room room)
         {
             enemy = BaseEnemy.Load(enemySoData);
+            enemy.transform.SetParent(this.transform);
             enemy.InitEnemy(PatrolPoints);
+            room.AddEnemy(enemy);
         }
         
-        public void EnterRoom()
+        public void EnterRoom(Room room)
         {
-            GenerateEnemy();
+            if(enemy == null)
+                GenerateEnemy(room);
+            else
+                enemy.SetActive(true);
         }
         
-        public void ExitRoom()
+        public void ExitRoom(Room room)
         {
-            enemy.ReleaseObj();
+            if(enemy == null)
+                return;
+            enemy.SetActive(false);
         }
     }
     

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CultPistal
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: CultPistal
+  ItemName: CultPistal
   icon: {fileID: 8696830440083233211, guid: d82629387682eec419432b388727ac02, type: 3}
   prefab: {fileID: 2467453439497934888, guid: e437b44f603b479459380d10cc6b0206, type: 3}
   shapeData:
@@ -58,14 +59,6 @@ MonoBehaviour:
   shotFx: {fileID: 11400000, guid: e28027f8de05f4f49a2b67f4797fdbc1, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: f5a0a0afac237244fb5da14953531164, type: 2}
-  shotClip:
-    priority: 0
-    isLoop: 0
-    randomVolume: 0
-    randomPitch: 0
-    volumeRange: {x: 0.9, y: 1.1}
-    pitchRange: {x: 0.9, y: 1.1}
-    Clip: {fileID: 0}
   flashlightData:
     normalInnerLength: 4
     normalOuterLength: 8
@@ -75,3 +68,35 @@ MonoBehaviour:
     aimOuterLength: 8
     aimInnerAngle: 40
     aimOuterAngle: 50
+  shotClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: d7cbcb29810843a4a9addb8804ac00f6, type: 3}
+  HitClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  reloadClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  reloadCompleteClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}

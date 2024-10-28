@@ -438,6 +438,8 @@ namespace GridSystem
             foreach (var cell in cells)
             {
                 UiGridObject uiGridObject = currentGridSystem.Grid.GetGridObject(cell.transform.position);
+                if (uiGridObject == null)
+                    continue;
                 uiGridObject.RemoveGridItem();
             }
             currentGridSystem.boxItemDataList.Remove(this);

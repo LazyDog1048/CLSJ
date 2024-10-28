@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using data;
 using EquipmentSystem;
 using GridSystem;
@@ -13,9 +14,10 @@ namespace game
     {
         [SerializeField]
         private RoomDoor startRoomDoor;
-        
-        
-        public Room lastRoom { get; set; }
+
+        private List<Room> rooms;
+
+        public Room lastRoom => lastRoomDoor.thisRoom;
         
         public RoomDoor lastRoomDoor{ get; set; }
         
@@ -37,6 +39,21 @@ namespace game
             Package_Panel.Load();
             DoorPanel.Load();
             Map_Panel.Load();
+            PlayerController.Instance.PlayerInit();
+            Debug.Log(PlayerController.Instance.name);
+            Debug.Log(GameCursor.Instance.name);
+            
+            rooms = new List<Room>();
+            
+            foreach (var room in GetComponentsInChildren<Room>())
+            {
+                rooms.Add(room);
+            }
+
+            foreach (var room in rooms)
+            {
+                room.ExitRoom();
+            }
         }
 
         private void Start()
@@ -59,25 +76,32 @@ namespace game
         public void StartGame()
         {
             CheckDoor(startRoomDoor);
-            EnterRoom();
+            EnterTargetRoom(startRoomDoor);
             
         }
         public void CheckDoor(RoomDoor roomDoor)
         {
             lastRoomDoor = roomDoor;
-            lastRoom = roomDoor.thisRoom;
 
             beforeEnterPackageData = JsonUtility.ToJson(DataManager.Instance.LocalPackageThing);
             beforeEnterPlayerData = JsonUtility.ToJson(DataManager.Instance.LocalPlayerDataThing);
         }
 
-        public void EnterRoom()
+        public void EnterTargetRoom(RoomDoor roomDoor)
         {
             DataManager.Instance.LocalPackageThing = JsonUtility.FromJson<LocalPackageThing>(beforeEnterPackageData);
             DataManager.Instance.LocalPlayerDataThing = JsonUtility.FromJson<LocalPlayerDataThing>(beforeEnterPlayerData);
             // DataManager.Instance.LocalPlayerDataThingHandler.SetData(JsonUtility.FromJson<LocalPlayerDataThing>(beforeEnterPlayerData));
-            lastRoomDoor.ResumePlayer();
+
+            if (lastRoomDoor != null)
+            {
+                lastRoom.ExitRoom();    
+            }
+            this.lastRoomDoor = roomDoor;
+            PlayerController.Instance.EnterRoom(roomDoor);
+            roomDoor.targetRoom.EnterRoom();
         }
+        
     }
     
 }

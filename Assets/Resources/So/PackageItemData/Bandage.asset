@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3348c5d3a6036db48990f55451467d00, type: 3}
   m_Name: Bandage
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u7EF7\u5E26"
+  Name: Bandage
+  ItemName: "\u7EF7\u5E26"
   icon: {fileID: -3823049583606803200, guid: dca5d94f133aa504089a442f1bc49401, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 588fb58cbe821c049a53efb4f435ef28, type: 3}
   shapeData:

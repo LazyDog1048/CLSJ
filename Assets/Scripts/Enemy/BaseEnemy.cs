@@ -75,13 +75,13 @@ namespace Enemy
 
         private void Update()
         {
+            if(CurState == EnemyState.Dead)
+                return;
             EnemyUpdate();
         }
         
         protected virtual void EnemyUpdate()
         {
-            if(CurState == EnemyState.Dead)
-                return;
             if (enemyAttacker.CanAttack)
             {
                 SeenPlayer = true;
@@ -174,9 +174,7 @@ namespace Enemy
                     CurState = EnemyState.Idle;
                     break;
                 case EnemyState.Dead:
-                    CurState = EnemyState.Idle;
                     FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
-                    gameObject.SetActive(false);
                     break;
             }
         }
@@ -188,6 +186,20 @@ namespace Enemy
             enemyAttacker.Reset();
             enemyAnimator.Reset();
         }
+
+        public void SetActive(bool active)
+        {
+            gameObject.SetActive(active);
+
+            if (active)
+            {
+                enemyAnimator.Reset();
+                CurState = EnemyState.Idle;
+                SeenPlayer = false;
+            }
+            
+        }
+        
     }
     
 }

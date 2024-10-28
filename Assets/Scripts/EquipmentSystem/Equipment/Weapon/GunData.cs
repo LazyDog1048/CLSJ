@@ -50,8 +50,12 @@ namespace EquipmentSystem
         public FxSoData shotFx;
         public FxSoData smokeFx;
         public RuntimeAnimatorController gunAnimator;
-        public FxAudioSourceClip shotClip;
         public FlashlightData flashlightData;
+        
+        public FxAudioSourceClip shotClip;
+        public FxAudioSourceClip HitClip;
+        public FxAudioSourceClip reloadClip;
+        public FxAudioSourceClip reloadCompleteClip;
 
     }
     

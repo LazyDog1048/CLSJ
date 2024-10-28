@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: CrossKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u8367\u5149\u5341\u5B57"
+  Name: CrossKey
+  ItemName: "\u8367\u5149\u5341\u5B57"
   icon: {fileID: 1499848297744323390, guid: 20abfd4c5e2cde94ca6a2cac03d1c78b, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 754622ad0d1db064e89ae856e2ce57c0, type: 3}
   shapeData:

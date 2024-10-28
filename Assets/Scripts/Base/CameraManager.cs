@@ -37,6 +37,12 @@ namespace game
             // return uiCamera.ScreenToWorldPoint(PlayerController.Instance.Head.position);
             return UiTool.WorldToUiPos(LayerPanel.Instance.rectTransform,uiCamera,PlayerController.Instance.Head.position);
         }
+        
+        public Vector3 UiCameraMousePos()
+        {
+
+            return GetMousePos.GetUiMousePositionWithZ();
+        }
     }
     
 

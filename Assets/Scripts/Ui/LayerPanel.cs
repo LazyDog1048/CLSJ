@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using game;
 using GridSystem;
+using other;
 using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -262,6 +263,7 @@ namespace ui
             if (!isFontNull)
             {
                 GameManager.Instance.Pause(true);
+                GameCursor.Instance.SwitchMode(false);
                 GamePlay_InputAction.Instance.UiBlock(true);
             }
             if(PauseGame)
@@ -274,6 +276,7 @@ namespace ui
         {
             if (isFontNull)
             {
+                GameCursor.Instance.SwitchMode(true);
                 GameManager.Instance.Pause(false);
                 GamePlay_InputAction.Instance.UiBlock(false);
             }

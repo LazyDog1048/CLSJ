@@ -14,6 +14,7 @@ namespace EquipmentSystem
         private int penetrateNum = 1;
         // public PlayerGun gun { get;private set; }
 
+        public GunData gunData{ get;private set; }
         public GunParameter gunParameter{ get;private set; }
         private TrailRenderer trail;
 
@@ -37,11 +38,12 @@ namespace EquipmentSystem
 
         public virtual void BulletPrepare(Vector3 shot,Vector2 dir,PlayerGun gun)
         {
-            BulletPrepare(shot,dir,gun.gunParameter);
+            BulletPrepare(shot,dir,gun.gunData,gun.gunParameter);
         }
 
-        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,GunParameter gunParameter)
+        public virtual void BulletPrepare(Vector3 shot,Vector2 dir,GunData gunData,GunParameter gunParameter)
         {
+            this.gunData = gunData;
             this.gunParameter = gunParameter;
             transform.position = shot;
             startPos = shot;
@@ -113,11 +115,13 @@ namespace EquipmentSystem
             else if (col.tag.Equals("HitObj"))
             {
                 var hit = col.transform.GetComponentInParent<IHitObj>();
+                gunData.HitClip.PlayClip();
                 hit?.HitObj(this);
             }
             else if (col.tag.Equals("Player"))
             {
                 var hit = col.transform.GetComponentInParent<IHitObj>();
+                gunData.HitClip.PlayClip();
                 hit?.HitObj(this);
             }
             if(penetrateNum <= 0)
@@ -159,8 +163,6 @@ namespace EquipmentSystem
 
         #endregion
 
-        
-   
     }
     
 }

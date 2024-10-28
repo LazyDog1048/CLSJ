@@ -20,7 +20,10 @@ namespace game
         private Transform target;
         private Transform resume;
 
-
+        private Transform Echeck;
+        public Vector3 TargetPosition => target.position;
+        public Vector3 ResumePosition => resume.position;
+        // private List<GameObject> childs;
 
         protected override void Awake()
         {
@@ -28,6 +31,18 @@ namespace game
             target = transform.Find("Target");
             resume = transform.Find("Resume");
             thisRoom = transform.parent.parent.GetComponent<Room>();
+            
+            Echeck = transform.Find("ECheck");
+
+            if (transform.localScale.x < 0)
+            {
+                Echeck.localScale = new Vector3(-1, 1, 1);
+            }
+            // childs = new List<GameObject>();
+            // for (int i = 0; i < transform.childCount; i++)
+            // {
+            //     childs.Add(transform.GetChild(i).gameObject);
+            // }
         }
 
         public override void PressE()
@@ -43,13 +58,8 @@ namespace game
 
         public void MovePlayer()
         {
-            PlayerController.Instance.transform.position = target.position;
-        }
-        
-        public void ResumePlayer()
-        {
-            PlayerController.Instance.Resume(resume.position);
-            thisRoom.EnterRoom();
+            GameManager.Instance.EnterTargetRoom(this);
+            // PlayerController.Instance.transform.position = target.position;
         }
     }
     

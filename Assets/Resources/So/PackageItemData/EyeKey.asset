@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: EyeKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u673A\u68B0\u773C\u7403"
+  Name: EyeKey
+  ItemName: "\u673A\u68B0\u773C\u7403"
   icon: {fileID: -8636122728826921384, guid: c5526fa2030eeb44996d8ef4ac8bdaff, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 42b20cda756f5504ca113bf786047ca8, type: 3}
   shapeData:

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: ClockKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u6C34\u6676\u65F6\u9488"
+  Name: ClockKey
+  ItemName: "\u6C34\u6676\u65F6\u9488"
   icon: {fileID: -8265707583421109160, guid: 6d3fc68a7e09a994790f400fb0d691ac, type: 3}
   prefab: {fileID: 1726577015640154295, guid: ad6b4283fd13979488b0ea9ddc4587b6, type: 3}
   shapeData:

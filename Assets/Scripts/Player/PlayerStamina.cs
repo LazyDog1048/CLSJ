@@ -47,7 +47,6 @@ namespace Player
             CurrentStamina = MaxStamina;
             staminaResume = playerController.playerParameter.staminaResume;
             runStaminaConsume = playerController.playerParameter.runStaminaConsume;
-            Debug.Log($"Stamina:{CurrentStamina}");
         }
 
         public void StartRunConsumeStamina()

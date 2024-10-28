@@ -20,7 +20,7 @@ namespace ui
         {
             Show();
             DoorUi.SetRoomDoor(roomDoor);
-            roomDoor.DelayRealTimeExecute(6.374f,Hide);
+            GameManager.Instance.DelayRealTimeExecute(6.3f,Hide);
         }
     }
        

@@ -47,8 +47,7 @@ namespace EquipmentSystem
 
         // private GunAnimatorController gunAnimatorController;
         protected PlayerGunObject PlayerGunObject;
-    
-        // private int _currentAmmo;
+        
         public int currentAmmo
         {
             get => WeaponData.currentAmmo;
@@ -113,13 +112,20 @@ namespace EquipmentSystem
 
         protected virtual void BulletReLoad()
         {
+            if(isReloading || currentAmmo >= maxAmmo)
+                return;
+                
+            gunData.reloadClip.PlayClip();
+            
             isReloading = true;
             PlayerUiPanel.Instance.GunReloading(reloadTime);
+            
             playerController.DelayExecute(reloadTime, () =>
             {
                 int packageBullet = playerController.playerEquipment.package.GetBulletFormPackage(gunData.bulletData.Name,maxAmmo - currentAmmo);
                 currentAmmo = currentAmmo + packageBullet;
                 isReloading = false;
+                gunData.reloadCompleteClip.PlayClip();
                 DataManager.Instance.SaveAllData();
             });
         }

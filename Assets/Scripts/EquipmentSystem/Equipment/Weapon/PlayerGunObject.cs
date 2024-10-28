@@ -1,3 +1,4 @@
+using data;
 using EquipmentSystem;
 using game;
 using GridSystem;
@@ -10,6 +11,9 @@ namespace Player
 {
     public class PlayerGunObject : GunObject
     {
+        [SerializeField]
+        private FxAudioSourceClip reloadClip;
+        
         public void ReloadGun(PlayerGun playerGun)
         {
             ReloadGun(playerGun.gunData);

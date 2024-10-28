@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76abe4d50e70a247ab8c5b465894f61, type: 3}
   m_Name: RubyKey
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u7480\u74A8\u7EA2\u5B9D\u77F3"
+  Name: RubyKey
+  ItemName: "\u7480\u74A8\u7EA2\u5B9D\u77F3"
   icon: {fileID: 645525592275268442, guid: 99bd4e4cc1dcad64fb0f9c96b96f258e, type: 3}
   prefab: {fileID: 1726577015640154295, guid: 9ad10a03cb01e1c44a39d0981cb17e30, type: 3}
   shapeData:

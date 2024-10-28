@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52a3d9d05700e2440a18244e82a7fc58, type: 2}
   LockedDescription: Door is locked!
   UnlockDescription: "\u9501\u5F00\u4E86"
+  otherSide: {fileID: 0}
 --- !u!212 &5281745105343461273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

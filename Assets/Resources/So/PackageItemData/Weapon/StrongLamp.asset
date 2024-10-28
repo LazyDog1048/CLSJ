@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915fa987297fd09448b6e7d7d11fae28, type: 3}
   m_Name: StrongLamp
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u9A71\u9B54\u706F\u7B3C"
+  Name: StrongLamp
+  ItemName: "\u9A71\u9B54\u706F\u7B3C"
   icon: {fileID: 6700022662024591443, guid: de50caf3d09f1b34caac17c9bc73607f, type: 3}
   prefab: {fileID: 1726577015640154295, guid: e4c2db400734db2498b2c0a3d57d92e7, type: 3}
   shapeData:
@@ -52,14 +53,6 @@ MonoBehaviour:
   shotFx: {fileID: 11400000, guid: 0a068b67f51b6d14fb9f5e56effc1e04, type: 2}
   smokeFx: {fileID: 11400000, guid: cf7a7009608da56439d9f4905c8ad26d, type: 2}
   gunAnimator: {fileID: 22100000, guid: 2531639be47d5de428bde695dcab7b17, type: 2}
-  shotClip:
-    priority: 0
-    isLoop: 0
-    randomVolume: 0
-    randomPitch: 0
-    volumeRange: {x: 0.9, y: 1.1}
-    pitchRange: {x: 0.9, y: 1.1}
-    Clip: {fileID: 0}
   flashlightData:
     normalInnerLength: 9
     normalOuterLength: 12
@@ -69,3 +62,35 @@ MonoBehaviour:
     aimOuterLength: 12
     aimInnerAngle: 65
     aimOuterAngle: 75
+  shotClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  HitClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  reloadClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  reloadCompleteClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}

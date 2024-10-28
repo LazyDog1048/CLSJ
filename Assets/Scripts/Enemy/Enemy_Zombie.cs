@@ -6,8 +6,6 @@ namespace Enemy
     {
         protected override void EnemyUpdate()
         {
-            if(CurState == EnemyState.Dead)
-                return;
             if (isEnterAttack)
             {
                 if (CurState == EnemyState.Attack)

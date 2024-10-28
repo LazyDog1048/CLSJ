@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f6b2c31a9212146bb22edda51719dc, type: 3}
   m_Name: AmmoShotGun
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
-  Name: "\u6563\u5C04\u9B54\u529B\u5B50\u5F39"
+  Name: AmmoShotGun
+  ItemName: "\u6563\u5C04\u9B54\u529B\u5B50\u5F39"
   icon: {fileID: 5004147347841525134, guid: 122863dffff07a649b045e2cc1a3c390, type: 3}
   prefab: {fileID: 1726577015640154295, guid: ff25b02072c2b6c4f8f3a3c55ebf74c9, type: 3}
   shapeData:

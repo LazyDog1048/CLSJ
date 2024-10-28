@@ -31,7 +31,7 @@ namespace EquipmentSystem
                 {
                     var afterDir = dir.Rota2DAxis(Random.Range(-curRange, curRange));
                     Bullet baseBullet = Load<Bullet>(gunData.bulletData);
-                    baseBullet.BulletPrepare(shotPoint,afterDir,gunParameter);
+                    baseBullet.BulletPrepare(shotPoint,afterDir,gunData,gunParameter);
                 });
             }
             
