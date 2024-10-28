@@ -43,6 +43,8 @@ namespace Editor.Tool
         
         private static void ComoponentThing(GameObject obj)
         {
+            SpriteRenderer[] renderers = obj.GetComponentsInChildren<SpriteRenderer>();
+            
             var TouchPlayer = obj.transform.Find("TouchPlayer");
             // EnemyData data = obj.GetComponent<baseene>();
             // uipoint.Find("HpBar").gameObject.SetActive(false);

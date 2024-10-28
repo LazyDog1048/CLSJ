@@ -110,11 +110,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 73
-        width: 80
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 76
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -131,12 +131,12 @@ TextureImporter:
       name: LightItem_StandingTorch_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 34
-        width: 80
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 20
+        y: 76
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: LightItem_StandingTorch_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 40
+        y: 76
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,11 +171,209 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 76
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570093dcf22e6db4293f85ad6acd8230
+      internalID: -1002137118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ada1878aa9c6ba4fb072d5a4d2cd99d
+      internalID: 1870540142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_5
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 38
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e567a4d9b3d8a541963d794ede1012f
+      internalID: 1906605711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_6
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 38
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2cc886de8c77242bbf9d7bd0130c69
+      internalID: 1633636782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 38
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8e3061100820a4aa22a38b947d8860
+      internalID: 1496597349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b971aa472041bf942b896761c74fce01
+      internalID: -719039757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 080bea55502262f4094870231e5d5e10
+      internalID: 1175779324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_10
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac43b43345c51974c898958fa0ee149a
+      internalID: -1414545824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightItem_StandingTorch_11
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 20
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff50ee4f02ff1741b256b5b24c466fe
+      internalID: 973045251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 33881dd64774e364892e238cd8ce4d3e
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +385,16 @@ TextureImporter:
     nameFileIdTable:
       LightItem_StandingTorch_0: 8795115212458915056
       LightItem_StandingTorch_1: 7864108949365120690
+      LightItem_StandingTorch_10: -1414545824
+      LightItem_StandingTorch_11: 973045251
       LightItem_StandingTorch_2: -5243021263892174176
+      LightItem_StandingTorch_3: -1002137118
+      LightItem_StandingTorch_4: 1870540142
+      LightItem_StandingTorch_5: 1906605711
+      LightItem_StandingTorch_6: 1633636782
+      LightItem_StandingTorch_7: 1496597349
+      LightItem_StandingTorch_8: -719039757
+      LightItem_StandingTorch_9: 1175779324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
