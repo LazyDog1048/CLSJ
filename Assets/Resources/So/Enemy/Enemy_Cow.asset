@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Enemy_Cow
   Speed: 3
   Health: 54
-  Damage: 30
+  Damage: 15
   DamageRange: 1.6
   DamageForce: 20
   DamageForceTime: 0.2

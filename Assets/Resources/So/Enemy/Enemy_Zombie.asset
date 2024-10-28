@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Enemy_Zombie
   Speed: 3
   Health: 32
-  Damage: 20
+  Damage: 10
   DamageRange: 1.4
   DamageForce: 14
   DamageForceTime: 0.2
