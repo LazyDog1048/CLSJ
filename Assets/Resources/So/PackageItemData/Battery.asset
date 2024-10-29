@@ -27,4 +27,4 @@ MonoBehaviour:
   weight: 0
   description: "\u4E3A\u4F60\u7684\u706F\u7B3C\u5145\u6EE1\u7535\u91CF"
   speed: 0
-  stayTime: 10
+  stayTime: 60

@@ -18,7 +18,7 @@ namespace game
         private List<Room> rooms;
 
         public Room lastRoom => lastRoomDoor.thisRoom;
-        
+        public Room thisRoom => lastRoomDoor.targetRoom;
         public RoomDoor lastRoomDoor{ get; set; }
         
         // private LocalPackageThing beforeEnterPackageData;
@@ -40,8 +40,7 @@ namespace game
             DoorPanel.Load();
             Map_Panel.Load();
             PlayerController.Instance.PlayerInit();
-            Debug.Log(PlayerController.Instance.name);
-            Debug.Log(GameCursor.Instance.name);
+            
             
             rooms = new List<Room>();
             

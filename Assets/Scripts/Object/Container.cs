@@ -59,14 +59,16 @@ namespace game
         private void FirstOpen()
         {
             isFirstOpen = false;   
-            foreach (var item in itemDatas)
-            {
-                AddBox(item.Name);
-            }
-            foreach (var bullet in bulletDatas)
-            {
-                AddBox(bullet.bullet.Name,bullet.count);
-            }
+            if(itemDatas!=null)
+                foreach (var item in itemDatas)
+                {
+                    AddBox(item.Name);
+                }
+            if(bulletDatas!=null)
+                foreach (var bullet in bulletDatas)
+                {
+                    AddBox(bullet.bullet.Name,bullet.count);
+                }
         }
 
         private void Close()

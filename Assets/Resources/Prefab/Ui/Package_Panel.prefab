@@ -1570,7 +1570,6 @@ MonoBehaviour:
   gridParent: {fileID: 4068617315517558514}
   itemParent: {fileID: 3446155246875877501}
   oriGridCell: {fileID: 89156827619607977}
-  uiItemOri: {fileID: 0}
   gridWidth: 10
   gridHeight: 8
   cellSize: 11
@@ -2709,7 +2708,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294949632
-  m_fontColor: {r: 0, g: 0.73333335, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2730,8 +2729,8 @@ MonoBehaviour:
   m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 5
-  m_fontSizeMax: 18
+  m_fontSizeMin: 6
+  m_fontSizeMax: 8
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -3722,7 +3721,6 @@ MonoBehaviour:
   gridParent: {fileID: 5501459257140753067}
   itemParent: {fileID: 5194229377544074327}
   oriGridCell: {fileID: 89156827619607977}
-  uiItemOri: {fileID: 0}
   gridWidth: 8
   gridHeight: 8
   cellSize: 11
@@ -4685,8 +4683,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294949632
-  m_fontColor: {r: 0, g: 0.73333335, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4707,7 +4705,7 @@ MonoBehaviour:
   m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 5
+  m_fontSizeMin: 8
   m_fontSizeMax: 8
   m_fontStyle: 0
   m_HorizontalAlignment: 1
