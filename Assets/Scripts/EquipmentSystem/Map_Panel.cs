@@ -33,7 +33,7 @@ namespace ui
         {
             foreach (var roomUi in roomUis)
             {
-                roomUi.CheckRoom(GameManager.Instance.lastRoom);
+                roomUi.CheckRoom(GameManager.Instance.thisRoom);
             }
         }
     }

@@ -44,6 +44,8 @@ namespace other
         private void Update()
         {
             transform.position = GetMousePos.GetMousePosition();
+            if(PlayerController.Instance == null)
+                return;
             AimingChange(playerGun.range);
         }
 

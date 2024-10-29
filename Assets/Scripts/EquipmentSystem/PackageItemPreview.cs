@@ -155,6 +155,7 @@ namespace GridSystem
             {
                 if (leftPress)
                 {
+                    return;
                     if(currentUiPackageItem != null)
                     {
                         currentUiPackageItem.CheckRotate();

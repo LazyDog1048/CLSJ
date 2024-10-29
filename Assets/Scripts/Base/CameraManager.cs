@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System;
+using Cinemachine;
 using other;
 using Player;
 using tool;
@@ -18,6 +19,17 @@ namespace game
         public CinemachineVirtualCamera cinemachineVirtualCamera { get;private set; }
         protected override void Init()
         {
+            // mainCamera = transform.Find("MainCamera").GetComponent<Camera>();
+            // cinemachineSwitcher = GetComponent<CinemachineSwitcher>();
+            // cinemachineVirtualCamera = mainCamera.GetComponent<CinemachineVirtualCamera>();
+            // mainCamera.depth = 0;
+            // uiCamera.clearFlags = CameraClearFlags.Depth;
+            // uiCamera.depth = 10;
+            // transform.position = new Vector3(0, 0, -10);
+        }
+
+        public void Load()
+        {
             mainCamera = transform.Find("MainCamera").GetComponent<Camera>();
             cinemachineSwitcher = GetComponent<CinemachineSwitcher>();
             cinemachineVirtualCamera = mainCamera.GetComponent<CinemachineVirtualCamera>();
@@ -25,9 +37,10 @@ namespace game
             uiCamera.clearFlags = CameraClearFlags.Depth;
             uiCamera.depth = 10;
             transform.position = new Vector3(0, 0, -10);
+            
         }
 
-        public void Load()
+        private void Start()
         {
             cinemachineSwitcher.LoadCM_Level_1920(transform.Find("CM_1920"));
         }
