@@ -20,6 +20,7 @@ namespace Player
         
         public float runStepRate = 0.2f;
         public float walkStepRate = 0.5f;
+
         public FxAudioSourceClip hitClip;
         public List<FxAudioSourceClip> footStepClips;
         

@@ -15,5 +15,22 @@ MonoBehaviour:
   CommonUi_LayerPanelObj: {fileID: 8954299787401531211, guid: abd434da09d6b6a47bbb52e5d3462363, type: 3}
   PackagePanelObj: {fileID: 1958563527552550306, guid: 618c46150a7947b429edde0337b2ac89, type: 3}
   DoorPanelObj: {fileID: 1958563527552550306, guid: 9d34477556b5c484c9997b5c4877e5c8, type: 3}
+  GameoverPanelObj: {fileID: 1958563527552550306, guid: 5ae876186cc92c643877832fe7187e9f, type: 3}
   MapPanelObj: {fileID: 1958563527552550306, guid: 5eab7a5c3cec00c44b1c8404f1996ccb, type: 3}
   PlayerUiPanel: {fileID: 6952081484936390883, guid: b0af6361f03fc7d4997b7b6341f60f0a, type: 3}
+  packageClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 185bdd4cd6061304fb0a629ee3e5cce9, type: 3}
+  clickClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: b807364a4c52b544f8347ffa261a33f2, type: 3}

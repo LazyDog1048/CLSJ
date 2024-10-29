@@ -87,6 +87,7 @@ namespace GridSystem
         {
             base.OnShowAction();
             boxUiGridSystem.ClearItem();
+            UiObjRefrenceSO.Instance.packageClip.PlayClip();
             LoadPlayerPackage();
         }
 
@@ -95,6 +96,7 @@ namespace GridSystem
             base.OnHideAction();
             if(playerPackageUiGridSystem == null)
                 return;
+            UiObjRefrenceSO.Instance.packageClip.PlayClip();
             playerPackageUiGridSystem.ClosePanelSaveData();
             playerPackageUiGridSystem.ClearItem();
             _preview.ClearItem();

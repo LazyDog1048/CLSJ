@@ -3,6 +3,7 @@ using DG.Tweening;
 using EquipmentSystem;
 using game;
 using other;
+using ui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -131,6 +132,7 @@ namespace GridSystem
         {
             if(context.phase== InputActionPhase.Started)
             {
+                UiObjRefrenceSO.Instance.clickClip.PlayClip();
                 if (CanPickUp)
                 {
                     PickUpItem();

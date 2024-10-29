@@ -1,3 +1,4 @@
+using data;
 using Sirenix.OdinInspector;
 using so;
 using UnityEngine;
@@ -16,9 +17,14 @@ namespace ui
         [AssetsOnly]
         public GameObject DoorPanelObj;
         [AssetsOnly]
+        public GameObject GameoverPanelObj;
+        [AssetsOnly]
         public GameObject MapPanelObj;
         [AssetsOnly]
         public GameObject PlayerUiPanel;
+        
+        public FxAudioSourceClip packageClip;
+        public FxAudioSourceClip clickClip;
 
     }
 
