@@ -121,7 +121,6 @@ namespace EquipmentSystem
             else if (col.tag.Equals("Player"))
             {
                 var hit = col.transform.GetComponentInParent<IHitObj>();
-                gunData.HitClip.PlayClip();
                 hit?.HitObj(this);
             }
             if(penetrateNum <= 0)

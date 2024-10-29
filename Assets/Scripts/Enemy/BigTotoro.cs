@@ -31,6 +31,7 @@ namespace Enemy
         }
         protected override void EnemyAttack()
         {
+            PlayerFindClip();
             if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
                 direction = (playerPos - centerPosition).normalized;

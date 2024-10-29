@@ -77,17 +77,28 @@ namespace game
         public void StartGame()
         {
             CheckDoor(startRoomDoor);
+            
             EnterTargetRoom(startRoomDoor);
             
         }
         public void CheckDoor(RoomDoor roomDoor)
         {
+            DoorPanel.Instance.OpenDoor(roomDoor);
             lastRoomDoor = roomDoor;
 
             beforeEnterPackageData = JsonUtility.ToJson(DataManager.Instance.LocalPackageThing);
             beforeEnterPlayerData = JsonUtility.ToJson(DataManager.Instance.LocalPlayerDataThing);
         }
 
+        public void PlayerResume()
+        {
+            DoorPanel.Instance.OpenDoor(lastRoomDoor);
+            this.DelayExecute(2, () =>
+            {
+                EnterTargetRoom(lastRoomDoor);
+            });
+        }
+        
         public void EnterTargetRoom(RoomDoor roomDoor)
         {
             DataManager.Instance.LocalPackageThing = JsonUtility.FromJson<LocalPackageThing>(beforeEnterPackageData);

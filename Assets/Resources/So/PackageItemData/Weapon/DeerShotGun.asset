@@ -83,7 +83,7 @@ MonoBehaviour:
     randomPitch: 0
     volumeRange: {x: 0.9, y: 1.1}
     pitchRange: {x: 0.9, y: 1.1}
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 964add519c118e847939e9159ab64c57, type: 3}
   reloadClip:
     priority: 0
     isLoop: 0

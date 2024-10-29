@@ -41,6 +41,7 @@ namespace Enemy
             }
             else if (enemyAttacker.CanAttack)
             {
+                
                 dashMove.faceDir.FaceToTarget(playerPos);
                 SeenPlayer = true;
                 
@@ -59,6 +60,7 @@ namespace Enemy
         
         protected override void EnemyAttack()
         {
+            PlayerFindClip();
             if (!isEnterAttack && !enemyAttacker.isAttackCd && !transform.DisLongerThan(playerPos, enemyParameter.AttackRange))
             {
                 direction = (playerPos - centerPosition).normalized;
@@ -100,6 +102,7 @@ namespace Enemy
             {
                 case EnemyState.Alert:
                     enemyAttacker.AttackEnterCd();
+                    enemySoData.alertClip.PlayClip();
                     this.DelayExecute(alertTime, () =>
                     {
                         CurState = EnemyState.Attack;
@@ -110,7 +113,9 @@ namespace Enemy
                     break;
                 case EnemyState.Recover:
                     break;
-                
+                case EnemyState.Dead:
+                    enemySoData.deadClip.PlayClip();
+                    break;
             }
         }
 

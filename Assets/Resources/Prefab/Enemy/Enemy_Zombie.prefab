@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySoData: {fileID: 11400000, guid: 54eaafaa5de1a5a429c41baf22ec2131, type: 2}
+  findPlayer: 0
   dashTime: 0.1
   recoverTime: 1
   alertTime: 0.5

@@ -18,11 +18,13 @@ MonoBehaviour:
     volumePriorityList:
     - 1
     - 0.8
+    - 0.5
     Group: {fileID: -4631210970304451318, guid: 6351a8fdd0289eb41a00a6231d52c438, type: 2}
     audioSoureTrans: {fileID: 0}
   - Type: 1
     volumePriorityList:
     - 1
     - 0.8
+    - 0.5
     Group: {fileID: -5819467243949444651, guid: 6351a8fdd0289eb41a00a6231d52c438, type: 2}
     audioSoureTrans: {fileID: 0}

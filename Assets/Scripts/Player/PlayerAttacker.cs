@@ -1,5 +1,6 @@
 using Enemy;
 using EquipmentSystem;
+using item;
 using plug;
 using UnityEngine;
 
@@ -63,6 +64,8 @@ namespace Player
                 return;
             }
             currentHp -= enemy.enemyParameter.Damage;
+            playerController.PlayerData.hitClip.PlayClip();
+            FxPlayer.PlayFx("Fx_Gun_Hit", playerController.Center);
             if (currentHp <= 0)
             {
                 playerController.PlayerDead();
@@ -77,6 +80,8 @@ namespace Player
         public void TakeDamage(Bullet bullet)
         {
             currentHp -= bullet.gunParameter.Damage;
+            playerController.PlayerData.hitClip.PlayClip();
+            FxPlayer.PlayFx("Fx_Gun_Hit", playerController.Center);
             if (currentHp <= 0)
             {
                 playerController.PlayerDead();
@@ -142,6 +147,8 @@ namespace Player
                 return;
             }
             currentHp -= enemy.enemyParameter.TouchDamage;
+            playerController.PlayerData.hitClip.PlayClip();
+            FxPlayer.PlayFx("Fx_Gun_Hit", playerController.Center);
             if (currentHp <= 0)
             {
                 playerController.PlayerDead();

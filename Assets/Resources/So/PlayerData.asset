@@ -20,6 +20,14 @@ MonoBehaviour:
   runStaminaConsume: {x: 1, y: 0.1}
   runStepRate: 0.3
   walkStepRate: 0.6
+  hitClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 964add519c118e847939e9159ab64c57, type: 3}
   footStepClips:
   - priority: 1
     isLoop: 0

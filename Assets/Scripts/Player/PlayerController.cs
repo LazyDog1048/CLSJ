@@ -18,7 +18,7 @@ namespace Player
     {
         [SerializeField]
         private PlayerData playerData;
-
+        public PlayerData PlayerData => playerData;
         [SerializeField]
         private GameCursor gameCursor;
         
@@ -36,7 +36,7 @@ namespace Player
 
         private PlayerGunObject _playerGun;
         private Lamp lamp;
-        private Transform Center;
+        public Transform Center{ get; set; }
         public Transform playerTrans => Center;
         public Transform Head { get; set; }
         public Transform shotCenter { get; set; }
@@ -331,11 +331,15 @@ namespace Player
         public void PlayerDead()
         {
             PlayerState = PlayerState.Dead;
+
         }
         
         private void DeadComplete()
         {
-            GameManager.Instance.EnterTargetRoom(GameManager.Instance.lastRoomDoor);
+            GameManager.Instance.PlayerResume();
+            playerAttacker.Resume();
+            animator.Reset();
+            // GameManager.Instance.EnterTargetRoom(GameManager.Instance.lastRoomDoor);
         }
         #region IAnimController
         public virtual void AnimatorStateEnter()
@@ -355,7 +359,6 @@ namespace Player
 
         public void HitObj(Bullet bullet)
         {
-            FxPlayer.PlayFx("Fx_Gun_Hit", Center);
             playerAttacker.TakeDamage(bullet);
         }
 

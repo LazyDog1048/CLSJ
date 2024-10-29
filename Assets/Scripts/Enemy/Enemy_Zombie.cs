@@ -32,6 +32,7 @@ namespace Enemy
         
         protected override void EnemyAttack()
         {
+            PlayerFindClip();
             if (!isEnterAttack)
             {
                 direction = (playerPos - centerPosition).normalized;

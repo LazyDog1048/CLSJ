@@ -52,7 +52,6 @@ namespace game
 
         protected void Open()
         {
-            DoorPanel.Instance.OpenDoor(this);
             GameManager.Instance.CheckDoor(this);
         }
 

@@ -38,10 +38,11 @@ namespace Enemy
 
         
         
-        private float knockBackTime = 0.2f;
+        private float knockBackTime = 0.1f;
         protected virtual Vector3 playerPos => PlayerController.Instance.transform.position;
         protected Transform center;
 
+        public bool findPlayer;
         public static BaseEnemy Load(EnemySoData data)
         {
             string path = $"Prefab/Enemy/{data.Name}";
@@ -84,6 +85,7 @@ namespace Enemy
         {
             if (enemyAttacker.CanAttack)
             {
+                PlayerFindClip();
                 SeenPlayer = true;
                 EnemyAttack();
             }
@@ -107,6 +109,15 @@ namespace Enemy
             else
             {
                 CurState = enemyAttacker.isAttackCd? EnemyState.Idle : EnemyState.Attack;
+            }
+        }
+
+        public void PlayerFindClip()
+        {
+            if (!findPlayer)
+            {
+                enemySoData.findClip.PlayClip();
+                findPlayer = true;
             }
         }
 
@@ -170,6 +181,9 @@ namespace Enemy
                 case EnemyState.Attack:
                     enemyAttacker.AttackEnterCd();
                     break;
+                case EnemyState.Dead:
+                    enemySoData.deadClip.PlayClip();
+                    break;
             }
         }
 
@@ -181,6 +195,7 @@ namespace Enemy
                     CurState = EnemyState.Idle;
                     break;
                 case EnemyState.Dead:
+                    enemySoData.deadClip.PlayClip();
                     FxPlayer.PlayFx("Fx_EnemyDeath", centerPosition);
                     break;
             }

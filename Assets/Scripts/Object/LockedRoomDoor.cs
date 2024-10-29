@@ -16,10 +16,11 @@ namespace game
         [SerializeField]
         protected string UnlockDescription = "锁开了";
         
-        protected bool isOpened = false;
+        [HideInInspector]
+        public bool isOpened = false;
         
         [SerializeField]
-        private LockedRoomDoor otherSide;
+        protected LockedRoomDoor otherSide;
         
         public override void PressE()
         {
@@ -28,7 +29,7 @@ namespace game
             else if (CheckKey())
             {
                 UnlockDoor();
-                GameManager.Instance.CheckDoor(this);
+                Open();
                 DescriptionUi.Instance.ShowDescription(UnlockDescription);
             }
             else
@@ -38,7 +39,7 @@ namespace game
         }
 
 
-        protected void UnlockDoor()
+        protected virtual void UnlockDoor()
         {
             var list = LocalPackageThing.GetData().consumableDataList;
             for(int i=list.Count-1;i>=0;i--)

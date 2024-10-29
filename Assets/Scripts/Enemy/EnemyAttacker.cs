@@ -64,6 +64,7 @@ namespace plug
             if (col.tag.Equals("Player"))
             {
                 playerEnter = false;
+                _enemy.findPlayer = false;
             }
         }
 

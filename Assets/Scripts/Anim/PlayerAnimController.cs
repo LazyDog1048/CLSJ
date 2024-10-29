@@ -33,6 +33,7 @@ namespace Player
             };
             
             CurState = PlayerState.Idle;
+            AddLockState((int)PlayerState.Dead);
         }
 
         public void SetAnim(PlayerState state)

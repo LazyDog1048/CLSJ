@@ -25,3 +25,29 @@ MonoBehaviour:
   FindRange: 20
   AttackRange: 8
   AttackInterval: 2
+  runStepRate: 0.2
+  walkStepRate: 0.5
+  findClip:
+    priority: 2
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 660faac37774b024eb0b9ec6305a25ae, type: 3}
+  alertClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
+  deadClip:
+    priority: 0
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 0}
