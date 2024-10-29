@@ -34,7 +34,7 @@ MonoBehaviour:
   price: 0
   weight: 0
   description: "\u6765\u6E90\u795E\u79D8\u7684\u6B66\u5668\uFF0C\u636E\u8BF4\u8BDE\u751F\u4E8E\u67D0\u53EA\u732B\u7684\u5BFB\u601D\uFF0C\u62E5\u6709\u4E0E\u5B83\u5916\u89C2\u4E0D\u7B26\u7684\u5F3A\u5927\u7834\u574F\u6027"
-  Damage: 50
+  Damage: 40
   shotType: 0
   shotMode: 0
   shotDelay: 1
