@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1726577015640154296}
   - component: {fileID: 5723480030203365843}
   m_Layer: 0
-  m_Name: Battery
+  m_Name: RedCookie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3166058737126218618, guid: c186a91cd1ef3f148b895c47bb920a4c, type: 3}
+  m_Sprite: {fileID: 2482817123755268029, guid: 2920519179f29414f89307deeb60673e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b1f797b9532d245b2cead41c3976cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObjectSo: {fileID: 11400000, guid: e0c83bfe7071098499980437073e8549, type: 2}
+  gridObjectSo: {fileID: 11400000, guid: 6e28623a19ad3454b92b069d7aaa7e97, type: 2}
