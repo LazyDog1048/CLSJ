@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Enemy_Deer
   Speed: 3
-  Health: 100
+  Health: 160
   Damage: 1
   DamageRange: 2
   DamageForce: 8
