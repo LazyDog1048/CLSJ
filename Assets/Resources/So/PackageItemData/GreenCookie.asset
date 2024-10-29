@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenCookie
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: GreenCookie
-  ItemName: GreenCookie
+  ItemName: "\u62B9\u8336\u5C0F\u997C\u5E72"
   icon: {fileID: -2860347446042276269, guid: 38a990575bb957a43a075263b4be8da7, type: 3}
   prefab: {fileID: 1726577015640154295, guid: a7aaf2e4420954442806bcf79f239f6b, type: 3}
   shapeData:
@@ -25,5 +25,5 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: "\u4EE5\u6740\u4F24\u529B\u8457\u79F0\uFF0C\u4F9B\u624B\u70AE\u4F7F\u7528\u7684\u5927\u53E3\u5F84\u9B54\u529B\u5B50\u5F39"
-  healAmount: 10
+  description: "\u6D41\u884C\u7684\u5C0F\u96F6\u98DF\uFF0C\u4E0D\u8FC7\u662F\u62B9\u8336\u5473\u7684"
+  healAmount: 5

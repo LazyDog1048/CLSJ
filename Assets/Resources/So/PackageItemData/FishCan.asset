@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishCan
   m_EditorClassIdentifier: Assembly-CSharp:data:PackageItemData
   Name: FishCan
-  ItemName: FishCan
+  ItemName: "\u6DF1\u6D77\u9C7C\u7F50\u5934"
   icon: {fileID: -2366775601286990869, guid: b146ef71e04b6a14d83cfe58bc10799c, type: 3}
   prefab: {fileID: 1726577015640154295, guid: beaba5b8d9280ab44a204ab9775396f9, type: 3}
   shapeData:
@@ -24,5 +24,5 @@ MonoBehaviour:
   quality: 0
   price: 0
   weight: 0
-  description: "\u4EE5\u6740\u4F24\u529B\u8457\u79F0\uFF0C\u4F9B\u624B\u70AE\u4F7F\u7528\u7684\u5927\u53E3\u5F84\u9B54\u529B\u5B50\u5F39"
-  healAmount: 10
+  description: "\u7CBE\u52A0\u5DE5\u7684\u7F8E\u5473\u9C7C\u7F50\u5934\uFF0C\u6CA1\u6709\u732B\u4F1A\u62D2\u7EDD"
+  healAmount: 15
