@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Enemy_Cow
   Speed: 3
-  Health: 54
+  Health: 80
   Damage: 15
   DamageRange: 1.6
   DamageForce: 20
@@ -23,5 +23,5 @@ MonoBehaviour:
   TouchForce: 16
   TouchForceTime: 0.2
   FindRange: 15
-  AttackRange: 10
+  AttackRange: 15
   AttackInterval: 5
