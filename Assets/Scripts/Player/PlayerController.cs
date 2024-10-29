@@ -44,7 +44,7 @@ namespace Player
         
         public bool isRun => PlayerState == PlayerState.Run;
         
-        
+        private bool footStepLock;
         private bool isPressShift;
         public bool isPressMove{ get; set; }
         // public PlayerState previousState;
@@ -72,18 +72,6 @@ namespace Player
             _playerGun = transform.Find("Hand").Find("Gun").GetComponent<PlayerGunObject>();
             playerFlashlight = GetComponentInChildren<PlayerFlashlight>();
             shotCenter = transform.Find("ShotCenter");
-            
-            // _playerGun.Init();
-            // playerParameter = new PlayerParameter(playerData);
-            // animator = new PlayerAnimController(this);
-            // playerMove = new PlayerMove(this);
-            // playerStamina = new PlayerStamina(this);
-            // PlayerHand = new PlayerHand(this);
-            // playerEquipment = new PlayerEquipment(this);
-            // playerAttacker = new PlayerAttacker(this,playerParameter);
-            // GamePlay_InputAction.Instance.PlayerRegisterAction(OnMove,CursorMoveEvent,RightMouse,PressShift,PressTab,PressR,PressE,PressQ,PressF);
-            // GamePlay_InputAction.Instance.PlayerRegisterNumAction(Press1,Press2,Press3,Press4,Press5,Press6,Press7);
-            // GamePlay_InputAction.Instance.ConfirmUiAction(LeftMouse);
         }
 
         public void PlayerInit()
@@ -113,6 +101,17 @@ namespace Player
             if (playerMove.CanMove)
             {
                 PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
+                float stepRate = PlayerState == PlayerState.Run ? playerData.runStepRate : playerData.walkStepRate;
+      
+                if (!footStepLock)
+                {
+                    footStepLock = true;
+                    playerData.PlayFootStep();
+                    this.DelayExecute(stepRate, () =>
+                    {
+                        footStepLock = false;
+                    });
+                }
             }
             else
             {
@@ -188,17 +187,7 @@ namespace Player
             _playerGun.ReloadGun(playerGun);
         }
         private void OnMove(InputAction.CallbackContext context)
-        {
-            // Debug.Log("move");
-            // if (context.phase == InputActionPhase.Performed && playerMove.CanMove)
-            // {
-            //     PlayerState = isPressShift && playerStamina.CanRun ? PlayerState.Run : PlayerState.Walk;
-            // }
-            // else if (context.phase == InputActionPhase.Canceled)
-            // {
-            //     PlayerState = PlayerState.Idle;    
-            // }
-            
+        {            
             if (context.phase == InputActionPhase.Performed)
             {
                 isPressMove = true;

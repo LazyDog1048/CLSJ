@@ -1,3 +1,4 @@
+using data;
 using UnityEngine;
 
 namespace Enemy 
@@ -18,6 +19,14 @@ namespace Enemy
         public float FindRange = 10;
         public float AttackRange = 2;
         public float AttackInterval;
+        
+        public float runStepRate = 0.2f;
+        public float walkStepRate = 0.5f;
+        
+        public FxAudioSourceClip findClip;
+        public FxAudioSourceClip alertClip;
+        public FxAudioSourceClip deadClip;
+        
     }
 
 

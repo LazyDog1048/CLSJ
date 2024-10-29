@@ -12,6 +12,8 @@ namespace game
 {
     public class GameManager : KeepMonoSingleton<GameManager>
     {
+        // []
+        // public FxAudioSourceClip AmbienceAudio
         [SerializeField]
         private RoomDoor startRoomDoor;
 

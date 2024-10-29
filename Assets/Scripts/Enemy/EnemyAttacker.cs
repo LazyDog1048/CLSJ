@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Enemy;
 using EquipmentSystem;
+using item;
 using Player;
 using UnityEngine;
 
@@ -9,17 +11,21 @@ namespace plug
     {
         public EnemyParameter enemyParameter;
         public bool playerEnter { get;private set; }
-        public bool isAttackCd{ get;private set; }
+        public bool isAttackCd { get;private set; }
         public int maxHp;
-        public int currentHp;
+        public int currentHp{ get;private set; }
         public bool CanAttack => playerEnter && CheckWatchPlayer();
-
+        private Check2DRange check2DRange;
         private BaseEnemy _enemy;
+
+        private Collider2D[] allColliders;
         public EnemyAttacker(BaseEnemy enemy,EnemyParameter enemyParameter) : base(enemy)
         {
             _enemy = enemy;
             this.enemyParameter = enemyParameter;
-            Check2DRange check2DRange = transform.Find("FindRange").GetComponent<Check2DRange>();
+            allColliders = enemy.GetComponentsInChildren<Collider2D>();
+            
+            check2DRange = transform.Find("Center").Find("FindRange").GetComponent<Check2DRange>();
             check2DRange.Init(enemyParameter.FindRange,OnTriggerEnter2D,OnTriggerExit2D);
             maxHp = enemyParameter.Health;
             currentHp = maxHp;
@@ -30,6 +36,7 @@ namespace plug
         public override void Reset()
         {
             currentHp = maxHp;
+            BodyEnable(true);
         }
         
         public bool CheckWatchPlayer()
@@ -60,6 +67,25 @@ namespace plug
             }
         }
 
+        public void HitObj(Bullet bullet)
+        {
+            currentHp -= bullet.gunParameter.Damage;
+            if (currentHp <= 0)
+                _enemy.EnemyDead();
+        }
+        
+        public void BodyEnable(bool enable)
+        {
+            check2DRange.gameObject.SetActive(enable);
+
+            foreach (var collider in allColliders)
+            {
+                if(collider.tag.Equals("HideInShadow"))
+                    continue;
+                collider.enabled = enable;
+            }
+        }
+        
         public void AttackEnterCd()
         {
             isAttackCd = true;

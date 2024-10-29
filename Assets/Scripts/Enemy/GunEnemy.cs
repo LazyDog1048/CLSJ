@@ -104,7 +104,11 @@ namespace Enemy
             if(patrolLock)
                 return;
                 
-            if (transform.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
+            if (PatrolPoints.Count == 1)
+            {
+                CurState = EnemyState.Idle;
+            }
+            else if (transform.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
             {
                 CurState = EnemyState.PatrolWalk;
                 enemyMove.Move(PatrolPoints[patrolIndex]);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using buff;
 using data;
 using EquipmentSystem;
@@ -16,6 +17,17 @@ namespace Player
         public int stamina = 50;
         public Vector2 staminaResume = new Vector2(1, 0.5f);
         public Vector2 runStaminaConsume = new Vector2(1, 0.1f);
+        
+        public float runStepRate = 0.2f;
+        public float walkStepRate = 0.5f;
+        public List<FxAudioSourceClip> footStepClips;
+        
+        public void PlayFootStep()
+        {
+            if (footStepClips == null || footStepClips.Count == 0)
+                return;
+            footStepClips[Random.Range(0, footStepClips.Count)].PlayClip();
+        }
     }
     
     public class PlayerParameter

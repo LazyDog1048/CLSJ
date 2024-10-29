@@ -114,8 +114,12 @@ namespace Enemy
         {
             if(patrolLock)
                 return;
-                
-            if (center.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
+
+            if (PatrolPoints.Count == 1)
+            {
+                CurState = EnemyState.Idle;
+            }
+            else if (center.DisLongerThan(PatrolPoints[patrolIndex], 0.1f))
             {
                 CurState = EnemyState.PatrolWalk;
                 enemyMove.Move(PatrolPoints[patrolIndex]);
@@ -151,11 +155,14 @@ namespace Enemy
         {
             enemyMove.AddForce(bullet.currentDir,knockBackTime);
             FxPlayer.PlayFx("Fx_Gun_Hit", centerPosition);
-            enemyAttacker.currentHp -= bullet.gunParameter.Damage;
-            if (enemyAttacker.currentHp <= 0)
-                CurState = EnemyState.Dead;
+            enemyAttacker.HitObj(bullet);
         }
 
+        public void EnemyDead()
+        {
+            CurState = EnemyState.Dead;
+            enemyAttacker.BodyEnable(false);
+        }
         public virtual void AnimatorStateEnter()
         {
             switch (CurState)

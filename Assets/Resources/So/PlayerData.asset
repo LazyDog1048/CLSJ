@@ -12,8 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c0cc3c0cc59264b81477f6f27a9a26, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  health: 100
   speed: 1.8
   runRate: 75
   stamina: 50
   staminaResume: {x: 1, y: 0.5}
   runStaminaConsume: {x: 1, y: 0.1}
+  runStepRate: 0.3
+  walkStepRate: 0.6
+  footStepClips:
+  - priority: 1
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 1de48f8da942e8c48b9a5ae317b4f292, type: 3}
+  - priority: 1
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: b807364a4c52b544f8347ffa261a33f2, type: 3}
+  - priority: 1
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 1985b476a5ee0804b9bbf9daa90f709c, type: 3}
+  - priority: 1
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 74efcb8059c2be442bc2fbe46f920718, type: 3}
+  - priority: 1
+    isLoop: 0
+    randomVolume: 0
+    randomPitch: 0
+    volumeRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.9, y: 1.1}
+    Clip: {fileID: 8300000, guid: 85519639bad4c4e4abb7cd7a4b3da7dc, type: 3}
