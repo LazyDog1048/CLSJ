@@ -1434,7 +1434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 60de092438a888747a0aea99627db207, type: 3}
       propertyPath: m_Name
-      value: Container
+      value: "\u53A8\u623F2"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2323,7 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (6)
+      value: "\u76D1\u72F12"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3278,7 +3278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: aa24d4b51b5323e4abcbf6e7cb48baa1, type: 3}
       propertyPath: m_Name
-      value: Container2 (1)
+      value: "\u53A8\u623F4"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6799,7 +6799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 60de092438a888747a0aea99627db207, type: 3}
       propertyPath: m_Name
-      value: Container (1)
+      value: "\u53A8\u623F5"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8244,7 +8244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (3)
+      value: "\u517B\u80B2\u95F41"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10676,7 +10676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2
+      value: "\u8D70\u5ECA\u53F31"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15524,7 +15524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 0d3cc7566a4498142877392550e94b6d, type: 3}
       propertyPath: m_Name
-      value: PrisonChest (2)
+      value: "\u6DCB\u6D74\u95F42"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19654,7 +19654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (1)
+      value: "\u9910\u53851"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46691,7 +46691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (5)
+      value: "\u5BA1\u8BAF\u5BA41"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48898,7 +48898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (2)
+      value: "\u53A8\u623F1"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -141565,7 +141565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: aa24d4b51b5323e4abcbf6e7cb48baa1, type: 3}
       propertyPath: m_Name
-      value: Container2
+      value: "\u53A8\u623F3"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -148860,7 +148860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 0d3cc7566a4498142877392550e94b6d, type: 3}
       propertyPath: m_Name
-      value: PrisonChest
+      value: "\u9910\u53852"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -149880,7 +149880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: d14c464daa36f6e4c984b629c82b40ae, type: 3}
       propertyPath: m_Name
-      value: Container3
+      value: "\u5927\u53851"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -150587,7 +150587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 0d3cc7566a4498142877392550e94b6d, type: 3}
       propertyPath: m_Name
-      value: PrisonChest (3)
+      value: "\u76D1\u72F11"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -150837,7 +150837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 0d3cc7566a4498142877392550e94b6d, type: 3}
       propertyPath: m_Name
-      value: PrisonChest (1)
+      value: "\u5C60\u5BB0\u573A1"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -151403,7 +151403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: bf094b7532bdb3d47aad2e8f1e504899, type: 3}
       propertyPath: m_Name
-      value: Treasure2 (4)
+      value: "\u6DCB\u6D74\u95F41"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -155069,7 +155069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932880718841494025, guid: 0bfb97182602c754db580777fe4efca9, type: 3}
       propertyPath: m_Name
-      value: Treasure_Medi
+      value: "\u53A8\u623F6"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
