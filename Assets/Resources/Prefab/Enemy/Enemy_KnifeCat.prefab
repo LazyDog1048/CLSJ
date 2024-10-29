@@ -254,10 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySoData: {fileID: 11400000, guid: fce06b39c80393b43be4847f2017f53a, type: 2}
+  findPlayer: 0
   dashTime: 1
   recoverTime: 1
   alertTime: 1
-  dashSpeed: 30
+  dashSpeed: 25
 --- !u!114 &6537379199710311109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +620,7 @@ MonoBehaviour:
     m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.08
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1

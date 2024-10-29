@@ -41,6 +41,7 @@ namespace game
             Package_Panel.Load();
             DoorPanel.Load();
             Map_Panel.Load();
+            GameOverPanel.Load();
             PlayerController.Instance.PlayerInit();
             
             
@@ -76,8 +77,9 @@ namespace game
         
         public void StartGame()
         {
-            CheckDoor(startRoomDoor);
-            
+            lastRoomDoor = startRoomDoor;
+            beforeEnterPackageData = JsonUtility.ToJson(DataManager.Instance.LocalPackageThing);
+            beforeEnterPlayerData = JsonUtility.ToJson(DataManager.Instance.LocalPlayerDataThing);
             EnterTargetRoom(startRoomDoor);
             
         }
@@ -85,7 +87,6 @@ namespace game
         {
             DoorPanel.Instance.OpenDoor(roomDoor);
             lastRoomDoor = roomDoor;
-
             beforeEnterPackageData = JsonUtility.ToJson(DataManager.Instance.LocalPackageThing);
             beforeEnterPlayerData = JsonUtility.ToJson(DataManager.Instance.LocalPlayerDataThing);
         }

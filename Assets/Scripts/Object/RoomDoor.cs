@@ -50,7 +50,7 @@ namespace game
             Open();
         }
 
-        protected void Open()
+        protected virtual void Open()
         {
             GameManager.Instance.CheckDoor(this);
         }
